@@ -5,20 +5,22 @@ package edu.ntnu.irr.bidata;
  * */
 public class Player {
   private final String name;
-  /// private Tile currentTile;
+  private int currentTile;
 
-  public Player(String name) { // Tile currentTile
+  public Player(String name) { 
     this.name = name;
-    /// this.currentTile = currentTile
+    this.currentTile = 0;
   }
 
   public String getName() {
     return name;
   }
-  /// public String getCurrentTile() {
-  ///   return currentTile;
-  /// }
-  /// public void setCurrentTile(String currentTile) {
-  ///   this.currentTile = currentTile;
-  /// }
+  
+  public int getCurrentTile() {
+    return currentTile;
+  }
+
+  public void setCurrentTile(int currentTile) {
+    this.currentTile = currentTile;
+  }
 }
