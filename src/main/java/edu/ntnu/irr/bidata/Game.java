@@ -3,7 +3,7 @@ package edu.ntnu.irr.bidata;
 import java.util.ArrayList;
 
 
-public class Game {
+public abstract class Game {
     private ArrayList<Player> players;
     private int currentPlayer = 0;
     private Player winner = null;
@@ -29,9 +29,7 @@ public class Game {
         }
     }
 
-    public void takeTurn(Player player) {
-        // next turn
-    }
+    public abstract void takeTurn(Player player);
 
     public void endGame() {
         // end game

@@ -14,8 +14,7 @@ public class LaderGame extends Game {
     @Override
     public void takeTurn(Player player) {
         int dice1 = die.roll();
-        int newTile = player.getCurrentTile() + dice;
-        player.setCurrentTile(board.getTile(newTile));
-    }
-    
+        int dice2 = die.roll();
+        player.setCurrentTile(board.landOnTile(player.getCurrentTile() + dice1 + dice2));
+    }  
 }
