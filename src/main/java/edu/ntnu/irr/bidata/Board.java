@@ -1,11 +1,7 @@
 package edu.ntnu.irr.bidata;
 
-public class Board {
-    public void setUp() {
-    }
-
-    
-
+public abstract class Board {
+    public abstract void setUp();
 }
 
 
