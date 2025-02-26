@@ -17,6 +17,7 @@ public class Game {
     }
 
     public void init() {
+        
         // add players
         // determand turn order
     }
@@ -35,8 +36,6 @@ public class Game {
     public void endGame() {
         // end game
     }
-
-    
 
     public void startGame() {
         init();
