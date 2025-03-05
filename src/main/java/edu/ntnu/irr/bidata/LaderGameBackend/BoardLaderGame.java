@@ -1,7 +1,7 @@
-package edu.ntnu.irr.bidata;
+package edu.ntnu.irr.bidata.LaderGameBackend;
 import java.util.HashMap;
 
-public class BoardLaderGame extends Board {
+public class BoardLaderGame {
     private HashMap<Integer, Tile> GameBorad;
     private HashMap<Integer, Integer> Laders;
 
@@ -26,7 +26,6 @@ public class BoardLaderGame extends Board {
         Laders.put(87, 70);
     }
     
-    @Override
     public void setUp(){
         for (int i = 1; i < 90; i++) {
             GameBorad.put(i, new Tile(i));
