@@ -4,22 +4,14 @@ import java.util.ArrayList;
 
 
 public abstract class Game {
-    private ArrayList<Player> players;
+    private ArrayList<Player> players = new ArrayList<Player>();
     private int currentPlayer = 0;
     private Player winner = null;
-    private Die die = new Die();
-
-    public Game() {
-        
-    }
-
-    private void addPlayer(Player player) {
-        players.add(player);
-    }
 
     public void init() {
-        // add players
-        // determand turn order
+        // for i in range (UI.AskForPlayers()){
+        //     players.add(new Player(UI.AskForName()));
+        // }
     }
 
     public void runGame() {
@@ -31,7 +23,9 @@ public abstract class Game {
 
     public abstract void takeTurn(Player player);
 
-    public abstract void endGame();
+    public void endGame() {
+        // UI.PresentWinner(winner);
+    }
 
     public void startGame() {
         init();

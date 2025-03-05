@@ -12,11 +12,11 @@ public class Die {
    *
    * @return random number between 1 and the amount of faces given
    * */
-  public int roll(int faces) {
+  public static int roll(int faces) {
     return RANDOM.nextInt(1, faces + 1);
   }
 
-  public int rollDies(int faces, int amount) {
+  public static int rollDies(int faces, int amount) {
     int sum = 0;
     for (int i = 0; i < amount; i++) {
       sum += RANDOM.nextInt(1, faces + 1);

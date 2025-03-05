@@ -5,6 +5,7 @@ package edu.ntnu.irr.bidata.GeneralClassesBackend;
  * */
 public abstract class Player {
   private final String name;
+  private int currentTile = 0;
 
   public Player(String name) {
     this.name = name;
@@ -12,5 +13,14 @@ public abstract class Player {
   
   public String getName() {
     return name;
+  }
+
+      
+  public int getCurrentTile() {
+    return currentTile;
+    }
+
+  public void setCurrentTile(int currentTile) {
+    this.currentTile = currentTile;
   }
 }
