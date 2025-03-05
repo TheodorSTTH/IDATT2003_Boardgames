@@ -7,6 +7,7 @@ public abstract class Game {
     private ArrayList<Player> players;
     private int currentPlayer = 0;
     private Player winner = null;
+    private Die die = new Die();
 
     public Game() {
         
@@ -17,7 +18,6 @@ public abstract class Game {
     }
 
     public void init() {
-        
         // add players
         // determand turn order
     }
@@ -31,16 +31,11 @@ public abstract class Game {
 
     public abstract void takeTurn(Player player);
 
-    public void endGame() {
-        // end game
-    }
+    public abstract void endGame();
 
     public void startGame() {
         init();
         runGame();
         endGame();
     }
-
-
-    
 }

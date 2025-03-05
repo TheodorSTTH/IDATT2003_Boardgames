@@ -6,21 +6,23 @@ import java.util.Random;
  * */
 public class Die {
   private static final Random RANDOM = new Random();
-  private final int faces;
-
-  /**
-   * @param faces Amount of faces on die
-   * */
-  public Die(int faces) {
-    this.faces = faces;
-  }
 
   /**
    * Rolls the die and returns the result.
    *
    * @return random number between 1 and the amount of faces given
    * */
-  public int roll() {
+  public int roll(int faces) {
     return RANDOM.nextInt(1, faces + 1);
   }
+
+  public int rollDies(int faces, int amount) {
+    int sum = 0;
+    for (int i = 0; i < amount; i++) {
+      sum += RANDOM.nextInt(1, faces + 1);
+    }
+    return sum;
+  }
+
+
 }

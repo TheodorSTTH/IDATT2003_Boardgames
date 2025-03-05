@@ -10,10 +10,6 @@ public abstract class Player {
     this.name = name;
   }
   
-  public abstract int getCurrentTile();
-
-  public abstract void setCurrentTile(int currentTile);
-
   public String getName() {
     return name;
   }
