@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata;
+package edu.ntnu.irr.bidata.GeneralClassesBackend;
 
 /**
  * Player class i responsible for managing player piece/user.

@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata;
+package edu.ntnu.irr.bidata.LaderGameBackend;
 
 public class Tile{
     private final int laderDestination;

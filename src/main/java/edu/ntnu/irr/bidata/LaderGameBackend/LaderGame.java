@@ -1,4 +1,8 @@
-package edu.ntnu.irr.bidata;
+package edu.ntnu.irr.bidata.LaderGameBackend;
+
+import edu.ntnu.irr.bidata.GeneralClassesBackend.Die;
+import edu.ntnu.irr.bidata.GeneralClassesBackend.Game;
+import edu.ntnu.irr.bidata.GeneralClassesBackend.Player;
 
 public class LaderGame extends Game {
     private BoardLaderGame board;
