@@ -11,7 +11,6 @@ public class LaderGame extends Game {
     public void init() {
         super.init();
         board = new BoardLaderGame();
-        board.setUpLadersClasic();
     }
 
     @Override

@@ -2,14 +2,14 @@ package edu.ntnu.irr.bidata.LaderGameBackend;
 import java.util.HashMap;
 
 public class BoardLaderGame {
-    private HashMap<Integer, Integer> GameBorad;
-    private HashMap<Integer, Integer> Laders;
+    private HashMap<Integer, Integer> GameBorad = new HashMap<Integer, Integer>();
 
     public BoardLaderGame() {
-        GameBorad = new HashMap<Integer, Integer>();
+        this.setUpLadersClasic();
     }
 
-    public void setUpLadersClasic() {
+
+    private void setUpLadersClasic() {
         for (int i = 1; i < 90; i++) {
             GameBorad.put(i, i);
         }
