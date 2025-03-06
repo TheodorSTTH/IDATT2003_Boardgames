@@ -1,5 +1,6 @@
 package edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmoutOfPlayers;
 
+import edu.ntnu.irr.bidata.GeneralClassedFrontend.AlertInterface;
 import edu.ntnu.irr.bidata.GeneralClassedFrontend.UI;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -10,7 +11,7 @@ public class AmountOfPlayersCard extends VBox {
   public AmountOfPlayersCard() {
     Label label = new Label("How many players");
     label.getStyleClass().addAll("styled-label", "w-p-text");
-    
+
     ComboBox<Integer> amountOfPlayersComboBox = new ComboBox<>();
     amountOfPlayersComboBox.getItems().addAll(2, 3, 4, 5, 6);
     amountOfPlayersComboBox.setPromptText("Select Number of Players");
@@ -24,12 +25,12 @@ public class AmountOfPlayersCard extends VBox {
       if (selectedPlayers != null) {
         UI.AmountOfPlayersChoosen(selectedPlayers);
       } else {
-        System.out.println("Please select a number of players.");
-          }
-      });
+        AlertInterface.showWarning("Selection Required", "Please select the number of players before continuing.");
+      }
+    });
 
-        // Add components to VBox
-        this.getChildren().addAll(label, amountOfPlayersComboBox, amountOfPlayersButton);
-        this.getStyleClass().addAll("createUser-card", "w-radius");
-    }
+    // Add components to VBox
+    this.getChildren().addAll(label, amountOfPlayersComboBox, amountOfPlayersButton);
+    this.getStyleClass().addAll("createUser-card", "w-radius");
+  }
 }
