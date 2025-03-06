@@ -11,31 +11,23 @@ public class UI {
 
   }
 
-  public static void AmountOfPlayersChoosen(int plyers){
-
-  }
-
-  public static int askForAmountOfPlayers() {
-    toAmountOfPlayersPage();
-    int players = 0;
-    while (players == 0) {
-      
-    }
-    
-    return players;
+  public static void AmountOfPlayersChoosen(int plyers) {
+    toCreatePlayerPage();
   }
   
-  public static String askForPlayerName() {
-    return "hei";
-  }
 
   public static void toAmountOfPlayersPage() {
-    MyWindow.getPrimaryStage().hide();
-    MyWindow.getPrimaryStage().setMaximized(false);
-    MyWindow.getPrimaryStage().setScene(AmoutOfPlayers);
-    MyWindow.getPrimaryStage().setMaximized(true);
-    MyWindow.getPrimaryStage().show();
-  }
+    System.out.println("Switching to AmountOfPlayersPage...");
+    try {
+        MyWindow.getPrimaryStage().hide();
+        MyWindow.getPrimaryStage().setMaximized(false);
+        MyWindow.getPrimaryStage().setScene(AmoutOfPlayers);
+        MyWindow.getPrimaryStage().setMaximized(true);
+        MyWindow.getPrimaryStage().show();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 
   private static void toCreatePlayerPage() {
     MyWindow.getPrimaryStage().hide();

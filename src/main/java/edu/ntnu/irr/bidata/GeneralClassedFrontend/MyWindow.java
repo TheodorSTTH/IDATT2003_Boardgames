@@ -2,6 +2,8 @@ package edu.ntnu.irr.bidata.GeneralClassedFrontend;
 
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -15,8 +17,14 @@ public class MyWindow extends Application {
   public void start(Stage primaryStage) {
     MyWindow.primaryStage = primaryStage;
     MyWindow.primaryStage.setTitle("BoardGame");
-    UI.toAmountOfPlayersPage();
     
+    // Show an empty scene first to avoid errors
+    MyWindow.primaryStage.setScene(new Scene(new VBox()));  
+    MyWindow.primaryStage.show();
+    
+    // Switch scenes AFTER JavaFX is ready
+    UI.toAmountOfPlayersPage();
+
 
   }
 
