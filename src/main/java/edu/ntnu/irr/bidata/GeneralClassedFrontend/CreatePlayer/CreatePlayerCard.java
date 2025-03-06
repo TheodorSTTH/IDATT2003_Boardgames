@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreateUser;
+package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer;
 
 
 import javafx.scene.control.Button;
@@ -20,7 +20,7 @@ public class CreatePlayerCard extends VBox {
 
 
         createPlayerButton.setOnAction(e -> {
-            //UiController.tryCreateUser(usernameField.getText(), passwordField.getText(), nameField.getText());
+            //UiController.NewPlayer(usernameField.getText());
         });
 
         this.getChildren().addAll(label, usernameField, createPlayerButton);

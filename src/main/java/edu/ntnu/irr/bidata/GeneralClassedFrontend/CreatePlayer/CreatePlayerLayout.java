@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreateUser;
+package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer;
 
 import javafx.scene.layout.StackPane;
 
@@ -6,7 +6,7 @@ import javafx.scene.layout.StackPane;
 public class CreatePlayerLayout extends StackPane {
   public CreatePlayerLayout() {
     super();
-    this.getStyleClass().add("createUser-layout");
+    this.getStyleClass().add("createPlayer-layout");
     this.getChildren().add(new CreatePlayerCard());
   }
 }

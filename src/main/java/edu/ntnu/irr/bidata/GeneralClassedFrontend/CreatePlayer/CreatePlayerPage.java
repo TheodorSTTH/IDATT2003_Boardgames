@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreateUser;
+package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer;
 
 
 import javafx.scene.Scene;
@@ -8,7 +8,7 @@ public class CreatePlayerPage extends Scene {
 
   public CreatePlayerPage() {
     super(layout);
-    this.getStylesheets().add(getClass().getResource("/no/ntnu/idatx1005/demo/view/style.css").toExternalForm());
+    this.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
   }
   
 }
