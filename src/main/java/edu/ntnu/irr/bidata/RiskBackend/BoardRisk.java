@@ -119,7 +119,6 @@ public class BoardRisk {
     continentBonus.put("Australia", 2);
   }
 
-  
   public List<Country> getCountrysControldByPlayer(Player player) {
     List<Country> countriesControlled = new ArrayList<Country>();
     for (Country country : countries.values()) {
