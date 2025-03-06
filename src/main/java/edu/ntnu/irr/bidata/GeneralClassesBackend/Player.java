@@ -3,7 +3,7 @@ package edu.ntnu.irr.bidata.GeneralClassesBackend;
 /**
  * Player class i responsible for managing player piece/user.
  * */
-public abstract class Player {
+public class Player {
   private final String name;
   private int currentTile = 0;
 
