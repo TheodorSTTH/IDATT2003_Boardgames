@@ -1,16 +1,18 @@
 package edu.ntnu.irr.bidata.LaderGameBackend;
 import java.util.HashMap;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public class BoardLaderGame {
     private HashMap<Integer, Integer> GameBorad = new HashMap<Integer, Integer>();
+    private final IntegerProperty size = new SimpleIntegerProperty(0);
 
     public BoardLaderGame() {
         this.setUpLadersClasic();
     }
 
-
     private void setUpLadersClasic() {
-        for (int i = 1; i < 90; i++) {
+        for (int i = 1; i < 90 + 1; i++) {
             GameBorad.put(i, i);
         }
 
@@ -30,5 +32,9 @@ public class BoardLaderGame {
 
     public int landOnTile(int tileNumber){
         return GameBorad.get(tileNumber);
+    }
+
+    public HashMap<Integer, Integer> getGameBorad() {
+        return GameBorad;
     }
 }   
