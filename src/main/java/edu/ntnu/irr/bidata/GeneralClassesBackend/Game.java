@@ -2,17 +2,11 @@ package edu.ntnu.irr.bidata.GeneralClassesBackend;
 
 import java.util.ArrayList;
 
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmoutOfPlayers.AmoutOfPlayersPage;
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer.CreatePlayerPage;
-
-
 
 public abstract class Game {
     private ArrayList<Player> players = new ArrayList<Player>();
     private int currentPlayer = 0;
     private Player winner = null;
-    private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
-    private static final AmoutOfPlayersPage AmoutOfPlayers = new AmoutOfPlayersPage();
 
     public void init() {
         //for (int i = 0; i < UI.askForAmountOfPlayers(); i++) {

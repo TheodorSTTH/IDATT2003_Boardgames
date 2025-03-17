@@ -18,10 +18,6 @@ public class MyWindow extends Application {
     MyWindow.primaryStage = primaryStage;
     MyWindow.primaryStage.setTitle("BoardGame");
     
-    // Show an empty scene first to avoid errors
-    MyWindow.primaryStage.setScene(new Scene(new VBox()));  
-    MyWindow.primaryStage.show();
-    
     // Switch scenes AFTER JavaFX is ready
     UI.toAmountOfPlayersPage();
 

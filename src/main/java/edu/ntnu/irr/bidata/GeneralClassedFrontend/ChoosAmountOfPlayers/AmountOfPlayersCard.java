@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmoutOfPlayers;
+package edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers;
 
 import edu.ntnu.irr.bidata.GeneralClassedFrontend.AlertInterface;
 import edu.ntnu.irr.bidata.GeneralClassedFrontend.UI;
