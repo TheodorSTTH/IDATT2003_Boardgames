@@ -1,13 +1,12 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer;
+package edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers;
 
 import javafx.scene.Scene;
 
-public class CreatePlayerPage extends Scene {
-    private static final CreatePlayerLayout layout = new CreatePlayerLayout();
+public class AmountOfPlayersPage extends Scene {
+    private static final AmountOfPlayersLayout layout = new AmountOfPlayersLayout();
 
-    public CreatePlayerPage() {
-        super(layout);
-
+    public AmountOfPlayersPage() {
+        super(layout);  
         if (getClass().getResource("/style.css") != null) {
             this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         } else {

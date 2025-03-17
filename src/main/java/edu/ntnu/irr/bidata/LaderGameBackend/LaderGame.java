@@ -1,6 +1,6 @@
 package edu.ntnu.irr.bidata.LaderGameBackend;
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Game;
 import edu.ntnu.irr.bidata.GeneralClassesBackend.Player;
+import edu.ntnu.irr.bidata.GeneralClassesBackend.Game;
 import edu.ntnu.irr.bidata.GeneralClassesBackend.Die;
 
 
@@ -15,7 +15,7 @@ public class LaderGame extends Game {
 
     @Override
     public void takeTurn(Player player) {
-        player.setCurrentTile(board.landOnTile(player.getCurrentTile() + Die.rollDies(6, 2)));
+        player.setCurrentTile(board.landOnTile(player.getCurrentTile() + Die.rollDies(6, 1)));
     }
 
     }

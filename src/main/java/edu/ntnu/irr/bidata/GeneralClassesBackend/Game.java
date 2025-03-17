@@ -9,9 +9,9 @@ public abstract class Game {
     private Player winner = null;
 
     public void init() {
-        // for i in range (UI.AskForPlayers()){
-        //     players.add(new Player(UI.AskForName()));
-        // }
+        //for (int i = 0; i < UI.askForAmountOfPlayers(); i++) {
+        //    players.add(new Player(UI.askForPlayerName()));
+        //}
     }
 
     public void runGame() {
@@ -32,4 +32,5 @@ public abstract class Game {
         runGame();
         endGame();
     }
+
 }
