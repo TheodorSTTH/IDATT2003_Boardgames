@@ -7,8 +7,8 @@ public class AmountOfPlayersPage extends Scene {
 
     public AmountOfPlayersPage() {
         super(layout);  
-        if (getClass().getResource("style.css") != null) {
-            this.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        if (getClass().getResource("/style.css") != null) {
+            this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         } else {
             System.err.println("Warning: style.css not found!");
         }

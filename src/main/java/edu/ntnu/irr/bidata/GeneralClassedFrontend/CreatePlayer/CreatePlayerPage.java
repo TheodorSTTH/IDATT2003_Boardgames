@@ -9,7 +9,7 @@ public class CreatePlayerPage extends Scene {
         super(layout);
 
         if (getClass().getResource("/style.css") != null) {
-            this.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+            this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         } else {
             System.err.println("Warning: style.css not found!");
         }

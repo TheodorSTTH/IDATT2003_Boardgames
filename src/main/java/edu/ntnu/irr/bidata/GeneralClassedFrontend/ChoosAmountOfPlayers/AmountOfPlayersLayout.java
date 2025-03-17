@@ -1,6 +1,4 @@
 package edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers;
-
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer.CreatePlayerCard;
 import javafx.scene.layout.StackPane;
 
 public class AmountOfPlayersLayout extends StackPane {
@@ -9,6 +7,6 @@ public class AmountOfPlayersLayout extends StackPane {
         this.getStyleClass().add("createPlayer-layout");
 
         AmountOfPlayersCard playersCard = new AmountOfPlayersCard();
-        this.getChildren().addAll(playersCard, new CreatePlayerCard());  // Ensure both are present
+        this.getChildren().addAll(playersCard, new AmountOfPlayersCard());  // Ensure both are present
     }
 }

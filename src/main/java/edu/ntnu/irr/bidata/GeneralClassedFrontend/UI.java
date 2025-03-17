@@ -4,7 +4,7 @@ import edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers.AmountOfP
 import edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer.CreatePlayerPage;
 
 public class UI {
-  //private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
+  private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
   private static final AmountOfPlayersPage AmountOfPlayers = new AmountOfPlayersPage();
 
   public UI() {
@@ -29,10 +29,11 @@ public class UI {
   }        
 }
 
-  private static void toCreatePlayerPage() {
+private static void toCreatePlayerPage() {
+    System.out.println("Switching to CreatePlayerPage...");
     MyWindow.getPrimaryStage().hide();
     MyWindow.getPrimaryStage().setMaximized(false);
-    //MyWindow.getPrimaryStage().setScene(createPlayer);
+    MyWindow.getPrimaryStage().setScene(createPlayer);
     MyWindow.getPrimaryStage().setMaximized(true);
     MyWindow.getPrimaryStage().show();
   }
