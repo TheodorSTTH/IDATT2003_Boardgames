@@ -12,7 +12,6 @@ public class UI {
   private static Game game;
 
   public static void triggerNewRound() {
-    System.out.println("triggerNewRound called!!!");
     game.takeTurn();
     overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
   }
