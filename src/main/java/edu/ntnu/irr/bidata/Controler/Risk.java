@@ -7,10 +7,4 @@ public class Risk extends Game {
         super(amountOfPlayers);
     }
 
-
-    @Override
-    public void takeTurn(Player player) {
-        // TODO
-    }
-  
 }

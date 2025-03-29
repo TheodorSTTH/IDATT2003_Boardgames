@@ -5,10 +5,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class BoardLaderGame {
     private HashMap<Integer, Integer> GameBorad = new HashMap<Integer, Integer>();
+    private int endTile = 90;
 
     public BoardLaderGame() {
-        this.setUpLadersClasic();
+        setUpLadersClasic();
     }
+
 
     private void setUpLadersClasic() {
         for (int i = 1; i < 90 + 1; i++) {
@@ -29,11 +31,14 @@ public class BoardLaderGame {
         GameBorad.put(87, 70);
     }
 
-    public int landOnTile(int tileNumber){
+    public int landOnTile(int tileNumber) {
+        if (tileNumber > endTile) {
+            return endTile;
+        }
         return GameBorad.get(tileNumber);
     }
-
-    public HashMap<Integer, Integer> getGameBorad() {
-        return GameBorad;
+    
+    public boolean isOnOreAftherEndTile(int tileNumber) {
+        return tileNumber >= endTile;
     }
 }   

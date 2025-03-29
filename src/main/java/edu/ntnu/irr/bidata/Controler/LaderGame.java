@@ -7,6 +7,7 @@ import edu.ntnu.irr.bidata.Model.Die;
 import java.util.ArrayList;
 
 
+
 public class LaderGame extends Game {
     private final BoardLaderGame board;
 
@@ -22,16 +23,17 @@ public class LaderGame extends Game {
     }
 
     @Override
-    public void init() {
+    protected void init() {
         super.init();
     }
 
-    @Override
-    public void takeTurn(Player player) {
-        player.setCurrentTile(board.landOnTile(player.getCurrentTile() + Die.rollDies(6, 2)));
+
+    public void takeTurn() {
+        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll(6)));
+        if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
+            endGame(currentPlayer);
+        }
+        currentPlayer = getNextPlayer(currentPlayer);
+    }
     }
 
-    public BoardLaderGame getBoard() {
-        return board;
-    }
-}

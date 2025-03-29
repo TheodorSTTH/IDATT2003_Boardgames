@@ -34,6 +34,7 @@ public class MyWindow extends Application {
 
 
 
+
     // BoardLaderGame myBoardGame = new BoardLaderGame();
     // LaderGame ladderGame = new LaderGame(myBoardGame);
     // primaryStage.setTitle("Stigespill");
@@ -42,6 +43,7 @@ public class MyWindow extends Application {
     // root.getChildren().add(boardDisplay);
     // primaryStage.setScene(new Scene(root, 600, 600));
     // primaryStage.show();
+
 
   }
 

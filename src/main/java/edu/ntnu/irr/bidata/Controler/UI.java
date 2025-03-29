@@ -41,12 +41,15 @@ public class UI {
 }
 
 private static void toCreatePlayerPage() {
-    System.out.println("Switching to CreatePlayerPage...");
-    MyWindow.getPrimaryStage().hide();
-    MyWindow.getPrimaryStage().setMaximized(false);
-    MyWindow.getPrimaryStage().setScene(createPlayer);
-    MyWindow.getPrimaryStage().setMaximized(true);
-    MyWindow.getPrimaryStage().show();
-  }
+  System.out.println("Switching to CreatePlayerPage...");
+  MyWindow.getPrimaryStage().hide();
+  MyWindow.getPrimaryStage().setMaximized(false);
+  MyWindow.getPrimaryStage().setScene(createPlayer);
+  MyWindow.getPrimaryStage().setMaximized(true);
+  MyWindow.getPrimaryStage().show();
+}
   
+public Game getGame() {
+  return game;
+}
 }
