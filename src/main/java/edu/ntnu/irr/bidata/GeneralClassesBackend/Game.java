@@ -32,4 +32,8 @@ public abstract class Game {
         runGame();
         endGame();
     }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
 }

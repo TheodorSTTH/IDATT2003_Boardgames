@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata;
 
 import edu.ntnu.irr.bidata.LadderViews.BoardView;
+import edu.ntnu.irr.bidata.LadderViews.LadderGameView;
 import edu.ntnu.irr.bidata.LaderGameBackend.BoardLaderGame;
 import edu.ntnu.irr.bidata.LaderGameBackend.LaderGame;
 import javafx.application.Application;
@@ -20,10 +21,11 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) {
     BoardLaderGame myBoardGame = new BoardLaderGame();
-    LaderGame ladderGame = new LaderGame();
+    LaderGame ladderGame = new LaderGame(myBoardGame);
     primaryStage.setTitle("Stigespill");
     Pane root = new Pane();
     BoardView boardDisplay = new BoardView(myBoardGame);
+    LadderGameView ladderGameDisplay = new LadderGameView(ladderGame);
     root.getChildren().add(boardDisplay);
     primaryStage.setScene(new Scene(root, 600, 600));
     primaryStage.show();
