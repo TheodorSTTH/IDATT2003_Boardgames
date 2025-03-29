@@ -2,6 +2,7 @@ package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.BoardLaderGame;
 import edu.ntnu.irr.bidata.Model.Die;
 import edu.ntnu.irr.bidata.Model.Player;
+import edu.ntnu.irr.bidata.Model.Die;
 
 
 public class LaderGame extends Game {
@@ -12,15 +13,15 @@ public class LaderGame extends Game {
     }
 
     @Override
-    public void init() {
+    protected void init() {
         super.init();
         board = new BoardLaderGame();
     }
 
-    @Override
-    public void takeTurn(Player player) {
-        player.setCurrentTile(board.landOnTile(player.getCurrentTile() + Die.rollDies(6, 1)));
+    public void takeTurn() {
+        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll(6)));
+        if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
+            endGame(currentPlayer);
+        }
     }
-
     }
- 

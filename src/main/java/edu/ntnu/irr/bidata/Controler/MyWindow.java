@@ -20,8 +20,6 @@ public class MyWindow extends Application {
     
     // Switch scenes AFTER JavaFX is ready
     UI.toStartPage();
-
-
   }
 
   public static Stage getPrimaryStage() {
