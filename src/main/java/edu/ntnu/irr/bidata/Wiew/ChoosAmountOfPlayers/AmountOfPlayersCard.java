@@ -1,7 +1,7 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers;
+package edu.ntnu.irr.bidata.Wiew.ChoosAmountOfPlayers;
 
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.AlertInterface;
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.UI;
+import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.Wiew.AlertInterface;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;

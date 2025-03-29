@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend;
+package edu.ntnu.irr.bidata.Controler;
 
 
 import javafx.application.Application;

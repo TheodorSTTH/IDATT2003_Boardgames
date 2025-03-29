@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassesBackend;
+package edu.ntnu.irr.bidata.Model;
 import java.util.Random;
 
 /**
