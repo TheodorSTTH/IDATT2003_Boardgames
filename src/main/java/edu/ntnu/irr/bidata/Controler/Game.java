@@ -37,7 +37,7 @@ public abstract class Game {
     private void endGame() {
     }
 
-    private void startGame() {
+    public void startGame() {
         init();
         runGame();
         endGame();
