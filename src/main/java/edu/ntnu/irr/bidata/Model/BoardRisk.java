@@ -126,9 +126,4 @@ public class BoardRisk {
     }
     return countriesControlled;
   }
-
-
-
-
-  
 }

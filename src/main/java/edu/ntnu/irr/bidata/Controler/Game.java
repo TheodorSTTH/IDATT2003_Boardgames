@@ -2,6 +2,8 @@ package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Die;
 
 import edu.ntnu.irr.bidata.Model.Player;
+import edu.ntnu.irr.bidata.Wiew.AlertInterface;
+
 import java.util.ArrayList;
 
 
@@ -19,6 +21,7 @@ public abstract class Game {
         players.add(new Player(name));
         if (players.size() == amountOfPlayers) {
             init();
+            endGame(currentPlayer);
         }
     }
 
@@ -27,8 +30,9 @@ public abstract class Game {
     }
 
     protected void endGame(Player winner) {
-        System.out.println("Game over! " + winner.getName() + " wins!");
-        
+        MyWindow.getPrimaryStage().hide();
+        MyWindow.getPrimaryStage().setMaximized(false);
+        AlertInterface.showInfo("Game Over", "Winner: " + winner.getName());
     }
 
     public ArrayList<Player> getPlayers() {
@@ -41,7 +45,7 @@ public abstract class Game {
 
     public void takeTurn() {};
 
-    public Player getNextPlayer(Player currentPlayer) {
+    public Player getNextPlayer() {
         int index = players.indexOf(currentPlayer);
         if (index == players.size() - 1) {
             return players.get(0);

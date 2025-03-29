@@ -3,7 +3,6 @@ import edu.ntnu.irr.bidata.Wiew.AlertInterface;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Wiew.LadderGameOverview.OverviewPage;
 import edu.ntnu.irr.bidata.Wiew.StartPage.StartPagePage;
-import edu.ntnu.irr.bidata.Controler.Game;
 
 
 public class UI {
@@ -29,8 +28,8 @@ public class UI {
   }
 
   public static void newPlayer(String name) {
-    game.addPlayer(name);
     AlertInterface.showInfo("Player Added", name + " has been added to the game.");
+    game.addPlayer(name);
     if (game.getPlayers().size() == game.getAmountOfPlayers()) {
       toOverviewPage();
     }

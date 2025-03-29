@@ -4,7 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class BoardLaderGame {
-    private HashMap<Integer, Integer> GameBorad = new HashMap<Integer, Integer>();
+    private HashMap<Integer, Integer> laders = new HashMap<Integer, Integer>();
     private int endTile = 90;
 
     public BoardLaderGame() {
@@ -13,29 +13,27 @@ public class BoardLaderGame {
 
 
     private void setUpLadersClasic() {
-        for (int i = 1; i < 90 + 1; i++) {
-            GameBorad.put(i, i);
-        }
-
-        GameBorad.put(1, 40);
-        GameBorad.put(8, 10);
-        GameBorad.put(24, 5);
-        GameBorad.put(33, 3);
-        GameBorad.put(36, 52);
-        GameBorad.put(42, 30);
-        GameBorad.put(56, 37);
-        GameBorad.put(64, 27);
-        GameBorad.put(65, 82);
-        GameBorad.put(68, 85);
-        GameBorad.put(74, 12);
-        GameBorad.put(87, 70);
+        laders.put(1, 40);
+        laders.put(8, 10);
+        laders.put(24, 5);
+        laders.put(33, 3);
+        laders.put(36, 52);
+        laders.put(42, 30);
+        laders.put(56, 37);
+        laders.put(64, 27);
+        laders.put(65, 82);
+        laders.put(68, 85);
+        laders.put(74, 12);
+        laders.put(87, 70);
     }
 
     public int landOnTile(int tileNumber) {
-        if (tileNumber > endTile) {
-            return endTile;
+        if (laders.containsKey(tileNumber)) {
+            return laders.get(tileNumber);
+        } else {
+            return tileNumber;
         }
-        return GameBorad.get(tileNumber);
+
     }
     
     public boolean isOnOreAftherEndTile(int tileNumber) {
