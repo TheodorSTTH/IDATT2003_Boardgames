@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class BoardLaderGame {
     private HashMap<Integer, Integer> GameBorad = new HashMap<Integer, Integer>();
-    private final IntegerProperty size = new SimpleIntegerProperty(0);
 
     public BoardLaderGame() {
         this.setUpLadersClasic();

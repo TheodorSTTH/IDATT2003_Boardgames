@@ -1,11 +1,11 @@
-package edu.ntnu.irr.bidata.Wiew.ChoosAmountOfPlayers;
+package edu.ntnu.irr.bidata.Wiew.StartPage;
 
 import javafx.scene.Scene;
 
-public class AmountOfPlayersPage extends Scene {
-    private static final AmountOfPlayersLayout layout = new AmountOfPlayersLayout();
+public class StartPagePage extends Scene {
+    private static final StartPageLayout layout = new StartPageLayout();
 
-    public AmountOfPlayersPage() {
+    public StartPagePage() {
         super(layout);  
         if (getClass().getResource("/style.css") != null) {
             this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());

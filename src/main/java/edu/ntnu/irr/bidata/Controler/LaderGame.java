@@ -17,6 +17,10 @@ public class LaderGame extends Game {
         board = new BoardLaderGame();
     }
 
+    public LaderGame(int amountOfPlayers) {
+        super(amountOfPlayers);
+    }
+
     @Override
     public void init() {
         super.init();

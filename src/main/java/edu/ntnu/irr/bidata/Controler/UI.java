@@ -1,41 +1,38 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Wiew.AlertInterface;
-import edu.ntnu.irr.bidata.Wiew.ChoosAmountOfPlayers.AmountOfPlayersPage;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
+import edu.ntnu.irr.bidata.Wiew.StartPage.StartPagePage;
 import edu.ntnu.irr.bidata.Controler.Game;
+
 
 public class UI {
   private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
-  private static final AmountOfPlayersPage AmountOfPlayers = new AmountOfPlayersPage();
+  private static final StartPagePage StartPage = new StartPagePage();
   private static Game game;
-  private static int players;
+
 
 
   public static void AmountOfPlayersAndGameChoosen(int plyers, String gameName) {
     if (gameName.equals("Lader Game")) {
-      game = new LaderGame();
+      game = new LaderGame(plyers);
     } else if (gameName.equals("Risk")) {
-      game = new Risk();
+      game = new Risk(plyers);
     }
-    players = plyers;
     toCreatePlayerPage();
   }
 
   public static void newPlayer(String name) {
     game.addPlayer(name);
     AlertInterface.showInfo("Player Added", name + " has been added to the game.");
-    if (game.getAmountOfPlayers() == players) {
-      game.startGame();
-    }
   }
   
 
-  public static void toAmountOfPlayersPage() {
+  public static void toStartPage() {
     System.out.println("Switching to AmountOfPlayersPage...");
     try {
       MyWindow.getPrimaryStage().hide();
       MyWindow.getPrimaryStage().setMaximized(false);
-      MyWindow.getPrimaryStage().setScene(AmountOfPlayers);
+      MyWindow.getPrimaryStage().setScene(StartPage);
       MyWindow.getPrimaryStage().setMaximized(true);
       MyWindow.getPrimaryStage().show();
   } catch (Exception e) {

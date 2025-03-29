@@ -26,14 +26,23 @@ public class MyWindow extends Application {
   //}
   @Override
   public void start(Stage primaryStage) {
-    BoardLaderGame myBoardGame = new BoardLaderGame();
-    LaderGame ladderGame = new LaderGame(myBoardGame);
-    primaryStage.setTitle("Stigespill");
-    Pane root = new Pane();
-    BoardView boardDisplay = new BoardView(myBoardGame);
-    root.getChildren().add(boardDisplay);
-    primaryStage.setScene(new Scene(root, 600, 600));
-    primaryStage.show();
+    MyWindow.primaryStage = primaryStage;
+    MyWindow.primaryStage.setTitle("BoardGame");
+    
+    // Switch scenes AFTER JavaFX is ready
+    UI.toStartPage();
+
+
+
+    // BoardLaderGame myBoardGame = new BoardLaderGame();
+    // LaderGame ladderGame = new LaderGame(myBoardGame);
+    // primaryStage.setTitle("Stigespill");
+    // Pane root = new Pane();
+    // BoardView boardDisplay = new BoardView(myBoardGame);
+    // root.getChildren().add(boardDisplay);
+    // primaryStage.setScene(new Scene(root, 600, 600));
+    // primaryStage.show();
+
   }
 
   public static Stage getPrimaryStage() {
