@@ -8,7 +8,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class BoardView extends Pane {
-  private final BoardLaderGame board;
   private final int tileWidth = 40;
   private final int tileHeight = 35;
   private final int boardColumnAmount = 9;
@@ -16,8 +15,7 @@ public class BoardView extends Pane {
 
   private final ArrayList<Tile> currentTiles = new ArrayList<>(boardColumnAmount * boardRowsAmount);
 
-  public BoardView(BoardLaderGame board) {
-    this.board = board;
+  public BoardView() {
     for (int i = 0; i < 90; i++) {
       currentTiles.add(null);
     }

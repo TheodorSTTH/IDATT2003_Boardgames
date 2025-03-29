@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Wiew.AlertInterface;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
+import edu.ntnu.irr.bidata.Wiew.LadderGameOverview.OverviewPage;
 import edu.ntnu.irr.bidata.Wiew.StartPage.StartPagePage;
 import edu.ntnu.irr.bidata.Controler.Game;
 
@@ -8,8 +9,14 @@ import edu.ntnu.irr.bidata.Controler.Game;
 public class UI {
   private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
   private static final StartPagePage StartPage = new StartPagePage();
+  private static final OverviewPage overview = new OverviewPage();
   private static Game game;
 
+  public static void triggerNewRound() {
+    System.out.println("triggerNewRound called!!!");
+    game.takeTurn();
+    overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
+  }
 
 
   public static void AmountOfPlayersAndGameChoosen(int plyers, String gameName) {
@@ -24,6 +31,9 @@ public class UI {
   public static void newPlayer(String name) {
     game.addPlayer(name);
     AlertInterface.showInfo("Player Added", name + " has been added to the game.");
+    if (game.getPlayers().size() == game.getAmountOfPlayers()) {
+      toOverviewPage();
+    }
   }
   
 
@@ -35,21 +45,31 @@ public class UI {
       MyWindow.getPrimaryStage().setScene(StartPage);
       MyWindow.getPrimaryStage().setMaximized(true);
       MyWindow.getPrimaryStage().show();
-  } catch (Exception e) {
-      e.printStackTrace();
-  }        
-}
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
 
-private static void toCreatePlayerPage() {
-  System.out.println("Switching to CreatePlayerPage...");
-  MyWindow.getPrimaryStage().hide();
-  MyWindow.getPrimaryStage().setMaximized(false);
-  MyWindow.getPrimaryStage().setScene(createPlayer);
-  MyWindow.getPrimaryStage().setMaximized(true);
-  MyWindow.getPrimaryStage().show();
-}
-  
-public Game getGame() {
-  return game;
-}
+  private static void toCreatePlayerPage() {
+    System.out.println("Switching to CreatePlayerPage...");
+    MyWindow.getPrimaryStage().hide();
+    MyWindow.getPrimaryStage().setMaximized(false);
+    MyWindow.getPrimaryStage().setScene(createPlayer);
+    MyWindow.getPrimaryStage().setMaximized(true);
+    MyWindow.getPrimaryStage().show();
+  }
+
+  private static void toOverviewPage() {
+    System.out.println("Switching to OverviewPage...");
+    MyWindow.getPrimaryStage().hide();
+    MyWindow.getPrimaryStage().setMaximized(false);
+    MyWindow.getPrimaryStage().setScene(overview);
+    MyWindow.getPrimaryStage().setMaximized(true);
+    MyWindow.getPrimaryStage().show();
+    UI.overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
+  }
+
+  public Game getGame() {
+    return game;
+  }
 }

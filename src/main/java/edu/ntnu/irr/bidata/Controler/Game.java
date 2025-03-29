@@ -36,8 +36,10 @@ public abstract class Game {
     }
 
     public int getAmountOfPlayers() {
-        return players.size();
+        return amountOfPlayers;
     }
+
+    public void takeTurn() {};
 
     public Player getNextPlayer(Player currentPlayer) {
         int index = players.indexOf(currentPlayer);
