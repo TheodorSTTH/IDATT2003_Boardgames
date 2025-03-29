@@ -23,5 +23,6 @@ public class LaderGame extends Game {
         if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
             endGame(currentPlayer);
         }
+        currentPlayer = getNextPlayer(currentPlayer);
     }
     }
