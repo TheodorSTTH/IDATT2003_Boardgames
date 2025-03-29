@@ -7,6 +7,10 @@ import edu.ntnu.irr.bidata.Model.Player;
 public class LaderGame extends Game {
     private BoardLaderGame board;
 
+    public LaderGame(int amountOfPlayers) {
+        super(amountOfPlayers);
+    }
+
     @Override
     public void init() {
         super.init();

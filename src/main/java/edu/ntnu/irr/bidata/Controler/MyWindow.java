@@ -19,7 +19,7 @@ public class MyWindow extends Application {
     MyWindow.primaryStage.setTitle("BoardGame");
     
     // Switch scenes AFTER JavaFX is ready
-    UI.toAmountOfPlayersPage();
+    UI.toStartPage();
 
 
   }

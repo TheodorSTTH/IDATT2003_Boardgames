@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Wiew.ChoosAmountOfPlayers;
+package edu.ntnu.irr.bidata.Wiew.StartPage;
 
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Wiew.AlertInterface;
@@ -7,8 +7,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class AmountOfPlayersCard extends VBox {
-  public AmountOfPlayersCard() {
+public class StartPageCard extends VBox {
+  public StartPageCard() {
     Label label = new Label("How many players, and what game do you want to play?");
     label.getStyleClass().addAll("styled-label", "w-p-text");
 
