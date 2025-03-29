@@ -21,7 +21,6 @@ public class LaderGame extends Game {
         super.init();
     }
 
-
     public void takeTurn() {
         currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll(6)));
         if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
@@ -32,5 +31,10 @@ public class LaderGame extends Game {
             endGame(currentPlayer);
         }
     }
+
+    public BoardLaderGame getBoard() {
+        return board;
     }
+
+}
 
