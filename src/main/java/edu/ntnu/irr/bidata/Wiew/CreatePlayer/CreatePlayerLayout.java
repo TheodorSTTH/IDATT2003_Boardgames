@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer;
+package edu.ntnu.irr.bidata.Wiew.CreatePlayer;
 
 import javafx.scene.layout.StackPane;
 

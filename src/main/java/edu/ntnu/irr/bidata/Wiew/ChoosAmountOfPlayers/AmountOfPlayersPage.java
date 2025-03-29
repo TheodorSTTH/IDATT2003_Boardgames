@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers;
+package edu.ntnu.irr.bidata.Wiew.ChoosAmountOfPlayers;
 
 import javafx.scene.Scene;
 

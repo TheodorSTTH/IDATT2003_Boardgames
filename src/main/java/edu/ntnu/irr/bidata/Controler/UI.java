@@ -1,10 +1,7 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend;
-
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers.AmountOfPlayersPage;
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer.CreatePlayerPage;
-import edu.ntnu.irr.bidata.GeneralClassesBackend.*;
-import edu.ntnu.irr.bidata.LaderGameBackend.*;
-import edu.ntnu.irr.bidata.RiskBackend.*;
+package edu.ntnu.irr.bidata.Controler;
+import edu.ntnu.irr.bidata.Wiew.AlertInterface;
+import edu.ntnu.irr.bidata.Wiew.ChoosAmountOfPlayers.AmountOfPlayersPage;
+import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
 
 public class UI {
   private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
