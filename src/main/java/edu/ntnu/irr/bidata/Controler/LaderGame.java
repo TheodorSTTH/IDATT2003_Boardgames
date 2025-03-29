@@ -11,15 +11,9 @@ import java.util.ArrayList;
 public class LaderGame extends Game {
     private final BoardLaderGame board;
 
-    public LaderGame(BoardLaderGame board) {
-        this.board = board;
-    }
-    public LaderGame() {
-        board = new BoardLaderGame();
-    }
-
     public LaderGame(int amountOfPlayers) {
         super(amountOfPlayers);
+        this.board = new BoardLaderGame();
     }
 
     @Override
@@ -34,6 +28,9 @@ public class LaderGame extends Game {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer(currentPlayer);
+        if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
+            endGame(currentPlayer);
+        }
     }
     }
 
