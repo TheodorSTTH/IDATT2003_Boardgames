@@ -8,6 +8,14 @@ public abstract class Game {
     private int currentPlayer = 0;
     private Player winner = null;
 
+    public void addPlayer(String name) {
+        players.add(new Player(name));
+    }
+
+    public int getAmountOfPlayers() {
+        return players.size();
+    }
+
     public void init() {
         //for (int i = 0; i < UI.askForAmountOfPlayers(); i++) {
         //    players.add(new Player(UI.askForPlayerName()));

@@ -2,17 +2,33 @@ package edu.ntnu.irr.bidata.GeneralClassedFrontend;
 
 import edu.ntnu.irr.bidata.GeneralClassedFrontend.ChoosAmountOfPlayers.AmountOfPlayersPage;
 import edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer.CreatePlayerPage;
+import edu.ntnu.irr.bidata.GeneralClassesBackend.*;
+import edu.ntnu.irr.bidata.LaderGameBackend.*;
+import edu.ntnu.irr.bidata.RiskBackend.*;
 
 public class UI {
   private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
   private static final AmountOfPlayersPage AmountOfPlayers = new AmountOfPlayersPage();
+  private static Game game;
+  private static int players;
 
-  public UI() {
 
+  public static void AmountOfPlayersChoosen(int plyers, String gameName) {
+    if (gameName.equals("Lader Game")) {
+      game = new LaderGame();
+    } else if (gameName.equals("Risk")) {
+      game = new Risk();
+    }
+    players = plyers;
+    toCreatePlayerPage();
   }
 
-  public static void AmountOfPlayersChoosen(int plyers) {
-    toCreatePlayerPage();
+  public static void newPlayer(String name) {
+    game.addPlayer(name);
+    AlertInterface.showInfo("Player Added", name + " has been added to the game.");
+    if (game.getAmountOfPlayers() == players) {
+      game.startGame();
+    }
   }
   
 
