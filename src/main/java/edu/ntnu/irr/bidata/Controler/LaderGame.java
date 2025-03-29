@@ -1,7 +1,10 @@
-package edu.ntnu.irr.bidata.LaderGameBackend;
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Game;
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Player;
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Die;
+package edu.ntnu.irr.bidata.Controler;
+
+import edu.ntnu.irr.bidata.Controler.Game;
+import edu.ntnu.irr.bidata.Model.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.Player;
+import edu.ntnu.irr.bidata.Model.Die;
+import java.util.ArrayList;
 
 
 public class LaderGame extends Game {
@@ -9,6 +12,9 @@ public class LaderGame extends Game {
 
     public LaderGame(BoardLaderGame board) {
         this.board = board;
+    }
+    public LaderGame() {
+        board = new BoardLaderGame();
     }
 
     @Override
@@ -24,5 +30,4 @@ public class LaderGame extends Game {
     public BoardLaderGame getBoard() {
         return board;
     }
-
 }

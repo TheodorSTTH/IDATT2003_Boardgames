@@ -1,9 +1,9 @@
-package edu.ntnu.irr.bidata.LadderViews;
-
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Game;
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Player;
-import edu.ntnu.irr.bidata.LaderGameBackend.BoardLaderGame;
-import edu.ntnu.irr.bidata.LaderGameBackend.LaderGame;
+package edu.ntnu.irr.bidata.Wiew;
+import edu.ntnu.irr.bidata.Wiew.Tile;
+import edu.ntnu.irr.bidata.Controler.Game;
+import edu.ntnu.irr.bidata.Model.Player;
+import edu.ntnu.irr.bidata.Model.BoardLaderGame;
+import edu.ntnu.irr.bidata.Controler.LaderGame;
 import javafx.scene.control.Label;
 
 public class LadderGameView {

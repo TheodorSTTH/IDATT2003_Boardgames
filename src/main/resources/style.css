@@ -1,14 +1,17 @@
 * {
   -fx-font-family: "Inter";
-  -fx-text-fill: #18181b;
 }
 
-/*White box, secondary text*/
+.label {
+  -fx-text-fill: #18181b; /* Ensure label text is colored */
+}
+
+/* White box, secondary text */
 .w-s-text {
   -fx-text-fill: #94a3b8;
 }
 
-/*White box, standard background, radii and borders*/
+/* White box, standard background, radii, and borders */
 .w-radius {
   -fx-background-radius: 6px;
   -fx-border-color: #cbd5e1;
@@ -18,11 +21,10 @@
 }
 
 .button {
-  -fx-padding: 8px 16px;
+  -fx-padding: 8px 16px 8px 16px;
   -fx-font-size: 14px;
   -fx-font-weight: 500;
-  -fx-line-height: 24px;
-  -fx-background-color: #0f172a; /* slate/900 */
+  -fx-background-color: #0f172a; /* Slate/900 */
   -fx-background-radius: 6px;
   -fx-text-fill: #ffffff;
 }
@@ -31,33 +33,20 @@
   -fx-background-color: #334155;
 }
 
+/* Ensure text fields have proper padding and borders */
 .text-field {
   -fx-font-weight: 400;
   -fx-font-size: 16px;
-  -fx-line-height: 24px;
-  -fx-padding: 8px 56px 8px 12px;
+  -fx-padding: 8px 12px;
+  -fx-border-color: #cbd5e1;
+  -fx-border-radius: 6px;
+  -fx-border-width: 1px;
 }
 
+/* Styled labels */
 .styled-label {
   -fx-font-weight: 600;
   -fx-font-size: 32px;
-  -fx-wrap-text: true;
-}
-
-.login-layout {
-  -fx-background-color: #f4f4f4;
-  -fx-alignment: center;
-  -fx-pref-width: 100%;
-  -fx-pref-height: 100%;
-}
-
-.login-card {
-  -fx-padding: 16px;
-  -fx-spacing: 10px;
-  -fx-pref-width: 100%;
-  -fx-pref-height: 100%;
-  -fx-max-height: 300px;
-  -fx-max-width: 300px;
 }
 
 .header {
@@ -70,51 +59,25 @@
   -fx-font-size: 24px;
 }
 
-.header-styling {
-  -fx-spacing: 10px;
-}
-
-.nav-style {
-  -fx-spacing: 3px;
-  -fx-max-width: 330px;
-}
-
-.layout-component {
-  -fx-padding: 10px;
-}
-
-.cal-top-label {
-  -fx-font-weight: 600;
-  -fx-font-size: 16px;
-}
-
-.landing-style {
-  -fx-padding: 24px;
-  -fx-background-color: #f4f4f4;
-}
-
 /* ScrollPane styling */
 .scroll-pane {
-  -fx-fit-to-width: true;
   -fx-background-color: transparent;
 }
 
-/* Vertical scrollbar styling */
 .scroll-pane .scroll-bar:vertical {
-  -fx-background-color: transparent; /* Make the background transparent */
+  -fx-background-color: transparent;
 }
 
 .scroll-pane .scroll-bar:vertical .thumb {
-  -fx-background-color: #cbd5e1; /* Thumb color */
-  -fx-background-radius: 6px; /* Rounded corners */
+  -fx-background-color: #cbd5e1;
+  -fx-background-radius: 6px;
 }
 
 .scroll-pane .scroll-bar:vertical .track {
-  -fx-background-color: #e2e8f0; /* Track color */
-  -fx-background-radius: 6px; /* Rounded corners */
+  -fx-background-color: #e2e8f0;
+  -fx-background-radius: 6px;
 }
 
-/* Scrollbar hover effect */
 .scroll-pane .scroll-bar .thumb:hover {
-  -fx-background-color: #94a3b8; /* Thumb color on hover */
+  -fx-background-color: #94a3b8;
 }

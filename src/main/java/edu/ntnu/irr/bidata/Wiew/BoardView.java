@@ -1,7 +1,7 @@
-package edu.ntnu.irr.bidata.LadderViews;
+package edu.ntnu.irr.bidata.Wiew;
 
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Player;
-import edu.ntnu.irr.bidata.LaderGameBackend.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.BoardLaderGame;
+import edu.ntnu.irr.bidata.Wiew.Tile;
 import java.util.ArrayList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -42,7 +42,6 @@ public class BoardView extends Pane {
       for (int col = 1; col < boardColumnAmount + 1; col++) {
         final int currentTileNumber = row*9 + col;
         Tile currentTile = new Tile(tileWidth, tileHeight, currentTileNumber);
-        System.out.println("--YOOOO--" + Integer.toString(currentTileNumber) + "--" + currentTiles.get(currentTileNumber - 1));
         currentTiles.set(currentTileNumber - 1, currentTile);
         if (row % 2 == 0) {
           currentTile.setLayoutX((col - 1)*tileWidth);
@@ -54,7 +53,6 @@ public class BoardView extends Pane {
       }
     }
   }
-
   public void updateBoardUI() {
     getChildren().clear();
     renderBoard();
