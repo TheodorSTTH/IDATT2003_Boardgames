@@ -2,6 +2,8 @@ package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Wiew.AlertInterface;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Wiew.StartPage.StartPagePage;
+import edu.ntnu.irr.bidata.Controler.Game;
+
 
 public class UI {
   private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
