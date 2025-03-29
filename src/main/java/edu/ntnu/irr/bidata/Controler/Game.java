@@ -1,15 +1,15 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Die;
 
-import java.util.ArrayList;
-
 import edu.ntnu.irr.bidata.Model.Player;
+import java.util.ArrayList;
 
 
 public abstract class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected Player currentPlayer;
     private int amountOfPlayers = 0;
+
 
     public Game(int amountOfPlayers) {
         this.amountOfPlayers = amountOfPlayers;
@@ -24,6 +24,7 @@ public abstract class Game {
 
     protected void init() {
         currentPlayer = players.get(0);
+
     }
 
     protected void endGame(Player winner) {
@@ -31,4 +32,13 @@ public abstract class Game {
         
     }
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+    public int getAmountOfPlayers() {
+        return players.size();
+    }
+    public void addPlayer(String name) {
+        players.add(new Player(name));
+    }
 }

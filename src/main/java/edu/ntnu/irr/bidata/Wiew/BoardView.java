@@ -1,6 +1,8 @@
 package edu.ntnu.irr.bidata.Wiew;
 
 import edu.ntnu.irr.bidata.Model.BoardLaderGame;
+import edu.ntnu.irr.bidata.Wiew.Tile;
+import java.util.ArrayList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -9,32 +11,50 @@ public class BoardView extends Pane {
   private final BoardLaderGame board;
   private final int tileWidth = 40;
   private final int tileHeight = 35;
-  private final int boardTileWidth = 9;
-  private final int boardTileHeight = 10;
+  private final int boardColumnAmount = 9;
+  private final int boardRowsAmount = 10;
 
+  private final ArrayList<Tile> currentTiles = new ArrayList<>(boardColumnAmount * boardRowsAmount);
 
   public BoardView(BoardLaderGame board) {
     this.board = board;
-    initializeBoardUI();
+    for (int i = 0; i < 90; i++) {
+      currentTiles.add(null);
+    }
+    renderBoard();
   }
 
-  private void initializeBoardUI() {
-    for (int i = 0; i < boardTileHeight; i++) {
-      for (int j = 1; j < boardTileWidth + 1; j++) {
-        StackPane square = new StackPane();
-        square.setPrefSize(tileWidth, tileHeight);
-        square.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
-        final int currentTileKey = i*9 + j;
-        Label numberLabel = new Label(Integer.toString(currentTileKey));
-        square.getChildren().add(numberLabel);
-        if (i % 2 == 0) {
-          square.setLayoutX((j - 1)*tileWidth);
+  private StackPane createBoardSquare(int width, int height, int squareNumber) {
+    StackPane square = new StackPane();
+    square.setPrefSize(width, height);
+    square.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
+    Label numberLabel = new Label(Integer.toString(squareNumber));
+    square.getChildren().add(numberLabel);
+    return square;
+  }
+
+  public Tile getTile(int index) {
+    return currentTiles.get(index);
+  }
+
+  public void renderBoard() {
+    for (int row = 0; row < boardRowsAmount; row++) {
+      for (int col = 1; col < boardColumnAmount + 1; col++) {
+        final int currentTileNumber = row*9 + col;
+        Tile currentTile = new Tile(tileWidth, tileHeight, currentTileNumber);
+        currentTiles.set(currentTileNumber - 1, currentTile);
+        if (row % 2 == 0) {
+          currentTile.setLayoutX((col - 1)*tileWidth);
         } else {
-          square.setLayoutX(tileWidth * boardTileWidth - j*tileWidth);
+          currentTile.setLayoutX(tileWidth * boardColumnAmount - col*tileWidth);
         }
-        square.setLayoutY(tileHeight * (boardTileHeight - 1) - i*tileHeight);
-        getChildren().add(square);
+        currentTile.setLayoutY(tileHeight * (boardRowsAmount - 1) - row*tileHeight);
+        getChildren().add(currentTile);
       }
     }
+  }
+  public void updateBoardUI() {
+    getChildren().clear();
+    renderBoard();
   }
 }
