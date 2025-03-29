@@ -1,6 +1,6 @@
-package edu.ntnu.irr.bidata.GeneralClassedFrontend.CreatePlayer;
+package edu.ntnu.irr.bidata.Wiew.CreatePlayer;
 
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.UI;
+import edu.ntnu.irr.bidata.Controler.UI;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
