@@ -1,6 +1,6 @@
-package edu.ntnu.irr.bidata.LadderViews;
+package edu.ntnu.irr.bidata.Wiew;
 
-import edu.ntnu.irr.bidata.LaderGameBackend.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.BoardLaderGame;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;

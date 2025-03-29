@@ -1,6 +1,8 @@
-package edu.ntnu.irr.bidata.GeneralClassesBackend;
+package edu.ntnu.irr.bidata.Controler;
 
 import java.util.ArrayList;
+
+import edu.ntnu.irr.bidata.Model.Player;
 
 
 public abstract class Game {

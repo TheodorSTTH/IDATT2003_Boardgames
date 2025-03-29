@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata;
 
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.UI;
-import edu.ntnu.irr.bidata.GeneralClassedFrontend.MyWindow;
+import edu.ntnu.irr.bidata.Controler.MyWindow;
+import edu.ntnu.irr.bidata.Controler.UI;
 
 
 

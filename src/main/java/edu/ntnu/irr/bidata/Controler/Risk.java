@@ -1,5 +1,6 @@
-package edu.ntnu.irr.bidata.RiskBackend;
+package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.GeneralClassesBackend.*;
+import edu.ntnu.irr.bidata.Model.Player;
 
 public class Risk extends Game {
 

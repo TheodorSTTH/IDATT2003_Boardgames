@@ -1,6 +1,4 @@
-package edu.ntnu.irr.bidata.RiskBackend;
-import edu.ntnu.irr.bidata.GeneralClassesBackend.Player;
-
+package edu.ntnu.irr.bidata.Model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
