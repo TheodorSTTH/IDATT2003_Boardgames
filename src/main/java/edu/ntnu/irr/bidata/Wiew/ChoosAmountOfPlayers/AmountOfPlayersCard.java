@@ -27,7 +27,7 @@ public class AmountOfPlayersCard extends VBox {
     amountOfPlayersButton.setOnAction(e -> {
       Integer selectedPlayers = amountOfPlayersComboBox.getValue();
       if (selectedPlayers != null && WhatGameComboBox.getValue() != null) {
-        UI.AmountOfPlayersChoosen(selectedPlayers, WhatGameComboBox.getValue());
+        UI.AmountOfPlayersAndGameChoosen(selectedPlayers, WhatGameComboBox.getValue());
       } else {
         AlertInterface.showWarning("Selection Required", "Please select the number of players and a game before continuing.");
       }

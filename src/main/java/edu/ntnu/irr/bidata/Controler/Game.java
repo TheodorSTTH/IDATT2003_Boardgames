@@ -19,9 +19,6 @@ public abstract class Game {
     }
 
     public void init() {
-        //for (int i = 0; i < UI.askForAmountOfPlayers(); i++) {
-        //    players.add(new Player(UI.askForPlayerName()));
-        //}
     }
 
     public void runGame() {

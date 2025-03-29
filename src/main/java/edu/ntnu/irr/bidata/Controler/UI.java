@@ -10,7 +10,7 @@ public class UI {
   private static int players;
 
 
-  public static void AmountOfPlayersChoosen(int plyers, String gameName) {
+  public static void AmountOfPlayersAndGameChoosen(int plyers, String gameName) {
     if (gameName.equals("Lader Game")) {
       game = new LaderGame();
     } else if (gameName.equals("Risk")) {
