@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.Model.LadderGame;
 import java.util.HashMap;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

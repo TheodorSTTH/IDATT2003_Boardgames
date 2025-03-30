@@ -1,8 +1,10 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.Model.LadderGame;
 
 import java.util.ArrayList;
 
 import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.Model.Die;
+import edu.ntnu.irr.bidata.Model.Game;
 
 
 
