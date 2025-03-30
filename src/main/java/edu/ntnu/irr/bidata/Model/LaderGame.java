@@ -1,10 +1,8 @@
-package edu.ntnu.irr.bidata.Controler;
+package edu.ntnu.irr.bidata.Model;
 
-import edu.ntnu.irr.bidata.Controler.Game;
-import edu.ntnu.irr.bidata.Model.BoardLaderGame;
-import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.Die;
 import java.util.ArrayList;
+
+import edu.ntnu.irr.bidata.Controler.UI;
 
 
 

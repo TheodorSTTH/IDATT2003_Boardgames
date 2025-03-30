@@ -36,7 +36,7 @@ public class BoardLaderGame {
 
     }
     
-    public boolean isOnOreAftherEndTile(int tileNumber) {
+    public boolean hasWone(int tileNumber) {
         return tileNumber >= endTile;
     }
 }   

@@ -1,7 +1,4 @@
-package edu.ntnu.irr.bidata.Controler;
-
-import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.BoardRisk;
+package edu.ntnu.irr.bidata.Model;
 
 public class Risk extends Game {
     private final BoardRisk board;

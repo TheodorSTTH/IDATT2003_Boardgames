@@ -1,4 +1,7 @@
 package edu.ntnu.irr.bidata.Controler;
+import edu.ntnu.irr.bidata.Model.Game;
+import edu.ntnu.irr.bidata.Model.LaderGame;
+import edu.ntnu.irr.bidata.Model.Risk;
 import edu.ntnu.irr.bidata.Wiew.AlertInterface;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Wiew.LadderGameOverview.OverviewPage;
@@ -64,7 +67,17 @@ public class UI {
     UI.overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
   }
 
-  public Game getGame() {
+  public static Game getGame() {
     return game;
+  }
+
+  public static void setGame(Game savedGame) {
+    game = savedGame;
+  }
+
+  public static void endGame(String winner) {
+    MyWindow.getPrimaryStage().hide();
+    MyWindow.getPrimaryStage().setMaximized(false);
+    AlertInterface.showInfo("Game Over", "Winner: " + winner);
   }
 }

@@ -5,9 +5,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import edu.ntnu.irr.bidata.Controler.Game;
-import edu.ntnu.irr.bidata.Controler.LaderGame;
-import edu.ntnu.irr.bidata.Controler.Risk;
 import javafx.concurrent.Task;
 
 public class FileHandeler {
