@@ -21,7 +21,6 @@ public abstract class Game {
         players.add(new Player(name));
         if (players.size() == amountOfPlayers) {
             init();
-            endGame(currentPlayer);
         }
     }
 

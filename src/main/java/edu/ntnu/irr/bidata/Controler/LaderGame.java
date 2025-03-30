@@ -19,6 +19,7 @@ public class LaderGame extends Game {
     @Override
     protected void init() {
         super.init();
+        UI.toLaderGamePage();
     }
 
     public void takeTurn() {
