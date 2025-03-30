@@ -2,6 +2,9 @@ package edu.ntnu.irr.bidata.NewLogic.models;
 
 import java.util.List;
 
+/**
+ * Interface for a typical turn based game
+ * */
 public interface Game {
   public void addPlayer(Player player);
   public void createInitialGameState();

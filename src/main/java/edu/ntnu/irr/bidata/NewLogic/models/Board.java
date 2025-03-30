@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents the physical ladder game board with tiles.
+ * Represents the physical ladder game board with a collection of tiles.
  * */
 public class Board {
   private final Map<Integer, Tile> tiles;

@@ -1,5 +1,8 @@
 package edu.ntnu.irr.bidata.NewLogic.models;
 
+/**
+ * Builder to create ladder actions in the ladder game.
+ * */
 public class LadderActionBuilder {
   private int fromTileId;
   private int toTileId;
