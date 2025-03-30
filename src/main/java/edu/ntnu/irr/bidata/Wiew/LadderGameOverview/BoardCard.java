@@ -33,7 +33,7 @@ public class BoardCard extends VBox {
       UI.triggerNewRound();
     });
     saveButton.setOnAction(e -> {
-      //myLadderGame.save();
+      UI.saveGame();
     });
 
     myBoardView.renderBoard();

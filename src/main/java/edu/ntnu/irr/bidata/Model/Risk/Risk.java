@@ -17,6 +17,9 @@ public class Risk extends Game {
         //UI.toRiskGamePage();
     }
 
+    public void startSavedGame() {
+    }
+
     @Override
     public void takeAction() {
     }

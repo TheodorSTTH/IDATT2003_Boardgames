@@ -18,8 +18,13 @@ public class LaderGame extends Game {
 
 
     @Override
-    protected void init() {
+    public void init() {
         super.init();
+        UI.toLaderGamePage();
+    }
+
+    @Override
+    public void startSavedGame() {
         UI.toLaderGamePage();
     }
 

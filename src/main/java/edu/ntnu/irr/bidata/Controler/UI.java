@@ -6,6 +6,7 @@ import edu.ntnu.irr.bidata.Wiew.AlertMessage;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Wiew.LadderGameOverview.OverviewPage;
 import edu.ntnu.irr.bidata.Wiew.StartPage.StartPagePage;
+import edu.ntnu.irr.bidata.Model.FileHandeler;
 
 
 public class UI {
@@ -79,5 +80,17 @@ public class UI {
     MyWindow.getPrimaryStage().hide();
     MyWindow.getPrimaryStage().setMaximized(false);
     AlertMessage.showInfo("Game Over", "Winner: " + winner);
+  }
+
+  public static void saveGame() {
+    game.saveGame();
+    MyWindow.getPrimaryStage().hide();
+    MyWindow.getPrimaryStage().setMaximized(false);
+    AlertMessage.showInfo("Game saved", "Game has been saved as " + game.getGameName());
+  }
+
+  public static void loadGame(String gameName, String gameType) {
+    game = FileHandeler.loadGame(gameName, gameType);
+    game.startSavedGame();
   }
 }

@@ -27,7 +27,10 @@ public abstract class Game {
         currentPlayer = players.get(0);
     }
 
+    public abstract void startSavedGame();
+
     protected void endGame(Player winner) {
+        FileHandeler.deleteGame(gameName, getGameType());
         UI.endGame(winner.getName());
     }
 
@@ -67,4 +70,8 @@ public abstract class Game {
     }
 
     public abstract String getGameType();
+
+    public void saveGame() {
+        FileHandeler.saveGame(this);
+    }
 }
