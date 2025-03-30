@@ -12,7 +12,7 @@ public class UI {
   private static Game game;
 
   public static void triggerNewRound() {
-    game.takeTurn();
+    game.takeAction();
     overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
   }
 

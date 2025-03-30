@@ -42,7 +42,7 @@ public abstract class Game {
         return amountOfPlayers;
     }
 
-    public void takeTurn() {};
+    public abstract void takeAction();
 
     public Player getNextPlayer() {
         int index = players.indexOf(currentPlayer);

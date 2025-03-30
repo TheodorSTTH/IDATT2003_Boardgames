@@ -22,7 +22,7 @@ public class LaderGame extends Game {
         UI.toLaderGamePage();
     }
 
-    public void takeTurn() {
+    public void takeAction() {
         currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll(6)));
         if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
             endGame(currentPlayer);

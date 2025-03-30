@@ -16,4 +16,12 @@ public class Risk extends Game {
         super.init();
         //UI.toRiskGamePage();
     }
+
+    @Override
+    public void takeAction() {
+    }
+
+    public BoardRisk getBoard() {
+        return board;
+    }
 }
