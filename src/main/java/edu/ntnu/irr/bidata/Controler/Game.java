@@ -21,7 +21,6 @@ public abstract class Game {
         players.add(new Player(name));
         if (players.size() == amountOfPlayers) {
             init();
-            endGame(currentPlayer);
         }
     }
 
@@ -43,7 +42,7 @@ public abstract class Game {
         return amountOfPlayers;
     }
 
-    public void takeTurn() {};
+    public abstract void takeAction();
 
     public Player getNextPlayer() {
         int index = players.indexOf(currentPlayer);

@@ -12,7 +12,7 @@ public class UI {
   private static Game game;
 
   public static void triggerNewRound() {
-    game.takeTurn();
+    game.takeAction();
     overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
   }
 
@@ -29,9 +29,6 @@ public class UI {
   public static void newPlayer(String name) {
     AlertInterface.showInfo("Player Added", name + " has been added to the game.");
     game.addPlayer(name);
-    if (game.getPlayers().size() == game.getAmountOfPlayers()) {
-      toOverviewPage();
-    }
   }
   
 
@@ -57,7 +54,7 @@ public class UI {
     MyWindow.getPrimaryStage().show();
   }
 
-  private static void toOverviewPage() {
+  public static void toLaderGamePage() {
     System.out.println("Switching to OverviewPage...");
     MyWindow.getPrimaryStage().hide();
     MyWindow.getPrimaryStage().setMaximized(false);
