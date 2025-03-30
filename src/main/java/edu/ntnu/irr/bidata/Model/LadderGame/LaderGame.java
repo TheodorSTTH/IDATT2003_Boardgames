@@ -23,6 +23,11 @@ public class LaderGame extends Game {
         UI.toLaderGamePage();
     }
 
+    @Override
+    public void startSavedGame() {
+        UI.toLaderGamePage();
+    }
+
     public void takeAction() {
         currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll()));
         if (board.hasWone(currentPlayer.getCurrentTile())) {

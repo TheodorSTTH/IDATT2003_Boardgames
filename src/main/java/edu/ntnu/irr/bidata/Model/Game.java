@@ -23,11 +23,14 @@ public abstract class Game {
         }
     }
 
-    public void init() {
+    protected void init() {
         currentPlayer = players.get(0);
     }
 
+    public abstract void startSavedGame();
+
     protected void endGame(Player winner) {
+        FileHandeler.deleteGame(gameName, getGameType());
         UI.endGame(winner.getName());
     }
 

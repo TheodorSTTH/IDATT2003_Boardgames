@@ -91,6 +91,6 @@ public class UI {
 
   public static void loadGame(String gameName, String gameType) {
     game = FileHandeler.loadGame(gameName, gameType);
-    game.init();
+    game.startSavedGame();
   }
 }
