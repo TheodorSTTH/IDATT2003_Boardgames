@@ -23,7 +23,7 @@ public abstract class Game {
         }
     }
 
-    protected void init() {
+    public void init() {
         currentPlayer = players.get(0);
     }
 
@@ -67,4 +67,8 @@ public abstract class Game {
     }
 
     public abstract String getGameType();
+
+    public void saveGame() {
+        FileHandeler.saveGame(this);
+    }
 }

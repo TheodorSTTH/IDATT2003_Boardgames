@@ -12,7 +12,7 @@ public class Risk extends Game {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         super.init();
         //UI.toRiskGamePage();
     }
