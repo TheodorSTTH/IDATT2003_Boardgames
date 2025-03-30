@@ -2,7 +2,7 @@ package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Wiew.AlertInterface;
+import edu.ntnu.irr.bidata.Wiew.AlertMessage;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Wiew.LadderGameOverview.OverviewPage;
 import edu.ntnu.irr.bidata.Wiew.StartPage.StartPagePage;
@@ -30,7 +30,7 @@ public class UI {
   }
 
   public static void newPlayer(String name) {
-    AlertInterface.showInfo("Player Added", name + " has been added to the game.");
+    AlertMessage.showInfo("Player Added", name + " has been added to the game.");
     game.addPlayer(name);
   }
   
@@ -78,6 +78,6 @@ public class UI {
   public static void endGame(String winner) {
     MyWindow.getPrimaryStage().hide();
     MyWindow.getPrimaryStage().setMaximized(false);
-    AlertInterface.showInfo("Game Over", "Winner: " + winner);
+    AlertMessage.showInfo("Game Over", "Winner: " + winner);
   }
 }

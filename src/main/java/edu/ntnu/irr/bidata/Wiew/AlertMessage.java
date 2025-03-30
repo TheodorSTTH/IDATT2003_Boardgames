@@ -2,7 +2,7 @@ package edu.ntnu.irr.bidata.Wiew;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class AlertInterface {
+public class AlertMessage {
 
     /**
      * Displays an alert dialog with the given type, title, and message.
