@@ -11,6 +11,7 @@ public abstract class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected Player currentPlayer;
     private int amountOfPlayers = 0;
+    String gameName;
 
 
     public Game(int amountOfPlayers) {
@@ -51,5 +52,9 @@ public abstract class Game {
         } else {
             return players.get(index + 1);
         }
+    }
+
+    public String getGameName() {
+        return gameName;
     }
 }
