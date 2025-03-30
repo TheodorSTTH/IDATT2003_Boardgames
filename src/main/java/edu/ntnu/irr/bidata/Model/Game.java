@@ -66,4 +66,6 @@ public abstract class Game {
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
+
+    public abstract String getGameType();
 }
