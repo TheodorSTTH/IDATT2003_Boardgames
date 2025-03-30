@@ -15,9 +15,16 @@ public class Player {
     this.currentTile = currentTile;
   }
 
+  /**
+   * Places the player on a tile by changing Player internal values.
+   * */
   public void placeOnTile(Tile tile) {
     currentTile=tile;
   }
+
+  /**
+   * Places the player on a tile by changing Player internal values.
+   * */
   public void placeOnTile(int tileId) {
     placeOnTile(game.getBoard().getTile(tileId));
   }

@@ -45,6 +45,9 @@ public class BoardGame implements Game {
     ladderBuilder.from(87).to(70).build();
   }
 
+  /**
+   * Creates
+   * */
   public void createInitialGameState() {
     board = new Board();
     for (int i = 0; i < boardRowsAmount * boardColumnAmount; i++) {
@@ -55,6 +58,9 @@ public class BoardGame implements Game {
     createDefaultLadders();
   }
 
+  /**
+   * Returns the player which won.
+   * */
   public Player getWinner() {
     Player winner = null;
     for (Player player : players) {
@@ -65,6 +71,9 @@ public class BoardGame implements Game {
     return winner;
   }
 
+  /**
+   * Checks if the game is finished. The game is finished if someone has won.
+   * */
   public boolean isFinished() {
     for (Player player : players) {
       if (player.getCurrentTile().getNextTile() == null) {
@@ -74,12 +83,18 @@ public class BoardGame implements Game {
     return false;
   }
 
+  /**
+   * Plays a turn for the current player.
+   * */
   public void playOneTurn() {
     int diceRollResult = dice.rollAll();
     currentPlayer.move(diceRollResult);
     currentPlayer = getNextPlayer();
   }
 
+  /**
+   * Get player which is next in line to have their turn.
+   * */
   public Player getNextPlayer() {
     int index = players.indexOf(currentPlayer);
     if (index == players.size() - 1) {
@@ -89,10 +104,17 @@ public class BoardGame implements Game {
     }
   }
 
+  /**
+   * Gets the board.
+   * */
   public Board getBoard() {
     return board;
   }
 
+
+  /**
+   * Gets all players.
+   * */
   public List<Player> getPlayers() {
     return players;
   }

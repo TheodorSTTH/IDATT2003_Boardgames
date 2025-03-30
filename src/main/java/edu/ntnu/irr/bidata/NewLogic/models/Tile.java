@@ -14,26 +14,38 @@ public class Tile {
     this.tileId = tileId;
   }
 
+  /**
+   * Should be called when a player lands on a tile after moving.
+   * Performs an action on the player.
+   * */
   public void landPlayer(Player player) {
     if (landAction != null) landAction.perform(player);
   }
 
-  public void leavePlayer(Player player) {
-    // ???
-  }
-
+  /**
+   * Sets the next tile.
+   * */
   public void setNextTile(Tile nextTile) {
     this.nextTile = nextTile;
   }
 
+  /**
+   * Gets the next tile.
+   * */
   public Tile getNextTile() {
     return nextTile;
   }
 
+  /**
+   * Gets the current tile id (equals index of tile)
+   * */
   public int getTileId() {
     return tileId;
   }
 
+  /**
+   * Sets action which is performed when you land on tile.
+   * */
   public void setLandAction(TileAction landAction) {
     this.landAction = landAction;
   }

@@ -12,16 +12,25 @@ public class LadderActionBuilder {
     this.board = board;
   }
 
+  /**
+   * The tile you're moving from in a ladder.
+   * */
   public LadderActionBuilder from(int fromTileId) {
     this.fromTileId = fromTileId;
     return this;
   }
 
+  /**
+   * The tile you're moving to in a ladder.
+   * */
   public LadderActionBuilder to(int toTileId) {
     this.toTileId = toTileId;
     return this;
   }
 
+  /**
+   * Builds the ladder action after having set from and to.
+   * */
   public void build() {
     Tile tile = board.getTile(fromTileId);
     if (tile != null) {
