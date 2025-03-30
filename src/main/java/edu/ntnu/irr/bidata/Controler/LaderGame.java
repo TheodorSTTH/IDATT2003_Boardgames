@@ -11,10 +11,11 @@ import java.util.ArrayList;
 public class LaderGame extends Game {
     private final BoardLaderGame board;
 
-    public LaderGame(int amountOfPlayers) {
-        super(amountOfPlayers);
+    public LaderGame(int amountOfPlayers, String gameName) {
+        super(amountOfPlayers, gameName);
         this.board = new BoardLaderGame();
     }
+
 
     @Override
     protected void init() {
@@ -23,14 +24,11 @@ public class LaderGame extends Game {
     }
 
     public void takeAction() {
-        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll(6)));
-        if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
+        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll()));
+        if (board.hasWone(currentPlayer.getCurrentTile())) {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer();
-        if (board.isOnOreAftherEndTile(currentPlayer.getCurrentTile())) {
-            endGame(currentPlayer);
-        }
     }
 
     public BoardLaderGame getBoard() {

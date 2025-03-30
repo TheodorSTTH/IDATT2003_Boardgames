@@ -14,7 +14,8 @@ public abstract class Game {
     String gameName;
 
 
-    public Game(int amountOfPlayers) {
+    public Game(int amountOfPlayers, String gameName) {
+        this.gameName = gameName;
         this.amountOfPlayers = amountOfPlayers;
     }
 
@@ -56,5 +57,17 @@ public abstract class Game {
 
     public String getGameName() {
         return gameName;
+    }
+
+    public void addPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
     }
 }

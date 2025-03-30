@@ -17,11 +17,11 @@ public class UI {
   }
 
 
-  public static void AmountOfPlayersAndGameChoosen(int plyers, String gameName) {
-    if (gameName.equals("Lader Game")) {
-      game = new LaderGame(plyers);
-    } else if (gameName.equals("Risk")) {
-      game = new Risk(plyers);
+  public static void StartPageCreateNewGameButon(int plyers, String gameType, String gameName) {
+    if (gameType.equals("Lader Game")) {
+      game = new LaderGame(plyers, gameName);
+    } else if (gameType.equals("Risk")) {
+      game = new Risk(plyers, gameName);
     }
     toCreatePlayerPage();
   }
