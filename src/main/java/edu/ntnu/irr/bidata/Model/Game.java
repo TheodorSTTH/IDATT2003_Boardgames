@@ -1,6 +1,5 @@
 package edu.ntnu.irr.bidata.Model;
 import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.Wiew.AlertInterface;
 
 import java.util.ArrayList;
 
@@ -66,4 +65,6 @@ public abstract class Game {
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
+
+    public abstract String getGameType();
 }

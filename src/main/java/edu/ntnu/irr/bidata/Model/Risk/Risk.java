@@ -24,4 +24,9 @@ public class Risk extends Game {
     public BoardRisk getBoard() {
         return board;
     }
+
+    @Override
+    public String getGameType() {
+        return "Risk";
+    }
 }

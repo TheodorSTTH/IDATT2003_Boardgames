@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.Wiew.StartPage;
 
 import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.Wiew.AlertInterface;
+import edu.ntnu.irr.bidata.Wiew.AlertMessage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -34,7 +34,7 @@ public class StartPageCard extends VBox {
       if (selectedPlayers != null && WhatGameComboBox.getValue() != null && !gameNameField.getText().isEmpty()) {
         UI.StartPageCreateNewGameButon(selectedPlayers, WhatGameComboBox.getValue(), gameNameField.getText());
       } else {
-        AlertInterface.showWarning("Selection Required", "Please select the number of players and a game before continuing.");
+        AlertMessage.showWarning("Selection Required", "Please select the number of players and a game before continuing.");
       }
     });
 

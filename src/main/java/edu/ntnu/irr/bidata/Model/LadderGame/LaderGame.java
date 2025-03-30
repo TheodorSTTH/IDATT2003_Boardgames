@@ -35,5 +35,10 @@ public class LaderGame extends Game {
         return board;
     }
 
+    @Override
+    public String getGameType() {
+        return "LaderGame";
+    }
+
 }
 
