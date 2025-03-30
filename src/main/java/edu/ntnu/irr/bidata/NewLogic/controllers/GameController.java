@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class GameController {
+
   private BoardGame game;
   private GameView view;
 
