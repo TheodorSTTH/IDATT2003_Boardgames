@@ -1,5 +1,7 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.Model.Risk;
 import java.util.List;
+
+import edu.ntnu.irr.bidata.Model.Player;
 
 public class Country {
   private final String name;

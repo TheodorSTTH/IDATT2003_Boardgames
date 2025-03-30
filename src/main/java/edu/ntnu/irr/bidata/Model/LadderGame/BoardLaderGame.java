@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.Model.LadderGame;
 import java.util.HashMap;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -36,7 +36,7 @@ public class BoardLaderGame {
 
     }
     
-    public boolean isOnOreAftherEndTile(int tileNumber) {
+    public boolean hasWone(int tileNumber) {
         return tileNumber >= endTile;
     }
 }   

@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.Controler;
 
 
-import edu.ntnu.irr.bidata.Model.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
 import edu.ntnu.irr.bidata.Wiew.BoardView;
 import javafx.application.Application;
 import javafx.scene.Scene;

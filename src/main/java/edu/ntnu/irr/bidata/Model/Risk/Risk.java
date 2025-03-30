@@ -1,13 +1,13 @@
-package edu.ntnu.irr.bidata.Controler;
+package edu.ntnu.irr.bidata.Model.Risk;
 
-import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.BoardRisk;
+import edu.ntnu.irr.bidata.Model.Game;
+import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
 
 public class Risk extends Game {
     private final BoardRisk board;
 
-    public Risk(int amountOfPlayers) {
-        super(amountOfPlayers);
+    public Risk(int amountOfPlayers, String gameName) {
+        super(amountOfPlayers, gameName);
         this.board = new BoardRisk();
     }
 

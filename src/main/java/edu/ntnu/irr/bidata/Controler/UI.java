@@ -1,4 +1,7 @@
 package edu.ntnu.irr.bidata.Controler;
+import edu.ntnu.irr.bidata.Model.Game;
+import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Wiew.AlertInterface;
 import edu.ntnu.irr.bidata.Wiew.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Wiew.LadderGameOverview.OverviewPage;
@@ -17,11 +20,11 @@ public class UI {
   }
 
 
-  public static void AmountOfPlayersAndGameChoosen(int plyers, String gameName) {
-    if (gameName.equals("Lader Game")) {
-      game = new LaderGame(plyers);
-    } else if (gameName.equals("Risk")) {
-      game = new Risk(plyers);
+  public static void StartPageCreateNewGameButon(int plyers, String gameType, String gameName) {
+    if (gameType.equals("Lader Game")) {
+      game = new LaderGame(plyers, gameName);
+    } else if (gameType.equals("Risk")) {
+      game = new Risk(plyers, gameName);
     }
     toCreatePlayerPage();
   }
@@ -64,7 +67,17 @@ public class UI {
     UI.overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
   }
 
-  public Game getGame() {
+  public static Game getGame() {
     return game;
+  }
+
+  public static void setGame(Game savedGame) {
+    game = savedGame;
+  }
+
+  public static void endGame(String winner) {
+    MyWindow.getPrimaryStage().hide();
+    MyWindow.getPrimaryStage().setMaximized(false);
+    AlertInterface.showInfo("Game Over", "Winner: " + winner);
   }
 }

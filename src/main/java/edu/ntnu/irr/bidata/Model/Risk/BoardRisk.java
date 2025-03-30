@@ -1,7 +1,9 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.Model.Risk;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import edu.ntnu.irr.bidata.Model.Player;
 
 public class BoardRisk {
   private HashMap<String, Country> countries = new HashMap<String, Country>();
