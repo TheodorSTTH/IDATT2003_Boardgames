@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.logging.FileHandler;
 
 import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.Wiew.AlertMessage;
+import edu.ntnu.irr.bidata.Wiew.Message;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -49,7 +49,7 @@ public class StartPageCard extends VBox {
       if (selectedPlayers != null && WhatGameComboBox.getValue() != null && !gameNameField.getText().isEmpty()) {
         UI.StartPageCreateNewGameButon(selectedPlayers, WhatGameComboBox.getValue(), gameNameField.getText());
       } else {
-        AlertMessage.showWarning("Selection Required",
+        Message.showWarning("Selection Required",
             "Please select the number of players and a game before continuing.");
       }
     });
@@ -63,7 +63,7 @@ public class StartPageCard extends VBox {
         String gameType = gameData[1].replace(")", "").trim();
         UI.loadGame(gameName, gameType);
       } else {
-        AlertMessage.showWarning("Selection Required", "Please select a saved game to load.");
+        Message.showWarning("Selection Required", "Please select a saved game to load.");
       }
     });
 
