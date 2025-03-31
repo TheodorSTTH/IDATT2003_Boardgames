@@ -9,11 +9,6 @@ import java.util.List;
  * Iterate over game loop.
  * */
 public class LadderGame extends AbstractGame<LadderPlayer> {
-  public LadderGame(ArrayList<LadderPlayer> players, Board<Tile> board, Dice dice) {
-    super(players, board, dice);
-    currentPlayer = players.getFirst();
-  }
-
   /**
    * Returns the player which won.
    * */
@@ -26,6 +21,11 @@ public class LadderGame extends AbstractGame<LadderPlayer> {
       }
     }
     return winner;
+  }
+
+  public LadderGame(ArrayList<LadderPlayer> players, Board<Tile> board, Dice dice) {
+    super(players, board, dice);
+    currentPlayer = players.getFirst();
   }
 
   /**

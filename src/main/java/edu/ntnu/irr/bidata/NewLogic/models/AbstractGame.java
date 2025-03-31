@@ -6,10 +6,10 @@ import java.util.List;
 public abstract class AbstractGame<T extends IPlayer<?>> implements IGame<T> {
   protected List<T> players;
   protected T currentPlayer;
-  protected Board<Tile> board;
+  protected Board<?> board;
   protected Dice dice;
 
-  public AbstractGame(ArrayList<T> players, Board<Tile> board, Dice dice) {
+  public AbstractGame(ArrayList<T> players, Board<?> board, Dice dice) {
     this.players = players;
     this.board = board;
     this.dice = dice;
