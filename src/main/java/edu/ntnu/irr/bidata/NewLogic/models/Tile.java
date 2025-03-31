@@ -5,21 +5,14 @@ package edu.ntnu.irr.bidata.NewLogic.models;
  * a linked list. If there isn't a next tile the player on the tile has won.
  * Tile has actions which are executed when a user lands on it.
  * */
-public class Tile {
+public class Tile extends AbstractSpace<LadderPlayer> {
   private Tile nextTile;
-  private final int tileId;
-  private TileAction landAction;
 
-  public Tile(int tileId) {
-    this.tileId = tileId;
+  public Tile(int id) {
+    super(id);
   }
-
-  /**
-   * Should be called when a player lands on a tile after moving.
-   * Performs an action on the player.
-   * */
-  public void landPlayer(Player player) {
-    if (landAction != null) landAction.perform(player);
+  public Tile(int id, IAction<LadderPlayer> action) {
+    super(id, action);
   }
 
   /**
@@ -34,19 +27,5 @@ public class Tile {
    * */
   public Tile getNextTile() {
     return nextTile;
-  }
-
-  /**
-   * Gets the current tile id (equals index of tile)
-   * */
-  public int getTileId() {
-    return tileId;
-  }
-
-  /**
-   * Sets action which is performed when you land on tile.
-   * */
-  public void setLandAction(TileAction landAction) {
-    this.landAction = landAction;
   }
 }

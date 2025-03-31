@@ -1,8 +1,7 @@
 package edu.ntnu.irr.bidata.NewLogic.views;
 
-import edu.ntnu.irr.bidata.NewLogic.models.BoardGame;
-import edu.ntnu.irr.bidata.NewLogic.models.Player;
-import edu.ntnu.irr.bidata.Wiew.Tile;
+import edu.ntnu.irr.bidata.NewLogic.models.LadderGame;
+import edu.ntnu.irr.bidata.NewLogic.models.LadderPlayer;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -11,9 +10,9 @@ public class GameView extends BorderPane {
   private Button rollButton;
   private Label statusLabel;
   private BoardView boardView;
-  private BoardGame game;
+  private final LadderGame game;
 
-  public GameView(BoardGame game) {
+  public GameView(LadderGame game) {
     this.game = game;
     initComponents();
   }
@@ -38,15 +37,15 @@ public class GameView extends BorderPane {
 
   public void updateStatus() {
     boardView.updateBoardUI();
-    for (Player player : game.getPlayers()) {
-      TileView playerTile = boardView.getTile(player.getCurrentTile().getTileId());
-      playerTile.getChildren().add(new Label(player.getName()));
+    for (LadderPlayer ladderPlayer : game.getPlayers()) {
+      TileView playerTile = boardView.getTile(ladderPlayer.getCurrentSpace().getId());
+      playerTile.getChildren().add(new Label(ladderPlayer.getName()));
     }
     StringBuilder status = new StringBuilder();
-    for (Player player : game.getPlayers()) {
-      status.append(player.getName())
+    for (LadderPlayer ladderPlayer : game.getPlayers()) {
+      status.append(ladderPlayer.getName())
           .append(" is on tile ")
-          .append(player.getCurrentTile().getTileId())
+          .append(ladderPlayer.getCurrentSpace().getId())
           .append("\n");
     }
     statusLabel.setText(status.toString());

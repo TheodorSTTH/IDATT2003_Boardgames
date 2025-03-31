@@ -6,9 +6,9 @@ package edu.ntnu.irr.bidata.NewLogic.models;
 public class LadderActionBuilder {
   private int fromTileId;
   private int toTileId;
-  private final Board board;
+  private final Board<Tile> board;
 
-  public LadderActionBuilder(Board board) {
+  public LadderActionBuilder(Board<Tile> board) {
     this.board = board;
   }
 
@@ -32,9 +32,9 @@ public class LadderActionBuilder {
    * Builds the ladder action after having set from and to.
    * */
   public void build() {
-    Tile tile = board.getTile(fromTileId);
+    Tile tile = board.getSpace(fromTileId);
     if (tile != null) {
-      tile.setLandAction(new LadderAction(toTileId));
+      tile.setAction(new LadderAction(board.getSpace(toTileId)));
     } else {
       throw new IllegalArgumentException("Tile " + fromTileId + " does not exist");
     }

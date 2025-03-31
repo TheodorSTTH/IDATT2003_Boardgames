@@ -1,12 +1,12 @@
 package edu.ntnu.irr.bidata.NewLogic.models;
 
-public class LadderAction implements TileAction{
-  private final int destinationTileId;
+public class LadderAction implements IAction<LadderPlayer> {
+  private final Tile destination;
 
-  public LadderAction(int destinationTileId) {
-    this.destinationTileId = destinationTileId;
+  public LadderAction(Tile destination) {
+    this.destination = destination;
   }
-  public void perform(Player player) {
-    player.placeOnTile(destinationTileId);
+  public void perform(LadderPlayer ladderPlayer) {
+    ladderPlayer.setCurrentSpace(destination);
   }
 }

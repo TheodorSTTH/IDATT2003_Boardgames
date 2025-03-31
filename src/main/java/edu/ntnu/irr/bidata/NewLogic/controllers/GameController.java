@@ -1,16 +1,16 @@
 package edu.ntnu.irr.bidata.NewLogic.controllers;
 
-import edu.ntnu.irr.bidata.NewLogic.models.BoardGame;
+import edu.ntnu.irr.bidata.NewLogic.models.LadderGame;
 import edu.ntnu.irr.bidata.NewLogic.views.GameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class GameController {
 
-  private BoardGame game;
-  private GameView view;
+  private final LadderGame game;
+  private final GameView view;
 
-  public GameController(BoardGame game, GameView view) {
+  public GameController(LadderGame game, GameView view) {
     this.game = game;
     this.view = view;
     initController();
@@ -20,13 +20,13 @@ public class GameController {
     view.getRollButton().setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        playRound();
+        playTurnWithUI();
       }
     });
   }
 
-  private void playRound() {
-    game.playOneTurn();
+  private void playTurnWithUI() {
+    game.playTurn();
     view.updateStatus();
 
     if (game.isFinished()) {
