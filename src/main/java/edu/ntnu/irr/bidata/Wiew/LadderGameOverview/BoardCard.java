@@ -26,15 +26,19 @@ public class BoardCard extends VBox {
     label.getStyleClass().addAll("styled-label", "w-p-text");
 
     Button rollButton = new Button("Roll");
+    Button saveButton = new Button("Save current game");
     rollButton.getStyleClass().addAll("styled-button", "b-p-text", "b-radius");
 
     rollButton.setOnAction(e -> {
       UI.triggerNewRound();
     });
+    saveButton.setOnAction(e -> {
+      UI.saveGame();
+    });
 
     myBoardView.renderBoard();
 
-    this.getChildren().addAll(label, myBoardView, rollButton);
+    this.getChildren().addAll(label, myBoardView, rollButton, saveButton);
     this.getStyleClass().addAll("createUser-card", "w-radius");
   }
 }

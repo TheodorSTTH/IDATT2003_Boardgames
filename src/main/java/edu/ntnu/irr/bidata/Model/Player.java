@@ -10,6 +10,11 @@ public class Player {
   public Player(String name) {
     this.name = name;
   }
+
+  public Player(String name, int currentTile) {
+    this.name = name;
+    this.currentTile = currentTile;
+  }
   
   public String getName() {
     return name;
@@ -18,9 +23,15 @@ public class Player {
       
   public int getCurrentTile() {
     return currentTile;
-    }
+  }
 
   public void setCurrentTile(int currentTile) {
     this.currentTile = currentTile;
   }
+
+  public String getSaveFormat() {
+    return name + "," + currentTile;
+  }
+  
+  
 }
