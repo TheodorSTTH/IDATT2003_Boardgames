@@ -10,6 +10,7 @@ import edu.ntnu.irr.bidata.Model.Game;
 
 public class LaderGame extends Game {
     private final BoardLaderGame board;
+    private final Die die = new Die(6);
 
     public LaderGame(int amountOfPlayers, String gameName) {
         super(amountOfPlayers, gameName);
@@ -20,6 +21,7 @@ public class LaderGame extends Game {
     @Override
     public void init() {
         super.init();
+
         UI.toLaderGamePage();
     }
 
@@ -29,7 +31,7 @@ public class LaderGame extends Game {
     }
 
     public void takeAction() {
-        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + Die.roll()));
+        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + die.roll()));
         if (board.hasWone(currentPlayer.getCurrentTile())) {
             endGame(currentPlayer);
         }
@@ -44,6 +46,5 @@ public class LaderGame extends Game {
     public String getGameType() {
         return "LaderGame";
     }
-
 }
 
