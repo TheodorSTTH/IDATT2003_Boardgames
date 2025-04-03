@@ -42,8 +42,6 @@ public abstract class Game {
         return amountOfPlayers;
     }
 
-    public abstract void takeAction();
-
     public Player getNextPlayer() {
         int index = players.indexOf(currentPlayer);
         if (index == players.size() - 1) {

@@ -12,8 +12,65 @@ public class BoardRisk {
 
 
   public BoardRisk() {
-    this.setUpClasicRisk();
+      this.setUpClasicRisk();
   }
+  
+  private int getAmountOfCountrysControldByPlayer(Player player) {
+      int amount = 0;
+      for (Country country : countries.values()) {
+          if (country.getOwner() == player) {
+              amount++;
+          }
+      }
+      return amount;
+  }
+
+  public int getNewTropes(Player player) {
+      int newTropes = tropBonus(getAmountOfCountrysControldByPlayer(player));
+      newTropes += getContientBonus(player);
+      return newTropes;
+  }
+    
+  private int getContientBonus(Player player) {
+      int bonus = 0;
+      for (String continet : continens.keySet()) {
+          if (controlContinet(continet, player)) {
+              bonus += continentBonus.get(continet);
+          }
+      }
+      return bonus;
+  }
+  
+  private int tropBonus(int conteris) {
+      if (conteris > 12) {
+          return 3;
+      } else {
+          return ((conteris - (conteris % 3)) / 3);
+        }
+
+    
+  }
+    
+  private boolean controlContinet(String continet, Player player) {
+      List<String> contriesOwend = this.getCountrysControldByPlayer(player);
+      for (String contery : continens.get(continet)) {
+          if (!contriesOwend.contains(contery)) {
+              return false;
+          }
+      }
+      return (true);
+  }
+
+  public List<String> getCountrysControldByPlayer(Player player) {
+    List<String> countriesControlled = new ArrayList<String>();
+      for (Country country : countries.values()) {
+          if (country.getOwner() == player) {
+              countriesControlled.add(country.getName());
+          }
+      }
+      return countriesControlled;
+  }
+  
 
   private void setUpClasicRisk() {
     countries.put("Alaska", new Country("Alaska", List.of("Northwest Territory", "Alberta", "Kamchatka")));
@@ -117,15 +174,5 @@ public class BoardRisk {
     continentBonus.put("Africa", 3);
     continentBonus.put("Asia", 7);
     continentBonus.put("Australia", 2);
-  }
-
-  public List<Country> getCountrysControldByPlayer(Player player) {
-    List<Country> countriesControlled = new ArrayList<Country>();
-    for (Country country : countries.values()) {
-      if (country.getOwner() == player) {
-        countriesControlled.add(country);
-      }
-    }
-    return countriesControlled;
   }
 }
