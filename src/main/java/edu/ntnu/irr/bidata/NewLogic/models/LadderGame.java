@@ -1,14 +1,12 @@
 package edu.ntnu.irr.bidata.NewLogic.models;
 
-import edu.ntnu.irr.bidata.Controler.Game;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Set up Board, Dice and Players.
  * Iterate over game loop.
  * */
-public class LadderGame extends AbstractGame<LadderPlayer> {
+public class LadderGame extends AbstractGame<Integer, LadderPlayer> {
   /**
    * Returns the player which won.
    * */
@@ -16,7 +14,7 @@ public class LadderGame extends AbstractGame<LadderPlayer> {
   public LadderPlayer getWinner() {
     LadderPlayer winner = null;
     for (LadderPlayer player : players) {
-      if (player.getCurrentSpace().getNextTile() == null) {
+      if (player.hasWon()) {
         winner = player;
       }
     }

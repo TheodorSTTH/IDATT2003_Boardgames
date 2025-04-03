@@ -26,7 +26,7 @@ public class LadderPlayer extends AbstractPlayer<Tile> {
       if (nextTileExists) tileToMoveTo = tileToMoveTo.getNextTile();
     }
     setCurrentSpace(tileToMoveTo);
-    tileToMoveTo.landPlayer(this);
+    tileToMoveTo.performAction(this);
   }
 
   public boolean hasWon() {

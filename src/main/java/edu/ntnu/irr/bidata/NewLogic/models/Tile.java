@@ -5,7 +5,7 @@ package edu.ntnu.irr.bidata.NewLogic.models;
  * a linked list. If there isn't a next tile the player on the tile has won.
  * Tile has actions which are executed when a user lands on it.
  * */
-public class Tile extends AbstractSpace<LadderPlayer> {
+public class Tile extends AbstractSpace<LadderPlayer, LadderPlayer> {
   private Tile nextTile;
 
   public Tile(int id) {

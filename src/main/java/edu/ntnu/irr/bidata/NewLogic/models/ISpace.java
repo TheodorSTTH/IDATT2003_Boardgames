@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.NewLogic.models;
 
-public interface ISpace<T extends IPlayer<?>> {
+public interface ISpace<T> {
   int getId();
-  void landPlayer(T player);
+  void performAction(T subject);
   void setAction(IAction<T> action);
 }

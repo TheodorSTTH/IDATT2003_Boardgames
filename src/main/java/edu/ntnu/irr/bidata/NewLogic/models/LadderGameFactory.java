@@ -2,7 +2,7 @@ package edu.ntnu.irr.bidata.NewLogic.models;
 
 import java.util.ArrayList;
 
-public class LadderGameFactory implements IGameFactory<LadderPlayer> {
+public class LadderGameFactory {
   private final int numberOfDice;
 
   public LadderGameFactory(int numberOfDice) {
@@ -38,7 +38,6 @@ public class LadderGameFactory implements IGameFactory<LadderPlayer> {
     }
   }
 
-  @Override
   public LadderGame createGame() {
     Board<Integer, Tile> board = new Board<>();
     populateBoardWithTiles(board);

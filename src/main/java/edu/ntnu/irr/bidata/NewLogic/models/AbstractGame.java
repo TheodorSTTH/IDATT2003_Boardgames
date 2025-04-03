@@ -3,23 +3,21 @@ package edu.ntnu.irr.bidata.NewLogic.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractGame<T extends IPlayer<?>> implements IGame<T> {
+public abstract class AbstractGame<U, T extends IPlayer> {
   protected List<T> players;
   protected T currentPlayer;
-  protected Board<Integer, ?> board;
+  protected Board<U, ?> board;
   protected Dice dice;
 
-  public AbstractGame(ArrayList<T> players, Board<Integer, ?> board, Dice dice) {
+  public AbstractGame(ArrayList<T> players, Board<U, ?> board, Dice dice) {
     this.players = players;
     this.board = board;
     this.dice = dice;
   }
 
   public void addPlayer(T player) {
-    players.add(player);
+    players.add( player);
   }
-
-  public abstract void playTurn();
 
   public abstract T getWinner();
 

@@ -1,27 +1,27 @@
 package edu.ntnu.irr.bidata.NewLogic.models;
 
-public abstract class AbstractSpace<T extends IPlayer<?>> implements ISpace<T> {
+public abstract class AbstractSpace<T extends IPlayer, U> implements ISpace<U> {
   protected final int id;
-  protected IAction<T> landAction;
+  protected IAction<U> action;
 
   public AbstractSpace(int id) {
     this.id = id;
   }
 
-  public AbstractSpace(int id, IAction<T> landAction) {
+  public AbstractSpace(int id, IAction<U> action) {
     this.id = id;
-    this.landAction = landAction;
+    this.action = action;
   }
 
-  public void landPlayer(T player) {
-    if (landAction != null) landAction.perform(player);
+  public void performAction(U subject) {
+    if (action != null) action.perform(subject);
   }
 
   public int getId() {
     return id;
   }
 
-  public void setAction(IAction<T> landAction) {
-    this.landAction = landAction;
+  public void setAction(IAction<U> landAction) {
+    this.action = landAction;
   }
 }
