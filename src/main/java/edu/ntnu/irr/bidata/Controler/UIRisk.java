@@ -12,6 +12,10 @@ public class UIRisk {
 
   public static void toRiskGamePage() {
   }
+
+  public static void openPlaceTropesMenu(int tropes) {
+    
+  }
   
   public static void placeTropes(String Conteris, int tropesPlased) {
     risk.placeTropes(Conteris, tropesPlased);
