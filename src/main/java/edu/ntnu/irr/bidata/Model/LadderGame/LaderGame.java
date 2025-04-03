@@ -23,13 +23,13 @@ public class LaderGame extends Game {
     public void init() {
         super.init();
         UILaderGame.setLadderGame(this);
-        UI.toLaderGamePage();
+        UILaderGame.toLaderGamePage();
     }
 
     @Override
     public void startSavedGame() {
         UILaderGame.setLadderGame(this);
-        UI.toLaderGamePage();
+        UILaderGame.toLaderGamePage();
     }
 
     public void takeAction() {
