@@ -1,1 +1,1 @@
-Test spill,LaderGame
+New Game,LaderGame

@@ -11,6 +11,9 @@ public class BoardRisk {
   private HashMap<String, Integer> continentBonus = new HashMap<String, Integer>();
 
 
+  
+
+
   public BoardRisk() {
     this.setUpClasicRisk();
   }

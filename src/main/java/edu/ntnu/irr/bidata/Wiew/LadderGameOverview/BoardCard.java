@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata.Wiew.LadderGameOverview;
 
 import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.Controler.UILaderGame;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Wiew.BoardView;
 import edu.ntnu.irr.bidata.Wiew.Tile;
@@ -30,7 +31,7 @@ public class BoardCard extends VBox {
     rollButton.getStyleClass().addAll("styled-button", "b-p-text", "b-radius");
 
     rollButton.setOnAction(e -> {
-      UI.triggerNewRound();
+      UILaderGame.triggerNewRound();
     });
     saveButton.setOnAction(e -> {
       UI.saveGame();

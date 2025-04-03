@@ -3,6 +3,7 @@ package edu.ntnu.irr.bidata.Model.LadderGame;
 import java.util.ArrayList;
 
 import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.Controler.UILaderGame;
 import edu.ntnu.irr.bidata.Model.Die;
 import edu.ntnu.irr.bidata.Model.Game;
 
@@ -21,12 +22,13 @@ public class LaderGame extends Game {
     @Override
     public void init() {
         super.init();
-
+        UILaderGame.setLadderGame(this);
         UI.toLaderGamePage();
     }
 
     @Override
     public void startSavedGame() {
+        UILaderGame.setLadderGame(this);
         UI.toLaderGamePage();
     }
 

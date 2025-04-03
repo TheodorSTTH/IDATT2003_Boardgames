@@ -5,6 +5,7 @@ import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
 
 public class Risk extends Game {
     private final BoardRisk board;
+    private int gameStep = 0;
 
     public Risk(int amountOfPlayers, String gameName) {
         super(amountOfPlayers, gameName);
@@ -20,10 +21,6 @@ public class Risk extends Game {
     public void startSavedGame() {
     }
 
-    @Override
-    public void takeAction() {
-    }
-
     public BoardRisk getBoard() {
         return board;
     }
@@ -31,5 +28,9 @@ public class Risk extends Game {
     @Override
     public String getGameType() {
         return "Risk";
+    }
+
+    public void setGameStep(int gameStep) {
+        this.gameStep = gameStep;
     }
 }

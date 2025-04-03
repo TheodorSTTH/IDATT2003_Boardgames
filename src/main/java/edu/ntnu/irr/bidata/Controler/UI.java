@@ -12,14 +12,8 @@ import edu.ntnu.irr.bidata.Model.FileHandeler;
 public class UI {
   private static final CreatePlayerPage createPlayer = new CreatePlayerPage();
   private static final StartPagePage StartPage = new StartPagePage();
-  private static final OverviewPage overview = new OverviewPage();
+  protected static final OverviewPage overview = new OverviewPage();
   private static Game game;
-
-  public static void triggerNewRound() {
-    game.takeAction();
-    overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
-  }
-
 
   public static void StartPageCreateNewGameButon(int plyers, String gameType, String gameName) {
     if (gameType.equals("Lader Game")) {
@@ -66,7 +60,7 @@ public class UI {
     MyWindow.getPrimaryStage().setMaximized(true);
     MyWindow.getPrimaryStage().show();
     UI.overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
-  }
+  } 
 
   public static Game getGame() {
     return game;
