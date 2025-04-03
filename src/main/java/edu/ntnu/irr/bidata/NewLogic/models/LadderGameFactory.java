@@ -12,7 +12,7 @@ public class LadderGameFactory implements IGameFactory<LadderPlayer> {
   /**
    * Creates initial ladders from the default ladder game configuration.
    * */
-  private void createDefaultLadders(Board<Tile> board) {
+  private void createDefaultLadders(Board<Integer, Tile> board) {
     LadderActionBuilder ladderBuilder = new LadderActionBuilder(board);
     ladderBuilder.from(1).to(40).build();
     ladderBuilder.from(8).to(10).build();
@@ -28,7 +28,7 @@ public class LadderGameFactory implements IGameFactory<LadderPlayer> {
     ladderBuilder.from(87).to(70).build();
   }
 
-  private void populateBoardWithTiles(Board<Tile> board) {
+  private void populateBoardWithTiles(Board<Integer, Tile> board) {
     int boardRowsAmount = 10;
     int boardColumnAmount = 9;
     for (int i = 0; i < boardRowsAmount * boardColumnAmount; i++) {
@@ -40,7 +40,7 @@ public class LadderGameFactory implements IGameFactory<LadderPlayer> {
 
   @Override
   public LadderGame createGame() {
-    Board<Tile> board = new Board<>();
+    Board<Integer, Tile> board = new Board<>();
     populateBoardWithTiles(board);
     createDefaultLadders(board);
     Dice dice = new Dice(numberOfDice);

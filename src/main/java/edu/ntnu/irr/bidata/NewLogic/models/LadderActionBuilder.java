@@ -6,9 +6,9 @@ package edu.ntnu.irr.bidata.NewLogic.models;
 public class LadderActionBuilder {
   private int fromTileId;
   private int toTileId;
-  private final Board<Tile> board;
+  private final Board<Integer, Tile> board;
 
-  public LadderActionBuilder(Board<Tile> board) {
+  public LadderActionBuilder(Board<Integer, Tile> board) {
     this.board = board;
   }
 

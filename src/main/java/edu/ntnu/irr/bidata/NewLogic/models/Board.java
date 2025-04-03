@@ -6,18 +6,18 @@ import java.util.Map;
 /**
  * Represents the physical ladder game board with a collection of tiles.
  * */
-public class Board<T extends ISpace<?>> {
-  private final Map<Integer, T> spaces;
+public class Board<U, T extends ISpace<?>> {
+  private final Map<U, T> spaces;
 
   public Board() {
-    spaces = new HashMap<Integer, T>();
+    spaces = new HashMap<U, T>();
   }
 
-  public void setSpace(int id, T space) {
+  public void setSpace(U id, T space) {
     spaces.put(id, space);
   }
 
-  public T getSpace(int id) {
+  public T getSpace(U id) {
     return spaces.get(id);
   }
 }

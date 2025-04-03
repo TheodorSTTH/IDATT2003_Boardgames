@@ -23,7 +23,7 @@ public class LadderGame extends AbstractGame<LadderPlayer> {
     return winner;
   }
 
-  public LadderGame(ArrayList<LadderPlayer> players, Board<Tile> board, Dice dice) {
+  public LadderGame(ArrayList<LadderPlayer> players, Board<Integer, Tile> board, Dice dice) {
     super(players, board, dice);
     currentPlayer = players.getFirst();
   }
