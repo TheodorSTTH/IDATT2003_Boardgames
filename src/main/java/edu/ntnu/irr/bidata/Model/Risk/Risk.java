@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.Model.Risk;
 
+import edu.ntnu.irr.bidata.Controler.UIRisk;
 import edu.ntnu.irr.bidata.Model.Game;
-import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
 
 public class Risk extends Game {
     private final BoardRisk board;
@@ -14,14 +14,16 @@ public class Risk extends Game {
     @Override
     protected void init() {
         super.init();
-        //UI.toRiskGamePage();
+        UIRisk.setRisk(this);
+        UIRisk.toRiskGamePage();
     }
 
     public void startSavedGame() {
     }
 
-    public void placeTropes(String Conteris, int tropesPlased) {
-        
+    public boolean placeTropes(String Conteris, int tropesPlased) {
+        return false;
+
         
     }
 

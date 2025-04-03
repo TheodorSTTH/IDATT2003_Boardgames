@@ -60,6 +60,16 @@ public class BoardRisk {
       }
       return (true);
   }
+
+  public List<String> getCountrysControldByPlayer(Player player) {
+    List<String> countriesControlled = new ArrayList<String>();
+      for (Country country : countries.values()) {
+          if (country.getOwner() == player) {
+              countriesControlled.add(country.getName());
+          }
+      }
+      return countriesControlled;
+  }
   
 
   private void setUpClasicRisk() {
@@ -164,15 +174,5 @@ public class BoardRisk {
     continentBonus.put("Africa", 3);
     continentBonus.put("Asia", 7);
     continentBonus.put("Australia", 2);
-  }
-
-  public List<String> getCountrysControldByPlayer(Player player) {
-    List<String> countriesControlled = new ArrayList<String>();
-      for (Country country : countries.values()) {
-          if (country.getOwner() == player) {
-              countriesControlled.add(country.getName());
-          }
-      }
-      return countriesControlled;
   }
 }
