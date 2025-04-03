@@ -52,16 +52,6 @@ public class UI {
     MyWindow.getPrimaryStage().show();
   }
 
-  public static void toLaderGamePage() {
-    System.out.println("Switching to OverviewPage...");
-    MyWindow.getPrimaryStage().hide();
-    MyWindow.getPrimaryStage().setMaximized(false);
-    MyWindow.getPrimaryStage().setScene(overview);
-    MyWindow.getPrimaryStage().setMaximized(true);
-    MyWindow.getPrimaryStage().show();
-    UI.overview.getLayout().getBoardCard().updateBoard(game.getPlayers());
-  } 
-
   public static Game getGame() {
     return game;
   }
