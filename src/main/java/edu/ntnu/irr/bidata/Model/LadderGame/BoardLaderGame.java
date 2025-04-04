@@ -1,5 +1,7 @@
 package edu.ntnu.irr.bidata.Model.LadderGame;
+
 import java.util.HashMap;
+import java.util.ArrayList;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -16,6 +18,12 @@ public class BoardLaderGame {
         setUpLadersClasic();
     }
 
+    public void setPlayers(ArrayList<Player> players) {
+        for (Player player : players) {
+            playerPositions.put(player, 0);
+        }
+    }
+
     public void move(Player player, int steps) {
         playerPositions.put(player, playerPositions.get(player) + steps);
         if (events.containsKey(playerPositions.get(player))) {
@@ -23,8 +31,12 @@ public class BoardLaderGame {
         } 
     }
     
-    public boolean hasWone(int tileNumber) {
-        return tileNumber >= endTile;
+    public boolean hasWone(Player player) {
+        return playerPositions.get(player) >= endTile;
+    }
+
+    public HashMap<Player, Integer> getPlayerPositions() {
+        return playerPositions;
     }
 
 

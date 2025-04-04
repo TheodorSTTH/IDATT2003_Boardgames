@@ -135,7 +135,7 @@ public class FileHandeler {
       Scanner scanner = new Scanner(new File(gameName + ".players" + ".txt"));
       while (scanner.hasNextLine()) {
         String[] data = scanner.nextLine().split(",");
-        players.add(new Player(data[0], Integer.parseInt(data[1])));
+        players.add(new Player(data[0]));
       }
       scanner.close();
     } catch (FileNotFoundException e) {
@@ -165,7 +165,7 @@ public class FileHandeler {
     try {
       Scanner scanner = new Scanner(new File(gameName + ".currentPlayer" + ".txt"));
       String[] data = scanner.nextLine().split(",");
-      player = new Player(data[0], Integer.parseInt(data[1]));
+      player = new Player(data[0]);
       scanner.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
