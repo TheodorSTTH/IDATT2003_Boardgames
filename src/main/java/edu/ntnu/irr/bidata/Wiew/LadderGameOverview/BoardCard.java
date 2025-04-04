@@ -16,11 +16,11 @@ import javafx.scene.layout.VBox;
 public class BoardCard extends VBox {
   BoardView myBoardView = new BoardView();
 
-  public void updateBoard(HashMap<Player, Integer> playerPositons) {
+  public void updateBoard(HashMap<String, Integer> playerPositons) {
     myBoardView.updateBoardUI();
-    for (Player player : playerPositons.keySet()) {
+    for (String player : playerPositons.keySet()) {
       Tile playerTile = myBoardView.getTile(playerPositons.get(player));
-      playerTile.getChildren().add(new Label(player.getName()));
+      playerTile.getChildren().add(new Label(player));
     }
   }
 

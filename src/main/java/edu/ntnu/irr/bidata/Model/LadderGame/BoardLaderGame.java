@@ -12,7 +12,7 @@ import edu.ntnu.irr.bidata.Model.LadderGame.Event.TileMaker;
 public class BoardLaderGame {
     private HashMap<Integer, Event> events = new HashMap<Integer, Event>();
     private int endTile = 90;
-    private HashMap<Player, Integer> playerPositions = new HashMap<Player, Integer>();
+    private HashMap<String, Integer> playerPositions = new HashMap<String, Integer>();
 
     public BoardLaderGame() {
         setUpLadersClasic();
@@ -20,14 +20,14 @@ public class BoardLaderGame {
 
     public void setPlayers(ArrayList<Player> players) {
         for (Player player : players) {
-            playerPositions.put(player, 0);
+            playerPositions.put(player.getName(), 0);
         }
     }
 
     public void move(Player player, int steps) {
-        playerPositions.put(player, playerPositions.get(player) + steps);
+        playerPositions.put(player.getName(), playerPositions.get(player) + steps);
         if (events.containsKey(playerPositions.get(player))) {
-            playerPositions.put(player, events.get(playerPositions.get(player)).Action());
+            playerPositions.put(player.getName(), events.get(playerPositions.get(player)).Action());
         } 
     }
     
@@ -35,7 +35,7 @@ public class BoardLaderGame {
         return playerPositions.get(player) >= endTile;
     }
 
-    public HashMap<Player, Integer> getPlayerPositions() {
+    public HashMap<String, Integer> getPlayerPositions() {
         return playerPositions;
     }
 

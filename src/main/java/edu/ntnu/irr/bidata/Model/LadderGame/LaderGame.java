@@ -57,7 +57,7 @@ public class LaderGame extends Game {
         return "LaderGame";
     }
 
-    public HashMap<Player, Integer> getPlayerPositions() {
+    public HashMap<String, Integer> getPlayerPositions() {
         return board.getPlayerPositions();
     }
 }
