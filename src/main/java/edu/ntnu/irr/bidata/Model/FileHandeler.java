@@ -1,6 +1,8 @@
 package edu.ntnu.irr.bidata.Model;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,11 +68,10 @@ public class FileHandeler {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
-    try {
-      PrintWriter writer = new PrintWriter("savedGames.txt");
+    try (FileWriter fileWriter = new FileWriter("savedGames.txt", true);
+      PrintWriter writer = new PrintWriter(fileWriter)) {
       writer.println(game.getGameName() + "," + game.getGameType());
-      writer.close();
-    } catch (FileNotFoundException e) {
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
@@ -106,6 +107,8 @@ public class FileHandeler {
     File file = new File(name + ".players.txt");
     file.delete();
     file = new File(name + ".currentPlayer.txt");
+    file.delete();
+    file = new File(name + ".boardLaderGame.json");
     file.delete();
     removeGameFromSavedGames(name);
 
@@ -193,12 +196,11 @@ public class FileHandeler {
   }
   
   private static BoardLaderGame loadBoardLadderGame(String name) {
-    // Implement the logic to load the board state of the LaderGame
-    return null;
+    return BoardLaderGame.loadBoardLadergame(name);
   }
 
   private static void saveBoardLadderGame(LaderGame game) {
-    // Implement the logic to save the board state of the LaderGame
+    game.getBoard().saveBoardLadergame(game.getGameName());
   }
 
   private static void saveRiskGame(Risk game) {

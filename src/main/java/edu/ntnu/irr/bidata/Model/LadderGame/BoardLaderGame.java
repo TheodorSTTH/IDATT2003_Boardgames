@@ -1,8 +1,13 @@
 package edu.ntnu.irr.bidata.Model.LadderGame;
 
 import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import edu.ntnu.irr.bidata.Model.Player;
@@ -10,7 +15,9 @@ import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.TileMaker;
 
 public class BoardLaderGame {
+    @JsonIgnore
     private HashMap<Integer, Event> events = new HashMap<Integer, Event>();
+    @JsonIgnore
     private int endTile = 90;
     private HashMap<String, Integer> playerPositions = new HashMap<String, Integer>();
 
@@ -25,14 +32,14 @@ public class BoardLaderGame {
     }
 
     public void move(Player player, int steps) {
-        playerPositions.put(player.getName(), playerPositions.get(player) + steps);
-        if (events.containsKey(playerPositions.get(player))) {
-            playerPositions.put(player.getName(), events.get(playerPositions.get(player)).Action());
+        playerPositions.put(player.getName(), playerPositions.get(player.getName()) + steps);
+        if (events.containsKey(playerPositions.get(player.getName()))) {
+            playerPositions.put(player.getName(), events.get(playerPositions.get(player.getName())).Action());
         } 
     }
     
     public boolean hasWone(Player player) {
-        return playerPositions.get(player) >= endTile;
+        return playerPositions.get(player.getName()) >= endTile;
     }
 
     public HashMap<String, Integer> getPlayerPositions() {
@@ -53,5 +60,26 @@ public class BoardLaderGame {
         events.put(68, TileMaker.newLadder(68));
         events.put(74, TileMaker.newLadder(12));
         events.put(87, TileMaker.newLadder(70));
+    }
+
+        public void saveBoardLadergame(String gameName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            objectMapper.writeValue(new File(gameName+".boardLaderGame.json"), this);
+            System.out.println("Board saved successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static BoardLaderGame loadBoardLadergame(String gameName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File(gameName+".boardLaderGame.json"), BoardLaderGame.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }   
