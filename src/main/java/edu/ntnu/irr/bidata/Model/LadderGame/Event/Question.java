@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.LadderGame;
+package edu.ntnu.irr.bidata.Model.LadderGame.Event;
 
 public class Question {
   private String question;

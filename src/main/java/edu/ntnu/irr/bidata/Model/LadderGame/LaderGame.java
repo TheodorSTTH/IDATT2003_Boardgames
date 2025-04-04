@@ -33,7 +33,7 @@ public class LaderGame extends Game {
     }
 
     public void takeAction() {
-        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + die.roll()));
+        board.move(currentPlayer, die.roll());
         if (board.hasWone(currentPlayer.getCurrentTile())) {
             endGame(currentPlayer);
         }

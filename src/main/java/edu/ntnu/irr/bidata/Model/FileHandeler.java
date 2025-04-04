@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import edu.ntnu.irr.bidata.Model.LadderGame.Event.Question;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import javafx.concurrent.Task;
-import edu.ntnu.irr.bidata.Model.LadderGame.Question;
 
 public class FileHandeler {
   
