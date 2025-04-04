@@ -12,7 +12,7 @@ public class UILaderGame extends UI {
 
   public static void triggerNewRound() {
     ladderGame.takeAction();
-    overview.getLayout().getBoardCard().updateBoard(ladderGame.getPlayers());
+    overview.getLayout().getBoardCard().updateBoard(ladderGame.getPlayerPositions());
   }
 
     public static void toLaderGamePage() {
@@ -22,7 +22,7 @@ public class UILaderGame extends UI {
     MyWindow.getPrimaryStage().setScene(overview);
     MyWindow.getPrimaryStage().setMaximized(true);
     MyWindow.getPrimaryStage().show();
-    UI.overview.getLayout().getBoardCard().updateBoard(ladderGame.getPlayers());
+    UI.overview.getLayout().getBoardCard().updateBoard(ladderGame.getPlayerPositions());
   } 
 
 

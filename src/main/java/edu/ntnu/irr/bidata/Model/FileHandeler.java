@@ -1,15 +1,19 @@
 package edu.ntnu.irr.bidata.Model;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import edu.ntnu.irr.bidata.Model.LadderGame.Event.Question;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import javafx.concurrent.Task;
-import edu.ntnu.irr.bidata.Model.LadderGame.Question;
+import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
+
 
 public class FileHandeler {
   
@@ -64,11 +68,10 @@ public class FileHandeler {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
-    try {
-      PrintWriter writer = new PrintWriter("savedGames.txt");
+    try (FileWriter fileWriter = new FileWriter("savedGames.txt", true);
+      PrintWriter writer = new PrintWriter(fileWriter)) {
       writer.println(game.getGameName() + "," + game.getGameType());
-      writer.close();
-    } catch (FileNotFoundException e) {
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
@@ -105,6 +108,8 @@ public class FileHandeler {
     file.delete();
     file = new File(name + ".currentPlayer.txt");
     file.delete();
+    file = new File(name + ".boardLaderGame.json");
+    file.delete();
     removeGameFromSavedGames(name);
 
   }
@@ -135,7 +140,7 @@ public class FileHandeler {
       Scanner scanner = new Scanner(new File(gameName + ".players" + ".txt"));
       while (scanner.hasNextLine()) {
         String[] data = scanner.nextLine().split(",");
-        players.add(new Player(data[0], Integer.parseInt(data[1])));
+        players.add(new Player(data[0]));
       }
       scanner.close();
     } catch (FileNotFoundException e) {
@@ -157,7 +162,7 @@ public class FileHandeler {
     }
   }
 
-  private static Player loadCurrentPlayer(String gameName) {
+  private static Player loadCurrentPlayer(String gameName, ArrayList<Player> players) {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -165,7 +170,12 @@ public class FileHandeler {
     try {
       Scanner scanner = new Scanner(new File(gameName + ".currentPlayer" + ".txt"));
       String[] data = scanner.nextLine().split(",");
-      player = new Player(data[0], Integer.parseInt(data[1]));
+      for (Player p : players) {
+        if (p.getName().equals(data[0])) {
+          player = p;
+          break;
+        }
+      }
       scanner.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -176,15 +186,21 @@ public class FileHandeler {
   private static void saveLaderGame(LaderGame game) {
     savePlyers(game);
     saveCurrentPlayer(game);
+    saveBoardLadderGame(game);
     addGameToSavedGames(game);
   }
 
   private static LaderGame loadLaderGame(String name) {
-    ArrayList<Player> players = loadPlyers(name); 
-    LaderGame laderGame = new LaderGame(players.size(), name);
-    laderGame.addPlayers(players);
-    laderGame.setCurrentPlayer(loadCurrentPlayer(name));
-    return laderGame;
+    ArrayList<Player> players = loadPlyers(name);
+    return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
+  }
+  
+  private static BoardLaderGame loadBoardLadderGame(String name) {
+    return BoardLaderGame.loadBoardLadergame(name);
+  }
+
+  private static void saveBoardLadderGame(LaderGame game) {
+    game.getBoard().saveBoardLadergame(game.getGameName());
   }
 
   private static void saveRiskGame(Risk game) {

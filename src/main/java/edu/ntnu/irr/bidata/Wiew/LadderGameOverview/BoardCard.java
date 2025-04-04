@@ -5,6 +5,8 @@ import edu.ntnu.irr.bidata.Controler.UILaderGame;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Wiew.BoardView;
 import edu.ntnu.irr.bidata.Wiew.Tile;
+
+import java.util.HashMap;
 import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,11 +16,11 @@ import javafx.scene.layout.VBox;
 public class BoardCard extends VBox {
   BoardView myBoardView = new BoardView();
 
-  public void updateBoard(List<Player> players) {
+  public void updateBoard(HashMap<String, Integer> playerPositons) {
     myBoardView.updateBoardUI();
-    for (Player player : players) {
-      Tile playerTile = myBoardView.getTile(player.getCurrentTile());
-      playerTile.getChildren().add(new Label(player.getName()));
+    for (String player : playerPositons.keySet()) {
+      Tile playerTile = myBoardView.getTile(playerPositons.get(player));
+      playerTile.getChildren().add(new Label(player));
     }
   }
 

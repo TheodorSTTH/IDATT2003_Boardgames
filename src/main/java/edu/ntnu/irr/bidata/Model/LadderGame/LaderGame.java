@@ -1,11 +1,16 @@
 package edu.ntnu.irr.bidata.Model.LadderGame;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Controler.UILaderGame;
 import edu.ntnu.irr.bidata.Model.Die;
 import edu.ntnu.irr.bidata.Model.Game;
+import edu.ntnu.irr.bidata.Model.Player;
 
 
 
@@ -18,10 +23,16 @@ public class LaderGame extends Game {
         this.board = new BoardLaderGame();
     }
 
+    public LaderGame(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardLaderGame board, Player currentPlayer) {
+        super(amountOfPlayers, gameName, players, currentPlayer);
+        this.board = board;
+    }
+
 
     @Override
     public void init() {
         super.init();
+        board.setPlayers(players);
         UILaderGame.setLadderGame(this);
         UILaderGame.toLaderGamePage();
     }
@@ -33,8 +44,8 @@ public class LaderGame extends Game {
     }
 
     public void takeAction() {
-        currentPlayer.setCurrentTile(board.landOnTile(currentPlayer.getCurrentTile() + die.roll()));
-        if (board.hasWone(currentPlayer.getCurrentTile())) {
+        board.move(currentPlayer, die.roll());
+        if (board.hasWone(currentPlayer)) {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer();
@@ -48,5 +59,12 @@ public class LaderGame extends Game {
     public String getGameType() {
         return "LaderGame";
     }
+
+    public HashMap<String, Integer> getPlayerPositions() {
+        return board.getPlayerPositions();
+    }
+
+
+
 }
 

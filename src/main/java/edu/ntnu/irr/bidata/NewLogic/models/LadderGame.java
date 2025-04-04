@@ -1,6 +1,5 @@
 package edu.ntnu.irr.bidata.NewLogic.models;
 
-import edu.ntnu.irr.bidata.Controler.Game;
 import java.util.ArrayList;
 import java.util.List;
 
