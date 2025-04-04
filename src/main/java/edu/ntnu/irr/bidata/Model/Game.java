@@ -16,6 +16,13 @@ public abstract class Game {
         this.amountOfPlayers = amountOfPlayers;
     }
 
+    public Game(int amountOfPlayers, String gameName, ArrayList<Player> players, Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+        this.gameName = gameName;
+        this.amountOfPlayers = amountOfPlayers;
+        this.players = players;
+    }
+
     public void addPlayer(String name) {
         players.add(new Player(name));
         if (players.size() == amountOfPlayers) {

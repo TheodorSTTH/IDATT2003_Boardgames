@@ -20,6 +20,11 @@ public class LaderGame extends Game {
         this.board = new BoardLaderGame();
     }
 
+    public LaderGame(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardLaderGame board, Player currentPlayer) {
+        super(amountOfPlayers, gameName, players, currentPlayer);
+        this.board = board;
+    }
+
 
     @Override
     public void init() {

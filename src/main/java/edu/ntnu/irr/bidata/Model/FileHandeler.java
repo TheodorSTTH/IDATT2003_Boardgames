@@ -10,6 +10,8 @@ import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.Question;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import javafx.concurrent.Task;
+import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
+
 
 public class FileHandeler {
   
@@ -176,15 +178,22 @@ public class FileHandeler {
   private static void saveLaderGame(LaderGame game) {
     savePlyers(game);
     saveCurrentPlayer(game);
+    saveBoardLadderGame(game);
     addGameToSavedGames(game);
   }
 
   private static LaderGame loadLaderGame(String name) {
-    ArrayList<Player> players = loadPlyers(name); 
-    LaderGame laderGame = new LaderGame(players.size(), name);
-    laderGame.addPlayers(players);
-    laderGame.setCurrentPlayer(loadCurrentPlayer(name));
-    return laderGame;
+    ArrayList<Player> players = loadPlyers(name);
+    return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name));
+  }
+  
+  private static BoardLaderGame loadBoardLadderGame(String name) {
+    // Implement the logic to load the board state of the LaderGame
+    return null;
+  }
+
+  private static void saveBoardLadderGame(LaderGame game) {
+    // Implement the logic to save the board state of the LaderGame
   }
 
   private static void saveRiskGame(Risk game) {
