@@ -159,7 +159,7 @@ public class FileHandeler {
     }
   }
 
-  private static Player loadCurrentPlayer(String gameName) {
+  private static Player loadCurrentPlayer(String gameName, ArrayList<Player> players) {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -167,7 +167,12 @@ public class FileHandeler {
     try {
       Scanner scanner = new Scanner(new File(gameName + ".currentPlayer" + ".txt"));
       String[] data = scanner.nextLine().split(",");
-      player = new Player(data[0]);
+      for (Player p : players) {
+        if (p.getName().equals(data[0])) {
+          player = p;
+          break;
+        }
+      }
       scanner.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -184,7 +189,7 @@ public class FileHandeler {
 
   private static LaderGame loadLaderGame(String name) {
     ArrayList<Player> players = loadPlyers(name);
-    return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name));
+    return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
   }
   
   private static BoardLaderGame loadBoardLadderGame(String name) {
