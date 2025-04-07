@@ -14,24 +14,73 @@ public class BoardRisk {
   public BoardRisk() {
       this.setUpClasicRisk();
   }
+
+  public int NewTropes(String player) {
+      int newTropes = tropBonus(getAmountOfCountrysControldByPlayer(player));
+      newTropes += getContientBonus(player);
+      return newTropes;
+  }
   
-  private int getAmountOfCountrysControldByPlayer(Player player) {
+  public void placeTropes(String countryName, int tropes) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.placeTropes(tropes);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+  
+  public HashMap<String, Country> getCountries() {
+      return countries;
+  }
+
+  public void setUpBoard(List<String> players) {
+      if (players.size() < 2 || players.size() > 6) {
+          throw new IllegalArgumentException("Number of players must be between 2 and 6.");
+      }
+      this.devideCountrys(players);
+      this.placeStartingTropes(players);
+  }
+
+  private void devideCountrys(List<String> players) {
+      int i = 0;
+      for (Country country : countries.values()) {
+          country.setOwner(players.get(i));
+          country.setArmies(1);
+          i++;
+          if (i >= players.size()) {
+              i = 0;
+          }
+      }
+  }
+
+  private void placeStartingTropes(List<String> players) {
+        for (String player : players) {
+            List<String> countries = this.getCountrysControldByPlayer(player);
+            int tropes = 50 - players.size() * 5 - countries.size();
+            for (int i = 0; i < tropes; i++) {
+                int randomIndex = (int) (Math.random() * countries.size());
+                this.countries.get(countries.get(randomIndex)).placeTropes(1);
+            }
+        }
+      
+      
+
+      
+
+  }
+  
+  private int getAmountOfCountrysControldByPlayer(String player) {
       int amount = 0;
       for (Country country : countries.values()) {
-          if (country.getOwner() == player) {
+          if (country.getOwner().equals(player)) {
               amount++;
           }
       }
       return amount;
   }
-
-  public int getNewTropes(Player player) {
-      int newTropes = tropBonus(getAmountOfCountrysControldByPlayer(player));
-      newTropes += getContientBonus(player);
-      return newTropes;
-  }
     
-  private int getContientBonus(Player player) {
+  private int getContientBonus(String player) {
       int bonus = 0;
       for (String continet : continens.keySet()) {
           if (controlContinet(continet, player)) {
@@ -47,11 +96,9 @@ public class BoardRisk {
       } else {
           return ((conteris - (conteris % 3)) / 3);
         }
-
-    
   }
     
-  private boolean controlContinet(String continet, Player player) {
+  private boolean controlContinet(String continet, String player) {
       List<String> contriesOwend = this.getCountrysControldByPlayer(player);
       for (String contery : continens.get(continet)) {
           if (!contriesOwend.contains(contery)) {
@@ -61,10 +108,10 @@ public class BoardRisk {
       return (true);
   }
 
-  public List<String> getCountrysControldByPlayer(Player player) {
+  public List<String> getCountrysControldByPlayer(String player) {
     List<String> countriesControlled = new ArrayList<String>();
       for (Country country : countries.values()) {
-          if (country.getOwner() == player) {
+          if (country.getOwner().equals(player)) {
               countriesControlled.add(country.getName());
           }
       }

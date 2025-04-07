@@ -6,12 +6,16 @@ import edu.ntnu.irr.bidata.Model.Player;
 public class Country {
   private final String name;
   private int armies = 0;
-  private Player owner = null;
+  private String owner = null;
   private List<String> neighbors;
 
   public Country(String name, List<String> neighbors) {
     this.name = name;
     this.neighbors = neighbors;
+  }
+
+  public void placeTropes(int tropes) {
+    this.armies += tropes;
   }
 
   public List<String> getNeighbors() {
@@ -30,11 +34,11 @@ public class Country {
     this.armies = armies;
   }
 
-  public Player getOwner() {
+  public String getOwner() {
     return owner;
   }
 
-  public void setOwner(Player owner) {
+  public void setOwner(String owner) {
     this.owner = owner;
   }
 }
