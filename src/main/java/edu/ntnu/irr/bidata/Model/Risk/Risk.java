@@ -36,7 +36,7 @@ public class Risk extends Game {
             board.placeTropes(Conteris, tropesPlased);
             tropesAvailable -= tropesPlased;
             if (tropesAvailable == 0) {
-                UIRisk.openAttackMenu();
+                UIRisk.openAttackMenu(board.getAttackOptions(currentPlayer.getName()));
                 return true;
             }
             return true;

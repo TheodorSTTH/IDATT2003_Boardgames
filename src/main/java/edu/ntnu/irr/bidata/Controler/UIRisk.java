@@ -21,11 +21,11 @@ public class UIRisk {
 
   }
   
-  public static void openAttackMenu() {
+  public static void openAttackMenu(HashMap<Country, List<Country>> attackOptions) {
   }
   
-  public static void placeTropes(String Conteris, int tropesPlased) {
-    if (!risk.placeTropes(Conteris, tropesPlased)) {
+  public static void placeTropes(String Contery, int tropesPlased) {
+    if (!risk.placeTropes(Contery, tropesPlased)) {
       Message.showInfo("To few trops", "You can not place more tropes than you have available");
     }
   }

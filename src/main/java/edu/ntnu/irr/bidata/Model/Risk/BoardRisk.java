@@ -109,13 +109,32 @@ public class BoardRisk {
   }
 
   public List<String> getCountrysControldByPlayer(String player) {
-    List<String> countriesControlled = new ArrayList<String>();
+      List<String> countriesControlled = new ArrayList<String>();
       for (Country country : countries.values()) {
           if (country.getOwner().equals(player)) {
               countriesControlled.add(country.getName());
           }
       }
       return countriesControlled;
+  }
+  
+  public HashMap<Country, List<Country>> getAttackOptions(String player) {
+      HashMap<Country, List<Country>> attackOptions = new HashMap<Country, List<Country>>();
+      for (Country country : countries.values()) {
+          if (country.getOwner().equals(player) && country.getArmies() > 1) {
+              List<Country> neighbors = new ArrayList<Country>();
+              for (String neighborName : country.getNeighbors()) {
+                  Country neighbor = countries.get(neighborName);
+                  if (!neighbor.getOwner().equals(player)) {
+                      neighbors.add(neighbor);
+                  }
+              }
+              if (!neighbors.isEmpty()) {
+                  attackOptions.put(country, neighbors);
+              }
+          }
+      }
+      return attackOptions;  
   }
   
 
