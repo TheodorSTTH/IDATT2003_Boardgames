@@ -3,6 +3,7 @@ import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Wiew.Message;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import java.util.HashMap;
+import java.util.List;
 
 
 
@@ -16,7 +17,7 @@ public class UIRisk {
   public static void toRiskGamePage(HashMap<String, Country> countrys) {
   }
 
-  public static void openPlaceTropesMenu(int tropes) {
+  public static void openPlaceTropesMenu(int tropes, List<String> countryNames) {
 
   }
   

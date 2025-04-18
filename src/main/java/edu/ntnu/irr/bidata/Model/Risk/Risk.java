@@ -19,6 +19,7 @@ public class Risk extends Game {
         board.setUpBoard(getPlayerNames());
         UIRisk.setRisk(this);
         UIRisk.toRiskGamePage(board.getCountries());
+        startTurn();
     }
 
     public void startSavedGame() {
@@ -26,7 +27,7 @@ public class Risk extends Game {
 
     private void startTurn() {
         tropesAvailable = board.NewTropes(currentPlayer.getName());
-        UIRisk.openPlaceTropesMenu(tropesAvailable);
+        UIRisk.openPlaceTropesMenu(tropesAvailable, board.getCountrysControldByPlayer(currentPlayer.getName()));
 
     }
 
@@ -42,6 +43,8 @@ public class Risk extends Game {
         }
         return false;
     }
+
+    public void attack(){}
 
     public BoardRisk getBoard() {
         return board;
