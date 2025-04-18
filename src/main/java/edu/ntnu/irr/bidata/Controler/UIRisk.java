@@ -18,7 +18,6 @@ public class UIRisk {
   }
 
   public static void openPlaceTropesMenu(int tropes, List<String> countryNames) {
-
   }
   
   public static void openAttackMenu(HashMap<Country, List<Country>> attackOptions) {
@@ -30,7 +29,8 @@ public class UIRisk {
     }
   }
   
-  public static void attack(String attacker, String defender, int attackerTroops) {
+  public static void attack(String attacker, String defender, int attackerTroops, int defenderTroops) {
+    risk.attack(attacker, defender, attackerTroops, defenderTroops);
   }
 
 

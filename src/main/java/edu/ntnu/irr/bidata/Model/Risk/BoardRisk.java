@@ -134,7 +134,25 @@ public class BoardRisk {
               }
           }
       }
-      return attackOptions;  
+      return attackOptions;
+  }
+  
+  public boolean hasWone(String player) {
+      for (Country country : countries.values()) {
+          if (!country.getOwner().equals(player)) {
+              return false;
+          }
+      }
+      return true;
+  }
+  
+  public boolean hasLost(String player) {
+      for (Country country : countries.values()) {
+          if (country.getOwner().equals(player)) {
+              return false;
+          }
+      }
+      return true;
   }
   
 

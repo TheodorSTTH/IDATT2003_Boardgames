@@ -26,6 +26,9 @@ public class Risk extends Game {
     }
 
     private void startTurn() {
+        while (board.hasLost(currentPlayer.getName())) {
+            currentPlayer = getNextPlayer();
+        }
         tropesAvailable = board.NewTropes(currentPlayer.getName());
         UIRisk.openPlaceTropesMenu(tropesAvailable, board.getCountrysControldByPlayer(currentPlayer.getName()));
 
@@ -44,7 +47,14 @@ public class Risk extends Game {
         return false;
     }
 
-    public void attack(){}
+    public boolean attack(String attacker, String defender, int attackerTroops , int defenderTroops) {
+        
+        return false;
+    }
+    
+    public boolean attackUntilWin() {
+        return false;  
+    }
 
     public BoardRisk getBoard() {
         return board;
