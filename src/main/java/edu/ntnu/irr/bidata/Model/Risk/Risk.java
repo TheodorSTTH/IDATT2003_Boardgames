@@ -58,7 +58,7 @@ public class Risk extends Game {
         return false;
     }
 
-    public boolean attack(String attacker, String defender) {
+    private boolean attack(String attacker, String defender) {
         List<Integer> attackRolls;
         List<Integer> defendRolls;
 
@@ -79,7 +79,6 @@ public class Risk extends Game {
         attackRolls.sort((a, b) -> b - a);
         defendRolls.sort((a, b) -> b - a);
 
-
         int comparisons = Math.min(attackRolls.size(), defendRolls.size());
         for (int i = 0; i < comparisons; i++) {
             if (attackRolls.get(i) > defendRolls.get(i)) {
@@ -92,20 +91,24 @@ public class Risk extends Game {
         if (board.getUnits(defender) == 0) {
             board.takeControlOfCountry(defender, currentPlayer.getName());
             board.tranferTroops(attacker, defender, PopUp.promptForNumberInRange(board.getUnits(attacker) - 1));
-            UIRisk.openAttackMenu(board.getAttackOptions(currentPlayer.getName()));
             return true;
 
         } else {
-            UIRisk.openAttackMenu(board.getAttackOptions(currentPlayer.getName()));
             return false;
         }
 
+    }
+    
+    public void attackOnce(String attacker, String defender) {
+        attack(attacker, defender);
+        UIRisk.updateAttackMenu(board.getAttackOptions(currentPlayer.getName()));
 
-        
-        
     }
     
     public void attackUntilWin(String attacker, String defender) {
+        while (!attack(attacker, defender)) {
+        }
+        UIRisk.updateAttackMenu(board.getAttackOptions(currentPlayer.getName()));
     }
 
     public BoardRisk getBoard() {

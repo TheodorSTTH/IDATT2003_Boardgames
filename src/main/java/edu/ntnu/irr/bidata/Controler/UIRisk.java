@@ -17,10 +17,16 @@ public class UIRisk {
   public static void toRiskGamePage(HashMap<String, Country> countrys) {
   }
 
+  public static void updateRiskGamePage(HashMap<String, Country> countrys) {
+  }
+
   public static void openPlaceTropesMenu(int tropes, List<String> countryNames) {
   }
   
   public static void openAttackMenu(HashMap<Country, List<Country>> attackOptions) {
+  }
+
+  public static void updateAttackMenu(HashMap<Country, List<Country>> attackOptions) {
   }
   
   public static void placeTropes(String Contery, int tropesPlased) {
@@ -29,8 +35,12 @@ public class UIRisk {
     }
   }
   
-  public static void attack(String attacker, String defender) {
-    risk.attack(attacker, defender);
+  public static void attackOnce(String attacker, String defender) {
+    risk.attackOnce(attacker, defender);
+  }
+
+  public static void attackUntilWin(String attacker, String defender) {
+    risk.attackUntilWin(attacker, defender);
   }
 
 
