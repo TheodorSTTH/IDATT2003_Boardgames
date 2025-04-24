@@ -1,12 +1,23 @@
 package edu.ntnu.irr.bidata.Model.Risk;
 
+import java.lang.reflect.Array;
+
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Controler.UIRisk;
 import edu.ntnu.irr.bidata.Model.Game;
+import edu.ntnu.irr.bidata.Model.Player;
+import edu.ntnu.irr.bidata.Wiew.PopUp;
+import edu.ntnu.irr.bidata.Model.Dice;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Risk extends Game {
     private final BoardRisk board;
     private int tropesAvailable = 0;
+    private Dice oneDice = new Dice(6, 1);
+    private Dice twoDice = new Dice(6, 2);
+    private Dice treDice = new Dice(6, 3);
 
     public Risk(int amountOfPlayers, String gameName) {
         super(amountOfPlayers, gameName);
@@ -47,13 +58,54 @@ public class Risk extends Game {
         return false;
     }
 
-    public boolean attack(String attacker, String defender, int attackerTroops , int defenderTroops) {
+    public boolean attack(String attacker, String defender) {
+        List<Integer> attackRolls;
+        List<Integer> defendRolls;
+
+        if (board.getUnits(attacker) > 3) {
+            attackRolls = treDice.rollSet();
+        } else if (board.getUnits(attacker) == 3) {
+            attackRolls = twoDice.rollSet();
+        } else {
+            attackRolls = oneDice.rollSet();
+        }
+
+        if (board.getUnits(defender) > 1) {
+            defendRolls = twoDice.rollSet();
+        } else {
+            defendRolls = oneDice.rollSet();
+        }
+
+        attackRolls.sort((a, b) -> b - a);
+        defendRolls.sort((a, b) -> b - a);
+
+
+        int comparisons = Math.min(attackRolls.size(), defendRolls.size());
+        for (int i = 0; i < comparisons; i++) {
+            if (attackRolls.get(i) > defendRolls.get(i)) {
+                board.removeTroops(defender, 1);
+            } else {
+                board.removeTroops(attacker, 1);
+            }
+        }
+
+        if (board.getUnits(defender) == 0) {
+            board.takeControlOfCountry(defender, currentPlayer.getName());
+            board.tranferTroops(attacker, defender, PopUp.promptForNumberInRange(board.getUnits(attacker) - 1));
+            UIRisk.openAttackMenu(board.getAttackOptions(currentPlayer.getName()));
+            return true;
+
+        } else {
+            UIRisk.openAttackMenu(board.getAttackOptions(currentPlayer.getName()));
+            return false;
+        }
+
+
         
-        return false;
+        
     }
     
-    public boolean attackUntilWin() {
-        return false;  
+    public void attackUntilWin(String attacker, String defender) {
     }
 
     public BoardRisk getBoard() {
@@ -64,4 +116,5 @@ public class Risk extends Game {
     public String getGameType() {
         return "Risk";
     }
+
 }

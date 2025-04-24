@@ -1,6 +1,6 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Wiew.Message;
+import edu.ntnu.irr.bidata.Wiew.PopUp;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import java.util.HashMap;
 import java.util.List;
@@ -25,12 +25,12 @@ public class UIRisk {
   
   public static void placeTropes(String Contery, int tropesPlased) {
     if (!risk.placeTropes(Contery, tropesPlased)) {
-      Message.showInfo("To few trops", "You can not place more tropes than you have available");
+      PopUp.showInfo("To few trops", "You can not place more tropes than you have available");
     }
   }
   
-  public static void attack(String attacker, String defender, int attackerTroops, int defenderTroops) {
-    risk.attack(attacker, defender, attackerTroops, defenderTroops);
+  public static void attack(String attacker, String defender) {
+    risk.attack(attacker, defender);
   }
 
 

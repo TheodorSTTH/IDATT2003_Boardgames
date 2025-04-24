@@ -154,6 +154,60 @@ public class BoardRisk {
       }
       return true;
   }
+
+  public void takeControlOfCountry(String countryName, String player) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.setOwner(player);
+          country.setArmies(0);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+
+  public void removeTroops(String countryName, int troops) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.setArmies(country.getArmies() - troops);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+
+  public void addTroops(String countryName, int troops) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.setArmies(country.getArmies() + troops);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+    
+  public int getUnits(String countryName) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          return country.getArmies();
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+  
+  public void tranferTroops(String fromCountry, String toCountry, int troops) {
+      Country from = countries.get(fromCountry);
+      Country to = countries.get(toCountry);
+      if (from != null && to != null) {
+          if (from.getArmies() > troops) {
+              from.setArmies(from.getArmies() - troops);
+              to.setArmies(to.getArmies() + troops);
+          } else {
+              throw new IllegalArgumentException("Not enough troops in " + fromCountry);
+          }
+      } else {
+          throw new IllegalArgumentException("Country not found: " + fromCountry + " or " + toCountry);
+      }
+  }
+
+
   
 
   private void setUpClasicRisk() {
