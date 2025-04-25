@@ -120,4 +120,16 @@ public class Risk extends Game {
         return "Risk";
     }
 
+    public List<Country> getCountriesContrldByActivePlayer() {
+        return board.getCountrysControldByPlayer(currentPlayer.getName());
+    }
+
+    public void transferTroops(String from, String to, int amount) {
+        if (board.getUnits(from) > amount) {
+            board.tranferTroops(from, to, amount);
+        } else {
+            PopUp.showInfo("To few tropes", "You can not transfer more tropes than you have available");
+        }
+    }
+
 }

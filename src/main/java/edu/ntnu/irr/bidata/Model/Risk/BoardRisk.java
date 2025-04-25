@@ -56,7 +56,7 @@ public class BoardRisk {
 
   private void placeStartingTropes(List<String> players) {
         for (String player : players) {
-            List<String> countries = this.getCountrysControldByPlayer(player);
+            List<String> countries = this.getCountrysControldByPlayerAsStrings(player);
             int tropes = 50 - players.size() * 5 - countries.size();
             for (int i = 0; i < tropes; i++) {
                 int randomIndex = (int) (Math.random() * countries.size());
@@ -99,7 +99,7 @@ public class BoardRisk {
   }
     
   private boolean controlContinet(String continet, String player) {
-      List<String> contriesOwend = this.getCountrysControldByPlayer(player);
+      List<String> contriesOwend = this.getCountrysControldByPlayerAsStrings(player);
       for (String contery : continens.get(continet)) {
           if (!contriesOwend.contains(contery)) {
               return false;
@@ -108,11 +108,21 @@ public class BoardRisk {
       return (true);
   }
 
-  public List<String> getCountrysControldByPlayer(String player) {
+  private List<String> getCountrysControldByPlayerAsStrings(String player) {
       List<String> countriesControlled = new ArrayList<String>();
       for (Country country : countries.values()) {
           if (country.getOwner().equals(player)) {
               countriesControlled.add(country.getName());
+          }
+      }
+      return countriesControlled;
+  }
+
+  public List<Country> getCountrysControldByPlayer(String player) {
+      List<Country> countriesControlled = new ArrayList<Country>();
+      for (Country country : countries.values()) {
+          if (country.getOwner().equals(player)) {
+              countriesControlled.add(country);
           }
       }
       return countriesControlled;

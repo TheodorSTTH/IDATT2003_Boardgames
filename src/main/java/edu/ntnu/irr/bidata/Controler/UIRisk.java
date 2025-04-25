@@ -20,13 +20,16 @@ public class UIRisk {
   public static void updateRiskGamePage(HashMap<String, Country> countrys) {
   }
 
-  public static void openPlaceTropesMenu(int tropes, List<String> countryNames) {
+  public static void openPlaceTropesMenu(int tropes, List<Country> countryNames) {
   }
   
   public static void openAttackMenu(HashMap<Country, List<Country>> attackOptions) {
   }
 
   public static void updateAttackMenu(HashMap<Country, List<Country>> attackOptions) {
+  }
+
+  public static void toTransferMenu() {
   }
   
   public static void placeTropes(String Contery, int tropesPlased) {
@@ -43,9 +46,7 @@ public class UIRisk {
     risk.attackUntilWin(attacker, defender);
   }
 
-
-
-
-  
-  
+  public static void transferTroops(String fromCountry, String toCountry, int troops) {
+    risk.transferTroops(fromCountry, toCountry, troops);
+  }
 }
