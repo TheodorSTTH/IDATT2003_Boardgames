@@ -14,24 +14,73 @@ public class BoardRisk {
   public BoardRisk() {
       this.setUpClasicRisk();
   }
+
+  public int NewTropes(String player) {
+      int newTropes = tropBonus(getAmountOfCountrysControldByPlayer(player));
+      newTropes += getContientBonus(player);
+      return newTropes;
+  }
   
-  private int getAmountOfCountrysControldByPlayer(Player player) {
+  public void placeTropes(String countryName, int tropes) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.placeTropes(tropes);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+  
+  public HashMap<String, Country> getCountries() {
+      return countries;
+  }
+
+  public void setUpBoard(List<String> players) {
+      if (players.size() < 2 || players.size() > 6) {
+          throw new IllegalArgumentException("Number of players must be between 2 and 6.");
+      }
+      this.devideCountrys(players);
+      this.placeStartingTropes(players);
+  }
+
+  private void devideCountrys(List<String> players) {
+      int i = 0;
+      for (Country country : countries.values()) {
+          country.setOwner(players.get(i));
+          country.setArmies(1);
+          i++;
+          if (i >= players.size()) {
+              i = 0;
+          }
+      }
+  }
+
+  private void placeStartingTropes(List<String> players) {
+        for (String player : players) {
+            List<String> countries = this.getCountrysControldByPlayerAsStrings(player);
+            int tropes = 50 - players.size() * 5 - countries.size();
+            for (int i = 0; i < tropes; i++) {
+                int randomIndex = (int) (Math.random() * countries.size());
+                this.countries.get(countries.get(randomIndex)).placeTropes(1);
+            }
+        }
+      
+      
+
+      
+
+  }
+  
+  private int getAmountOfCountrysControldByPlayer(String player) {
       int amount = 0;
       for (Country country : countries.values()) {
-          if (country.getOwner() == player) {
+          if (country.getOwner().equals(player)) {
               amount++;
           }
       }
       return amount;
   }
-
-  public int getNewTropes(Player player) {
-      int newTropes = tropBonus(getAmountOfCountrysControldByPlayer(player));
-      newTropes += getContientBonus(player);
-      return newTropes;
-  }
     
-  private int getContientBonus(Player player) {
+  private int getContientBonus(String player) {
       int bonus = 0;
       for (String continet : continens.keySet()) {
           if (controlContinet(continet, player)) {
@@ -47,12 +96,10 @@ public class BoardRisk {
       } else {
           return ((conteris - (conteris % 3)) / 3);
         }
-
-    
   }
     
-  private boolean controlContinet(String continet, Player player) {
-      List<String> contriesOwend = this.getCountrysControldByPlayer(player);
+  private boolean controlContinet(String continet, String player) {
+      List<String> contriesOwend = this.getCountrysControldByPlayerAsStrings(player);
       for (String contery : continens.get(continet)) {
           if (!contriesOwend.contains(contery)) {
               return false;
@@ -61,15 +108,116 @@ public class BoardRisk {
       return (true);
   }
 
-  public List<String> getCountrysControldByPlayer(Player player) {
-    List<String> countriesControlled = new ArrayList<String>();
+  private List<String> getCountrysControldByPlayerAsStrings(String player) {
+      List<String> countriesControlled = new ArrayList<String>();
       for (Country country : countries.values()) {
-          if (country.getOwner() == player) {
+          if (country.getOwner().equals(player)) {
               countriesControlled.add(country.getName());
           }
       }
       return countriesControlled;
   }
+
+  public List<Country> getCountrysControldByPlayer(String player) {
+      List<Country> countriesControlled = new ArrayList<Country>();
+      for (Country country : countries.values()) {
+          if (country.getOwner().equals(player)) {
+              countriesControlled.add(country);
+          }
+      }
+      return countriesControlled;
+  }
+  
+  public HashMap<Country, List<Country>> getAttackOptions(String player) {
+      HashMap<Country, List<Country>> attackOptions = new HashMap<Country, List<Country>>();
+      for (Country country : countries.values()) {
+          if (country.getOwner().equals(player) && country.getArmies() > 1) {
+              List<Country> neighbors = new ArrayList<Country>();
+              for (String neighborName : country.getNeighbors()) {
+                  Country neighbor = countries.get(neighborName);
+                  if (!neighbor.getOwner().equals(player)) {
+                      neighbors.add(neighbor);
+                  }
+              }
+              if (!neighbors.isEmpty()) {
+                  attackOptions.put(country, neighbors);
+              }
+          }
+      }
+      return attackOptions;
+  }
+  
+  public boolean hasWone(String player) {
+      for (Country country : countries.values()) {
+          if (!country.getOwner().equals(player)) {
+              return false;
+          }
+      }
+      return true;
+  }
+  
+  public boolean hasLost(String player) {
+      for (Country country : countries.values()) {
+          if (country.getOwner().equals(player)) {
+              return false;
+          }
+      }
+      return true;
+  }
+
+  public void takeControlOfCountry(String countryName, String player) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.setOwner(player);
+          country.setArmies(0);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+
+  public void removeTroops(String countryName, int troops) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.setArmies(country.getArmies() - troops);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+
+  public void addTroops(String countryName, int troops) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          country.setArmies(country.getArmies() + troops);
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+    
+  public int getUnits(String countryName) {
+      Country country = countries.get(countryName);
+      if (country != null) {
+          return country.getArmies();
+      } else {
+          throw new IllegalArgumentException("Country not found: " + countryName);
+      }
+  }
+  
+  public void tranferTroops(String fromCountry, String toCountry, int troops) {
+      Country from = countries.get(fromCountry);
+      Country to = countries.get(toCountry);
+      if (from != null && to != null) {
+          if (from.getArmies() > troops) {
+              from.setArmies(from.getArmies() - troops);
+              to.setArmies(to.getArmies() + troops);
+          } else {
+              throw new IllegalArgumentException("Not enough troops in " + fromCountry);
+          }
+      } else {
+          throw new IllegalArgumentException("Country not found: " + fromCountry + " or " + toCountry);
+      }
+  }
+
+
   
 
   private void setUpClasicRisk() {

@@ -2,6 +2,7 @@ package edu.ntnu.irr.bidata.Model;
 import edu.ntnu.irr.bidata.Controler.UI;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class Game {
@@ -78,5 +79,13 @@ public abstract class Game {
 
     public void saveGame() {
         FileHandeler.saveGame(this);
+    }
+
+    protected List<String> getPlayerNames() {
+        List<String> names = new ArrayList<>();
+        for (Player player : players) {
+            names.add(player.getName());
+        }
+        return names;
     }
 }
