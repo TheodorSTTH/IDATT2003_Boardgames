@@ -47,6 +47,9 @@ public class UIRisk {
   }
 
   public static void transferTroops(String fromCountry, String toCountry, int troops) {
-    risk.transferTroops(fromCountry, toCountry, troops);
+    if (risk.transferTroops(fromCountry, toCountry, troops)){
+      risk.endTurn();
+    }
+
   }
 }

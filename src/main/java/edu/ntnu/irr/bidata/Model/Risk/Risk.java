@@ -45,6 +45,14 @@ public class Risk extends Game {
 
     }
 
+    public void endTurn() {
+        if (board.hasLost(currentPlayer.getName())) {
+            endGame(currentPlayer);
+        }
+        currentPlayer = getNextPlayer();
+        startTurn();
+    }
+
     public boolean placeTropes(String Conteris, int tropesPlased) {
         if (tropesPlased <= tropesAvailable) {
             board.placeTropes(Conteris, tropesPlased);
@@ -124,12 +132,13 @@ public class Risk extends Game {
         return board.getCountrysControldByPlayer(currentPlayer.getName());
     }
 
-    public void transferTroops(String from, String to, int amount) {
+    public boolean transferTroops(String from, String to, int amount) {
         if (board.getUnits(from) > amount) {
             board.tranferTroops(from, to, amount);
+            return true;
         } else {
             PopUp.showInfo("To few tropes", "You can not transfer more tropes than you have available");
+            return false;
         }
     }
-
 }
