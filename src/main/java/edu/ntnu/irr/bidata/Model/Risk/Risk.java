@@ -24,6 +24,13 @@ public class Risk extends Game {
         this.board = new BoardRisk();
     }
 
+    public Risk(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardRisk boardRisk, Player currentPlayer) {
+        super(amountOfPlayers, gameName, players, currentPlayer);
+        this.board = boardRisk;
+    }
+
+
+
     @Override
     protected void init() {
         super.init();

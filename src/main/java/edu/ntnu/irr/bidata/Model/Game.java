@@ -38,7 +38,7 @@ public abstract class Game {
     public abstract void startSavedGame();
 
     protected void endGame(Player winner) {
-        FileHandeler.deleteGame(gameName, getGameType());
+        FileHandeler.deleteGame(gameName);
         UI.endGame(winner.getName());
     }
 
@@ -88,4 +88,5 @@ public abstract class Game {
         }
         return names;
     }
+    
 }

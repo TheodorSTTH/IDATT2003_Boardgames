@@ -1,9 +1,15 @@
 package edu.ntnu.irr.bidata.Model.Risk;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import edu.ntnu.irr.bidata.Model.Player;
+import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
 
 public class BoardRisk {
   private HashMap<String, Country> countries = new HashMap<String, Country>();
@@ -216,6 +222,27 @@ public class BoardRisk {
           throw new IllegalArgumentException("Country not found: " + fromCountry + " or " + toCountry);
       }
   }
+
+      public void saveBoard(String gameName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            objectMapper.writeValue(new File(gameName+".board.json"), this);
+            System.out.println("Board saved successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static BoardRisk loadBoard(String gameName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File(gameName+".board.json"), BoardRisk.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
   
