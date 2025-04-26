@@ -120,7 +120,7 @@ public class Risk extends Game {
 
     }
     
-    public void attackUntilWin(String attacker, String defender) {
+    public void attackUntilResolt(String attacker, String defender) {
         while (!attack(attacker, defender)) {
         }
         UIRisk.updateAttackMenu(board.getAttackOptions(currentPlayer.getName()));

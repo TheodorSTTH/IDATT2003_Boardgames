@@ -42,8 +42,8 @@ public class UIRisk {
     risk.attackOnce(attacker, defender);
   }
 
-  public static void attackUntilWin(String attacker, String defender) {
-    risk.attackUntilWin(attacker, defender);
+  public static void attackUntilResolt(String attacker, String defender) {
+    risk.attackUntilResolt(attacker, defender);
   }
 
   public static void transferTroops(String fromCountry, String toCountry, int troops) {
