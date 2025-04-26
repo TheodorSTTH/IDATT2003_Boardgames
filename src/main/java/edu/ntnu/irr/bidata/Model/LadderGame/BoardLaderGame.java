@@ -62,21 +62,21 @@ public class BoardLaderGame {
         events.put(87, TileMaker.newLadder(70));
     }
 
-        public void saveBoardLadergame(String gameName) {
+    public void saveBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            objectMapper.writeValue(new File(gameName+".boardLaderGame.json"), this);
+            objectMapper.writeValue(new File(gameName+".board.json"), this);
             System.out.println("Board saved successfully.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static BoardLaderGame loadBoardLadergame(String gameName) {
+    public static BoardLaderGame loadBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File(gameName+".boardLaderGame.json"), BoardLaderGame.class);
+            return objectMapper.readValue(new File(gameName+".board.json"), BoardLaderGame.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

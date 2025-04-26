@@ -13,15 +13,16 @@ import edu.ntnu.irr.bidata.Model.LadderGame.Event.Question;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import javafx.concurrent.Task;
 import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
 
 
 public class FileHandeler {
   
   public static void saveGame(Game game) {
     if (game instanceof LaderGame) {
-      saveLaderGame((LaderGame) game);
+      saveLaderGame(game);
     } else if (game instanceof Risk) {
-      saveRiskGame((Risk) game);
+      saveRiskGame(game);
     } else {
       throw new IllegalArgumentException("Unknown game type");
     }
@@ -37,15 +38,6 @@ public class FileHandeler {
     }
   }
 
-  public static void deleteGame(String name, String type) {
-    if (type.equals("LaderGame")) {
-      deleteLaderGame(name);
-    } else if (type.equals("Risk")) {
-      deleteRiskGame(name);
-    } else {
-      throw new IllegalArgumentException("Unknown game type");
-    }
-  }
 
   public static HashMap<String, String> getSavedGames() {
     HashMap<String, String> savedGames = new HashMap<>();
@@ -100,7 +92,7 @@ public class FileHandeler {
     }
   }
 
-  private static void deleteLaderGame(String name) {
+  public static void deleteGame(String name) {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -108,13 +100,11 @@ public class FileHandeler {
     file.delete();
     file = new File(name + ".currentPlayer.txt");
     file.delete();
-    file = new File(name + ".boardLaderGame.json");
+    file = new File(name + ".board.json");
     file.delete();
     removeGameFromSavedGames(name);
 
   }
-
-  private static void deleteRiskGame(String name){}
   
   private static void savePlyers(Game game) {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
@@ -183,34 +173,47 @@ public class FileHandeler {
     return player;
   }
 
-  private static void saveLaderGame(LaderGame game) {
+  private static void saveLaderGame(Game game) {
     savePlyers(game);
     saveCurrentPlayer(game);
-    saveBoardLadderGame(game);
+    saveBoardLadderGame((LaderGame)game);
     addGameToSavedGames(game);
   }
 
+
+  private static void saveRiskGame(Game game) {
+    savePlyers(game);
+    saveCurrentPlayer(game);
+    saveBoardRisk((Risk) game);
+    addGameToSavedGames(game);
+  }
+  
   private static LaderGame loadLaderGame(String name) {
     ArrayList<Player> players = loadPlyers(name);
     return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
   }
-  
+
+  private static Risk loadRiskGame(String name) {
+    ArrayList<Player> players = loadPlyers(name);
+    return new Risk(players.size(), name, players, loadBoardRisk(name), loadCurrentPlayer(name, players));
+  }
+
   private static BoardLaderGame loadBoardLadderGame(String name) {
-    return BoardLaderGame.loadBoardLadergame(name);
+    return BoardLaderGame.loadBoard(name);
+  }
+  
+  private static BoardRisk loadBoardRisk(String name) {
+    return BoardRisk.loadBoard(name);
   }
 
   private static void saveBoardLadderGame(LaderGame game) {
-    game.getBoard().saveBoardLadergame(game.getGameName());
+    game.getBoard().saveBoard(game.getGameName());
   }
 
-  private static void saveRiskGame(Risk game) {
-    // Implement the logic to save the Risk object to a file
+  private static void saveBoardRisk(Risk game) {
+    game.getBoard().saveBoard(game.getGameName());
   }
 
-  private static Risk loadRiskGame(String name) {
-    // Implement the logic to load a Risk object from a file
-    return null;
-  }
 
 
 }
