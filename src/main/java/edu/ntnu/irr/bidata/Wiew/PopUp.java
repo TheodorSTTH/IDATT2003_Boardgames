@@ -56,25 +56,49 @@ public class PopUp {
     }
 
 
-/**
-     * Prompts the user to select a number between 1 and the given max number from a dropdown menu.
+/** !!!This method is partly created by ChatGPT!!!
+     * Prompts the user to select a number between 1 and the given max number from a dropdown menu. 
      *
      * @param max The maximum number the user can select.
      * @return The number selected by the user.
      */
-    public static int promptForNumberInRange(String title, int max) {
-        List<Integer> choices = new ArrayList<>();
-        for (int i = 1; i <= max; i++) {
-            choices.add(i);
-        }
-
-        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
-        dialog.setTitle(title);
-        dialog.setHeaderText(null);
-        dialog.setContentText("Choose a number between 1 and " + max + ":");
-
-        Optional<Integer> result = dialog.showAndWait();
-
-        return result.orElse(1); // Defaults to 1 if user cancels or closes
+public static int promptForNumberInRange(String title, int max) {
+    List<Integer> choices = new ArrayList<>();
+    for (int i = 1; i <= max; i++) {
+        choices.add(i);
     }
+
+    ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
+    dialog.setTitle(title);
+    dialog.setHeaderText(null);
+    dialog.setContentText("Choose a number between 1 and " + max + ":");
+
+    Optional<Integer> result = dialog.showAndWait();
+
+    return result.orElse(1); // Defaults to 1 if user cancels or closes
+}
+    
+
+/**
+ * Shows a popup with a quiz question and checks if the answer is correct.
+ *
+ * @param question The question to display.
+ * @param correctAnswer The correct answer to compare the user input with.
+ * @return true if the user answers correctly, false otherwise.
+ */
+public static boolean askQuestion(String question, String correctAnswer) {
+    TextInputDialog dialog = new TextInputDialog();
+    dialog.setTitle("Quiz Question");
+    dialog.setHeaderText(null);
+    dialog.setContentText(question);
+
+    Optional<String> result = dialog.showAndWait();
+
+    if (result.isPresent()) {
+        String userAnswer = result.get().trim();
+        return userAnswer.equalsIgnoreCase(correctAnswer.trim());
+    } else {
+        return false; // User canceled or closed the dialog
+    }
+}
 }

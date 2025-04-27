@@ -7,9 +7,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.List;
+import java.util.Random;
 
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.Question;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import javafx.concurrent.Task;
 import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
@@ -213,6 +214,39 @@ public class FileHandeler {
   private static void saveBoardRisk(Risk game) {
     game.getBoard().saveBoard(game.getGameName());
   }
+
+
+  public static List<String> getRandomQizzQestion() {
+    List<String> questionAndAnswer = new ArrayList<>();
+    List<String> allLines = new ArrayList<>();
+    try {
+        Scanner scanner = new Scanner(new File("QizzQestion.txt"));
+        // Read all lines into a list
+        while (scanner.hasNextLine()) {
+            allLines.add(scanner.nextLine());
+        }
+        scanner.close();
+
+        // Pick a random line if the file is not empty
+        if (!allLines.isEmpty()) {
+            Random random = new Random();
+            String randomLine = allLines.get(random.nextInt(allLines.size()));
+
+            // Split the line into question and answer
+            // Assuming the format is like: "Question;Answer"
+            String[] parts = randomLine.split(";", 2);
+
+            if (parts.length == 2) {
+                questionAndAnswer.add(parts[0].trim()); // index 0: question
+                questionAndAnswer.add(parts[1].trim()); // index 1: answer
+            }
+        }
+
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    return questionAndAnswer;
+}
 
 
 

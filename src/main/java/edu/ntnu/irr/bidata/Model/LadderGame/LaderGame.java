@@ -3,12 +3,7 @@ package edu.ntnu.irr.bidata.Model.LadderGame;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Controler.UILaderGame;
-import edu.ntnu.irr.bidata.Model.Die;
 import edu.ntnu.irr.bidata.Model.Dice;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
