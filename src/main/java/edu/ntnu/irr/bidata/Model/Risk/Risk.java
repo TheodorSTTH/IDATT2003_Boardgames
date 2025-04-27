@@ -105,7 +105,7 @@ public class Risk extends Game {
 
         if (board.getUnits(defender) == 0) {
             board.takeControlOfCountry(defender, currentPlayer.getName());
-            board.tranferTroops(attacker, defender, PopUp.promptForNumberInRange(board.getUnits(attacker) - 1));
+            board.tranferTroops(attacker, defender, PopUp.promptForNumberInRange("How many trops do you want to move to the new country",board.getUnits(attacker) - 1));
             return true;
 
         } else {

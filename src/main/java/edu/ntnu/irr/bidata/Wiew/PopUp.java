@@ -62,14 +62,14 @@ public class PopUp {
      * @param max The maximum number the user can select.
      * @return The number selected by the user.
      */
-    public static int promptForNumberInRange(int max) {
+    public static int promptForNumberInRange(String title, int max) {
         List<Integer> choices = new ArrayList<>();
         for (int i = 1; i <= max; i++) {
             choices.add(i);
         }
 
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
-        dialog.setTitle("Select Number");
+        dialog.setTitle(title);
         dialog.setHeaderText(null);
         dialog.setContentText("Choose a number between 1 and " + max + ":");
 

@@ -48,7 +48,7 @@ public class BoardLaderGame {
 
 
     private void setUpLadersClasic() {
-        events.put(1, TileMaker.newLadder(40));
+        events.put(2, TileMaker.newLadder(40));
         events.put(8, TileMaker.newLadder(10));
         events.put(24, TileMaker.newLadder(5));
         events.put(33, TileMaker.newLadder(3));

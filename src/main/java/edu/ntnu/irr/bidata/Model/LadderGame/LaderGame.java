@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Controler.UILaderGame;
 import edu.ntnu.irr.bidata.Model.Die;
+import edu.ntnu.irr.bidata.Model.Dice;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
 
@@ -16,7 +17,7 @@ import edu.ntnu.irr.bidata.Model.Player;
 
 public class LaderGame extends Game {
     private final BoardLaderGame board;
-    private final Die die = new Die(6);
+    private final Dice dice = new Dice(2, 6);
 
     public LaderGame(int amountOfPlayers, String gameName) {
         super(amountOfPlayers, gameName);
@@ -44,7 +45,7 @@ public class LaderGame extends Game {
     }
 
     public void takeAction() {
-        board.move(currentPlayer, die.roll());
+        board.move(currentPlayer, dice.roll());
         if (board.hasWone(currentPlayer)) {
             endGame(currentPlayer);
         }
