@@ -6,23 +6,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import edu.ntnu.irr.bidata.Model.FileHandeler;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.EventMaker;
 
 public class BoardLaderGame {
-    @JsonIgnore
+    @JsonProperty
     private HashMap<Integer, Event> events = new HashMap<Integer, Event>();
-    @JsonIgnore
+    @JsonProperty
     private int endTile = 90;
+    @JsonProperty
     private HashMap<String, Integer> playerPositions = new HashMap<String, Integer>();
 
     public BoardLaderGame() {
-        setUpLadersClasic();
+        // Default constructor for Json
+    }
+    
+    
+    public BoardLaderGame(String boardType) {
+        events = FileHandeler.loadLaderGameEvents(boardType);
+
     }
 
     public void setPlayers(ArrayList<Player> players) {
@@ -44,6 +53,10 @@ public class BoardLaderGame {
 
     public HashMap<String, Integer> getPlayerPositions() {
         return playerPositions;
+    }
+
+    public void addEvent(int tile, Event event) {
+        events.put(tile, event);
     }
 
 
