@@ -22,7 +22,7 @@ public class StartPageCard extends VBox {
     amountOfPlayersComboBox.setPromptText("Select Number of Players");
 
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
-    WhatGameComboBox.getItems().addAll("Lader Game", "Risk");
+    WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
     WhatGameComboBox.setPromptText("Select a Game");
 
     TextField gameNameField = new TextField();

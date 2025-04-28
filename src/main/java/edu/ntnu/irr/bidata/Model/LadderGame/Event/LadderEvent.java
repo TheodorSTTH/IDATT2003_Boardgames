@@ -1,14 +1,26 @@
 package edu.ntnu.irr.bidata.Model.LadderGame.Event;
 
 public class LadderEvent extends Event {
-  int destination = 0;
+  private int destination;
+
+  public LadderEvent() {
+      // For Json Saving and Loading
+  }
 
   public LadderEvent(int destination) {
-    this.destination = destination;
+      this.destination = destination;
   }
 
   @Override
   public int Action() {
-    return destination;
+      return destination;
+  }
+
+  public int getDestination() {
+      return destination;
+  }
+
+  public void setDestination(int destination) {
+      this.destination = destination;
   }
 }

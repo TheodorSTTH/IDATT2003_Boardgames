@@ -12,13 +12,17 @@ import java.util.Random;
 
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
+import edu.ntnu.irr.bidata.NewLogic.models.Board;
 import javafx.concurrent.Task;
 import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
+import edu.ntnu.irr.bidata.Model.LadderGame.Event.EventMaker;
+import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
+
 
 
 public class FileHandeler {
-  
+
   public static void saveGame(Game game) {
     if (game instanceof LaderGame) {
       saveLaderGame(game);
@@ -39,7 +43,6 @@ public class FileHandeler {
     }
   }
 
-
   public static HashMap<String, String> getSavedGames() {
     HashMap<String, String> savedGames = new HashMap<>();
     try {
@@ -53,7 +56,7 @@ public class FileHandeler {
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
-    
+
     return savedGames;
   }
 
@@ -62,7 +65,7 @@ public class FileHandeler {
       throw new IllegalArgumentException("Invalid File Name");
     }
     try (FileWriter fileWriter = new FileWriter("savedGames.txt", true);
-      PrintWriter writer = new PrintWriter(fileWriter)) {
+        PrintWriter writer = new PrintWriter(fileWriter)) {
       writer.println(game.getGameName() + "," + game.getGameType());
     } catch (IOException e) {
       e.printStackTrace();
@@ -106,7 +109,7 @@ public class FileHandeler {
     removeGameFromSavedGames(name);
 
   }
-  
+
   private static void savePlyers(Game game) {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
@@ -177,10 +180,9 @@ public class FileHandeler {
   private static void saveLaderGame(Game game) {
     savePlyers(game);
     saveCurrentPlayer(game);
-    saveBoardLadderGame((LaderGame)game);
+    saveBoardLadderGame((LaderGame) game);
     addGameToSavedGames(game);
   }
-
 
   private static void saveRiskGame(Game game) {
     savePlyers(game);
@@ -188,7 +190,7 @@ public class FileHandeler {
     saveBoardRisk((Risk) game);
     addGameToSavedGames(game);
   }
-  
+
   private static LaderGame loadLaderGame(String name) {
     ArrayList<Player> players = loadPlyers(name);
     return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
@@ -202,7 +204,7 @@ public class FileHandeler {
   private static BoardLaderGame loadBoardLadderGame(String name) {
     return BoardLaderGame.loadBoard(name);
   }
-  
+
   private static BoardRisk loadBoardRisk(String name) {
     return BoardRisk.loadBoard(name);
   }
@@ -215,39 +217,60 @@ public class FileHandeler {
     game.getBoard().saveBoard(game.getGameName());
   }
 
-
   public static List<String> getRandomQizzQestion() {
     List<String> questionAndAnswer = new ArrayList<>();
     List<String> allLines = new ArrayList<>();
     try {
-        Scanner scanner = new Scanner(new File("QizzQestion.txt"));
-        // Read all lines into a list
-        while (scanner.hasNextLine()) {
-            allLines.add(scanner.nextLine());
+      Scanner scanner = new Scanner(new File("QizzQestion.txt"));
+      // Read all lines into a list
+      while (scanner.hasNextLine()) {
+        allLines.add(scanner.nextLine());
+      }
+      scanner.close();
+
+      // Pick a random line if the file is not empty
+      if (!allLines.isEmpty()) {
+        Random random = new Random();
+        String randomLine = allLines.get(random.nextInt(allLines.size()));
+
+        // Split the line into question and answer
+        // Assuming the format is like: "Question;Answer"
+        String[] parts = randomLine.split(";", 2);
+
+        if (parts.length == 2) {
+          questionAndAnswer.add(parts[0].trim()); // index 0: question
+          questionAndAnswer.add(parts[1].trim()); // index 1: answer
         }
-        scanner.close();
-
-        // Pick a random line if the file is not empty
-        if (!allLines.isEmpty()) {
-            Random random = new Random();
-            String randomLine = allLines.get(random.nextInt(allLines.size()));
-
-            // Split the line into question and answer
-            // Assuming the format is like: "Question;Answer"
-            String[] parts = randomLine.split(";", 2);
-
-            if (parts.length == 2) {
-                questionAndAnswer.add(parts[0].trim()); // index 0: question
-                questionAndAnswer.add(parts[1].trim()); // index 1: answer
-            }
-        }
+      }
 
     } catch (FileNotFoundException e) {
-        e.printStackTrace();
+      e.printStackTrace();
     }
     return questionAndAnswer;
-}
+  }
 
+  public static HashMap<Integer, Event> loadLaderGameEvents(String boardType) {
+    HashMap<Integer, Event> events = new HashMap<>();
 
+    try {
+      Scanner scanner = new Scanner(new File("LaderSetup"+boardType + ".txt"));
+      while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        String[] data = line.split(";");
+        String eventType = data[0];
+        int tile = Integer.parseInt(data[1]);
+        if (eventType.equals("ladder")) {
+          int destination = Integer.parseInt(data[2]);
+          events.put(tile, EventMaker.newLadder(destination));
+        } else if (eventType.equals("qestion")) {
+          events.put(tile, EventMaker.newQizzTile(tile));
+        }
+      }
+      scanner.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    return events;
 
+  }
 }
