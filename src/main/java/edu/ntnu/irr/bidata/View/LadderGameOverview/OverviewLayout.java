@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Wiew.LadderGameOverview;
+package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
 import javafx.scene.layout.StackPane;
 

@@ -1,26 +1,24 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Wiew.PopUp;
+import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
+import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
 import java.util.HashMap;
 import java.util.List;
 
 
 
-public class UIRisk {
+public class UIRisk extends UI {
   private static Risk risk;
 
   public static void setRisk(Risk risk) {
     UIRisk.risk = risk;
   }
 
-  public static void toRiskGamePage(HashMap<String, Country> countrys) {
+  public static void updateRiskGamePage(HashMap<String, Country> countries) {
   }
 
-  public static void updateRiskGamePage(HashMap<String, Country> countrys) {
-  }
-
-  public static void openPlaceTropesMenu(int tropes, List<Country> countryNames) {
+  public static void openPlaceTroopsMenu(int troops, List<Country> countryNames) {
   }
   
   public static void openAttackMenu(HashMap<Country, List<Country>> attackOptions) {
@@ -29,12 +27,12 @@ public class UIRisk {
   public static void updateAttackMenu(HashMap<Country, List<Country>> attackOptions) {
   }
 
-  public static void toTransferMenu() {
+  public static void toTransferTroopsMenu() {
   }
   
-  public static void placeTropes(String Contery, int tropesPlased) {
-    if (!risk.placeTropes(Contery, tropesPlased)) {
-      PopUp.showInfo("To few trops", "You can not place more tropes than you have available");
+  public static void placeTropes(String country, int troopsPlaced) {
+    if (!risk.placeTropes(country, troopsPlaced)) {
+      PopUp.showInfo("Too few troops", "You can not place more tropes than you have available");
     }
   }
   
@@ -42,7 +40,7 @@ public class UIRisk {
     risk.attackOnce(attacker, defender);
   }
 
-  public static void attackUntilResolt(String attacker, String defender) {
+  public static void attackUntilResult(String attacker, String defender) {
     risk.attackUntilResolt(attacker, defender);
   }
 
@@ -50,6 +48,5 @@ public class UIRisk {
     if (risk.transferTroops(fromCountry, toCountry, troops)){
       risk.endTurn();
     }
-
   }
 }

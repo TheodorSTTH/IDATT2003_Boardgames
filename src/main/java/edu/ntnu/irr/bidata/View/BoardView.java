@@ -1,7 +1,5 @@
-package edu.ntnu.irr.bidata.Wiew;
+package edu.ntnu.irr.bidata.View;
 
-import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
-import edu.ntnu.irr.bidata.Wiew.Tile;
 import java.util.ArrayList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;

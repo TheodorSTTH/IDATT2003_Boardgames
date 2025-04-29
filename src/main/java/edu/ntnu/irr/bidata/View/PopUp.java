@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Wiew;
+package edu.ntnu.irr.bidata.View;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

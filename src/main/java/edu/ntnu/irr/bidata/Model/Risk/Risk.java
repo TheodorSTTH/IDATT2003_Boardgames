@@ -1,13 +1,13 @@
 package edu.ntnu.irr.bidata.Model.Risk;
 
-import java.lang.reflect.Array;
-
-import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Controler.UIRisk;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Wiew.PopUp;
+import edu.ntnu.irr.bidata.View.LadderGameOverview.OverviewPage;
+import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.Model.Dice;
+import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class Risk extends Game {
         super.init();
         board.setUpBoard(getPlayerNames());
         UIRisk.setRisk(this);
-        UIRisk.toRiskGamePage(board.getCountries());
+        NavigationManager.switchScene(new RiskPage(board.getCountries()));
         startTurn();
     }
 
@@ -48,7 +48,7 @@ public class Risk extends Game {
             currentPlayer = getNextPlayer();
         }
         tropesAvailable = board.NewTropes(currentPlayer.getName());
-        UIRisk.openPlaceTropesMenu(tropesAvailable, board.getCountrysControldByPlayer(currentPlayer.getName()));
+        UIRisk.openPlaceTroopsMenu(tropesAvailable, board.getCountrysControldByPlayer(currentPlayer.getName()));
 
     }
 

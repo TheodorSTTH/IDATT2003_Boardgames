@@ -2,9 +2,11 @@ package edu.ntnu.irr.bidata.Controler;
 
 
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import edu.ntnu.irr.bidata.View.LadderGameOverview.OverviewPage;
 
 public class UILaderGame extends UI {
   private static LaderGame ladderGame;
+  protected static final OverviewPage overview = new OverviewPage();
 
   public static void setLadderGame(LaderGame ladderGame) {
     UILaderGame.ladderGame = ladderGame;
@@ -14,17 +16,4 @@ public class UILaderGame extends UI {
     ladderGame.takeAction();
     overview.getLayout().getBoardCard().updateBoard(ladderGame.getPlayerPositions());
   }
-
-    public static void toLaderGamePage() {
-    System.out.println("Switching to OverviewPage...");
-    MyWindow.getPrimaryStage().hide();
-    MyWindow.getPrimaryStage().setMaximized(false);
-    MyWindow.getPrimaryStage().setScene(overview);
-    MyWindow.getPrimaryStage().setMaximized(true);
-    MyWindow.getPrimaryStage().show();
-    UI.overview.getLayout().getBoardCard().updateBoard(ladderGame.getPlayerPositions());
-  } 
-
-
-   
 }
