@@ -88,5 +88,4 @@ public abstract class Game {
         }
         return names;
     }
-    
 }

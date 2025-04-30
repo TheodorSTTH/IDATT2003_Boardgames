@@ -1,5 +1,6 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
+import edu.ntnu.irr.bidata.View.LadderGameOverview.OverviewPage;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
@@ -19,6 +20,11 @@ public class UIRisk extends UI {
   }
 
   public static void openPlaceTroopsMenu(int troops, List<Country> countryNames) {
+  }
+
+  public void startSavedGame() { // TODO: Fix, doesn't work
+    UIRisk.setRisk(risk);
+    NavigationManager.switchScene(new RiskPage(risk.getBoard().getCountries()));
   }
   
   public static void openAttackMenu(HashMap<Country, List<Country>> attackOptions) {

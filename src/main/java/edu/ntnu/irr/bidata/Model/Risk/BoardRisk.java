@@ -248,100 +248,96 @@ public class BoardRisk {
   
 
   private void setUpClasicRisk() {
-    countries.put("Alaska", new Country("Alaska", List.of("Northwest Territory", "Alberta", "Kamchatka")));
+    countries.put("Alaska",
+        new Country("Alaska", List.of("Northwest Territory", "Alberta", "Kamchatka"), 0.02, 0.10));
     countries.put("Northwest Territory",
-        new Country("Northwest Territory", List.of("Alaska", "Alberta", "Ontario", "Greenland")));
+        new Country("Northwest Territory", List.of("Alaska", "Alberta", "Ontario", "Greenland"), 0.12, 0.10));
     countries.put("Alberta",
-        new Country("Alberta", List.of("Alaska", "Northwest Territory", "Ontario", "Western United States")));
+        new Country("Alberta", List.of("Alaska", "Northwest Territory", "Ontario", "Western United States"), 0.15, 0.18));
     countries.put("Ontario",
-        new Country("Ontario", List.of("Northwest Territory", "Alberta", "Greenland", "Quebec", "Eastern United States",
-            "Western United States")));
+        new Country("Ontario", List.of("Northwest Territory", "Alberta", "Greenland", "Quebec", "Eastern United States", "Western United States"), 0.25, 0.22));
     countries.put("Greenland",
-        new Country("Greenland", List.of("Northwest Territory", "Ontario", "Quebec", "Iceland")));
+        new Country("Greenland", List.of("Northwest Territory", "Ontario", "Quebec", "Iceland"), 0.28, 0.05));
     countries.put("Quebec",
-        new Country("Quebec", List.of("Greenland", "Ontario", "Eastern United States")));
-    countries.put("Eastern United States",
-        new Country("Eastern United States", List.of("Ontario", "Quebec", "Western United States", "Central America")));
+        new Country("Quebec", List.of("Greenland", "Ontario", "Eastern United States"), 0.32, 0.20));
     countries.put("Western United States",
-        new Country("Western United States",
-            List.of("Alberta", "Ontario", "Eastern United States", "Central America")));
+        new Country("Western United States", List.of("Alberta", "Ontario", "Eastern United States", "Central America"), 0.20, 0.30));
+    countries.put("Eastern United States",
+        new Country("Eastern United States", List.of("Ontario", "Quebec", "Western United States", "Central America"), 0.30, 0.36));
     countries.put("Central America",
-        new Country("Central America", List.of("Western United States", "Eastern United States", "Venezuela")));
-    countries.put("Venezuela",
-        new Country("Venezuela", List.of("Central America", "Peru", "Brazil")));
-    countries.put("Peru", new Country("Peru", List.of("Venezuela", "Brazil", "Argentina")));
-    countries.put("Brazil",
-        new Country("Brazil", List.of("Venezuela", "Peru", "Argentina", "North Africa")));
-    countries.put("Argentina", new Country("Argentina", List.of("Peru", "Brazil")));
-    countries.put("Iceland", new Country("Iceland", List.of("Greenland", "Scandinavia", "Great Britain")));
-    countries.put("Scandinavia",
-        new Country("Scandinavia", List.of("Iceland", "Great Britain", "Northern Europe", "Ukraine")));
-    countries.put("Great Britain",
-        new Country("Great Britain", List.of("Iceland", "Scandinavia", "Northern Europe", "Western Europe")));
-    countries.put("Northern Europe",
-        new Country("Northern Europe",
-            List.of("Scandinavia", "Great Britain", "Western Europe", "Southern Europe", "Ukraine")));
-    countries.put("Western Europe",
-        new Country("Western Europe", List.of("Great Britain", "Northern Europe", "Southern Europe", "North Africa")));
-    countries.put("Southern Europe",
-        new Country("Southern Europe",
-            List.of("Northern Europe", "Western Europe", "Ukraine", "Middle East", "Egypt", "North Africa")));
-    countries.put("Ukraine",
-        new Country("Ukraine", List.of("Scandinavia", "Northern Europe", "Southern Europe", "Ural", "Afghanistan",
-            "Middle East")));
-    countries.put("North Africa",
-        new Country("North Africa", List.of("Brazil", "Western Europe", "Southern Europe", "Egypt", "East Africa",
-            "Congo")));
-    countries.put("Egypt",
-        new Country("Egypt", List.of("Southern Europe", "North Africa", "East Africa", "Middle East")));
-    countries.put("East Africa",
-        new Country("East Africa",
-            List.of("North Africa", "Egypt", "Congo", "South Africa", "Madagascar", "Middle East")));
-    countries.put("Congo",
-        new Country("Congo", List.of("North Africa", "East Africa", "South Africa")));
-    countries.put("South Africa",
-        new Country("South Africa", List.of("Congo", "East Africa", "Madagascar")));
-    countries.put("Madagascar", new Country("Madagascar", List.of("South Africa", "East Africa")));
-    countries.put("Ural",
-        new Country("Ural", List.of("Ukraine", "Siberia", "China", "Afghanistan")));
-    countries.put("Siberia",
-        new Country("Siberia", List.of("Ural", "China", "Mongolia", "Irkutsk", "Yakutsk")));
-    countries.put("China",
-        new Country("China", List.of("Ural", "Siberia", "Mongolia", "Afghanistan", "India", "Siam")));
-    countries.put("Afghanistan",
-        new Country("Afghanistan", List.of("Ukraine", "Ural", "China", "India", "Middle East")));
-    countries.put("Middle East",
-        new Country("Middle East",
-            List.of("Southern Europe", "Ukraine", "Afghanistan", "India", "East Africa", "Egypt")));
-    countries.put("India",
-        new Country("India", List.of("China", "Afghanistan", "Middle East", "Siam")));
-    countries.put("Siam", new Country("Siam", List.of("China", "India", "Indonesia")));
-    countries.put("Mongolia",
-        new Country("Mongolia", List.of("Siberia", "China", "Irkutsk", "Japan", "Kamchatka")));
-    countries.put("Irkutsk",
-        new Country("Irkutsk", List.of("Siberia", "Yakutsk", "Kamchatka", "Mongolia")));
-    countries.put("Yakutsk",
-        new Country("Yakutsk", List.of("Siberia", "Irkutsk", "Kamchatka")));
-    countries.put("Kamchatka",
-        new Country("Kamchatka", List.of("Alaska", "Japan", "Mongolia", "Irkutsk", "Yakutsk")));
-    countries.put("Japan", new Country("Japan", List.of("Mongolia", "Kamchatka")));
-    countries.put("Indonesia", new Country("Indonesia", List.of("Siam", "New Guinea", "Western Australia")));
-    countries.put("New Guinea",
-        new Country("New Guinea", List.of("Indonesia", "Eastern Australia", "Western Australia")));
-    countries.put("Western Australia",
-        new Country("Western Australia", List.of("Indonesia", "New Guinea", "Eastern Australia")));
-    countries.put("Eastern Australia",
-        new Country("Eastern Australia", List.of("New Guinea", "Western Australia")));
+        new Country("Central America", List.of("Western United States", "Eastern United States", "Venezuela"), 0.27, 0.50));
 
-    continens.put("North America", List.of("Alaska", "Northwest Territory", "Alberta", "Ontario", "Greenland", "Quebec",
-        "Eastern United States", "Western United States", "Central America"));
-    continens.put("South America", List.of("Venezuela", "Peru", "Brazil", "Argentina"));
-    continens.put("Europe", List.of("Iceland", "Scandinavia", "Great Britain", "Northern Europe", "Western Europe",
-        "Southern Europe", "Ukraine"));
-    continens.put("Africa", List.of("North Africa", "Egypt", "East Africa", "Congo", "South Africa", "Madagascar"));
-    continens.put("Asia", List.of("Ural", "Siberia", "China", "Afghanistan", "Middle East", "India", "Siam", "Mongolia",
-        "Irkutsk", "Yakutsk", "Kamchatka", "Japan"));
-    continens.put("Australia", List.of("Indonesia", "New Guinea", "Western Australia", "Eastern Australia"));
+    countries.put("Venezuela",
+        new Country("Venezuela", List.of("Central America", "Peru", "Brazil"), 0.30, 0.60));
+    countries.put("Peru",
+        new Country("Peru", List.of("Venezuela", "Brazil", "Argentina"), 0.25, 0.68));
+    countries.put("Brazil",
+        new Country("Brazil", List.of("Venezuela", "Peru", "Argentina", "North Africa"), 0.37, 0.68));
+    countries.put("Argentina",
+        new Country("Argentina", List.of("Peru", "Brazil"), 0.25, 0.80));
+
+    countries.put("Iceland",
+        new Country("Iceland", List.of("Greenland", "Scandinavia", "Great Britain"), 0.36, 0.10));
+    countries.put("Scandinavia",
+        new Country("Scandinavia", List.of("Iceland", "Great Britain", "Northern Europe", "Ukraine"), 0.46, 0.12));
+    countries.put("Great Britain",
+        new Country("Great Britain", List.of("Iceland", "Scandinavia", "Northern Europe", "Western Europe"), 0.42, 0.19));
+    countries.put("Northern Europe",
+        new Country("Northern Europe", List.of("Scandinavia", "Great Britain", "Western Europe", "Southern Europe", "Ukraine"), 0.54, 0.17));
+    countries.put("Western Europe",
+        new Country("Western Europe", List.of("Great Britain", "Northern Europe", "Southern Europe", "North Africa"), 0.50, 0.25));
+    countries.put("Southern Europe",
+        new Country("Southern Europe", List.of("Northern Europe", "Western Europe", "Ukraine", "Middle East", "Egypt", "North Africa"), 0.54, 0.32));
+    countries.put("Ukraine",
+        new Country("Ukraine", List.of("Scandinavia", "Northern Europe", "Southern Europe", "Ural", "Afghanistan", "Middle East"), 0.60, 0.22));
+
+    countries.put("North Africa",
+        new Country("North Africa", List.of("Brazil", "Western Europe", "Southern Europe", "Egypt", "East Africa", "Congo"), 0.40, 0.6));
+    countries.put("Egypt",
+        new Country("Egypt", List.of("Southern Europe", "North Africa", "East Africa", "Middle East"), 0.55, 0.38));
+    countries.put("East Africa",
+        new Country("East Africa", List.of("North Africa", "Egypt", "Congo", "South Africa", "Madagascar", "Middle East"), 0.70, 0.50));
+    countries.put("Congo",
+        new Country("Congo", List.of("North Africa", "East Africa", "South Africa"), 0.62, 0.58));
+    countries.put("South Africa",
+        new Country("South Africa", List.of("Congo", "East Africa", "Madagascar"), 0.66, 0.68));
+    countries.put("Madagascar",
+        new Country("Madagascar", List.of("South Africa", "East Africa"), 0.65, 0.77));
+
+    countries.put("Ural",
+        new Country("Ural", List.of("Ukraine", "Siberia", "China", "Afghanistan"), 0.73, 0.18));
+    countries.put("Siberia",
+        new Country("Siberia", List.of("Ural", "China", "Mongolia", "Irkutsk", "Yakutsk"), 0.82, 0.14));
+    countries.put("Yakutsk",
+        new Country("Yakutsk", List.of("Siberia", "Irkutsk", "Kamchatka"), 0.90, 0.10));
+    countries.put("Irkutsk",
+        new Country("Irkutsk", List.of("Siberia", "Yakutsk", "Kamchatka", "Mongolia"), 0.90, 0.18));
+    countries.put("Kamchatka",
+        new Country("Kamchatka", List.of("Alaska", "Japan", "Mongolia", "Irkutsk", "Yakutsk"), 0.98, 0.10));
+
+    countries.put("Mongolia",
+        new Country("Mongolia", List.of("Siberia", "China", "Irkutsk", "Japan", "Kamchatka"), 0.88, 0.27));
+    countries.put("China",
+        new Country("China", List.of("Ural", "Siberia", "Mongolia", "Afghanistan", "India", "Siam"), 0.80, 0.34));
+    countries.put("Afghanistan",
+        new Country("Afghanistan", List.of("Ukraine", "Ural", "China", "India", "Middle East"), 0.66, 0.3));
+    countries.put("Middle East",
+        new Country("Middle East", List.of("Southern Europe", "Ukraine", "Afghanistan", "India", "East Africa", "Egypt"), 0.66, 0.35));
+    countries.put("India",
+        new Country("India", List.of("China", "Afghanistan", "Middle East", "Siam"), 0.70, 0.40));
+    countries.put("Siam",
+        new Country("Siam", List.of("China", "India", "Indonesia"), 0.80, 0.48));
+    countries.put("Japan",
+        new Country("Japan", List.of("Mongolia", "Kamchatka"), 0.95, 0.27));
+
+    countries.put("Indonesia",
+        new Country("Indonesia", List.of("Siam", "New Guinea", "Western Australia"), 0.88, 0.60));
+    countries.put("New Guinea",
+        new Country("New Guinea", List.of("Indonesia", "Eastern Australia", "Western Australia"), 0.96, 0.70));
+    countries.put("Western Australia",
+        new Country("Western Australia", List.of("Indonesia", "New Guinea", "Eastern Australia"), 0.90, 0.85));
+    countries.put("Eastern Australia",
+        new Country("Eastern Australia", List.of("New Guinea", "Western Australia"), 0.85, 0.85));
 
     continentBonus.put("North America", 5);
     continentBonus.put("South America", 2);

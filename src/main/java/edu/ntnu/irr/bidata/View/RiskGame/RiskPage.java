@@ -2,7 +2,6 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
-import edu.ntnu.irr.bidata.View.RiskBoardView;
 import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,7 +9,7 @@ import javafx.scene.layout.HBox;
 
 public class RiskPage extends Scene {
   RiskBoardView board;
-  //RiskSidePanelView sidePanel;
+  RiskSidePanelView sidePanel;
 
   public RiskPage(HashMap<String, Country> countries) {
     super(new HBox());
@@ -20,12 +19,14 @@ public class RiskPage extends Scene {
       System.err.println("Warning: style.css not found!");
     }
     this.board = new RiskBoardView(countries);
+    this.sidePanel = new RiskSidePanelView();
+    updateViews(countries);
     Button saveButton = new Button("Save current game");
     saveButton.setOnAction(e -> {
       UI.saveGame();
     });
     HBox root = (HBox) this.getRoot();
-    root.getChildren().addAll(board, saveButton);
+    root.getChildren().addAll(sidePanel, board, saveButton);
   }
 
   /**
@@ -35,6 +36,6 @@ public class RiskPage extends Scene {
    * @param countries is a hashmap which links a specific country name to a country object
    * */
   public void updateViews(HashMap<String, Country> countries) {
-    board.renderBoard(countries);
+    sidePanel.render();
   }
 }
