@@ -18,7 +18,7 @@ public class StartPageCard extends VBox {
     label.getStyleClass().addAll("styled-label", "w-p-text");
 
     ComboBox<Integer> amountOfPlayersComboBox = new ComboBox<>();
-    amountOfPlayersComboBox.getItems().addAll(2, 3, 4, 5, 6);
+    amountOfPlayersComboBox.getItems().addAll(2, 3, 4, 5);
     amountOfPlayersComboBox.setPromptText("Select Number of Players");
 
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
