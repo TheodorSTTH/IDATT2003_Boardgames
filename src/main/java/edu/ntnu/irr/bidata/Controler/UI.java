@@ -7,7 +7,7 @@ import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.View.StartPage.StartPagePage;
 import edu.ntnu.irr.bidata.Model.FileHandeler;
 
-
+// TODO: Separate start page logic form UI class
 public class UI {
   private static Game game;
 

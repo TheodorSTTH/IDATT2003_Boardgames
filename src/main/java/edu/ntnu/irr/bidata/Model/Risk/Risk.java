@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata.Model.Risk;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
+import edu.ntnu.irr.bidata.Controler.UILaderGame;
 import edu.ntnu.irr.bidata.Controler.UIRisk;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
@@ -36,12 +37,17 @@ public class Risk extends Game {
         super.init();
         board.setUpBoard(getPlayerNames());
         UIRisk.setRisk(this);
-        NavigationManager.switchScene(new RiskPage(board.getCountries()));
+        RiskPage riskPage = new RiskPage(this);
+        UIRisk.setRiskPage(riskPage); // TODO: Avoid tight coupling
+        NavigationManager.switchScene(riskPage);
         startTurn();
     }
 
     public void startSavedGame() {
-
+        RiskPage riskPage = new RiskPage(this);
+        UIRisk.setRiskPage(riskPage); // TODO: Avoid tight coupling
+        UIRisk.setRisk(this);
+        NavigationManager.switchScene(riskPage);
     }
 
     private void startTurn() {
@@ -49,8 +55,7 @@ public class Risk extends Game {
             currentPlayer = getNextPlayer();
         }
         tropesAvailable = board.NewTropes(currentPlayer.getName());
-        UIRisk.openPlaceTroopsMenu(tropesAvailable, board.getCountrysControldByPlayer(currentPlayer.getName()));
-
+        // * Open place troops menu after this
     }
 
     public void endTurn() {
@@ -61,17 +66,29 @@ public class Risk extends Game {
         startTurn();
     }
 
-    public boolean placeTropes(String Conteris, int tropesPlased) {
-        if (tropesPlased <= tropesAvailable) {
-            board.placeTropes(Conteris, tropesPlased);
-            tropesAvailable -= tropesPlased;
+    public boolean placeTroops(String country, int troopsPlaced) {
+        if (troopsPlaced <= tropesAvailable) {
+            board.placeTropes(country, troopsPlaced);
+            tropesAvailable -= troopsPlaced;
             if (tropesAvailable == 0) {
-                UIRisk.openAttackMenu(board.getAttackOptions(currentPlayer.getName()));
+                // * Open attack menu
                 return true;
             }
             return true;
         }
         return false;
+    }
+
+    public List<Country> getCountriesCurrentPlayerCanMoveFrom() {
+        return getBoard().getCountrysControldByPlayer(getCurrentPlayer().getName())
+            .stream().filter(country -> country.getArmies() > 1)
+            .toList();
+    }
+    public List<Country> getCountriesCurrentPlayerCanAttackFrom() {
+        return getBoard().getAttackOptions(getCurrentPlayer().getName()).keySet().stream().toList();
+    }
+    public List<Country> getCountriesCurrentPlayerCanAttackFromCountry(Country attackingCountry) {
+        return getBoard().getAttackOptions(getCurrentPlayer().getName()).get(attackingCountry);
     }
 
     private boolean attack(String attacker, String defender) {
@@ -117,14 +134,14 @@ public class Risk extends Game {
     
     public void attackOnce(String attacker, String defender) {
         attack(attacker, defender);
-        UIRisk.updateAttackMenu(board.getAttackOptions(currentPlayer.getName()));
+        // * Update attack menu
 
     }
     
     public void attackUntilResolt(String attacker, String defender) {
         while (!attack(attacker, defender)) {
         }
-        UIRisk.updateAttackMenu(board.getAttackOptions(currentPlayer.getName()));
+        // Update attack menu
     }
 
     public BoardRisk getBoard() {
@@ -145,7 +162,7 @@ public class Risk extends Game {
             board.tranferTroops(from, to, amount);
             return true;
         } else {
-            PopUp.showInfo("To few tropes", "You can not transfer more tropes than you have available");
+            PopUp.showInfo("To few troops", "You can not transfer more tropes than you have available");
             return false;
         }
     }

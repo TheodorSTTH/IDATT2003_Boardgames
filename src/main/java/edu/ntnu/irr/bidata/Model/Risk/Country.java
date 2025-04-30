@@ -1,12 +1,10 @@
 package edu.ntnu.irr.bidata.Model.Risk;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.ISubject;
+import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
+import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleSubject;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.ntnu.irr.bidata.Model.Player;
-
-public class Country implements ISubject {
+public class Country implements ISimpleSubject {
   private final String name;
   private final double relativeX;
   private final double relativeY;
@@ -14,21 +12,21 @@ public class Country implements ISubject {
   private String owner = null; // TODO: Make this a player object. We need the player color
   private final List<String> neighbors;
 
-  private final ArrayList<IObserver> allObservers;
+  private final ArrayList<ISimpleObserver> allObservers;
 
   @Override
-  public void registerObserver(IObserver o) {
+  public void registerObserver(ISimpleObserver o) {
     allObservers.add(o);
   }
 
   @Override
-  public void removeObserver(IObserver o) {
+  public void removeObserver(ISimpleObserver o) {
     allObservers.remove(o);
   }
 
   @Override
   public void notifyObservers() {
-    for (IObserver observer : allObservers) {
+    for (ISimpleObserver observer : allObservers) {
       observer.update();
     }
   }
@@ -39,10 +37,12 @@ public class Country implements ISubject {
     this.relativeX = Math.clamp(relativeX, 0, 1);
     this.relativeY = Math.clamp(relativeY, 0, 1);
     this.allObservers = new ArrayList<>();
+    notifyObservers();
   }
 
   public void placeTropes(int tropes) {
     this.armies += tropes;
+    notifyObservers();
   }
 
   public List<String> getNeighbors() {
@@ -75,6 +75,7 @@ public class Country implements ISubject {
 
   public void setArmies(int armies) {
     this.armies = armies;
+    notifyObservers();
   }
 
   public String getOwner() {
@@ -83,5 +84,11 @@ public class Country implements ISubject {
 
   public void setOwner(String owner) {
     this.owner = owner;
+    notifyObservers();
+  }
+
+  @Override
+  public String toString() {
+    return name;
   }
 }
