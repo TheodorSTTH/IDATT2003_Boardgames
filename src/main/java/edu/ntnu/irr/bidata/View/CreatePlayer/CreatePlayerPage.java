@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Wiew.CreatePlayer;
+package edu.ntnu.irr.bidata.View.CreatePlayer;
 
 import javafx.scene.Scene;
 

@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Wiew;
+package edu.ntnu.irr.bidata.View;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;

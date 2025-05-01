@@ -1,5 +1,5 @@
 package edu.ntnu.irr.bidata.Model.LadderGame.Event;
-import edu.ntnu.irr.bidata.Wiew.PopUp;
+import edu.ntnu.irr.bidata.View.PopUp;
 
 
 public class QizzEvent extends Event {

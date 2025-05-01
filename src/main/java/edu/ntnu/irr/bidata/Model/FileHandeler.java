@@ -133,8 +133,8 @@ public class FileHandeler {
     try {
       Scanner scanner = new Scanner(new File(gameName + ".players" + ".txt"));
       while (scanner.hasNextLine()) {
-        String[] data = scanner.nextLine().split(",");
-        players.add(new Player(data[0]));
+        String[] data = scanner.nextLine().split(";");
+        players.add(new Player(data[0], data[1]));
       }
       scanner.close();
     } catch (FileNotFoundException e) {
@@ -149,7 +149,7 @@ public class FileHandeler {
     }
     try {
       PrintWriter writer = new PrintWriter(game.getGameName() + ".currentPlayer" + ".txt");
-      writer.println(game.getCurrentPlayer().getSaveFormat());
+      writer.println(game.getCurrentPlayer().getName());
       writer.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();

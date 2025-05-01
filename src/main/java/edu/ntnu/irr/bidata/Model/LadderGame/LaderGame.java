@@ -1,5 +1,7 @@
 package edu.ntnu.irr.bidata.Model.LadderGame;
 
+import edu.ntnu.irr.bidata.Controler.NavigationManager;
+import edu.ntnu.irr.bidata.View.LadderGameOverview.OverviewPage;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,10 +9,6 @@ import edu.ntnu.irr.bidata.Controler.UILaderGame;
 import edu.ntnu.irr.bidata.Model.Dice;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Wiew.PopUp;
-import edu.ntnu.irr.bidata.Model.FileHandeler;
-
-
 
 
 public class LaderGame extends Game {
@@ -33,13 +31,13 @@ public class LaderGame extends Game {
         super.init();
         board.setPlayers(players);
         UILaderGame.setLadderGame(this);
-        UILaderGame.toLaderGamePage();
+        NavigationManager.switchScene(new OverviewPage());
     }
 
     @Override
     public void startSavedGame() {
         UILaderGame.setLadderGame(this);
-        UILaderGame.toLaderGamePage();
+        NavigationManager.switchScene(new OverviewPage());
     }
 
     public void takeAction() {

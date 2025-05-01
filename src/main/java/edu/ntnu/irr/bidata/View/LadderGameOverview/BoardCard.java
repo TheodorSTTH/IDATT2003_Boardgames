@@ -1,16 +1,13 @@
-package edu.ntnu.irr.bidata.Wiew.LadderGameOverview;
+package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Controler.UILaderGame;
-import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Wiew.BoardView;
-import edu.ntnu.irr.bidata.Wiew.Tile;
+import edu.ntnu.irr.bidata.View.BoardView;
+import edu.ntnu.irr.bidata.View.Tile;
 
 import java.util.HashMap;
-import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class BoardCard extends VBox {

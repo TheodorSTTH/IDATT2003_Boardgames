@@ -1,5 +1,6 @@
 package edu.ntnu.irr.bidata.Model;
 import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.View.PopUp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ public abstract class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected Player currentPlayer;
     private int amountOfPlayers = 0;
+    private List<String> avalibleColores = new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "Black"));
     String gameName;
 
 
@@ -24,11 +26,17 @@ public abstract class Game {
         this.players = players;
     }
 
-    public void addPlayer(String name) {
-        players.add(new Player(name));
+    public boolean addPlayer(String name, String color) {
+        if (getPlayerNames().contains(name)) {
+            PopUp.showWarning("Player already exists", "Player with this name already exists");
+            return false;
+        }
+        players.add(new Player(name, color));
+        avalibleColores.remove(color);
         if (players.size() == amountOfPlayers) {
             init();
         }
+        return true;
     }
 
     protected void init() {
@@ -88,5 +96,8 @@ public abstract class Game {
         }
         return names;
     }
-    
+
+    public List<String> getAvalibleColores() {
+        return avalibleColores;
+    }
 }

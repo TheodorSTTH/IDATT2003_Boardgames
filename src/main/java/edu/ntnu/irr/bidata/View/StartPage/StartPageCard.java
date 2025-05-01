@@ -1,10 +1,9 @@
-package edu.ntnu.irr.bidata.Wiew.StartPage;
+package edu.ntnu.irr.bidata.View.StartPage;
 
 import java.util.HashMap;
-import java.util.logging.FileHandler;
 
 import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.Wiew.PopUp;
+import edu.ntnu.irr.bidata.View.PopUp;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;

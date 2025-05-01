@@ -1,9 +1,6 @@
-package edu.ntnu.irr.bidata.Wiew.LadderGameOverview;
+package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
-import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Wiew.Tile;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 
 public class OverviewPage extends Scene {
   private static final OverviewLayout layout = new OverviewLayout();

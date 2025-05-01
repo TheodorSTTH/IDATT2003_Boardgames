@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Wiew.StartPage;
+package edu.ntnu.irr.bidata.View.StartPage;
 import javafx.scene.layout.StackPane;
 
 public class StartPageLayout extends StackPane {
