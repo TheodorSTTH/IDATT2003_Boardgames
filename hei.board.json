@@ -1,0 +1,340 @@
+{
+  "countries" : {
+    "Ural" : {
+      "name" : "Ural",
+      "relativeX" : 0.67,
+      "relativeY" : 0.25,
+      "armies" : 2,
+      "owner" : "Imre",
+      "neighbors" : [ "Ukraine", "Siberia", "China", "Afghanistan" ]
+    },
+    "Central America" : {
+      "name" : "Central America",
+      "relativeX" : 0.14,
+      "relativeY" : 0.42,
+      "armies" : 3,
+      "owner" : "Eine",
+      "neighbors" : [ "Western United States", "Eastern United States", "Venezuela" ]
+    },
+    "Western Australia" : {
+      "name" : "Western Australia",
+      "relativeX" : 0.83,
+      "relativeY" : 0.81,
+      "armies" : 2,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Indonesia", "New Guinea", "Eastern Australia" ]
+    },
+    "Afghanistan" : {
+      "name" : "Afghanistan",
+      "relativeX" : 0.63,
+      "relativeY" : 0.37,
+      "armies" : 4,
+      "owner" : "Imre",
+      "neighbors" : [ "Ukraine", "Ural", "China", "India", "Middle East" ]
+    },
+    "Alberta" : {
+      "name" : "Alberta",
+      "relativeX" : 0.13,
+      "relativeY" : 0.23,
+      "armies" : 1,
+      "owner" : "Eine",
+      "neighbors" : [ "Alaska", "Northwest Territory", "Ontario", "Western United States" ]
+    },
+    "Siam" : {
+      "name" : "Siam",
+      "relativeX" : 0.79,
+      "relativeY" : 0.56,
+      "armies" : 6,
+      "owner" : "Ingeb",
+      "neighbors" : [ "China", "India", "Indonesia" ]
+    },
+    "Egypt" : {
+      "name" : "Egypt",
+      "relativeX" : 0.53,
+      "relativeY" : 0.53,
+      "armies" : 1,
+      "owner" : "Imre",
+      "neighbors" : [ "Southern Europe", "North Africa", "East Africa", "Middle East" ]
+    },
+    "North Africa" : {
+      "name" : "North Africa",
+      "relativeX" : 0.42,
+      "relativeY" : 0.57,
+      "armies" : 2,
+      "owner" : "Eine",
+      "neighbors" : [ "Brazil", "Western Europe", "Southern Europe", "Egypt", "East Africa", "Congo" ]
+    },
+    "Madagascar" : {
+      "name" : "Madagascar",
+      "relativeX" : 0.61,
+      "relativeY" : 0.815,
+      "armies" : 3,
+      "owner" : "Ingeb",
+      "neighbors" : [ "South Africa", "East Africa" ]
+    },
+    "Scandinavia" : {
+      "name" : "Scandinavia",
+      "relativeX" : 0.47,
+      "relativeY" : 0.2,
+      "armies" : 2,
+      "owner" : "Imre",
+      "neighbors" : [ "Iceland", "Great Britain", "Northern Europe", "Ukraine" ]
+    },
+    "Iceland" : {
+      "name" : "Iceland",
+      "relativeX" : 0.39,
+      "relativeY" : 0.2,
+      "armies" : 3,
+      "owner" : "Eine",
+      "neighbors" : [ "Greenland", "Scandinavia", "Great Britain" ]
+    },
+    "Middle East" : {
+      "name" : "Middle East",
+      "relativeX" : 0.59,
+      "relativeY" : 0.47,
+      "armies" : 2,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Southern Europe", "Ukraine", "Afghanistan", "India", "East Africa", "Egypt" ]
+    },
+    "Yakutsk" : {
+      "name" : "Yakutsk",
+      "relativeX" : 0.79,
+      "relativeY" : 0.1,
+      "armies" : 1,
+      "owner" : "Imre",
+      "neighbors" : [ "Siberia", "Irkutsk", "Kamchatka" ]
+    },
+    "Great Britain" : {
+      "name" : "Great Britain",
+      "relativeX" : 0.39,
+      "relativeY" : 0.28,
+      "armies" : 2,
+      "owner" : "Eine",
+      "neighbors" : [ "Iceland", "Scandinavia", "Northern Europe", "Western Europe" ]
+    },
+    "Mongolia" : {
+      "name" : "Mongolia",
+      "relativeX" : 0.79,
+      "relativeY" : 0.33,
+      "armies" : 3,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Siberia", "China", "Irkutsk", "Japan", "Kamchatka" ]
+    },
+    "China" : {
+      "name" : "China",
+      "relativeX" : 0.77,
+      "relativeY" : 0.41,
+      "armies" : 1,
+      "owner" : "Imre",
+      "neighbors" : [ "Ural", "Siberia", "Mongolia", "Afghanistan", "India", "Siam" ]
+    },
+    "Siberia" : {
+      "name" : "Siberia",
+      "relativeX" : 0.71,
+      "relativeY" : 0.12,
+      "armies" : 3,
+      "owner" : "Eine",
+      "neighbors" : [ "Ural", "China", "Mongolia", "Irkutsk", "Yakutsk" ]
+    },
+    "Brazil" : {
+      "name" : "Brazil",
+      "relativeX" : 0.31,
+      "relativeY" : 0.64,
+      "armies" : 3,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Venezuela", "Peru", "Argentina", "North Africa" ]
+    },
+    "Alaska" : {
+      "name" : "Alaska",
+      "relativeX" : 0.07,
+      "relativeY" : 0.16,
+      "armies" : 5,
+      "owner" : "Imre",
+      "neighbors" : [ "Northwest Territory", "Alberta", "Kamchatka" ]
+    },
+    "Kamchatka" : {
+      "name" : "Kamchatka",
+      "relativeX" : 0.88,
+      "relativeY" : 0.14,
+      "armies" : 2,
+      "owner" : "Eine",
+      "neighbors" : [ "Alaska", "Japan", "Mongolia", "Irkutsk", "Yakutsk" ]
+    },
+    "Eastern Australia" : {
+      "name" : "Eastern Australia",
+      "relativeX" : 0.93,
+      "relativeY" : 0.85,
+      "armies" : 4,
+      "owner" : "Ingeb",
+      "neighbors" : [ "New Guinea", "Western Australia" ]
+    },
+    "Argentina" : {
+      "name" : "Argentina",
+      "relativeX" : 0.24,
+      "relativeY" : 0.78,
+      "armies" : 2,
+      "owner" : "Imre",
+      "neighbors" : [ "Peru", "Brazil" ]
+    },
+    "Northern Europe" : {
+      "name" : "Northern Europe",
+      "relativeX" : 0.48,
+      "relativeY" : 0.3,
+      "armies" : 2,
+      "owner" : "Eine",
+      "neighbors" : [ "Scandinavia", "Great Britain", "Western Europe", "Southern Europe", "Ukraine" ]
+    },
+    "Northwest Territory" : {
+      "name" : "Northwest Territory",
+      "relativeX" : 0.16,
+      "relativeY" : 0.14,
+      "armies" : 1,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Alaska", "Alberta", "Ontario", "Greenland" ]
+    },
+    "Eastern United States" : {
+      "name" : "Eastern United States",
+      "relativeX" : 0.23,
+      "relativeY" : 0.34,
+      "armies" : 2,
+      "owner" : "Imre",
+      "neighbors" : [ "Ontario", "Quebec", "Western United States", "Central America" ]
+    },
+    "Japan" : {
+      "name" : "Japan",
+      "relativeX" : 0.89,
+      "relativeY" : 0.37,
+      "armies" : 3,
+      "owner" : "Eine",
+      "neighbors" : [ "Mongolia", "Kamchatka" ]
+    },
+    "Quebec" : {
+      "name" : "Quebec",
+      "relativeX" : 0.29,
+      "relativeY" : 0.26,
+      "armies" : 3,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Greenland", "Ontario", "Eastern United States" ]
+    },
+    "Ukraine" : {
+      "name" : "Ukraine",
+      "relativeX" : 0.57,
+      "relativeY" : 0.28,
+      "armies" : 1,
+      "owner" : "Imre",
+      "neighbors" : [ "Scandinavia", "Northern Europe", "Southern Europe", "Ural", "Afghanistan", "Middle East" ]
+    },
+    "Congo" : {
+      "name" : "Congo",
+      "relativeX" : 0.53,
+      "relativeY" : 0.71,
+      "armies" : 3,
+      "owner" : "Eine",
+      "neighbors" : [ "North Africa", "East Africa", "South Africa" ]
+    },
+    "Western Europe" : {
+      "name" : "Western Europe",
+      "relativeX" : 0.41,
+      "relativeY" : 0.45,
+      "armies" : 2,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Great Britain", "Northern Europe", "Southern Europe", "North Africa" ]
+    },
+    "India" : {
+      "name" : "India",
+      "relativeX" : 0.71,
+      "relativeY" : 0.5,
+      "armies" : 2,
+      "owner" : "Imre",
+      "neighbors" : [ "China", "Afghanistan", "Middle East", "Siam" ]
+    },
+    "Venezuela" : {
+      "name" : "Venezuela",
+      "relativeX" : 0.23,
+      "relativeY" : 0.53,
+      "armies" : 5,
+      "owner" : "Eine",
+      "neighbors" : [ "Central America", "Peru", "Brazil" ]
+    },
+    "New Guinea" : {
+      "name" : "New Guinea",
+      "relativeX" : 0.88,
+      "relativeY" : 0.65,
+      "armies" : 1,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Indonesia", "Eastern Australia", "Western Australia" ]
+    },
+    "Irkutsk" : {
+      "name" : "Irkutsk",
+      "relativeX" : 0.79,
+      "relativeY" : 0.25,
+      "armies" : 1,
+      "owner" : "Imre",
+      "neighbors" : [ "Siberia", "Yakutsk", "Kamchatka", "Mongolia" ]
+    },
+    "Southern Europe" : {
+      "name" : "Southern Europe",
+      "relativeX" : 0.5,
+      "relativeY" : 0.42,
+      "armies" : 2,
+      "owner" : "Eine",
+      "neighbors" : [ "Northern Europe", "Western Europe", "Ukraine", "Middle East", "Egypt", "North Africa" ]
+    },
+    "South Africa" : {
+      "name" : "South Africa",
+      "relativeX" : 0.52,
+      "relativeY" : 0.82,
+      "armies" : 2,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Congo", "East Africa", "Madagascar" ]
+    },
+    "Western United States" : {
+      "name" : "Western United States",
+      "relativeX" : 0.14,
+      "relativeY" : 0.34,
+      "armies" : 2,
+      "owner" : "Imre",
+      "neighbors" : [ "Alberta", "Ontario", "Eastern United States", "Central America" ]
+    },
+    "Ontario" : {
+      "name" : "Ontario",
+      "relativeX" : 0.23,
+      "relativeY" : 0.24,
+      "armies" : 2,
+      "owner" : "Eine",
+      "neighbors" : [ "Northwest Territory", "Alberta", "Greenland", "Quebec", "Eastern United States", "Western United States" ]
+    },
+    "Peru" : {
+      "name" : "Peru",
+      "relativeX" : 0.25,
+      "relativeY" : 0.65,
+      "armies" : 1,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Venezuela", "Brazil", "Argentina" ]
+    },
+    "Greenland" : {
+      "name" : "Greenland",
+      "relativeX" : 0.32,
+      "relativeY" : 0.09,
+      "armies" : 3,
+      "owner" : "Imre",
+      "neighbors" : [ "Northwest Territory", "Ontario", "Quebec", "Iceland" ]
+    },
+    "East Africa" : {
+      "name" : "East Africa",
+      "relativeX" : 0.55,
+      "relativeY" : 0.64,
+      "armies" : 2,
+      "owner" : "Imre",
+      "neighbors" : [ "North Africa", "Egypt", "Congo", "South Africa", "Madagascar", "Middle East" ]
+    },
+    "Indonesia" : {
+      "name" : "Indonesia",
+      "relativeX" : 0.8,
+      "relativeY" : 0.72,
+      "armies" : 2,
+      "owner" : "Ingeb",
+      "neighbors" : [ "Siam", "New Guinea", "Western Australia" ]
+    }
+  }
+}

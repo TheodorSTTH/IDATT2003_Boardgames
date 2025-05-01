@@ -4,6 +4,9 @@ import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleSubject;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Country implements ISimpleSubject {
   private final String name;
   private final double relativeX;
@@ -13,6 +16,21 @@ public class Country implements ISimpleSubject {
   private final List<String> neighbors;
 
   private final ArrayList<ISimpleObserver> allObservers;
+
+  @JsonCreator
+  public Country(
+      @JsonProperty("name") String name,
+      @JsonProperty("neighbors") List<String> neighbors,
+      @JsonProperty("relativeX") double relativeX,
+      @JsonProperty("relativeY") double relativeY) {
+    this.name = name;
+    this.neighbors = neighbors;
+    this.relativeX = Math.clamp(relativeX, 0, 1);
+    this.relativeY = Math.clamp(relativeY, 0, 1);
+    this.allObservers = new ArrayList<>();
+  }
+
+
 
   @Override
   public void registerObserver(ISimpleObserver o) {
@@ -29,15 +47,6 @@ public class Country implements ISimpleSubject {
     for (ISimpleObserver observer : allObservers) {
       observer.update();
     }
-  }
-
-  public Country(String name, List<String> neighbors, double relativeX, double relativeY) {
-    this.name = name;
-    this.neighbors = neighbors;
-    this.relativeX = Math.clamp(relativeX, 0, 1);
-    this.relativeY = Math.clamp(relativeY, 0, 1);
-    this.allObservers = new ArrayList<>();
-    notifyObservers();
   }
 
   public void placeTropes(int tropes) {
