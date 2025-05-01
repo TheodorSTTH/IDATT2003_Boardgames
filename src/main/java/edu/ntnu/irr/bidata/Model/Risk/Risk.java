@@ -138,7 +138,8 @@ public class Risk extends Game {
     }
     
     public void attackUntilResolt(String attacker, String defender) {
-        while (!attack(attacker, defender)) {
+        while (!attack(attacker, defender) && board.getUnits(attacker) > 1) {
+            // * Update attack menu
         }
         // Update attack menu
     }
