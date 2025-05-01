@@ -5,9 +5,11 @@ package edu.ntnu.irr.bidata.Model;
  * */
 public class Player {
   private final String name;
+  private final String color;
 
-  public Player(String name) {
+  public Player(String name, String color) {
     this.name = name;
+    this.color = color;
   }
   
   public String getName() {
@@ -15,6 +17,10 @@ public class Player {
   }
 
   public String getSaveFormat() {
-    return name;
-  } 
+    return name + ";" + color;
+  }
+  
+  public String getColor() {
+    return color;
+  }
 }
