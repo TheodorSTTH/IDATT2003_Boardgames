@@ -30,11 +30,10 @@ public class CreatePlayerCard extends VBox {
                         "Please select a username and a color before continuing.");
                 return;
             }
-            
             UI.newPlayer(usernameField.getText(), playerColureField.getValue());
+            playerColureField.getItems().remove(playerColureField.getValue());
             usernameField.clear();
             playerColureField.setValue(null);
-            playerColureField.getItems().remove(playerColureField.getValue());
         });
 
         this.getChildren().addAll(label, usernameField, playerColureField, createPlayerButton);

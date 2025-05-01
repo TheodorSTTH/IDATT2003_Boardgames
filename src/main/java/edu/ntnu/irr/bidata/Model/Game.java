@@ -27,8 +27,7 @@ public abstract class Game {
     }
 
     public void addPlayer(String name, String color) {
-        if (players.stream()
-                .anyMatch(obj -> obj.getClass().getSimpleName().equals(name))) {
+        if (getPlayerNames().contains(name)) {
             PopUp.showWarning("Player already exists", "Player with this name already exists");
             return;
         }

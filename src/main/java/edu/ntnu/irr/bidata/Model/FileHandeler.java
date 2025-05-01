@@ -149,7 +149,7 @@ public class FileHandeler {
     }
     try {
       PrintWriter writer = new PrintWriter(game.getGameName() + ".currentPlayer" + ".txt");
-      writer.println(game.getCurrentPlayer().getSaveFormat());
+      writer.println(game.getCurrentPlayer().getName());
       writer.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
