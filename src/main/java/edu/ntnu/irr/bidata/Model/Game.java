@@ -26,16 +26,17 @@ public abstract class Game {
         this.players = players;
     }
 
-    public void addPlayer(String name, String color) {
+    public boolean addPlayer(String name, String color) {
         if (getPlayerNames().contains(name)) {
             PopUp.showWarning("Player already exists", "Player with this name already exists");
-            return;
+            return false;
         }
         players.add(new Player(name, color));
         avalibleColores.remove(color);
         if (players.size() == amountOfPlayers) {
             init();
         }
+        return true;
     }
 
     protected void init() {

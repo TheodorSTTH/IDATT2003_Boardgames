@@ -23,8 +23,8 @@ public class UI {
     NavigationManager.switchScene(new CreatePlayerPage());
   }
 
-  public static void newPlayer(String name, String color) {
-    game.addPlayer(name, color);
+  public static boolean newPlayer(String name, String color) {
+    return (game.addPlayer(name, color));
   }
 
   public static Game getGame() {

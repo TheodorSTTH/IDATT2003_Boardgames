@@ -29,11 +29,16 @@ public class CreatePlayerCard extends VBox {
                 PopUp.showWarning("Selection Required",
                         "Please select a username and a color before continuing.");
                 return;
+            } 
+            
+            if (UI.newPlayer(usernameField.getText(), playerColureField.getValue())) {
+                playerColureField.getItems().remove(playerColureField.getValue());
+                usernameField.clear();
+                playerColureField.setValue(null);  
             }
-            UI.newPlayer(usernameField.getText(), playerColureField.getValue());
-            playerColureField.getItems().remove(playerColureField.getValue());
-            usernameField.clear();
-            playerColureField.setValue(null);
+            
+    
+            
         });
 
         this.getChildren().addAll(label, usernameField, playerColureField, createPlayerButton);
