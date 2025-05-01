@@ -53,6 +53,14 @@ public class Country implements ISimpleSubject {
     return name;
   }
 
+  public void loseTroops(int tropes) {
+    if (tropes > this.armies) {
+      throw new IllegalArgumentException("Country " + name + " does not have enough troops.");
+  }
+  this.armies -= tropes;
+  notifyObservers();
+  }
+
   /**
    * Is the relative x coordinate position of the country on any board
    * position is from 0 to 1.

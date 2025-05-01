@@ -175,7 +175,6 @@ public class BoardRisk {
       Country country = countries.get(countryName);
       if (country != null) {
           country.setOwner(player);
-          country.setArmies(0);
       } else {
           throw new IllegalArgumentException("Country not found: " + countryName);
       }
@@ -184,7 +183,7 @@ public class BoardRisk {
   public void removeTroops(String countryName, int troops) {
       Country country = countries.get(countryName);
       if (country != null) {
-          country.setArmies(country.getArmies() - troops);
+          country.loseTroops(troops);
       } else {
           throw new IllegalArgumentException("Country not found: " + countryName);
       }
@@ -239,10 +238,20 @@ public class BoardRisk {
     public static BoardRisk loadBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File(gameName+".board.json"), BoardRisk.class);
+            return objectMapper.readValue(new File(gameName + ".board.json"), BoardRisk.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public boolean controldBySamePlayer(String country1 , String country2) {
+        Country c1 = countries.get(country1);
+        Country c2 = countries.get(country2);
+        if (c1 != null && c2 != null) {
+            return c1.getOwner().equals(c2.getOwner());
+        } else {
+            throw new IllegalArgumentException("Country not found: " + country1 + " or " + country2);
         }
     }
   

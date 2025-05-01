@@ -36,6 +36,7 @@ public class AttackPane extends AbstractSidebarPane {
         attackTargetComboBox.getItems().clear();
       }
     });
+    
     performAttackOnceButton.setOnAction(event -> {
       Country from = attackFromComboBox.getValue();
       Country to = attackTargetComboBox.getValue();
