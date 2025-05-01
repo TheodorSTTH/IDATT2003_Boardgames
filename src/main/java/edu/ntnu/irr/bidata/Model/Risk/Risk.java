@@ -173,4 +173,8 @@ public class Risk extends Game {
             return false;
         }
     }
+
+    public int getTroopsAvailable() {
+        return tropesAvailable;
+    }
 }
