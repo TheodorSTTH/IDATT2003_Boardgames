@@ -135,7 +135,6 @@ public class Risk extends Game {
     public void attackOnce(String attacker, String defender) {
         attack(attacker, defender);
         // * Update attack menu
-
     }
     
     public void attackUntilResolt(String attacker, String defender) {

@@ -45,6 +45,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
         moveTargetComboBox.getItems().clear();
       }
     });
+    
     ok.setOnAction(event -> {
       Country from = moveFromComboBox.getValue();
       Country to = moveTargetComboBox.getValue();
