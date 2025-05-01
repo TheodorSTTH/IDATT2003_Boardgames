@@ -208,7 +208,7 @@ public class BoardRisk {
       }
   }
   
-  public void tranferTroops(String fromCountry, String toCountry, int troops) {
+  public void transferTroops(String fromCountry, String toCountry, int troops) {
       Country from = countries.get(fromCountry);
       Country to = countries.get(toCountry);
       if (from != null && to != null) {
@@ -223,7 +223,9 @@ public class BoardRisk {
       }
   }
 
-      public void saveBoard(String gameName) {
+
+
+    public void saveBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
@@ -243,8 +245,6 @@ public class BoardRisk {
             return null;
         }
     }
-
-
   
 
   private void setUpClasicRisk() {
@@ -337,7 +337,17 @@ public class BoardRisk {
     countries.put("Western Australia",
         new Country("Western Australia", List.of("Indonesia", "New Guinea", "Eastern Australia"), 0.83, 0.81));
     countries.put("Eastern Australia",
-        new Country("Eastern Australia", List.of("New Guinea", "Western Australia"), 0.93, 0.85));
+            new Country("Eastern Australia", List.of("New Guinea", "Western Australia"), 0.93, 0.85));
+        
+    continens.put("North America", List.of("Alaska", "Northwest Territory", "Alberta", "Ontario", "Greenland", "Quebec",
+            "Eastern United States", "Western United States", "Central America"));
+    continens.put("South America", List.of("Venezuela", "Peru", "Brazil", "Argentina"));
+    continens.put("Europe", List.of("Iceland", "Scandinavia", "Great Britain", "Northern Europe", "Western Europe",
+            "Southern Europe", "Ukraine"));
+    continens.put("Africa", List.of("North Africa", "Egypt", "East Africa", "Congo", "South Africa", "Madagascar"));
+    continens.put("Asia", List.of("Ural", "Siberia", "China", "Afghanistan", "Middle East", "India", "Siam", "Mongolia",
+            "Irkutsk", "Yakutsk", "Kamchatka", "Japan"));
+    continens.put("Australia", List.of("Indonesia", "New Guinea", "Western Australia", "Eastern Australia"));
 
     continentBonus.put("North America", 5);
     continentBonus.put("South America", 2);

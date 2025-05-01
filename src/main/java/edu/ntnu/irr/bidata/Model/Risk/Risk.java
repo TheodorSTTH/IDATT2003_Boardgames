@@ -123,7 +123,7 @@ public class Risk extends Game {
 
         if (board.getUnits(defender) == 0) {
             board.takeControlOfCountry(defender, currentPlayer.getName());
-            board.tranferTroops(attacker, defender, PopUp.promptForNumberInRange("How many trops do you want to move to the new country",board.getUnits(attacker) - 1));
+            board.transferTroops(attacker, defender, PopUp.promptForNumberInRange("How many trops do you want to move to the new country",board.getUnits(attacker) - 1));
             return true;
 
         } else {
@@ -159,7 +159,7 @@ public class Risk extends Game {
 
     public boolean transferTroops(String from, String to, int amount) {
         if (board.getUnits(from) > amount) {
-            board.tranferTroops(from, to, amount);
+            board.transferTroops(from, to, amount);
             return true;
         } else {
             PopUp.showInfo("To few troops", "You can not transfer more tropes than you have available");
