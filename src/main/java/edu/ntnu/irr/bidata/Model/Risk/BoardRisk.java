@@ -175,7 +175,6 @@ public class BoardRisk {
       Country country = countries.get(countryName);
       if (country != null) {
           country.setOwner(player);
-          country.setArmies(0);
       } else {
           throw new IllegalArgumentException("Country not found: " + countryName);
       }
@@ -184,7 +183,7 @@ public class BoardRisk {
   public void removeTroops(String countryName, int troops) {
       Country country = countries.get(countryName);
       if (country != null) {
-          country.setArmies(country.getArmies() - troops);
+          country.loseTroops(troops);
       } else {
           throw new IllegalArgumentException("Country not found: " + countryName);
       }
@@ -208,7 +207,7 @@ public class BoardRisk {
       }
   }
   
-  public void tranferTroops(String fromCountry, String toCountry, int troops) {
+  public void transferTroops(String fromCountry, String toCountry, int troops) {
       Country from = countries.get(fromCountry);
       Country to = countries.get(toCountry);
       if (from != null && to != null) {
@@ -223,7 +222,9 @@ public class BoardRisk {
       }
   }
 
-      public void saveBoard(String gameName) {
+
+
+    public void saveBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
@@ -237,14 +238,22 @@ public class BoardRisk {
     public static BoardRisk loadBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File(gameName+".board.json"), BoardRisk.class);
+            return objectMapper.readValue(new File(gameName + ".board.json"), BoardRisk.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-
+    public boolean controldBySamePlayer(String country1 , String country2) {
+        Country c1 = countries.get(country1);
+        Country c2 = countries.get(country2);
+        if (c1 != null && c2 != null) {
+            return c1.getOwner().equals(c2.getOwner());
+        } else {
+            throw new IllegalArgumentException("Country not found: " + country1 + " or " + country2);
+        }
+    }
   
 
   private void setUpClasicRisk() {
@@ -337,7 +346,17 @@ public class BoardRisk {
     countries.put("Western Australia",
         new Country("Western Australia", List.of("Indonesia", "New Guinea", "Eastern Australia"), 0.83, 0.81));
     countries.put("Eastern Australia",
-        new Country("Eastern Australia", List.of("New Guinea", "Western Australia"), 0.93, 0.85));
+            new Country("Eastern Australia", List.of("New Guinea", "Western Australia"), 0.93, 0.85));
+        
+    continens.put("North America", List.of("Alaska", "Northwest Territory", "Alberta", "Ontario", "Greenland", "Quebec",
+            "Eastern United States", "Western United States", "Central America"));
+    continens.put("South America", List.of("Venezuela", "Peru", "Brazil", "Argentina"));
+    continens.put("Europe", List.of("Iceland", "Scandinavia", "Great Britain", "Northern Europe", "Western Europe",
+            "Southern Europe", "Ukraine"));
+    continens.put("Africa", List.of("North Africa", "Egypt", "East Africa", "Congo", "South Africa", "Madagascar"));
+    continens.put("Asia", List.of("Ural", "Siberia", "China", "Afghanistan", "Middle East", "India", "Siam", "Mongolia",
+            "Irkutsk", "Yakutsk", "Kamchatka", "Japan"));
+    continens.put("Australia", List.of("Indonesia", "New Guinea", "Western Australia", "Eastern Australia"));
 
     continentBonus.put("North America", 5);
     continentBonus.put("South America", 2);

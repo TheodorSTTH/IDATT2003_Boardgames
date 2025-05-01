@@ -24,7 +24,6 @@ public class UI {
   }
 
   public static void newPlayer(String name) {
-    PopUp.showInfo("Player Added", name + " has been added to the game.");
     game.addPlayer(name);
   }
 

@@ -16,9 +16,9 @@ import java.util.List;
 public class Risk extends Game {
     private final BoardRisk board;
     private int tropesAvailable = 0;
-    private Dice oneDice = new Dice(6, 1);
-    private Dice twoDice = new Dice(6, 2);
-    private Dice treDice = new Dice(6, 3);
+    private Dice oneDice = new Dice(1, 6);
+    private Dice twoDice = new Dice(2, 6);
+    private Dice treDice = new Dice(3, 6);
 
     public Risk(int amountOfPlayers, String gameName) {
         super(amountOfPlayers, gameName);
@@ -80,18 +80,24 @@ public class Risk extends Game {
     }
 
     public List<Country> getCountriesCurrentPlayerCanMoveFrom() {
-        return getBoard().getCountrysControldByPlayer(getCurrentPlayer().getName())
-            .stream().filter(country -> country.getArmies() > 1)
-            .toList();
+        return board.getCountrysControldByPlayer(getCurrentPlayer().getName())
+                .stream().filter(country -> country.getArmies() > 1)
+                .toList();
     }
+    
     public List<Country> getCountriesCurrentPlayerCanAttackFrom() {
-        return getBoard().getAttackOptions(getCurrentPlayer().getName()).keySet().stream().toList();
+        return board.getAttackOptions(getCurrentPlayer().getName()).keySet().stream().toList();
     }
     public List<Country> getCountriesCurrentPlayerCanAttackFromCountry(Country attackingCountry) {
-        return getBoard().getAttackOptions(getCurrentPlayer().getName()).get(attackingCountry);
+        return board.getAttackOptions(getCurrentPlayer().getName()).get(attackingCountry);
     }
 
-    private boolean attack(String attacker, String defender) {
+    private void attack(String attacker, String defender) {
+        if (board.controldBySamePlayer(attacker, defender)) {
+            PopUp.showInfo("You can not attack your own country", "You can not attack your own country");
+            return;
+        }
+
         List<Integer> attackRolls;
         List<Integer> defendRolls;
 
@@ -99,20 +105,27 @@ public class Risk extends Game {
             attackRolls = treDice.rollSet();
         } else if (board.getUnits(attacker) == 3) {
             attackRolls = twoDice.rollSet();
-        } else {
+        } else if (board.getUnits(attacker) == 2) {
             attackRolls = oneDice.rollSet();
+        } else {
+            PopUp.showInfo("To few troops", "You can not attack from a country with only one troops");
+            return;
         }
 
         if (board.getUnits(defender) > 1) {
             defendRolls = twoDice.rollSet();
-        } else {
+        } else if (board.getUnits(defender) == 1) {
             defendRolls = oneDice.rollSet();
+        } else {
+            PopUp.showInfo("To few troops", "You can not attack a country with no troops");
+            return;
         }
 
         attackRolls.sort((a, b) -> b - a);
         defendRolls.sort((a, b) -> b - a);
 
         int comparisons = Math.min(attackRolls.size(), defendRolls.size());
+
         for (int i = 0; i < comparisons; i++) {
             if (attackRolls.get(i) > defendRolls.get(i)) {
                 board.removeTroops(defender, 1);
@@ -123,25 +136,19 @@ public class Risk extends Game {
 
         if (board.getUnits(defender) == 0) {
             board.takeControlOfCountry(defender, currentPlayer.getName());
-            board.tranferTroops(attacker, defender, PopUp.promptForNumberInRange("How many trops do you want to move to the new country",board.getUnits(attacker) - 1));
-            return true;
-
-        } else {
-            return false;
+            board.transferTroops(attacker, defender, PopUp.promptForNumberInRange("How many trops do you want to move to the new country",board.getUnits(attacker) - 1));
         }
-
     }
     
     public void attackOnce(String attacker, String defender) {
         attack(attacker, defender);
         // * Update attack menu
-
     }
     
     public void attackUntilResolt(String attacker, String defender) {
-        while (!attack(attacker, defender)) {
+        while ((board.getUnits(attacker) >= 2) && (!board.controldBySamePlayer(attacker, defender))) {
+            attack(attacker, defender);
         }
-        // Update attack menu
     }
 
     public BoardRisk getBoard() {
@@ -159,11 +166,15 @@ public class Risk extends Game {
 
     public boolean transferTroops(String from, String to, int amount) {
         if (board.getUnits(from) > amount) {
-            board.tranferTroops(from, to, amount);
+            board.transferTroops(from, to, amount);
             return true;
         } else {
             PopUp.showInfo("To few troops", "You can not transfer more tropes than you have available");
             return false;
         }
+    }
+
+    public int getTroopsAvailable() {
+        return tropesAvailable;
     }
 }

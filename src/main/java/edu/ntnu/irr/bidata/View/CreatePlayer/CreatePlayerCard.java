@@ -21,6 +21,7 @@ public class CreatePlayerCard extends VBox {
 
         createPlayerButton.setOnAction(e -> {
             UI.newPlayer(usernameField.getText());
+            usernameField.clear();
         });
 
         this.getChildren().addAll(label, usernameField, createPlayerButton);

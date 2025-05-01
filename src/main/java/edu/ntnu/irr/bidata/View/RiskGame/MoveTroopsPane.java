@@ -40,11 +40,12 @@ public class MoveTroopsPane extends AbstractSidebarPane {
             risk.getCountriesContrldByActivePlayer()
         ));
         amountOfTroopsSpinner.getValueFactory().setValue(1);
-        spinnerValueFactory.setMax(newFrom.getArmies());
+        spinnerValueFactory.setMax(newFrom.getArmies()-1);
       } else {
         moveTargetComboBox.getItems().clear();
       }
     });
+    
     ok.setOnAction(event -> {
       Country from = moveFromComboBox.getValue();
       Country to = moveTargetComboBox.getValue();

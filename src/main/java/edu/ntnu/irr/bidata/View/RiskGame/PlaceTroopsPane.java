@@ -28,7 +28,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
 
     ok.setOnAction(event -> {
       // TODO: Adaptive amount of troops and update UI accordingly
-      boolean placingTroopsWasSuccessful = risk.placeTroops(countryComboBox.getValue().getName(), 1);
+      boolean placingTroopsWasSuccessful = risk.placeTroops(countryComboBox.getValue().getName(), risk.getTroopsAvailable());
       if (placingTroopsWasSuccessful) notifyObservers();
       else PopUp.showInfo("Something went wrong", "Adding troops on a square failed");
     });
