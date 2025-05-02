@@ -43,8 +43,6 @@ public class UI {
 
   public static void saveGame() {
     game.saveGame();
-    MyWindow.getPrimaryStage().hide();
-    MyWindow.getPrimaryStage().setMaximized(false);
     PopUp.showInfo("Game saved", "Game has been saved as " + game.getGameName());
   }
 
