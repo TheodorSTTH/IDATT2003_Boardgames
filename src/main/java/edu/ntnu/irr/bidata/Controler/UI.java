@@ -23,8 +23,8 @@ public class UI {
     NavigationManager.switchScene(new CreatePlayerPage());
   }
 
-  public static void newPlayer(String name) {
-    game.addPlayer(name);
+  public static boolean newPlayer(String name, String color) {
+    return (game.addPlayer(name, color));
   }
 
   public static Game getGame() {
@@ -43,8 +43,6 @@ public class UI {
 
   public static void saveGame() {
     game.saveGame();
-    MyWindow.getPrimaryStage().hide();
-    MyWindow.getPrimaryStage().setMaximized(false);
     PopUp.showInfo("Game saved", "Game has been saved as " + game.getGameName());
   }
 
