@@ -1,0 +1,5 @@
+Imre;Red
+Eine;Blue
+Ingeb;Green
+Lol;Yellow
+Hello;Black

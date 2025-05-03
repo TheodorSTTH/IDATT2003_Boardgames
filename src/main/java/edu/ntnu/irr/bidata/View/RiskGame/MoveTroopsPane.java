@@ -16,6 +16,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
   private final ComboBox<Country> moveTargetComboBox;
   private final Spinner<Integer> amountOfTroopsSpinner;
   private final Button ok;
+  private final Button dontMoveTroops;
 
   public MoveTroopsPane(Risk risk) {
     super(risk);
@@ -27,6 +28,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory = (SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory();
     amountOfTroopsSpinner.setEditable(true);
     this.ok = new Button("Move & finish round");
+    this.dontMoveTroops = new Button("Don't move troops");
     this.setText("Move");
     this.setLineSpacing(10);
 
@@ -57,6 +59,11 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       }
     });
 
+    dontMoveTroops.setOnAction(event -> {
+      risk.endTurn();
+      notifyObservers();
+    });
+
     getContainer().getChildren().addAll(
         new Label("Move from"),
         moveFromComboBox,
@@ -64,6 +71,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
         moveTargetComboBox,
         amountOfTroopsSpinner,
         ok
+        , dontMoveTroops
     );
   }
 
