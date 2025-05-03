@@ -228,7 +228,7 @@ public class BoardRisk {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            objectMapper.writeValue(new File(gameName+".board.json"), this);
+            objectMapper.writeValue(new File("src/main/resources/files/"+gameName+".board.json"), this);
             System.out.println("Board saved successfully.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -238,7 +238,7 @@ public class BoardRisk {
     public static BoardRisk loadBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File(gameName + ".board.json"), BoardRisk.class);
+            return objectMapper.readValue(new File("src/main/resources/files/"+gameName + ".board.json"), BoardRisk.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

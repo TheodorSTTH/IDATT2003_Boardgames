@@ -1,4 +1,5 @@
 package edu.ntnu.irr.bidata.Model;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -19,9 +20,15 @@ import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.EventMaker;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
 
+public class FileHandler {
 
+  // Specify the folder where files are stored
+  private static final String FILE_DIRECTORY = "src/main/resources/files/";
 
-public class FileHandeler {
+  // Utility method to get the full path for a file in the folder
+  private static String getFilePath(String fileName) {
+    return FILE_DIRECTORY + fileName;
+  }
 
   public static void saveGame(Game game) {
     if (game instanceof LaderGame) {
@@ -46,7 +53,7 @@ public class FileHandeler {
   public static HashMap<String, String> getSavedGames() {
     HashMap<String, String> savedGames = new HashMap<>();
     try {
-      Scanner scanner = new Scanner(new File("savedGames.txt"));
+      Scanner scanner = new Scanner(new File(getFilePath("savedGames.txt")));
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
         String[] data = line.split(",");
@@ -64,7 +71,7 @@ public class FileHandeler {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
-    try (FileWriter fileWriter = new FileWriter("savedGames.txt", true);
+    try (FileWriter fileWriter = new FileWriter(getFilePath("savedGames.txt"), true);
         PrintWriter writer = new PrintWriter(fileWriter)) {
       writer.println(game.getGameName() + "," + game.getGameType());
     } catch (IOException e) {
@@ -77,7 +84,7 @@ public class FileHandeler {
       throw new IllegalArgumentException("Invalid File Name");
     }
     try {
-      Scanner scanner = new Scanner(new File("savedGames.txt"));
+      Scanner scanner = new Scanner(new File(getFilePath("savedGames.txt")));
       ArrayList<String> lines = new ArrayList<>();
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
@@ -86,7 +93,7 @@ public class FileHandeler {
         }
       }
       scanner.close();
-      PrintWriter writer = new PrintWriter("savedGames.txt");
+      PrintWriter writer = new PrintWriter(getFilePath("savedGames.txt"));
       for (String line : lines) {
         writer.println(line);
       }
@@ -100,14 +107,13 @@ public class FileHandeler {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
-    File file = new File(name + ".players.txt");
+    File file = new File(getFilePath(name + ".players.txt"));
     file.delete();
-    file = new File(name + ".currentPlayer.txt");
+    file = new File(getFilePath(name + ".currentPlayer.txt"));
     file.delete();
-    file = new File(name + ".board.json");
+    file = new File(getFilePath(name + ".board.json"));
     file.delete();
     removeGameFromSavedGames(name);
-
   }
 
   private static void savePlyers(Game game) {
@@ -115,7 +121,7 @@ public class FileHandeler {
       throw new IllegalArgumentException("Invalid File Name");
     }
     try {
-      PrintWriter writer = new PrintWriter(game.getGameName() + ".players" + ".txt");
+      PrintWriter writer = new PrintWriter(getFilePath(game.getGameName() + ".players" + ".txt"));
       for (Player player : game.getPlayers()) {
         writer.println(player.getSaveFormat());
       }
@@ -131,7 +137,7 @@ public class FileHandeler {
     }
     ArrayList<Player> players = new ArrayList<>();
     try {
-      Scanner scanner = new Scanner(new File(gameName + ".players" + ".txt"));
+      Scanner scanner = new Scanner(new File(getFilePath(gameName + ".players" + ".txt")));
       while (scanner.hasNextLine()) {
         String[] data = scanner.nextLine().split(";");
         players.add(new Player(data[0], data[1]));
@@ -148,7 +154,7 @@ public class FileHandeler {
       throw new IllegalArgumentException("Invalid File Name");
     }
     try {
-      PrintWriter writer = new PrintWriter(game.getGameName() + ".currentPlayer" + ".txt");
+      PrintWriter writer = new PrintWriter(getFilePath(game.getGameName() + ".currentPlayer" + ".txt"));
       writer.println(game.getCurrentPlayer().getName());
       writer.close();
     } catch (FileNotFoundException e) {
@@ -162,7 +168,7 @@ public class FileHandeler {
     }
     Player player = null;
     try {
-      Scanner scanner = new Scanner(new File(gameName + ".currentPlayer" + ".txt"));
+      Scanner scanner = new Scanner(new File(getFilePath(gameName + ".currentPlayer" + ".txt")));
       String[] data = scanner.nextLine().split(",");
       for (Player p : players) {
         if (p.getName().equals(data[0])) {
@@ -221,7 +227,7 @@ public class FileHandeler {
     List<String> questionAndAnswer = new ArrayList<>();
     List<String> allLines = new ArrayList<>();
     try {
-      Scanner scanner = new Scanner(new File("QizzQestion.txt"));
+      Scanner scanner = new Scanner(new File(getFilePath("QizzQestion.txt")));
       // Read all lines into a list
       while (scanner.hasNextLine()) {
         allLines.add(scanner.nextLine());
@@ -253,7 +259,7 @@ public class FileHandeler {
     HashMap<Integer, Event> events = new HashMap<>();
 
     try {
-      Scanner scanner = new Scanner(new File("LaderSetup"+boardType + ".txt"));
+      Scanner scanner = new Scanner(new File(getFilePath("LaderSetup" + boardType + ".txt")));
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
         String[] data = line.split(";");
@@ -271,6 +277,5 @@ public class FileHandeler {
       e.printStackTrace();
     }
     return events;
-
   }
 }
