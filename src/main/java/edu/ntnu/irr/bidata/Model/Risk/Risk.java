@@ -1,11 +1,8 @@
 package edu.ntnu.irr.bidata.Model.Risk;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.Controler.UILaderGame;
-import edu.ntnu.irr.bidata.Controler.UIRisk;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.View.LadderGameOverview.OverviewPage;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.Model.Dice;
 import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
@@ -36,17 +33,13 @@ public class Risk extends Game {
     protected void init() {
         super.init();
         board.setUpBoard(getPlayerNames());
-        UIRisk.setRisk(this);
         startTurn();
         RiskPage riskPage = new RiskPage(this);
-        UIRisk.setRiskPage(riskPage); // TODO: Avoid tight coupling
         NavigationManager.switchScene(riskPage);
     }
 
     public void startSavedGame() {
         RiskPage riskPage = new RiskPage(this);
-        UIRisk.setRiskPage(riskPage); // TODO: Avoid tight coupling
-        UIRisk.setRisk(this);
         NavigationManager.switchScene(riskPage);
     }
 
