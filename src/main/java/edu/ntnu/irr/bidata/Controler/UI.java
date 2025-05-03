@@ -5,7 +5,7 @@ import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.View.StartPage.StartPagePage;
-import edu.ntnu.irr.bidata.Model.FileHandeler;
+import edu.ntnu.irr.bidata.Model.FileHandler;
 
 // TODO: Separate start page logic form UI class
 public class UI {
@@ -49,7 +49,7 @@ public class UI {
   }
 
   public static void loadGame(String gameName, String gameType) {
-    game = FileHandeler.loadGame(gameName, gameType);
+    game = FileHandler.loadGame(gameName, gameType);
     game.startSavedGame();
   }
 }

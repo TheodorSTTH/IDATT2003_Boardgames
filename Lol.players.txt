@@ -1,3 +1,0 @@
-Imre;Red
-Eine;Blue
-Ingeb;Yellow

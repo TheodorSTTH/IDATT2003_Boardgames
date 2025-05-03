@@ -9,7 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import edu.ntnu.irr.bidata.Model.FileHandeler;
+import edu.ntnu.irr.bidata.Model.FileHandler;
 
 public class StartPageCard extends VBox {
   public StartPageCard() {
@@ -32,7 +32,7 @@ public class StartPageCard extends VBox {
     ConfirmButton.getStyleClass().addAll("styled-button", "b-p-text", "b-radius");
 
     ComboBox<String> savedGames = new ComboBox<>();
-    HashMap<String, String> savedGamesMap = FileHandeler.getSavedGames();
+    HashMap<String, String> savedGamesMap = FileHandler.getSavedGames();
     for (String game : savedGamesMap.keySet()) {
       String gameType = savedGamesMap.get(game);
       savedGames.getItems().add(game + " (" + gameType + ")");

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import edu.ntnu.irr.bidata.Model.FileHandeler;
+import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.EventMaker;
@@ -30,7 +30,7 @@ public class BoardLaderGame {
     
     
     public BoardLaderGame(String boardType) {
-        events = FileHandeler.loadLaderGameEvents(boardType);
+        events = FileHandler.loadLaderGameEvents(boardType);
 
     }
 
@@ -89,7 +89,7 @@ public class BoardLaderGame {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            objectMapper.writeValue(new File(gameName+".board.json"), this);
+            objectMapper.writeValue(new File("src/main/resources/files/"+gameName+".board.json"), this);
             System.out.println("Board saved successfully.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,7 +99,7 @@ public class BoardLaderGame {
     public static BoardLaderGame loadBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File(gameName+".board.json"), BoardLaderGame.class);
+            return objectMapper.readValue(new File("src/main/resources/files/"+gameName+".board.json"), BoardLaderGame.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
