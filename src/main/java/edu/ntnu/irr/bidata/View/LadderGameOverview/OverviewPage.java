@@ -3,10 +3,12 @@ package edu.ntnu.irr.bidata.View.LadderGameOverview;
 import javafx.scene.Scene;
 
 public class OverviewPage extends Scene {
-  private static final OverviewLayout layout = new OverviewLayout();
+  private final OverviewLayout layout;
+  
 
   public OverviewPage() {
-    super(layout);
+    super(new OverviewLayout());
+    this.layout = (OverviewLayout) getRoot();
 
     if (getClass().getResource("/style.css") != null) {
       this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
