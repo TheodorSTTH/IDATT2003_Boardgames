@@ -32,8 +32,6 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     this.setText("Move");
     this.setLineSpacing(10);
 
-    update();
-
     moveFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
       boolean isFromDefined = newFrom != null;
       updateOnIsFromDefined(newFrom != null);
@@ -73,6 +71,12 @@ public class MoveTroopsPane extends AbstractSidebarPane {
         ok
         , dontMoveTroops
     );
+
+    this.expandedProperty().addListener((obs, wasExpanded, isNowExpanded) -> {
+      if (isNowExpanded) update();
+    });
+  
+    update();
   }
 
   private void updateOnIsFromDefined(boolean isFromDefined) {
