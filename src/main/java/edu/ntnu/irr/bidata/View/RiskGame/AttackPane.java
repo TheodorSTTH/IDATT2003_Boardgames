@@ -25,8 +25,6 @@ public class AttackPane extends AbstractSidebarPane {
     this.setText("Attack");
     this.setLineSpacing(10);
 
-    update();
-
     attackFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
       boolean isFromDefined = newFrom != null;
       updateOnIsFromDefined(newFrom != null);
@@ -66,6 +64,12 @@ public class AttackPane extends AbstractSidebarPane {
         performAttackUntilResultButton,
         ok
     );
+
+    this.expandedProperty().addListener((obs, wasExpanded, isNowExpanded) -> {
+      if (isNowExpanded) update();
+    });
+
+    update();
   }
 
   private void updateOnIsFromDefined(boolean isFromDefined) {

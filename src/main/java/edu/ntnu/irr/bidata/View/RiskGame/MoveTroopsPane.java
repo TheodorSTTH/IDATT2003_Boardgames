@@ -16,6 +16,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
   private final ComboBox<Country> moveTargetComboBox;
   private final Spinner<Integer> amountOfTroopsSpinner;
   private final Button ok;
+  private final Button dontMoveTroops;
 
   public MoveTroopsPane(Risk risk) {
     super(risk);
@@ -27,10 +28,9 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory = (SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory();
     amountOfTroopsSpinner.setEditable(true);
     this.ok = new Button("Move & finish round");
+    this.dontMoveTroops = new Button("Don't move troops");
     this.setText("Move");
     this.setLineSpacing(10);
-
-    update();
 
     moveFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
       boolean isFromDefined = newFrom != null;
@@ -52,8 +52,14 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       int amount = amountOfTroopsSpinner.getValue();
       if (from != null && to != null) {
         risk.transferTroops(from.getName(), to.getName(), amount);
+        risk.endTurn();
         notifyObservers();
       }
+    });
+
+    dontMoveTroops.setOnAction(event -> {
+      risk.endTurn();
+      notifyObservers();
     });
 
     getContainer().getChildren().addAll(
@@ -63,7 +69,14 @@ public class MoveTroopsPane extends AbstractSidebarPane {
         moveTargetComboBox,
         amountOfTroopsSpinner,
         ok
+        , dontMoveTroops
     );
+
+    this.expandedProperty().addListener((obs, wasExpanded, isNowExpanded) -> {
+      if (isNowExpanded) update();
+    });
+  
+    update();
   }
 
   private void updateOnIsFromDefined(boolean isFromDefined) {

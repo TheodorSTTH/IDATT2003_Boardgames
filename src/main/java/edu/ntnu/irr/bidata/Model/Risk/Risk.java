@@ -37,10 +37,10 @@ public class Risk extends Game {
         super.init();
         board.setUpBoard(getPlayerNames());
         UIRisk.setRisk(this);
+        startTurn();
         RiskPage riskPage = new RiskPage(this);
         UIRisk.setRiskPage(riskPage); // TODO: Avoid tight coupling
         NavigationManager.switchScene(riskPage);
-        startTurn();
     }
 
     public void startSavedGame() {
@@ -59,7 +59,7 @@ public class Risk extends Game {
     }
 
     public void endTurn() {
-        if (board.hasLost(currentPlayer.getName())) {
+        if (board.hasWone(currentPlayer.getName())) {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer();

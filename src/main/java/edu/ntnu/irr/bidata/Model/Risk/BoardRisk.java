@@ -97,7 +97,7 @@ public class BoardRisk {
   }
   
   private int tropBonus(int conteris) {
-      if (conteris > 12) {
+      if (conteris < 12) {
           return 3;
       } else {
           return ((conteris - (conteris % 3)) / 3);
