@@ -5,12 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
@@ -22,7 +19,7 @@ public class BoardLaderGame {
     @JsonProperty
     private int endTile = 90;
     @JsonProperty
-    private HashMap<String, Integer> playerPositions = new HashMap<String, Integer>();
+    private HashMap<Player, Integer> playerPositions = new HashMap<Player, Integer>();
 
     public BoardLaderGame() {
         // Default constructor for Json
@@ -36,22 +33,22 @@ public class BoardLaderGame {
 
     public void setPlayers(ArrayList<Player> players) {
         for (Player player : players) {
-            playerPositions.put(player.getName(), 0);
+            playerPositions.put(player, 0);
         }
     }
 
     public void move(Player player, int steps) {
-        playerPositions.put(player.getName(), playerPositions.get(player.getName()) + steps);
-        if (events.containsKey(playerPositions.get(player.getName()))) {
-            playerPositions.put(player.getName(), events.get(playerPositions.get(player.getName())).Action());
+        playerPositions.put(player, playerPositions.get(player) + steps);
+        if (events.containsKey(playerPositions.get(player))) {
+            playerPositions.put(player, events.get(playerPositions.get(player)).Action());
         } 
     }
     
-    public boolean hasWone(Player player) {
-        return playerPositions.get(player.getName()) >= endTile;
+    public boolean hasWon(Player player) {
+        return playerPositions.get(player) >= endTile;
     }
 
-    public HashMap<String, Integer> getPlayerPositions() {
+    public HashMap<Player, Integer> getPlayerPositions() {
         return playerPositions;
     }
 
@@ -60,7 +57,7 @@ public class BoardLaderGame {
     }
 
 
-    private void setUpLadersClasic() {
+    private void setUpClassicSnakesAndLadders() {
         events.put(2, EventMaker.newLadder(40));
         events.put(8, EventMaker.newLadder(10));
         events.put(24, EventMaker.newLadder(5));

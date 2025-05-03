@@ -47,7 +47,7 @@ public class AttackPane extends AbstractSidebarPane {
       Country from = attackFromComboBox.getValue();
       Country to = attackTargetComboBox.getValue();
       if (from != null && to != null) {
-        risk.attackUntilResolt(from.getName(), to.getName());
+        risk.attackUntilResult(from.getName(), to.getName());
         update();
       }
     });

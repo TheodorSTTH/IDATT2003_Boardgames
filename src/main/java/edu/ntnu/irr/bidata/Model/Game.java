@@ -10,8 +10,8 @@ public abstract class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected Player currentPlayer;
     private int amountOfPlayers = 0;
-    private List<String> avalibleColores = new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "Black"));
-    String gameName;
+    private final List<String> availableColors = new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "Black"));
+    private final String gameName;
 
 
     public Game(int amountOfPlayers, String gameName) {
@@ -32,7 +32,7 @@ public abstract class Game {
             return false;
         }
         players.add(new Player(name, color));
-        avalibleColores.remove(color);
+        availableColors.remove(color);
         if (players.size() == amountOfPlayers) {
             init();
         }
@@ -97,7 +97,7 @@ public abstract class Game {
         return names;
     }
 
-    public List<String> getAvalibleColores() {
-        return avalibleColores;
+    public List<String> getAvailableColors() {
+        return availableColors;
     }
 }

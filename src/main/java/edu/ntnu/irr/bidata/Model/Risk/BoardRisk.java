@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
 
 public class BoardRisk {
   private HashMap<String, Country> countries = new HashMap<String, Country>();
@@ -21,7 +20,7 @@ public class BoardRisk {
       this.setUpClasicRisk();
   }
 
-  public int NewTropes(String player) {
+  public int NewTropes(Player player) {
       int newTropes = tropBonus(getAmountOfCountrysControldByPlayer(player));
       newTropes += getContientBonus(player);
       return newTropes;
@@ -40,7 +39,7 @@ public class BoardRisk {
       return countries;
   }
 
-  public void setUpBoard(List<String> players) {
+  public void setUpBoard(List<Player> players) {
       if (players.size() < 2 || players.size() > 6) {
           throw new IllegalArgumentException("Number of players must be between 2 and 6.");
       }
@@ -48,7 +47,7 @@ public class BoardRisk {
       this.placeStartingTropes(players);
   }
 
-  private void devideCountrys(List<String> players) {
+  private void devideCountrys(List<Player> players) {
       int i = 0;
       for (Country country : countries.values()) {
           country.setOwner(players.get(i));
@@ -60,8 +59,8 @@ public class BoardRisk {
       }
   }
 
-  private void placeStartingTropes(List<String> players) {
-        for (String player : players) {
+  private void placeStartingTropes(List<Player> players) {
+        for (Player player : players) {
             List<String> countries = this.getCountrysControldByPlayerAsStrings(player);
             int tropes = 50 - players.size() * 5 - countries.size();
             for (int i = 0; i < tropes; i++) {
@@ -76,7 +75,7 @@ public class BoardRisk {
 
   }
   
-  private int getAmountOfCountrysControldByPlayer(String player) {
+  private int getAmountOfCountrysControldByPlayer(Player player) {
       int amount = 0;
       for (Country country : countries.values()) {
           if (country.getOwner().equals(player)) {
@@ -86,11 +85,11 @@ public class BoardRisk {
       return amount;
   }
     
-  private int getContientBonus(String player) {
+  private int getContientBonus(Player player) {
       int bonus = 0;
-      for (String continet : continens.keySet()) {
-          if (controlContinet(continet, player)) {
-              bonus += continentBonus.get(continet);
+      for (String continent : continens.keySet()) {
+          if (doesPlayerControlContinent(continent, player)) {
+              bonus += continentBonus.get(continent);
           }
       }
       return bonus;
@@ -104,17 +103,17 @@ public class BoardRisk {
         }
   }
     
-  private boolean controlContinet(String continet, String player) {
-      List<String> contriesOwend = this.getCountrysControldByPlayerAsStrings(player);
-      for (String contery : continens.get(continet)) {
-          if (!contriesOwend.contains(contery)) {
+  private boolean doesPlayerControlContinent(String continent, Player player) {
+      List<String> countriesOwned = this.getCountrysControldByPlayerAsStrings(player);
+      for (String countryName : continens.get(continent)) {
+          if (!countriesOwned.contains(countryName)) {
               return false;
           }
       }
       return (true);
   }
 
-  private List<String> getCountrysControldByPlayerAsStrings(String player) {
+  private List<String> getCountrysControldByPlayerAsStrings(Player player) {
       List<String> countriesControlled = new ArrayList<String>();
       for (Country country : countries.values()) {
           if (country.getOwner().equals(player)) {
@@ -124,7 +123,7 @@ public class BoardRisk {
       return countriesControlled;
   }
 
-  public List<Country> getCountrysControldByPlayer(String player) {
+  public List<Country> getCountriesControlledByPlayer(Player player) {
       List<Country> countriesControlled = new ArrayList<Country>();
       for (Country country : countries.values()) {
           if (country.getOwner().equals(player)) {
@@ -134,7 +133,7 @@ public class BoardRisk {
       return countriesControlled;
   }
   
-  public HashMap<Country, List<Country>> getAttackOptions(String player) {
+  public HashMap<Country, List<Country>> getAttackOptions(Player player) {
       HashMap<Country, List<Country>> attackOptions = new HashMap<Country, List<Country>>();
       for (Country country : countries.values()) {
           if (country.getOwner().equals(player) && country.getArmies() > 1) {
@@ -153,7 +152,7 @@ public class BoardRisk {
       return attackOptions;
   }
   
-  public boolean hasWone(String player) {
+  public boolean hasWon(Player player) {
       for (Country country : countries.values()) {
           if (!country.getOwner().equals(player)) {
               return false;
@@ -162,7 +161,7 @@ public class BoardRisk {
       return true;
   }
   
-  public boolean hasLost(String player) {
+  public boolean hasLost(Player player) {
       for (Country country : countries.values()) {
           if (country.getOwner().equals(player)) {
               return false;
@@ -171,7 +170,7 @@ public class BoardRisk {
       return true;
   }
 
-  public void takeControlOfCountry(String countryName, String player) {
+  public void takeControlOfCountry(String countryName, Player player) {
       Country country = countries.get(countryName);
       if (country != null) {
           country.setOwner(player);

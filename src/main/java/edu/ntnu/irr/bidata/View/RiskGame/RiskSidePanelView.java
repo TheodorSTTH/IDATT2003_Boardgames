@@ -2,20 +2,26 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.View.PopUp;
 import javafx.scene.control.Accordion;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
-public class RiskSidePanelView extends Accordion implements IObserver<AbstractSidebarPane> {
+public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebarPane> {
+  private final Label currentUserLabel;
+  private final Accordion parentAccordion;
   private final PlaceTroopsPane placeTroopsPane;
   private final AttackPane attackPane;
   private final MoveTroopsPane moveTroopsPane;
+  private final Risk risk;
 
   public RiskSidePanelView(Risk risk) {
     this.placeTroopsPane = new PlaceTroopsPane(risk);
     this.attackPane = new AttackPane(risk);
     this.moveTroopsPane = new MoveTroopsPane(risk);
+    this.currentUserLabel = new Label();
+    this.parentAccordion = new Accordion();
+    this.risk = risk;
     placeTroopsPane.registerObserver(this);
     attackPane.registerObserver(this);
     moveTroopsPane.registerObserver(this);
@@ -23,13 +29,20 @@ public class RiskSidePanelView extends Accordion implements IObserver<AbstractSi
     attackPane.setNextSidebarPane(moveTroopsPane);
     moveTroopsPane.setNextSidebarPane(placeTroopsPane);
     this.setMinWidth(200);
+    parentAccordion.setMaxHeight(Double.MAX_VALUE);
+    setVgrow(parentAccordion, Priority.ALWAYS);
 
     setPaneActive(placeTroopsPane);
-    this.getPanes().addAll(
+    this.parentAccordion.getPanes().addAll(
         placeTroopsPane,
         attackPane,
         moveTroopsPane
     );
+    this.getChildren().addAll(
+        currentUserLabel,
+        parentAccordion
+    );
+    update(placeTroopsPane);
   }
   private void disableAll() {
     placeTroopsPane.setDisable(true);
@@ -46,7 +59,7 @@ public class RiskSidePanelView extends Accordion implements IObserver<AbstractSi
     disableAll();
     pane.setExpanded(true);
     pane.setDisable(false);
-    setExpandedPane(pane);
+    parentAccordion.setExpandedPane(pane);
   }
 
   /**
@@ -56,5 +69,6 @@ public class RiskSidePanelView extends Accordion implements IObserver<AbstractSi
    * */
   public void update(AbstractSidebarPane nextPane) {
     setPaneActive(nextPane);
+    this.currentUserLabel.setText("Current Player: " + risk.getCurrentPlayer().getName());
   }
 }

@@ -5,12 +5,9 @@ import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 import java.util.List;
 import javafx.collections.FXCollections;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 public class PlaceTroopsPane extends AbstractSidebarPane {
   private Label avalibuleTropesTextField;
@@ -56,7 +53,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
 
   }
   private void update() {
-    List<Country> placeOptions = risk.getCountriesContrldByActivePlayer();
+    List<Country> placeOptions = risk.getCountriesControlledByActivePlayer();
     avalibuleTropesTextField.setText("You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
     countryComboBox.setItems(FXCollections.observableArrayList(placeOptions));
     countryComboBox.setValue(null);

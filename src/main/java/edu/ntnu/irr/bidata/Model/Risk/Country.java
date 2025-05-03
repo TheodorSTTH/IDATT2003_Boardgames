@@ -1,4 +1,5 @@
 package edu.ntnu.irr.bidata.Model.Risk;
+import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleSubject;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Country implements ISimpleSubject {
   private final double relativeX;
   private final double relativeY;
   private int armies = 0;
-  private String owner = null; // TODO: Make this a player object. We need the player color
+  private Player owner = null;
   private final List<String> neighbors;
 
   private final ArrayList<ISimpleObserver> allObservers;
@@ -95,11 +96,11 @@ public class Country implements ISimpleSubject {
     notifyObservers();
   }
 
-  public String getOwner() {
+  public Player getOwner() {
     return owner;
   }
 
-  public void setOwner(String owner) {
+  public void setOwner(Player owner) {
     this.owner = owner;
     notifyObservers();
   }

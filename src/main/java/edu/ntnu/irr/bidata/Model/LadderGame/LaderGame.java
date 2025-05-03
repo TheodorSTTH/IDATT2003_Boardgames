@@ -60,7 +60,7 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
 
     public void takeAction() {
         board.move(currentPlayer, dice.roll());
-        if (board.hasWone(currentPlayer)) {
+        if (board.hasWon(currentPlayer)) {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer();
@@ -76,7 +76,7 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
         return "LaderGame";
     }
 
-    public HashMap<String, Integer> getPlayerPositions() {
+    public HashMap<Player, Integer> getPlayerPositions() {
         return board.getPlayerPositions();
     }
 }

@@ -51,18 +51,11 @@ public class SnakesAndLaddersBoardView extends Pane implements IObserver<LaderGa
   }
 
   private void placePlayers(LaderGame snakesAndLadders) {
-    ArrayList<Player> players =  snakesAndLadders.getPlayers();
-    HashMap<String, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
-    for (String playerName : playerPositions.keySet()) {
-      int playerTileIndex = playerPositions.get(playerName);
+    HashMap<Player, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
+    for (Player player : playerPositions.keySet()) {
+      int playerTileIndex = playerPositions.get(player);
       Tile playerTile = getTile(playerTileIndex);
-      Optional<Player> optionalPlayer = players.stream()
-          .filter(currentPlayer -> currentPlayer.getName().equals(playerName))
-          .findFirst();
-      if (optionalPlayer.isPresent()) {
-        Player player = optionalPlayer.get();
-        playerTile.placePlayer(player);
-      }
+      playerTile.placePlayer(player);
     }
   }
 
