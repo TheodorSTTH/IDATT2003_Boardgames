@@ -59,7 +59,7 @@ public class Risk extends Game {
     }
 
     public void endTurn() {
-        if (board.hasLost(currentPlayer.getName())) {
+        if (board.hasWone(currentPlayer.getName())) {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer();

@@ -52,6 +52,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       int amount = amountOfTroopsSpinner.getValue();
       if (from != null && to != null) {
         risk.transferTroops(from.getName(), to.getName(), amount);
+        risk.endTurn();
         notifyObservers();
       }
     });
