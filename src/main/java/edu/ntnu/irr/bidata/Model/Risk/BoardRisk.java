@@ -116,7 +116,7 @@ public class BoardRisk {
   private List<String> getCountrysControldByPlayerAsStrings(Player player) {
       List<String> countriesControlled = new ArrayList<String>();
       for (Country country : countries.values()) {
-          if (country.getOwner().equals(player)) {
+          if (country.getOwner().equals(player.getName())) {
               countriesControlled.add(country.getName());
           }
       }
@@ -126,7 +126,7 @@ public class BoardRisk {
   public List<Country> getCountriesControlledByPlayer(Player player) {
       List<Country> countriesControlled = new ArrayList<Country>();
       for (Country country : countries.values()) {
-          if (country.getOwner().equals(player)) {
+          if (country.getOwner().equals(player.getName())) {
               countriesControlled.add(country);
           }
       }
@@ -136,11 +136,11 @@ public class BoardRisk {
   public HashMap<Country, List<Country>> getAttackOptions(Player player) {
       HashMap<Country, List<Country>> attackOptions = new HashMap<Country, List<Country>>();
       for (Country country : countries.values()) {
-          if (country.getOwner().equals(player) && country.getArmies() > 1) {
+          if (country.getOwner().equals(player.getName()) && country.getArmies() > 1) {
               List<Country> neighbors = new ArrayList<Country>();
               for (String neighborName : country.getNeighbors()) {
                   Country neighbor = countries.get(neighborName);
-                  if (!neighbor.getOwner().equals(player)) {
+                  if (!neighbor.getOwner().equals(player.getName())) {
                       neighbors.add(neighbor);
                   }
               }
@@ -154,7 +154,7 @@ public class BoardRisk {
   
   public boolean hasWon(Player player) {
       for (Country country : countries.values()) {
-          if (!country.getOwner().equals(player)) {
+          if (!country.getOwner().equals(player.getName())) {
               return false;
           }
       }
@@ -163,7 +163,7 @@ public class BoardRisk {
   
   public boolean hasLost(Player player) {
       for (Country country : countries.values()) {
-          if (country.getOwner().equals(player)) {
+          if (country.getOwner().equals(player.getName())) {
               return false;
           }
       }

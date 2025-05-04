@@ -26,7 +26,7 @@ public class CountryView extends Button implements ISimpleObserver {
         + "-fx-padding: 4; "
         + "-fx-border-radius: 100; "
         + "-fx-font-weight: bold;"
-        + "-fx-background-color: " + country.getOwner().getColor() + "; ");
+        + "-fx-background-color: " + country.getOwnerColor() + "; ");
     setLayoutX(boardWidth * country.getRelativeX());
     setLayoutY(boardHeight * country.getRelativeY());
   }
