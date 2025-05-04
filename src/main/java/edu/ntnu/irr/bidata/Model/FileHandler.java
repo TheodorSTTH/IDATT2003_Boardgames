@@ -149,13 +149,16 @@ public class FileHandler {
     return players;
   }
 
-  private static void saveCurrentPlayer(Game game) {
+  private static void saveGameState(Game game) {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
     try {
-      PrintWriter writer = new PrintWriter(getFilePath(game.getGameName() + ".currentPlayer.csv"));
-      writer.println(game.getCurrentPlayer().getName());
+      PrintWriter writer = new PrintWriter(getFilePath(game.getGameName() + ".gameState.csv"));
+      writer.print(game.getCurrentPlayer().getName());
+      if (game instanceof Risk) {
+        writer.print("," + ((Risk) game).getTroopsAvailable());
+      }
       writer.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -168,7 +171,7 @@ public class FileHandler {
     }
     Player player = null;
     try {
-      Scanner scanner = new Scanner(new File(getFilePath(gameName + ".currentPlayer.csv")));
+      Scanner scanner = new Scanner(new File(getFilePath(gameName + ".gameState.csv")));
       String[] data = scanner.nextLine().split(",");
       for (Player p : players) {
         if (p.getName().equals(data[0])) {
@@ -183,16 +186,34 @@ public class FileHandler {
     return player;
   }
 
+  private static int loadAvalibleTroops(String gameName) {
+    if (gameName == null || gameName.isEmpty()) {
+      throw new IllegalArgumentException("Invalid File Name");
+    }
+    int troops = 0;
+    try {
+      Scanner scanner = new Scanner(new File(getFilePath(gameName + ".gameState.csv")));
+      String[] data = scanner.nextLine().split(",");
+      troops = Integer.parseInt(data[1]);
+      scanner.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    return troops;
+  }
+
+
+
   private static void saveLaderGame(Game game) {
     savePlyers(game);
-    saveCurrentPlayer(game);
+    saveGameState(game);
     saveBoardLadderGame((LaderGame) game);
     addGameToSavedGames(game);
   }
 
   private static void saveRiskGame(Game game) {
     savePlyers(game);
-    saveCurrentPlayer(game);
+    saveGameState(game);
     saveBoardRisk((Risk) game);
     addGameToSavedGames(game);
   }
@@ -204,7 +225,7 @@ public class FileHandler {
 
   private static Risk loadRiskGame(String name) {
     ArrayList<Player> players = loadPlyers(name);
-    return new Risk(players.size(), name, players, loadBoardRisk(name), loadCurrentPlayer(name, players));
+    return new Risk(players.size(), name, players, loadBoardRisk(name), loadCurrentPlayer(name, players), loadAvalibleTroops(name));
   }
 
   private static BoardLaderGame loadBoardLadderGame(String name) {

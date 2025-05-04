@@ -22,9 +22,10 @@ public class Risk extends Game {
         this.board = new BoardRisk();
     }
 
-    public Risk(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardRisk boardRisk, Player currentPlayer) {
+    public Risk(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardRisk boardRisk, Player currentPlayer, int tropesAvailable) {
         super(amountOfPlayers, gameName, players, currentPlayer);
         this.board = boardRisk;
+        this.tropesAvailable = tropesAvailable;
     }
 
     @Override
