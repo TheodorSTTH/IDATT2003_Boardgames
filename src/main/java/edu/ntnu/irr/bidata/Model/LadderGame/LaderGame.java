@@ -40,7 +40,8 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
         this.allObservers = new ArrayList<>();
     }
 
-    public LaderGame(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardLaderGame board, Player currentPlayer) {
+    public LaderGame(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardLaderGame board,
+            Player currentPlayer) {
         super(amountOfPlayers, gameName, players, currentPlayer);
         this.board = board;
         this.allObservers = new ArrayList<>();
@@ -77,7 +78,17 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
     }
 
     public HashMap<Player, Integer> getPlayerPositions() {
-        return board.getPlayerPositions();
+        HashMap<Player, Integer> playerPositions = new HashMap<Player, Integer>();
+        for (String playerName : board.getPlayerPositions().keySet()) {
+            for (Player player : players) {
+                if (player.getName().equals(playerName)) {
+                    playerPositions.put(player, board.getPlayerPositions().get(playerName));
+                }
+            }
+        }
+        return playerPositions;
     }
+
 }
+
 

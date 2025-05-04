@@ -54,8 +54,21 @@ public abstract class Game {
         return players;
     }
 
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
     public int getAmountOfPlayers() {
         return amountOfPlayers;
+    }
+
+    public String getPlayerColor(String name) {
+        for (Player player : players) {
+            if (player.getName().equals(name)) {
+                return player.getColor();
+            }
+        }
+        return null;
     }
 
     public Player getNextPlayer() {

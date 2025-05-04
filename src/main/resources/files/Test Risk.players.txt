@@ -1,5 +1,0 @@
-A;Red
-B;Blue
-C;Green
-D;Yellow
-E;Black

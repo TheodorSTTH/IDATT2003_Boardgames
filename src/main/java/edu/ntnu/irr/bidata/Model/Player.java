@@ -24,7 +24,7 @@ public class Player {
   }
 
   public String getSaveFormat() {
-    return name + ";" + color;
+    return name + "," + color;
   }
   
   public String getColor() {
@@ -36,7 +36,7 @@ public class Player {
    * */
   @JsonValue
   public String toJsonKey() {
-    return name + ";" + color;
+    return name + "," + color;
   }
 
   /**
@@ -44,7 +44,7 @@ public class Player {
    * */
   @JsonCreator
   public static Player fromJsonKey(String key) {
-    String[] parts = key.split(";", 2);
+    String[] parts = key.split(",", 2);
     return new Player(parts[0], parts.length>1 ? parts[1] : "");
   }
 }
