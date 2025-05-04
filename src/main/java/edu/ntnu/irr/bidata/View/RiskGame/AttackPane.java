@@ -80,10 +80,20 @@ public class AttackPane extends AbstractSidebarPane {
   }
 
   private void update() {
+    Country selectedFrom = attackFromComboBox.getValue();
+    Country selectedTo = attackTargetComboBox.getValue();
+    
     List<Country> attackFromOptions = risk.getCountriesCurrentPlayerCanAttackFrom();
     attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
+    attackFromComboBox.setValue(null);
     attackTargetComboBox.setValue(null);
     updateOnIsFromDefined(false);
     attackTargetComboBox.getItems().clear();
+
+    if (attackFromOptions.contains(selectedFrom) && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
+      attackFromComboBox.setValue(selectedFrom);
+      attackTargetComboBox.setItems(FXCollections.observableArrayList(risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
+      attackTargetComboBox.setValue(selectedTo);
+    } 
   }
 }

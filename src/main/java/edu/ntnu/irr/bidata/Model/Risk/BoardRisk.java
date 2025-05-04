@@ -78,7 +78,7 @@ public class BoardRisk {
   private int getAmountOfCountrysControldByPlayer(Player player) {
       int amount = 0;
       for (Country country : countries.values()) {
-          if (country.getOwner().equals(player)) {
+          if (country.getOwner().equals(player.getName())) {
               amount++;
           }
       }
