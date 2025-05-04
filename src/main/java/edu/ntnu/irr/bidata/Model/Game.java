@@ -54,6 +54,10 @@ public abstract class Game {
         return players;
     }
 
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
     public int getAmountOfPlayers() {
         return amountOfPlayers;
     }

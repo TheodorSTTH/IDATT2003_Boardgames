@@ -1,0 +1,118 @@
+{
+  "events" : {
+    "64" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 26
+    },
+    "65" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 82
+    },
+    "2" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 35
+    },
+    "34" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 3
+    },
+    "36" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 52
+    },
+    "68" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 85
+    },
+    "5" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 25
+    },
+    "70" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What animal can live both in water and on land?",
+      "answer" : "Amphibian",
+      "tileNumber" : 70
+    },
+    "40" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is the capital of Canada?",
+      "answer" : "Ottawa",
+      "tileNumber" : 40
+    },
+    "10" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What animal can live both in water and on land?",
+      "answer" : "Amphibian",
+      "tileNumber" : 10
+    },
+    "42" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 30
+    },
+    "74" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 12
+    },
+    "80" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is a baby kangaroo called?",
+      "answer" : "Joey",
+      "tileNumber" : 80
+    },
+    "49" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 79
+    },
+    "50" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What gas do plants breathe in?",
+      "answer" : "Carbon dioxide",
+      "tileNumber" : 50
+    },
+    "20" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "Who wrote \"Romeo and Juliet\"?",
+      "answer" : "William Shakespeare",
+      "tileNumber" : 20
+    },
+    "24" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 5
+    },
+    "56" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 36
+    },
+    "89" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 71
+    },
+    "90" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is the name of Sherlock Holmes' assistant?",
+      "answer" : "Dr. Watson",
+      "tileNumber" : 90
+    },
+    "60" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is the national sport of Japan?",
+      "answer" : "Sumo wrestling",
+      "tileNumber" : 60
+    },
+    "30" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is the main ingredient in chocolate?",
+      "answer" : "Cocoa",
+      "tileNumber" : 30
+    }
+  },
+  "endTile" : 90,
+  "playerPositions" : {
+    "Eine;Blue" : 62,
+    "Eine;Blue" : 29,
+    "Imre;Red" : 14,
+    "Imre;Red" : 39
+  },
+  "players" : [ "Eine;Blue", "Eine;Blue", "Imre;Red", "Imre;Red" ]
+}

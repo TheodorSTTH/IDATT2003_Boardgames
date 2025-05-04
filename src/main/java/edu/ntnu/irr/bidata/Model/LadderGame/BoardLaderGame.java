@@ -56,6 +56,10 @@ public class BoardLaderGame {
         events.put(tile, event);
     }
 
+    public ArrayList<Player> getPlayers() {
+        return new ArrayList<Player>(playerPositions.keySet());
+    }
+
 
     private void setUpClassicSnakesAndLadders() {
         events.put(2, EventMaker.newLadder(40));
