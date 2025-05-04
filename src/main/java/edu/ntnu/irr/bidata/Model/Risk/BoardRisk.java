@@ -2,6 +2,7 @@ package edu.ntnu.irr.bidata.Model.Risk;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,8 +49,10 @@ public class BoardRisk {
   }
 
   private void devideCountrys(List<Player> players) {
-      int i = 0;
-      for (Country country : countries.values()) {
+        List<Country> countryList = new ArrayList<>(countries.values());
+        Collections.shuffle(countryList); // Shuffle countries randomly
+        int i = 0;
+      for (Country country : countryList) {
           country.setOwner(players.get(i));
           country.setArmies(1);
           i++;
