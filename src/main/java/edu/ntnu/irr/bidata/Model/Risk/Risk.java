@@ -66,8 +66,9 @@ public class Risk extends Game {
                 // * Open attack menu
                 return true;
             }
-            return true;
+            return false;
         }
+        PopUp.showInfo("To many troops", "You can not place more tropes than you have available");
         return false;
     }
 

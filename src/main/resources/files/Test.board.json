@@ -49,7 +49,7 @@
       "name" : "Siam",
       "owner" : "C",
       "ownerColor" : "Blue",
-      "armies" : 2,
+      "armies" : 4,
       "neighbors" : [ "China", "India", "Indonesia" ],
       "relativeX" : 0.79,
       "relativeY" : 0.56
@@ -94,7 +94,7 @@
       "name" : "Iceland",
       "owner" : "B",
       "ownerColor" : "Yellow",
-      "armies" : 2,
+      "armies" : 5,
       "neighbors" : [ "Greenland", "Scandinavia", "Great Britain" ],
       "relativeX" : 0.39,
       "relativeY" : 0.2
@@ -121,7 +121,7 @@
       "name" : "Great Britain",
       "owner" : "B",
       "ownerColor" : "Yellow",
-      "armies" : 3,
+      "armies" : 4,
       "neighbors" : [ "Iceland", "Scandinavia", "Northern Europe", "Western Europe" ],
       "relativeX" : 0.39,
       "relativeY" : 0.28
@@ -157,7 +157,7 @@
       "name" : "Brazil",
       "owner" : "Imre",
       "ownerColor" : "Black",
-      "armies" : 4,
+      "armies" : 8,
       "neighbors" : [ "Venezuela", "Peru", "Argentina", "North Africa" ],
       "relativeX" : 0.31,
       "relativeY" : 0.64
