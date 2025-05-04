@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -19,7 +20,7 @@ public class BoardLaderGame {
     @JsonProperty
     private int endTile = 90;
     @JsonProperty
-    private HashMap<Player, Integer> playerPositions = new HashMap<Player, Integer>();
+    private HashMap<String, Integer> playerPositions = new HashMap<String, Integer>();
 
     public BoardLaderGame() {
         // Default constructor for Json
@@ -33,22 +34,22 @@ public class BoardLaderGame {
 
     public void setPlayers(ArrayList<Player> players) {
         for (Player player : players) {
-            playerPositions.put(player, 0);
+            playerPositions.put(player.getName(), 0);
         }
     }
 
     public void move(Player player, int steps) {
-        playerPositions.put(player, playerPositions.get(player) + steps);
-        if (events.containsKey(playerPositions.get(player))) {
-            playerPositions.put(player, events.get(playerPositions.get(player)).Action());
+        playerPositions.put(player.getName(), playerPositions.get(player.getName()) + steps);
+        if (events.containsKey(playerPositions.get(player.getName()))) {
+            playerPositions.put(player.getName(), events.get(playerPositions.get(player.getName())).Action());
         } 
     }
     
     public boolean hasWon(Player player) {
-        return playerPositions.get(player) >= endTile;
+        return playerPositions.get(player.getName()) >= endTile;
     }
 
-    public HashMap<Player, Integer> getPlayerPositions() {
+    public HashMap<String, Integer> getPlayerPositions() {
         return playerPositions;
     }
 
@@ -56,8 +57,9 @@ public class BoardLaderGame {
         events.put(tile, event);
     }
 
-    public ArrayList<Player> getPlayers() {
-        return new ArrayList<Player>(playerPositions.keySet());
+    @JsonIgnore
+    public ArrayList<String> getPlayers() {
+        return new ArrayList<String>(playerPositions.keySet());
     }
 
 

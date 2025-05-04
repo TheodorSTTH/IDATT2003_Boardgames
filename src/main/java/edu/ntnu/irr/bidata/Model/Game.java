@@ -62,6 +62,15 @@ public abstract class Game {
         return amountOfPlayers;
     }
 
+    public String getPlayerColor(String name) {
+        for (Player player : players) {
+            if (player.getName().equals(name)) {
+                return player.getColor();
+            }
+        }
+        return null;
+    }
+
     public Player getNextPlayer() {
         int index = players.indexOf(currentPlayer);
         if (index == players.size() - 1) {

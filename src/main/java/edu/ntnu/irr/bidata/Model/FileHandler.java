@@ -198,9 +198,8 @@ public class FileHandler {
   }
 
   private static LaderGame loadLaderGame(String name) {
-    BoardLaderGame board = loadBoardLadderGame(name);
     ArrayList<Player> players = loadPlyers(name);
-    return new LaderGame(players.size(), name, players, board, loadCurrentPlayer(name, players));
+    return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
   }
 
   private static Risk loadRiskGame(String name) {

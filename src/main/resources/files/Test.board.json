@@ -30,20 +30,20 @@
     },
     "70" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What animal can live both in water and on land?",
-      "answer" : "Amphibian",
+      "question" : "Who was known as the Maid of Orléans?",
+      "answer" : "Joan of Arc",
       "tileNumber" : 70
     },
     "40" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What is the capital of Canada?",
-      "answer" : "Ottawa",
+      "question" : "What is the longest river in the world?",
+      "answer" : "Nile",
       "tileNumber" : 40
     },
     "10" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What animal can live both in water and on land?",
-      "answer" : "Amphibian",
+      "question" : "What shape is a stop sign?",
+      "answer" : "Octagon",
       "tileNumber" : 10
     },
     "42" : {
@@ -56,8 +56,8 @@
     },
     "80" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What is a baby kangaroo called?",
-      "answer" : "Joey",
+      "question" : "How many colors are in a rainbow?",
+      "answer" : "7",
       "tileNumber" : 80
     },
     "49" : {
@@ -66,14 +66,14 @@
     },
     "50" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What gas do plants breathe in?",
-      "answer" : "Carbon dioxide",
+      "question" : "How many sides does a hexagon have?",
+      "answer" : "6",
       "tileNumber" : 50
     },
     "20" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "Who wrote \"Romeo and Juliet\"?",
-      "answer" : "William Shakespeare",
+      "question" : "What is the name of the fairy in Peter Pan?",
+      "answer" : "Tinker Bell",
       "tileNumber" : 20
     },
     "24" : {
@@ -90,29 +90,27 @@
     },
     "90" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What is the name of Sherlock Holmes' assistant?",
-      "answer" : "Dr. Watson",
+      "question" : "What is the square root of 81?",
+      "answer" : "9",
       "tileNumber" : 90
     },
     "60" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What is the national sport of Japan?",
-      "answer" : "Sumo wrestling",
+      "question" : "Which famous ship sank after hitting an iceberg?",
+      "answer" : "Titanic",
       "tileNumber" : 60
     },
     "30" : {
       "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
-      "question" : "What is the main ingredient in chocolate?",
-      "answer" : "Cocoa",
+      "question" : "What color do you get when you mix red and white?",
+      "answer" : "Pink",
       "tileNumber" : 30
     }
   },
   "endTile" : 90,
   "playerPositions" : {
-    "Eine;Blue" : 62,
-    "Eine;Blue" : 29,
-    "Imre;Red" : 14,
-    "Imre;Red" : 39
-  },
-  "players" : [ "Eine;Blue", "Eine;Blue", "Imre;Red", "Imre;Red" ]
+    "Imre" : 87,
+    "Ingeb" : 31,
+    "Eine" : 55
+  }
 }
