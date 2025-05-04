@@ -9,8 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
@@ -47,7 +45,7 @@ public class BoardLaderGame {
         } 
     }
     
-    public boolean hasWone(Player player) {
+    public boolean hasWon(Player player) {
         return playerPositions.get(player.getName()) >= endTile;
     }
 
@@ -59,8 +57,13 @@ public class BoardLaderGame {
         events.put(tile, event);
     }
 
+    @JsonIgnore
+    public ArrayList<String> getPlayers() {
+        return new ArrayList<String>(playerPositions.keySet());
+    }
 
-    private void setUpLadersClasic() {
+
+    private void setUpClassicSnakesAndLadders() {
         events.put(2, EventMaker.newLadder(40));
         events.put(8, EventMaker.newLadder(10));
         events.put(24, EventMaker.newLadder(5));

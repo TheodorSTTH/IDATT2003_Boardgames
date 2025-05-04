@@ -21,7 +21,7 @@ public class CreatePlayerCard extends VBox {
         usernameField.getStyleClass().addAll("styled-textfield", "w-s-text", "w-radius");
 
         ComboBox<String> playerColureField = new ComboBox<>();
-        playerColureField.getItems().addAll(UI.getGame().getAvalibleColores());
+        playerColureField.getItems().addAll(UI.getGame().getAvailableColors());
         playerColureField.setPromptText("Chose a color");
 
         createPlayerButton.setOnAction(e -> {

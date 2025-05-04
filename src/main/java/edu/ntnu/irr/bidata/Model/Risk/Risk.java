@@ -1,11 +1,8 @@
 package edu.ntnu.irr.bidata.Model.Risk;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.Controler.UILaderGame;
-import edu.ntnu.irr.bidata.Controler.UIRisk;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.View.LadderGameOverview.OverviewPage;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.Model.Dice;
 import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
@@ -16,9 +13,9 @@ import java.util.List;
 public class Risk extends Game {
     private final BoardRisk board;
     private int tropesAvailable = 0;
-    private Dice oneDice = new Dice(1, 6);
-    private Dice twoDice = new Dice(2, 6);
-    private Dice treDice = new Dice(3, 6);
+    private final Dice oneDice = new Dice(1, 6);
+    private final Dice twoDice = new Dice(2, 6);
+    private final Dice treDice = new Dice(3, 6);
 
     public Risk(int amountOfPlayers, String gameName) {
         super(amountOfPlayers, gameName);
@@ -30,36 +27,30 @@ public class Risk extends Game {
         this.board = boardRisk;
     }
 
-
-
     @Override
     protected void init() {
         super.init();
-        board.setUpBoard(getPlayerNames());
-        UIRisk.setRisk(this);
+        board.setUpBoard(this.players);
         startTurn();
         RiskPage riskPage = new RiskPage(this);
-        UIRisk.setRiskPage(riskPage); // TODO: Avoid tight coupling
         NavigationManager.switchScene(riskPage);
     }
 
     public void startSavedGame() {
         RiskPage riskPage = new RiskPage(this);
-        UIRisk.setRiskPage(riskPage); // TODO: Avoid tight coupling
-        UIRisk.setRisk(this);
         NavigationManager.switchScene(riskPage);
     }
 
     private void startTurn() {
-        while (board.hasLost(currentPlayer.getName())) {
+        while (board.hasLost(currentPlayer)) {
             currentPlayer = getNextPlayer();
         }
-        tropesAvailable = board.NewTropes(currentPlayer.getName());
+        tropesAvailable = board.NewTropes(currentPlayer);
         // * Open place troops menu after this
     }
 
     public void endTurn() {
-        if (board.hasWone(currentPlayer.getName())) {
+        if (board.hasWon(currentPlayer)) {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer();
@@ -80,16 +71,16 @@ public class Risk extends Game {
     }
 
     public List<Country> getCountriesCurrentPlayerCanMoveFrom() {
-        return board.getCountrysControldByPlayer(getCurrentPlayer().getName())
+        return board.getCountriesControlledByPlayer(getCurrentPlayer())
                 .stream().filter(country -> country.getArmies() > 1)
                 .toList();
     }
     
     public List<Country> getCountriesCurrentPlayerCanAttackFrom() {
-        return board.getAttackOptions(getCurrentPlayer().getName()).keySet().stream().toList();
+        return board.getAttackOptions(getCurrentPlayer()).keySet().stream().toList();
     }
     public List<Country> getCountriesCurrentPlayerCanAttackFromCountry(Country attackingCountry) {
-        return board.getAttackOptions(getCurrentPlayer().getName()).get(attackingCountry);
+        return board.getAttackOptions(getCurrentPlayer()).get(attackingCountry);
     }
 
     private void attack(String attacker, String defender) {
@@ -135,7 +126,7 @@ public class Risk extends Game {
         }
 
         if (board.getUnits(defender) == 0) {
-            board.takeControlOfCountry(defender, currentPlayer.getName());
+            board.takeControlOfCountry(defender, currentPlayer);
             board.transferTroops(attacker, defender, PopUp.promptForNumberInRange("How many trops do you want to move to the new country",board.getUnits(attacker) - 1));
         }
     }
@@ -144,8 +135,15 @@ public class Risk extends Game {
         attack(attacker, defender);
         // * Update attack menu
     }
-    
-    public void attackUntilResolt(String attacker, String defender) {
+
+    /**
+     * Attack until you don't have any units to attack with from your given country,
+     * or you won the attack.
+     *
+     * @param attacker The attacking country
+     * @param defender The defending country
+     * */
+    public void attackUntilResult(String attacker, String defender) {
         while ((board.getUnits(attacker) >= 2) && (!board.controldBySamePlayer(attacker, defender))) {
             attack(attacker, defender);
         }
@@ -160,8 +158,8 @@ public class Risk extends Game {
         return "Risk";
     }
 
-    public List<Country> getCountriesContrldByActivePlayer() {
-        return board.getCountrysControldByPlayer(currentPlayer.getName());
+    public List<Country> getCountriesControlledByActivePlayer() {
+        return board.getCountriesControlledByPlayer(currentPlayer);
     }
 
     public boolean transferTroops(String from, String to, int amount) {

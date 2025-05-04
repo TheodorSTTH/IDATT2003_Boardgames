@@ -1,4 +1,5 @@
 package edu.ntnu.irr.bidata.Model.Risk;
+import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleSubject;
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ public class Country implements ISimpleSubject {
   private final double relativeX;
   private final double relativeY;
   private int armies = 0;
-  private String owner = null; // TODO: Make this a player object. We need the player color
+  private String owner;
+  private String ownerColor;
   private final List<String> neighbors;
 
   private final ArrayList<ISimpleObserver> allObservers;
@@ -20,9 +22,23 @@ public class Country implements ISimpleSubject {
   @JsonCreator
   public Country(
       @JsonProperty("name") String name,
+      @JsonProperty("owner") String owner,
+      @JsonProperty("ownerColor") String ownerColor,
+      @JsonProperty("armies") int armies,
       @JsonProperty("neighbors") List<String> neighbors,
       @JsonProperty("relativeX") double relativeX,
       @JsonProperty("relativeY") double relativeY) {
+    this.name = name;
+    this.owner = owner;
+    this.ownerColor = ownerColor;
+    this.armies = armies;
+    this.neighbors = neighbors;
+    this.relativeX = Math.clamp(relativeX, 0, 1);
+    this.relativeY = Math.clamp(relativeY, 0, 1);
+    this.allObservers = new ArrayList<>();
+  }
+
+  public Country(String name, List<String> neighbors, double relativeX, double relativeY) {
     this.name = name;
     this.neighbors = neighbors;
     this.relativeX = Math.clamp(relativeX, 0, 1);
@@ -99,8 +115,13 @@ public class Country implements ISimpleSubject {
     return owner;
   }
 
-  public void setOwner(String owner) {
-    this.owner = owner;
+  public String getOwnerColor() {
+    return ownerColor;
+  }
+
+  public void setOwner(Player owner) {
+    this.owner = owner.getName();
+    this.ownerColor = owner.getColor();
     notifyObservers();
   }
 

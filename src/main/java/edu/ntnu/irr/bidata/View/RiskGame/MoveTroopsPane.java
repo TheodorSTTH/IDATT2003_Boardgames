@@ -2,7 +2,6 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import java.util.Arrays;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
@@ -37,7 +36,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       updateOnIsFromDefined(newFrom != null);
       if (isFromDefined) {
         moveTargetComboBox.setItems(FXCollections.observableArrayList(
-            risk.getCountriesContrldByActivePlayer()
+            risk.getCountriesControlledByActivePlayer()
         ));
         amountOfTroopsSpinner.getValueFactory().setValue(1);
         spinnerValueFactory.setMax(newFrom.getArmies()-1);
