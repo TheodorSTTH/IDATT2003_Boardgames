@@ -5,7 +5,11 @@ import java.util.Optional;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 
 public class PopUp {
@@ -100,5 +104,28 @@ public static boolean askQuestion(String question, String correctAnswer) {
     } else {
         return false; // User canceled or closed the dialog
     }
+}
+
+public static void showScrollablePopup(String title, String content) {
+    // Create a non-editable TextArea to hold the content
+    TextArea textArea = new TextArea(content);
+    textArea.setWrapText(true);
+    textArea.setEditable(false);
+    textArea.setPrefWidth(400);
+    textArea.setPrefHeight(300);
+
+    // Place the TextArea in a ScrollPane
+    ScrollPane scrollPane = new ScrollPane(textArea);
+    scrollPane.setFitToWidth(true);
+    scrollPane.setFitToHeight(true);
+
+    // Use a Dialog for more flexibility than Alert
+    Dialog<Void> dialog = new Dialog<>();
+    dialog.setTitle(title);
+    dialog.getDialogPane().setContent(scrollPane);
+    dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+    dialog.setResizable(true);
+
+    dialog.showAndWait();
 }
 }
