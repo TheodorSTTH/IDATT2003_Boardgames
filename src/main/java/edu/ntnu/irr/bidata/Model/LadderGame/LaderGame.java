@@ -3,6 +3,7 @@ package edu.ntnu.irr.bidata.Model.LadderGame;
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISubject;
+import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.LadderGameOverview.SnakesAndLaddersPage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,6 +54,7 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
         board.setPlayers(players);
         SnakesAndLaddersPage snakesAndLaddersPage = new SnakesAndLaddersPage(this);
         NavigationManager.navigate(snakesAndLaddersPage); // TODO: Find way around doing this here
+        showRueles();
     }
 
     public void startSavedGame() {
@@ -87,6 +89,16 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
             }
         }
         return playerPositions;
+    }
+
+    public void showRueles() {
+        PopUp.showScrollablePopup("Rules", "The rules of the game are as follows:\n"
+                + "1. Players take turns rolling two dice.\n"
+                + "2. The player moves their token forward the number of spaces shown on the dice.\n"
+                + "3. If a player lands on a snake, they must slide down to the tail of the snake.\n"
+                + "4. If a player lands on a ladder, they can climb up to the top of the ladder.\n"
+                + "5. If a player lands on a qizz tile, they must answer a if they answer correctly they move 3 forwerd, if they get wrong they move 3 back.\n"
+                + "6. The first player to reach the end of the board wins.");
     }
 
 }
