@@ -1,18 +1,23 @@
 package edu.ntnu.irr.bidata.View.StartPage;
 
-import java.util.HashMap;
-
 import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.View.PopUp;
+import java.util.HashMap;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import edu.ntnu.irr.bidata.Model.FileHandler;
 
-public class StartPageCard extends VBox {
-  public StartPageCard() {
+public class StartPage extends VBox {
+  public StartPage() {
+    if (getClass().getResource("/style.css") != null) {
+      getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+    } else {
+      System.err.println("Warning: style.css not found!");
+    }
+
     Label label = new Label("How many players, and what game do you want to play?");
     label.getStyleClass().addAll("styled-label", "w-p-text");
 
@@ -66,9 +71,7 @@ public class StartPageCard extends VBox {
       }
     });
 
-    // Add components to VBox
-    this.getChildren().addAll(label, amountOfPlayersComboBox, WhatGameComboBox, gameNameField, ConfirmButton, 
-        savedGames, LoadGameButton);
-    this.getStyleClass().addAll("createUser-card", "w-radius");
+    getChildren().addAll(label, amountOfPlayersComboBox, WhatGameComboBox, gameNameField, ConfirmButton, savedGames, LoadGameButton);
+    getStyleClass().addAll("createUser-card", "w-radius", "createPlayer-layout");
   }
 }

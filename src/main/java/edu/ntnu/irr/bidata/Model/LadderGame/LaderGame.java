@@ -53,13 +53,12 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
         super.init();
         board.setPlayers(players);
         SnakesAndLaddersPage snakesAndLaddersPage = new SnakesAndLaddersPage(this);
-        NavigationManager.switchScene(snakesAndLaddersPage); // TODO: Find way around doing this here
+        NavigationManager.navigate(snakesAndLaddersPage); // TODO: Find way around doing this here
         showRueles();
-
     }
 
     public void startSavedGame() {
-        NavigationManager.switchScene(new SnakesAndLaddersPage(this));
+        NavigationManager.navigate(new SnakesAndLaddersPage(this));
     }
 
     public void takeAction() {

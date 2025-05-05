@@ -1,15 +1,13 @@
 package edu.ntnu.irr.bidata.View.RiskGame;
 
-import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 import java.util.HashMap;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
-public class RiskPage extends Scene {
+public class RiskPage extends HBox {
   RiskBoardView board;
   RiskSidePanelView sidePanel;
 
@@ -28,8 +26,7 @@ public class RiskPage extends Scene {
       risk.saveGame();
       PopUp.showInfo("Game saved", "Game has been saved as " + risk.getGameName());
     });
-    HBox root = (HBox) this.getRoot();
-    root.getChildren().addAll(sidePanel, board, saveButton);
+    getChildren().addAll(sidePanel, board, saveButton);
   }
 
   /**

@@ -1,7 +1,8 @@
 package edu.ntnu.irr.bidata.Controler;
 
-import edu.ntnu.irr.bidata.View.StartPage.StartPagePage;
+import edu.ntnu.irr.bidata.View.StartPage.StartPage;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -13,9 +14,11 @@ public class MyWindow extends Application {
   @Override
   public void start(Stage primaryStage) {
     MyWindow.primaryStage = primaryStage;
-    MyWindow.primaryStage.setTitle("BoardGame");
     NavigationManager.setStage(primaryStage);
-    NavigationManager.switchScene(new StartPagePage());
+    primaryStage.setTitle("BoardGame");
+    primaryStage.setScene(new Scene(new StartPage()));
+    primaryStage.show();
+    primaryStage.setMaximized(true);
   }
 
   public static Stage getPrimaryStage() {

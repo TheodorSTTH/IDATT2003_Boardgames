@@ -4,7 +4,6 @@ import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
-import edu.ntnu.irr.bidata.View.StartPage.StartPagePage;
 import edu.ntnu.irr.bidata.Model.FileHandler;
 
 // TODO: Separate start page logic form UI class
@@ -20,7 +19,7 @@ public class UI {
     else if (gameType.equals("Risk")) {
       game = new Risk(plyers, gameName);
     }
-    NavigationManager.switchScene(new CreatePlayerPage());
+    NavigationManager.navigate(new CreatePlayerPage());
   }
 
   public static boolean newPlayer(String name, String color) {

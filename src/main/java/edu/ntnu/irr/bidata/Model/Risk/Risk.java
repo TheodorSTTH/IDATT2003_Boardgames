@@ -35,13 +35,13 @@ public class Risk extends Game {
         board.setUpBoard(this.players);
         startTurn();
         RiskPage riskPage = new RiskPage(this);
-        NavigationManager.switchScene(riskPage);
+        NavigationManager.navigate(riskPage);
         showRueles();
     }
 
     public void startSavedGame() {
         RiskPage riskPage = new RiskPage(this);
-        NavigationManager.switchScene(riskPage);
+        NavigationManager.navigate(riskPage);
     }
 
     private void startTurn() {
