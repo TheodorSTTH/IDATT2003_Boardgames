@@ -49,17 +49,27 @@ public class BoardRisk {
   }
 
   private void devideCountrys(List<Player> players) {
+        if (players.size() == 2) {
+            Player bot = new Player("", "Pink");
+            players.add(bot); // Add the bot to the players list if needed
+        }
         List<Country> countryList = new ArrayList<>(countries.values());
         Collections.shuffle(countryList); // Shuffle countries randomly
         int i = 0;
-      for (Country country : countryList) {
-          country.setOwner(players.get(i));
-          country.setArmies(1);
-          i++;
-          if (i >= players.size()) {
-              i = 0;
-          }
-      }
+        for (Country country : countryList) {
+            country.setOwner(players.get(i));
+            if (players.get(i).getName().equals("")) {
+                country.setArmies(2); // Give the bot 2 armies
+            } else {
+                country.setArmies(1); // Give other players 1 army
+            }
+            i++;
+            if (i >= players.size()) {
+                i = 0;
+            }
+        }
+        players.removeIf(player -> player.getName().equals("")); // Remove the bot from the players list if needed
+      
   }
 
   private void placeStartingTropes(List<Player> players) {
