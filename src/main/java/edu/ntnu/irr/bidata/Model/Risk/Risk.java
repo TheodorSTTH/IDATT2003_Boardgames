@@ -185,7 +185,7 @@ public class Risk extends Game {
     public void showRueles() {
         PopUp.showScrollablePopup("Rules", "The rules of the game are as follows:\n"
                 + "1. Players take turns in clockwise order.\n"
-                + "2. You gain reinforcements each turn based on the number of territories you own, continent control, and other bonuses like controling a continet.\n"
+                + "2. You gain reinforcements each turn based on the number of territories you own and continent control.\n"
                 + "3. On your turn, can reinforce your own, counteries.\n"
                 + "4. You can attack other players' territories.\n"
                 + "5. You must have at least one tropp in each country.\n"
