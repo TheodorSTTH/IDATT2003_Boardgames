@@ -106,6 +106,7 @@ public static boolean askQuestion(String question, String correctAnswer) {
     }
 }
 
+/**!!!This method is partly created by ChatGPT!!!*/
 public static void showScrollablePopup(String title, String content) {
     // Create a non-editable TextArea to hold the content
     TextArea textArea = new TextArea(content);
