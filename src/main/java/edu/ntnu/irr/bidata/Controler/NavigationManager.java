@@ -1,5 +1,7 @@
 package edu.ntnu.irr.bidata.Controler;
 
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -19,16 +21,11 @@ public class NavigationManager {
   }
 
   /**
-   * Responsible for switching between scenes. Creates a new scene based of a loaded view
-   * and then changes to it.
+   * Switches out the current parent node of the scene with a new parent root.
    *
-   * @param scene new scene
+   * @param parentNode Node we are switching to
    * */
-  public static void switchScene(Scene scene) {
-    primaryStage.hide();
-    primaryStage.setMaximized(false);
-    primaryStage.setScene(scene);
-    primaryStage.setMaximized(true);
-    primaryStage.show();
+  public static void navigate(Parent parentNode) {
+    primaryStage.getScene().setRoot(parentNode);
   }
 }
