@@ -191,7 +191,11 @@ public class Risk extends Game {
                 + "5. You must have at least one tropp in each country.\n"
                 + "6. Battles are resolved by rolling dice; the attacker can roll up to 3 dice, and the defender up to 2. You roll one dice for each trope you controle\n"
                 + "7. The highest two dice are compared; ties go to the defender. Losers remove troops. They can lose one each\n"
-                + "8. At the end of your turn, you may fortify by moving troops between two territories.\n"
-                + "9. The goal is to conquer the entire world by eliminating all other players.");
+                + "8. At the end of your turn, you may fortify by moving troops between two territories (You can only fortify once).\n"
+                + "9. The goal is to conquer the entire world by eliminating all other players.\n\n"
+                + "Note: you can click on a country to see its name, ovner and number of troops.\n"
+                + "Good luck and have fun!");
+
+
     }
 }
