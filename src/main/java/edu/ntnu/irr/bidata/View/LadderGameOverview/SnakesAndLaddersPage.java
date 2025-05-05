@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 
 public class SnakesAndLaddersPage extends Scene {
-  SnakesAndLaddersBoardView board;
+  SnakesAndLaddersCanvasView board;
   SnakesAndLaddersSidePanelView sidePanel;
 
   public SnakesAndLaddersPage(LaderGame snakesAndLadders) {
@@ -15,7 +15,7 @@ public class SnakesAndLaddersPage extends Scene {
     } else {
       System.err.println("Warning: style.css not found!");
     }
-    this.board = new SnakesAndLaddersBoardView(snakesAndLadders);
+    this.board = new SnakesAndLaddersCanvasView(snakesAndLadders);
     this.sidePanel = new SnakesAndLaddersSidePanelView(snakesAndLadders);
     HBox root = (HBox) this.getRoot();
     root.getChildren().addAll(sidePanel, board);

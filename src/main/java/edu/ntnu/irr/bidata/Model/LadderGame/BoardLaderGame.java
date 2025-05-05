@@ -25,6 +25,10 @@ public class BoardLaderGame {
     public BoardLaderGame() {
         // Default constructor for Json
     }
+
+    public HashMap<Integer, Event> getEvents() {
+        return events;
+    }
     
     
     public BoardLaderGame(String boardType) {
