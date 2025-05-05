@@ -27,13 +27,13 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   private final int boardWidth = 600;
   private final int boardHeight = 600;
 
-  private final ArrayList<CanvasTileView> tileViews = new ArrayList<>(boardColumnAmount * boardRowsAmount);
+  private final ArrayList<CanvasTileView> tileViews = new ArrayList<>(boardColumnAmount * boardRowsAmount+1);
 
   /**
    * Constructs the board view variables.
    * */
   public SnakesAndLaddersCanvasView(LaderGame snakesAndLadders) {
-    for (int i = 0; i < 90; i++) {
+    for (int i = 0; i < 91; i++) {
       tileViews.add(null);
     }
     this.setWidth(boardWidth);
@@ -69,7 +69,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
         CanvasTileView tileView = new CanvasTileView(x, y, width, height, color, tileNumber, gc);
         tileView.drawBox();
         tileView.drawNumber();
-        tileViews.set(tileNumber - 1, tileView);
+        tileViews.set(tileNumber, tileView);
       }
     }
   }
@@ -81,6 +81,10 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
     HashMap<Player, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
+      if (playerTileIndex == 0) {
+        continue; // Player is not on board yet
+        
+      }
       CanvasTileView playerTileView = getTile(playerTileIndex);
       playerTileView.addPlayer(player);
     }
@@ -93,6 +97,9 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
     HashMap<Player, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
+      if (playerTileIndex == 0) {
+        continue; // Player is not on board yet
+      }
       CanvasTileView playerTileView = getTile(playerTileIndex);
       playerTileView.drawPlayers();
     }
@@ -126,7 +133,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
 
   private void drawQuizEvent(int tileIndex) {
     GraphicsContext gc = getGraphicsContext2D();
-    CanvasTileView tileView = tileViews.get(tileIndex - 1);
+    CanvasTileView tileView = tileViews.get(tileIndex);
     gc.setFill(Color.DARKBLUE);
     gc.fillRect(
         tileView.getX(),
