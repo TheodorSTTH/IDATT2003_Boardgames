@@ -22,7 +22,8 @@ public class Risk extends Game {
         this.board = new BoardRisk();
     }
 
-    public Risk(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardRisk boardRisk, Player currentPlayer, int tropesAvailable) {
+    public Risk(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardRisk boardRisk,
+            Player currentPlayer, int tropesAvailable) {
         super(amountOfPlayers, gameName, players, currentPlayer);
         this.board = boardRisk;
         this.tropesAvailable = tropesAvailable;
@@ -35,6 +36,7 @@ public class Risk extends Game {
         startTurn();
         RiskPage riskPage = new RiskPage(this);
         NavigationManager.switchScene(riskPage);
+        showRueles();
     }
 
     public void startSavedGame() {
@@ -77,10 +79,11 @@ public class Risk extends Game {
                 .stream().filter(country -> country.getArmies() > 1)
                 .toList();
     }
-    
+
     public List<Country> getCountriesCurrentPlayerCanAttackFrom() {
         return board.getAttackOptions(getCurrentPlayer()).keySet().stream().toList();
     }
+
     public List<Country> getCountriesCurrentPlayerCanAttackFromCountry(Country attackingCountry) {
         return board.getAttackOptions(getCurrentPlayer()).get(attackingCountry);
     }
@@ -129,10 +132,11 @@ public class Risk extends Game {
 
         if (board.getUnits(defender) == 0) {
             board.takeControlOfCountry(defender, currentPlayer);
-            board.transferTroops(attacker, defender, PopUp.promptForNumberInRange("How many trops do you want to move to the new country",board.getUnits(attacker) - 1));
+            board.transferTroops(attacker, defender, PopUp.promptForNumberInRange(
+                    "How many trops do you want to move to the new country", board.getUnits(attacker) - 1));
         }
     }
-    
+
     public void attackOnce(String attacker, String defender) {
         attack(attacker, defender);
         // * Update attack menu
@@ -176,5 +180,18 @@ public class Risk extends Game {
 
     public int getTroopsAvailable() {
         return tropesAvailable;
+    }
+
+    public void showRueles() {
+        PopUp.showScrollablePopup("Rules", "The rules of the game are as follows:\n"
+                + "1. Players take turns in clockwise order.\n"
+                + "2. You gain reinforcements each turn based on the number of territories you own, continent control, and other bonuses like controling a continet.\n"
+                + "3. On your turn, can reinforce your own, counteries.\n"
+                + "4. You can attack other players' territories.\n"
+                + "5. You must have at least one tropp in each country.\n"
+                + "6. Battles are resolved by rolling dice; the attacker can roll up to 3 dice, and the defender up to 2. You roll one dice for each trope you controle\n"
+                + "7. The highest two dice are compared; ties go to the defender. Losers remove troops. They can lose one each\n"
+                + "8. At the end of your turn, you may fortify by moving troops between two territories.\n"
+                + "9. The goal is to conquer the entire world by eliminating all other players.");
     }
 }
