@@ -109,7 +109,7 @@ public class FileHandler {
     }
     File file = new File(getFilePath(name + ".players.csv"));
     file.delete();
-    file = new File(getFilePath(name + ".currentPlayer.csv"));
+    file = new File(getFilePath(name + ".gameState.csv"));
     file.delete();
     file = new File(getFilePath(name + ".board.json"));
     file.delete();
@@ -140,7 +140,15 @@ public class FileHandler {
       Scanner scanner = new Scanner(new File(getFilePath(gameName + ".players.csv")));
       while (scanner.hasNextLine()) {
         String[] data = scanner.nextLine().split(",");
-        players.add(new Player(data[0], data[1]));
+        if (data.length != 3) {
+          throw new IllegalArgumentException("Invalid player data format");
+        }
+        try {
+          Integer.parseInt(data[2]);
+        } catch (NumberFormatException e) {
+          throw new IllegalArgumentException("Invalid player age format");
+        }
+        players.add(new Player(data[0], data[1], Integer.parseInt(data[2])));
       }
       scanner.close();
     } catch (FileNotFoundException e) {

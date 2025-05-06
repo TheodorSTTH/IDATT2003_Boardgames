@@ -26,12 +26,12 @@ public abstract class Game {
         this.players = players;
     }
 
-    public boolean addPlayer(String name, String color) {
+    public boolean addPlayer(String name, String color, int age) {
         if (getPlayerNames().contains(name)) {
             PopUp.showWarning("Player already exists", "Player with this name already exists");
             return false;
         }
-        players.add(new Player(name, color));
+        players.add(new Player(name, color, age));
         availableColors.remove(color);
         if (players.size() == amountOfPlayers) {
             init();
@@ -39,7 +39,12 @@ public abstract class Game {
         return true;
     }
 
+    public void sortPlayersByAge() {
+        players.sort((p1, p2) -> Integer.compare(p1.getAge(), p2.getAge()));
+    }
+
     protected void init() {
+        sortPlayersByAge();
         currentPlayer = players.get(0);
     }
 

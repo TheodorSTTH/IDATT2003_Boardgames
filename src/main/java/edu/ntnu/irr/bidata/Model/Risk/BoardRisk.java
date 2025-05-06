@@ -50,7 +50,7 @@ public class BoardRisk {
 
   private void devideCountrys(List<Player> players) {
         if (players.size() == 2) {
-            Player bot = new Player("", "Pink");
+            Player bot = new Player("", "Pink", 0);
             players.add(bot); // Add the bot to the players list if needed
         }
         List<Country> countryList = new ArrayList<>(countries.values());
@@ -81,11 +81,6 @@ public class BoardRisk {
                 this.countries.get(countries.get(randomIndex)).placeTropes(1);
             }
         }
-      
-      
-
-      
-
   }
   
   private int getAmountOfCountrysControldByPlayer(Player player) {
