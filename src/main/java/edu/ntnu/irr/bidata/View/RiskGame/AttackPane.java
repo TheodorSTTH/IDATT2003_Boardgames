@@ -34,7 +34,6 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     dieBox.setVgap(12);
     VBox.setMargin(dieBox, new javafx.geometry.Insets(0, 0, 0, 50));
 
-
     this.setText("Attack");
     this.setLineSpacing(10);
 
@@ -92,6 +91,7 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
 
     attackFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
       boolean isFromDefined = newFrom != null;
+      updateOnIsFromDefined(newFrom != null);
       if (isFromDefined) {
         attackTargetComboBox
             .setItems(FXCollections.observableArrayList(risk.getCountriesCurrentPlayerCanAttackFromCountry(newFrom)));
@@ -122,6 +122,12 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     updateMap();
   }
   
+  private void updateOnIsFromDefined(boolean isFromDefined) {
+    attackTargetComboBox.setDisable(!isFromDefined);
+    performAttackUntilResultButton.setDisable(!isFromDefined);
+    performAttackOnceButton.setDisable(!isFromDefined);
+  }
+  
 
   private void updateMap() {
     Country selectedFrom = attackFromComboBox.getValue();
@@ -131,6 +137,7 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
     attackFromComboBox.setValue(null);
     attackTargetComboBox.setValue(null);
+    updateOnIsFromDefined(false);
     attackTargetComboBox.getItems().clear();
 
     if (attackFromOptions.contains(selectedFrom) && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
