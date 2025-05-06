@@ -45,16 +45,30 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
     attackPane.setDisable(true);
     moveTroopsPane.setDisable(true);
   }
+
   private void closeAll() {
     placeTroopsPane.setExpanded(false);
     attackPane.setExpanded(false);
     moveTroopsPane.setExpanded(false);
   }
-  private void setPaneActive(AbstractSidebarPane pane) {
+  
+  private void makeAllCollapsible() {
+    placeTroopsPane.setCollapsible(true);
+    attackPane.setCollapsible(true);
+    moveTroopsPane.setCollapsible(true);
+  }
+
+  private void resetAll() {
+    makeAllCollapsible();
     closeAll();
     disableAll();
+  }
+
+  private void setPaneActive(AbstractSidebarPane pane) {
+    resetAll();
     pane.setExpanded(true);
     pane.setDisable(false);
+    pane.setCollapsible(false);
     parentAccordion.setExpandedPane(pane);
   }
 
