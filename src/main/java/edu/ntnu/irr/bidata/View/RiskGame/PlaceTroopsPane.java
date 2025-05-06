@@ -10,25 +10,44 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.layout.VBox;
 
 public class PlaceTroopsPane extends AbstractSidebarPane {
-  private Label avalibuleTropesTextField;
+  private Label infoLabel;
   private final ComboBox<Country> countryComboBox;
   private final Spinner<Integer> amountOfTroopsSpinner;
   private final Button ok;
 
   public PlaceTroopsPane(Risk risk) {
     super(risk);
+    getContainer().getStyleClass().add("place-troops-pane");
     this.setText("Place Troops");
     this.setLineSpacing(10);
+
+
+    this.infoLabel = new Label("Place troops on country\n"+"You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
+    infoLabel.getStyleClass().add("fantasy-text-sidbar");
+    VBox.setMargin(infoLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+
+
+    this.countryComboBox = new ComboBox<>();
+    this.countryComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    VBox.setMargin(countryComboBox, new javafx.geometry.Insets(5, 5, 10, 10));
+
+
     this.amountOfTroopsSpinner = new Spinner<>(
         new SpinnerValueFactory.IntegerSpinnerValueFactory(1, risk.getTroopsAvailable(), 1)
     );
+    this.amountOfTroopsSpinner.getStyleClass().add("fantasy-spinner-sidbar");
     this.amountOfTroopsSpinner.setEditable(true);
-    this.countryComboBox = new ComboBox<>();
+    VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(10, 5, 10, 10));
+    
+    
     this.ok = new Button("OK");
-    avalibuleTropesTextField = new Label("You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
+    this.ok.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(ok, new javafx.geometry.Insets(10, 5, 10, 10));
 
+    
     countryComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
         boolean isDefined = newFrom != null;
         ok.setVisible(isDefined);
@@ -45,11 +64,10 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     });
 
     getContainer().getChildren().addAll(
-        new Label("Place troops on country"),
+        infoLabel,
         countryComboBox,
         amountOfTroopsSpinner,
-        ok,
-        avalibuleTropesTextField
+        ok
     );
 
     // Call update when the pane is expanded
@@ -66,7 +84,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
 
   private void update() {
     List<Country> placeOptions = risk.getCountriesControlledByActivePlayer();
-    avalibuleTropesTextField.setText("You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
+    this.infoLabel.setText("Place troops on country\n"+"You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
     countryComboBox.setItems(FXCollections.observableArrayList(placeOptions));
     countryComboBox.setValue(null);
     ((SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory())

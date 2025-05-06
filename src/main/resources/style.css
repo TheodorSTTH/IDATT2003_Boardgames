@@ -4,17 +4,34 @@
   -fx-background-repeat: no-repeat;
 }
 
-.fantasy-title, .fantasy-text, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field {
+.attack-pane {
+  -fx-background-image: url("riskAttackBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.move-troops-pane {
+  -fx-background-image: url("riskMoveTroopsBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.place-troops-pane {
+  -fx-background-image: url("riskPlaceTroopsBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.fantasy-title, .fantasy-text, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar {
   -fx-font-family: "Papyrus", "Georgia", serif;
 }
 
 .fantasy-title, .fantasy-text{
   -fx-font-weight: bold;
   -fx-text-fill: #FFD700;
-
 }
 
-.fantasy-title, .fantasy-text{
+.fantasy-title{
   -fx-font-size: 60px;
 }
 
@@ -22,8 +39,14 @@
   -fx-font-size: 40px;
 }
 
+.fantasy-text-sidbar {
+  -fx-font-size: 30px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #000000;
+}
 
-.fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner {
+
+.fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-text-fill: #2e1d0e;
   -fx-border-color: #5a381e;
@@ -34,7 +57,7 @@
 }
 
 .fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-button:hover, .fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
-.fantasy-spinner .decrement-button:hover, .fantasy-spinner:focused {
+.fantasy-spinner .decrement-button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-button-sidbar:hover, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-button-sidbar:focused, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
@@ -49,48 +72,40 @@
   -fx-prompt-text-fill: #5a381eac;
 }
 
-.fantasy-button {
+.fantasy-button, .fantasy-combo-box, .fantasy-spinner{
   -fx-padding: 10 20 10 20;
   -fx-font-size: 18px;
   -fx-cursor: hand;
   -fx-font-weight: bold;
 }
 
-.fantasy-button:pressed {
-  -fx-background-color: #cbb994;
-  -fx-text-fill: #000000;
-}
 
-.fantasy-combo-box {
-  -fx-padding: 5;
-  -fx-font-size: 18px;
-}
-
-.fantasy-combo-box .list-cell {
+.fantasy-combo-box .list-cell, .fantasy-combo-box-sidbar .list-cell {
   -fx-background-color: transparent;
   -fx-text-fill: #2e1d0e;
 }
 
-.fantasy-combo-box-popup .list-view {
+.fantasy-combo-box-popup .list-view, .fantasy-combo-box-sidbar-popup .list-view {
   -fx-background-color: #f8f0e3;
   -fx-border-color: #5a381e;
   -fx-border-width: 2;
 }
 
-.fantasy-combo-box .arrow {
+.fantasy-combo-box .arrow, .fantasy-combo-box-sidbar .arrow {
   -fx-background-color: #5a381e;
 }
 
-/* Fantasy Spinner */
+
 .fantasy-spinner {
-  -fx-padding: 10;
-  -fx-font-size: 20px;
+  -fx-pref-width: 210px;
 }
+
+
 
 
 /* Spinner Arrow Button Styling */
 .fantasy-spinner .increment-button,
-.fantasy-spinner .decrement-button {
+.fantasy-spinner .decrement-button, fantasay-spinner-sidbar .increment-button, fantasy-spinner-sidbar .decrement-button {
   -fx-background-color: #5a381e; /* Dark brown button for the spinner arrows */
   -fx-text-fill: #f0e4c3; /* Light text color for arrows */
   -fx-padding: 5; /* Padding inside the arrow buttons */
@@ -99,7 +114,7 @@
 }
 
 /* Spinner Text Field (Editable Area) */
-.fantasy-spinner .text-field {
+.fantasy-spinner .text-field, .fantasy-spinner-sidbar .text-field {
   -fx-background-color: transparent; /* Transparent background for the text input part */
   -fx-text-fill: #2e1d0e; /* Dark text color */
   -fx-border-width: 0; /* No border on the text input area */
@@ -108,8 +123,17 @@
 }
 
 /* Hover Effect on Text Field */
-.fantasy-spinner .text-field:hover {
+.fantasy-spinner .text-field:hover, .fantasy-spinner-sidbar .text-field:hover {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
   -fx-cursor: text;
+  -fx-font-weight: bold;
+}
+
+.fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar {
+  -fx-pref-width: 350px;
+  -fx-pref-height: 50px;
+  -fx-padding: 10 20 10 20;
+  -fx-font-size: 17px;
+  -fx-cursor: hand;
   -fx-font-weight: bold;
 }

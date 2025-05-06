@@ -26,6 +26,7 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
 
   public AttackPane(Risk risk) {
     super(risk);
+    getContainer().getStyleClass().add("attack-pane");
     risk.registerObserver(this);
     this.dieBox = new FlowPane();
     dieBox.setHgap(10);

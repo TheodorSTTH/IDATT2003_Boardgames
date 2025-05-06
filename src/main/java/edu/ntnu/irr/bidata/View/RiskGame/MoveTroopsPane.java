@@ -19,6 +19,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
 
   public MoveTroopsPane(Risk risk) {
     super(risk);
+    getContainer().getStyleClass().add("move-troops-pane");
     this.moveFromComboBox = new ComboBox<>();
     this.moveTargetComboBox = new ComboBox<>();
     this.amountOfTroopsSpinner = new Spinner<>(

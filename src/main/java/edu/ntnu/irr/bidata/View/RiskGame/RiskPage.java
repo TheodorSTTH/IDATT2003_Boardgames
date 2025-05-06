@@ -13,15 +13,12 @@ public class RiskPage extends HBox {
 
   public RiskPage(Risk risk) {
     super(new HBox());
-    if (getClass().getResource("/style.css") != null) {
-      this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-    } else {
-      System.err.println("Warning: style.css not found!");
-    }
     this.board = new RiskBoardView(risk.getBoard().getCountries());
     this.sidePanel = new RiskSidePanelView(risk);
     updateViews(risk.getBoard().getCountries());
-    Button saveButton = new Button("Save current game");
+    Button saveButton = new Button("S\nA\nV\nE");
+    saveButton.getStyleClass().add("fantasy-button");
+
     saveButton.setOnAction(e -> {
       risk.saveGame();
       PopUp.showInfo("Game saved", "Game has been saved as " + risk.getGameName());
