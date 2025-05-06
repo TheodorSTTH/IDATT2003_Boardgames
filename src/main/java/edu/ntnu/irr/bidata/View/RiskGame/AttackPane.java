@@ -100,6 +100,17 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
       }
     });
 
+
+    attackTargetComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (newFrom != null && attackFromComboBox.getValue() != null) {
+        performAttackUntilResultButton.setDisable(false);
+        performAttackOnceButton.setDisable(false);
+      } else {
+        performAttackUntilResultButton.setDisable(true);
+        performAttackOnceButton.setDisable(true);
+      }
+    });
+
     ok.setOnAction(event -> {
       notifyObservers(this.getNextSidebarPane());
     });
@@ -124,8 +135,6 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
   
   private void updateOnIsFromDefined(boolean isFromDefined) {
     attackTargetComboBox.setDisable(!isFromDefined);
-    performAttackUntilResultButton.setDisable(!isFromDefined);
-    performAttackOnceButton.setDisable(!isFromDefined);
   }
   
 
@@ -138,6 +147,9 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     attackFromComboBox.setValue(null);
     attackTargetComboBox.setValue(null);
     updateOnIsFromDefined(false);
+    performAttackUntilResultButton.setDisable(true);
+    performAttackOnceButton.setDisable(true);
+
     attackTargetComboBox.getItems().clear();
 
     if (attackFromOptions.contains(selectedFrom) && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
