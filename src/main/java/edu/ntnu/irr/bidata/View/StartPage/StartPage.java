@@ -31,14 +31,14 @@ public class StartPage extends VBox {
 
 
     ComboBox<Integer> amountOfPlayersComboBox = new ComboBox<>();
-    amountOfPlayersComboBox.getStyleClass().add("combo-box");
+    amountOfPlayersComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(amountOfPlayersComboBox, new Insets(5, 5, 5, 5));
     amountOfPlayersComboBox.getItems().addAll(2, 3, 4, 5);
     amountOfPlayersComboBox.setPromptText("Select Number of Players");
 
 
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
-    WhatGameComboBox.getStyleClass().add("combo-box");
+    WhatGameComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(WhatGameComboBox, new Insets(5, 5, 5, 5));
     WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
     WhatGameComboBox.setPromptText("Select a Game to play");
@@ -64,7 +64,7 @@ public class StartPage extends VBox {
 
 
     ComboBox<String> savedGames = new ComboBox<>();
-    savedGames.getStyleClass().add("combo-box");
+    savedGames.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(savedGames, new Insets(5, 5, 5, 5));
     HashMap<String, String> savedGamesMap = FileHandler.getSavedGames();
     for (String game : savedGamesMap.keySet()) {

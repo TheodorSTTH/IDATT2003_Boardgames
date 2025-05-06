@@ -32,7 +32,7 @@ public class CreatePlayerPage extends VBox {
 
     Spinner<Integer> ageSpinner = new Spinner<>(
             new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
-    ageSpinner.getStyleClass().add("combo-box");
+    ageSpinner.getStyleClass().add("fantasy-combo-box");
     ageSpinner.setEditable(true);
 
 
@@ -49,7 +49,7 @@ public class CreatePlayerPage extends VBox {
 
 
     ComboBox<String> playerColureField = new ComboBox<>();
-    playerColureField.getStyleClass().add("combo-box");
+    playerColureField.getStyleClass().add("fantasy-combo-box");
     playerColureField.getItems().addAll(UI.getGame().getAvailableColors());
     playerColureField.setPromptText("Chose a color");
     
