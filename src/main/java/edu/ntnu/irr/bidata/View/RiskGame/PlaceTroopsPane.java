@@ -40,27 +40,30 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
             amountOfTroopsSpinner.getValue()
         );
       if (placingTroopsWasSuccessful)
-        notifyObservers();
+        notifyObservers(this.getNextSidebarPane());
       else update();
     });
 
     getContainer().getChildren().addAll(
         new Label("Place troops on country"),
         countryComboBox,
-            amountOfTroopsSpinner,
+        amountOfTroopsSpinner,
         ok,
         avalibuleTropesTextField
     );
 
     // Call update when the pane is expanded
     this.expandedProperty().addListener((obs, wasExpanded, isNowExpanded) -> {
-        if (isNowExpanded) update();
+      if (isNowExpanded) {
+        update();
+      }
     });
 
     // Initial update for when it's first created
     update();
 
   }
+
   private void update() {
     List<Country> placeOptions = risk.getCountriesControlledByActivePlayer();
     avalibuleTropesTextField.setText("You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
@@ -70,10 +73,4 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
         .setMax(risk.getTroopsAvailable());
     ok.setVisible(false);
   }
-
-  
-
-
-  
-  
 }

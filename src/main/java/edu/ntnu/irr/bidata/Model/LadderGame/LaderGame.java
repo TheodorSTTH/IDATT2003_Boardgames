@@ -29,10 +29,14 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObservers(LaderGame game) {
         for (IObserver<LaderGame> observer : allObservers) {
-            observer.update(this);
+            observer.update(game);
         }
+    }
+
+    public Dice getDice() {
+        return dice;
     }
 
     public LaderGame(int amountOfPlayers, String gameName, String boardType) {
@@ -67,7 +71,7 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
             endGame(currentPlayer);
         }
         currentPlayer = getNextPlayer();
-        notifyObservers();
+        notifyObservers(this);
     }
 
     public BoardLaderGame getBoard() {
