@@ -43,7 +43,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(10, 5, 10, 10));
     
     
-    this.ok = new Button("OK");
+    this.ok = new Button("Place troops");
     this.ok.getStyleClass().add("fantasy-button-sidbar");
     VBox.setMargin(ok, new javafx.geometry.Insets(0, 5, 10, 10));
 
@@ -76,6 +76,14 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
       }
     });
 
+    countryComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (newFrom != null) {
+        ok.setDisable(false);
+      } else {
+        ok.setDisable(true);
+      }
+    });
+
     // Initial update for when it's first created
     update();
 
@@ -86,6 +94,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     this.infoLabel.setText("Place troops on country\n"+"You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
     countryComboBox.setItems(FXCollections.observableArrayList(placeOptions));
     countryComboBox.setValue(null);
+    ok.setDisable(true);
     ((SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory())
         .setMax(risk.getTroopsAvailable());
   }
