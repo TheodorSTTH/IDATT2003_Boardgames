@@ -34,12 +34,12 @@
   -fx-background-repeat: no-repeat;
 }
 
-.fantasy-title, .fantasy-dialog, .fantasy-text, .fantasy-choice-dialog, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-title-sidbar, .country-view, .fantasy-choice-dialog .label, .fantasy-choice-dialog .button, .fantasy-choice-dialog .combo-box {
+.fantasy-title, .fantasy-text, .fantasy-dialog, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-title-sidbar, .country-view, .fantasy-dialog .label, .fantasy-dialog .button, .fantasy-dialog .combo-box {
   -fx-font-family: "Papyrus", "Georgia", serif;
 }
 
 
-.fantasy-text-field,.fantasy-dialog, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-choice-dialog .combo-box, .fantasy-choice-dialog .button {
+.fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-dialog .combo-box, .fantasy-dialog .button {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-text-fill: #2e1d0e;
   -fx-border-color: #5a381e;
@@ -50,12 +50,10 @@
 }
 
 .fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-button:hover, .fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
-.fantasy-spinner .decrement-button:hover,.fantasy-choice-dialog .button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-button-sidbar:hover, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-button-sidbar:focused, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused, .fantasy-choice-dialog .combo-box:hover, .fantasy-choice-dialog .combo-box:focused, .fantasy-choice-dialog .button:focused, .fantasy-choice-dialog .button:hover  {
+.fantasy-spinner .decrement-button:hover,.fantasy-dialog .button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-button-sidbar:hover, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-button-sidbar:focused, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused, .fantasy-dialog .combo-box:hover, .fantasy-dialog .combo-box:focused, .fantasy-dialog .button:focused, .fantasy-dialog .button:hover  {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
-
-
 
 .fantasy-title, .fantasy-text{
   -fx-font-weight: bold;
@@ -93,7 +91,7 @@
   -fx-prompt-text-fill: #4e301aac;
 }
 
-.fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-choice-dialog .combo-box, .fantasy-choice-dialog .button {
+.fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-dialog .combo-box, .fantasy-dialog .button {
   -fx-padding: 10 20 10 20;
   -fx-font-size: 18px;
   -fx-cursor: hand;
@@ -101,12 +99,12 @@
 }
 
 
-.fantasy-combo-box .list-cell, .fantasy-combo-box-sidbar .list-cell, .fantasy-choice-dialog .combo-box {
+.fantasy-combo-box .list-cell, .fantasy-combo-box-sidbar .list-cell, .fantasy-dialog .combo-box {
   -fx-background-color: transparent;
   -fx-text-fill: #2e1d0e;
 }
 
-.fantasy-combo-box .arrow, .fantasy-combo-box-sidbar .arrow, .fantasy-choice-dialog .combo-box .arrow {
+.fantasy-combo-box .arrow, .fantasy-combo-box-sidbar .arrow, .fantasy-dialog .combo-box .arrow {
   -fx-background-color: #5a381e;
 }
 
@@ -167,7 +165,7 @@
 }
 
 
-.fantasy-choice-dialog {
+.fantasy-dialog {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-border-color: #5a381e;
   -fx-border-width: 4;
@@ -177,17 +175,17 @@
   -fx-padding: 20;
 }
 
-.fantasy-choice-dialog .dialog-pane {
+.fantasy-dialog .dialog-pane {
   -fx-background-color: transparent;
 }
 
-.fantasy-choice-dialog .label {
+.fantasy-dialog .label {
   -fx-font-size: 30px;
   -fx-font-weight: bold;
   -fx-text-fill: #2e1d0e;
 }
 
-.fantasy-choice-dialog .combo-box .list-cell {
+.fantasy-dialog .combo-box .list-cell {
   -fx-background-color: transparent;
   -fx-text-fill: #2e1d0e;
 }
