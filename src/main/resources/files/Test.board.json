@@ -211,7 +211,7 @@
       "name" : "Northwest Territory",
       "owner" : "Theodor",
       "ownerColor" : "Yellow",
-      "armies" : 3,
+      "armies" : 1,
       "neighbors" : [ "Alaska", "Alberta", "Ontario", "Greenland" ],
       "relativeX" : 0.16,
       "relativeY" : 0.14
@@ -229,7 +229,7 @@
       "name" : "Japan",
       "owner" : "Theodor",
       "ownerColor" : "Yellow",
-      "armies" : 2,
+      "armies" : 8,
       "neighbors" : [ "Mongolia", "Kamchatka" ],
       "relativeX" : 0.89,
       "relativeY" : 0.37
@@ -238,7 +238,7 @@
       "name" : "Quebec",
       "owner" : "Imre",
       "ownerColor" : "Black",
-      "armies" : 2,
+      "armies" : 6,
       "neighbors" : [ "Greenland", "Ontario", "Eastern United States" ],
       "relativeX" : 0.29,
       "relativeY" : 0.26

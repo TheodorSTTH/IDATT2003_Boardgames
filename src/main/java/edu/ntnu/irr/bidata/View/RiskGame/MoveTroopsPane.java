@@ -2,6 +2,8 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
+import edu.ntnu.irr.bidata.View.PopUp;
+
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
@@ -9,10 +11,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.layout.VBox;
 
 public class MoveTroopsPane extends AbstractSidebarPane {
   private final ComboBox<Country> moveFromComboBox;
   private final ComboBox<Country> moveTargetComboBox;
+  private final Label moveToLabel;
   private final Spinner<Integer> amountOfTroopsSpinner;
   private final Button ok;
   private final Button dontMoveTroops;
@@ -20,21 +24,68 @@ public class MoveTroopsPane extends AbstractSidebarPane {
   public MoveTroopsPane(Risk risk) {
     super(risk);
     getContainer().getStyleClass().add("move-troops-pane");
+
+    Label moveFromLabel = new Label("Move from:");
+    moveFromLabel.getStyleClass().add("fantasy-text-sidbar");
+    VBox.setMargin(moveFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+
+
     this.moveFromComboBox = new ComboBox<>();
+    this.moveFromComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    moveFromComboBox.setPromptText("Select country to move from");
+    VBox.setMargin(moveFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
+
+
+    moveToLabel = new Label("Move to:");
+    moveToLabel.getStyleClass().add("fantasy-text-sidbar");
+    VBox.setMargin(moveToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+
+
     this.moveTargetComboBox = new ComboBox<>();
+    this.moveTargetComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    moveTargetComboBox.setPromptText("Select country to move to");
+    VBox.setMargin(moveTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
+
+
     this.amountOfTroopsSpinner = new Spinner<>(
         new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1)
     );
+    this.amountOfTroopsSpinner.getStyleClass().add("fantasy-spinner-sidbar");
     SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory = (SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory();
     amountOfTroopsSpinner.setEditable(true);
+    VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(0, 0, 10, 10));
+    
+    
     this.ok = new Button("Move & finish round");
+    this.ok.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
+
+
+    ok.setOnAction(event -> {
+      Country from = moveFromComboBox.getValue();
+      Country to = moveTargetComboBox.getValue();
+      int amount = amountOfTroopsSpinner.getValue();
+      if (from != null && to != null) {
+        risk.transferTroops(from.getName(), to.getName(), amount);
+        risk.endTurn();
+        notifyObservers(this.getNextSidebarPane());
+      } else {
+        PopUp.showError("Invalid Selections","Please select a country to move from and a country to move to.");
+      }
+    });
+
+
     this.dontMoveTroops = new Button("Don't move troops");
     this.setText("Move");
+    this.dontMoveTroops.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(dontMoveTroops, new javafx.geometry.Insets(0, 0, 10, 10));
+    
+    
     this.setLineSpacing(10);
+
 
     moveFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
       boolean isFromDefined = newFrom != null;
-      updateOnIsFromDefined(newFrom != null);
       if (isFromDefined) {
         moveTargetComboBox.setItems(FXCollections.observableArrayList(
             risk.getCountriesControlledByActivePlayer()
@@ -45,17 +96,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
         moveTargetComboBox.getItems().clear();
       }
     });
-    
-    ok.setOnAction(event -> {
-      Country from = moveFromComboBox.getValue();
-      Country to = moveTargetComboBox.getValue();
-      int amount = amountOfTroopsSpinner.getValue();
-      if (from != null && to != null) {
-        risk.transferTroops(from.getName(), to.getName(), amount);
-        risk.endTurn();
-        notifyObservers(this.getNextSidebarPane());
-      }
-    });
+  
 
     dontMoveTroops.setOnAction(event -> {
       risk.endTurn();
@@ -63,9 +104,9 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     });
 
     getContainer().getChildren().addAll(
-        new Label("Move from"),
+        moveFromLabel,
         moveFromComboBox,
-        new Label("Move to"),
+        moveToLabel,
         moveTargetComboBox,
         amountOfTroopsSpinner,
         ok
@@ -79,18 +120,10 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     update();
   }
 
-  private void updateOnIsFromDefined(boolean isFromDefined) {
-    moveTargetComboBox.setVisible(isFromDefined);
-    moveTargetComboBox.setManaged(isFromDefined);
-    amountOfTroopsSpinner.setVisible(isFromDefined);
-    ok.setVisible(isFromDefined);
-  }
-
   private void update() {
     List<Country> moveFromOptions = risk.getCountriesCurrentPlayerCanMoveFrom();
     moveFromComboBox.setItems(FXCollections.observableArrayList(moveFromOptions));
     moveTargetComboBox.setValue(null);
-    updateOnIsFromDefined(false);
     moveTargetComboBox.getItems().clear();
   }
 }
