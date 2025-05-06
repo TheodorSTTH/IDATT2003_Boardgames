@@ -2,6 +2,7 @@ package edu.ntnu.irr.bidata.View.CreatePlayer;
 
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.View.PopUp;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,25 +25,42 @@ public class CreatePlayerPage extends VBox {
         System.err.println("Warning: style.css not found!");
     }
 
+
+    getStyleClass().add("start-page");
+    setAlignment(Pos.TOP_CENTER);
+
+
     Spinner<Integer> ageSpinner = new Spinner<>(
             new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
+    ageSpinner.getStyleClass().add("combo-box");
     ageSpinner.setEditable(true);
 
-    Label ageLabel = new Label("How old are you?");
 
-    Label label = new Label("Create a new player");
-    label.getStyleClass().addAll("styled-label", "w-p-text");
+    Label tittelLabel = new Label("Create a new player");
+    tittelLabel.getStyleClass().add("fantasy-title");
 
-    Button createPlayerButton = new Button("New player");
-    createPlayerButton.getStyleClass().addAll("styled-button", "b-p-text", "b-radius");
 
     TextField usernameField = new TextField();
+    usernameField.getStyleClass().add("fantasy-text-field");
+
     usernameField.setPromptText("Username");
+    usernameField.getStyleClass().add("fantasy-text");
     usernameField.getStyleClass().addAll("styled-textfield", "w-s-text", "w-radius");
 
+
     ComboBox<String> playerColureField = new ComboBox<>();
+    playerColureField.getStyleClass().add("combo-box");
     playerColureField.getItems().addAll(UI.getGame().getAvailableColors());
     playerColureField.setPromptText("Chose a color");
+    
+    
+    Label ageLabel = new Label("How old are you?");
+    ageLabel.getStyleClass().add("fantasy-text");
+
+
+    Button createPlayerButton = new Button("New player");
+    createPlayerButton.getStyleClass().add("fantasy-button");
+
 
     createPlayerButton.setOnAction(e -> {
         if (usernameField.getText().isEmpty() || playerColureField.getValue() == null || ageSpinner.getValue() <= 1) {
@@ -58,7 +76,6 @@ public class CreatePlayerPage extends VBox {
         }
     });
 
-    getChildren().addAll(label, usernameField, playerColureField, ageLabel, ageSpinner, createPlayerButton);
-    getStyleClass().addAll("createUser-card", "w-radius");
+    getChildren().addAll(tittelLabel, usernameField, playerColureField, ageLabel, ageSpinner, createPlayerButton);
   }
 }

@@ -27,7 +27,7 @@ public class StartPage extends VBox {
     TextField gameNameField = new TextField();
     gameNameField.setPromptText("Game Name");
     VBox.setMargin(gameNameField, new Insets(5, 100, 10, 100));
-    gameNameField.getStyleClass().add("game-name-field");
+    gameNameField.getStyleClass().add("fantasy-text-field");
 
 
     ComboBox<Integer> amountOfPlayersComboBox = new ComboBox<>();
