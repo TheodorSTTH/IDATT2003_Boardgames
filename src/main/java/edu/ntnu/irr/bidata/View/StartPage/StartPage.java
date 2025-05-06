@@ -102,7 +102,7 @@ public class StartPage extends VBox {
     HBox savedGameBox = new HBox(10);
     savedGameBox.setAlignment(Pos.CENTER);
     savedGameBox.getChildren().addAll(savedGames, LoadGameButton);
-    HBox.setMargin(savedGameBox, new Insets(5, 5, 5, 5));
+    HBox.setMargin(savedGameBox, new Insets(5, 5, 15, 5));
     
 
     getChildren().addAll(tittel, gameNameField, newGameBox, or, savedGameBox);
