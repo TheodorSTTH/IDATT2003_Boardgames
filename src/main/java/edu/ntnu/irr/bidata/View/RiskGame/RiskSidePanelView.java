@@ -3,12 +3,10 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import javafx.scene.control.Accordion;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebarPane> {
-  private final Label currentUserLabel;
   private final Accordion parentAccordion;
   private final PlaceTroopsPane placeTroopsPane;
   private final AttackPane attackPane;
@@ -19,9 +17,9 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
     this.placeTroopsPane = new PlaceTroopsPane(risk);
     this.attackPane = new AttackPane(risk);
     this.moveTroopsPane = new MoveTroopsPane(risk);
-    this.currentUserLabel = new Label();
     this.parentAccordion = new Accordion();
     this.risk = risk;
+    this.setStyle("-fx-background-color:rgb(255, 255, 255);");
     placeTroopsPane.registerObserver(this);
     attackPane.registerObserver(this);
     moveTroopsPane.registerObserver(this);
@@ -39,7 +37,6 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
         moveTroopsPane
     );
     this.getChildren().addAll(
-        currentUserLabel,
         parentAccordion
     );
     update(placeTroopsPane);
@@ -49,16 +46,30 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
     attackPane.setDisable(true);
     moveTroopsPane.setDisable(true);
   }
+
   private void closeAll() {
     placeTroopsPane.setExpanded(false);
     attackPane.setExpanded(false);
     moveTroopsPane.setExpanded(false);
   }
-  private void setPaneActive(AbstractSidebarPane pane) {
+  
+  private void makeAllCollapsible() {
+    placeTroopsPane.setCollapsible(true);
+    attackPane.setCollapsible(true);
+    moveTroopsPane.setCollapsible(true);
+  }
+
+  private void resetAll() {
+    makeAllCollapsible();
     closeAll();
     disableAll();
+  }
+
+  private void setPaneActive(AbstractSidebarPane pane) {
+    resetAll();
     pane.setExpanded(true);
     pane.setDisable(false);
+    pane.setCollapsible(false);
     parentAccordion.setExpandedPane(pane);
   }
 
@@ -69,6 +80,5 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
    * */
   public void update(AbstractSidebarPane nextPane) {
     setPaneActive(nextPane);
-    this.currentUserLabel.setText("Current Player: " + risk.getCurrentPlayer().getName());
   }
 }

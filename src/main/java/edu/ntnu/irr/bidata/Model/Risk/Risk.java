@@ -161,8 +161,8 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
 
     if (board.getUnits(defender) == 0) {
       board.takeControlOfCountry(defender, currentPlayer);
-      board.transferTroops(attacker, defender, PopUp.promptForNumberInRange(
-          "How many trops do you want to move to the new country", board.getUnits(attacker) - 1));
+      board.transferTroops(attacker, defender, PopUp.promptForNumberInRange("Transfer troops",
+          "How many trops do you want\n to transfer to " + defender, board.getUnits(attacker) - 1));
     }
 
     notifyObservers(new Pair<>(attackDice, defenceDice));

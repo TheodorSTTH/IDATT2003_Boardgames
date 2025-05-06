@@ -20,7 +20,6 @@ public class RiskBoardView extends Pane {
       imageView.setFitWidth(imagePixelWidth);
       imageView.setFitHeight(imagePixelHeight);
       getChildren().add(imageView);
-      this.setStyle("-fx-background-color: #001a94;");
       for (Country country : countries.values()) {
         CountryView countryView = new CountryView(country, imagePixelWidth, imagePixelHeight);
         country.registerObserver(countryView);
