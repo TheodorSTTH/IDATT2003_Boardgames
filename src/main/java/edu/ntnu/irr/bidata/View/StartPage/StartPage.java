@@ -21,24 +21,24 @@ public class StartPage extends VBox {
 
     Label tittel = new Label("Choose your next adventure!");
     tittel.getStyleClass().add("fantasy-title");
-    VBox.setMargin(tittel, new Insets(20, 0, 10, 0)); // Top, Right, Bottom, Left
+    VBox.setMargin(tittel, new Insets(20, 3, 10, 5));
 
 
     TextField gameNameField = new TextField();
     gameNameField.setPromptText("Game Name");
     VBox.setMargin(gameNameField, new Insets(5, 100, 10, 100));
-    gameNameField.getStyleClass().add("game-name-field");
+    gameNameField.getStyleClass().add("fantasy-text-field");
 
 
     ComboBox<Integer> amountOfPlayersComboBox = new ComboBox<>();
-    amountOfPlayersComboBox.getStyleClass().add("combo-box");
+    amountOfPlayersComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(amountOfPlayersComboBox, new Insets(5, 5, 5, 5));
     amountOfPlayersComboBox.getItems().addAll(2, 3, 4, 5);
     amountOfPlayersComboBox.setPromptText("Select Number of Players");
 
 
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
-    WhatGameComboBox.getStyleClass().add("combo-box");
+    WhatGameComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(WhatGameComboBox, new Insets(5, 5, 5, 5));
     WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
     WhatGameComboBox.setPromptText("Select a Game to play");
@@ -64,7 +64,7 @@ public class StartPage extends VBox {
 
 
     ComboBox<String> savedGames = new ComboBox<>();
-    savedGames.getStyleClass().add("combo-box");
+    savedGames.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(savedGames, new Insets(5, 5, 5, 5));
     HashMap<String, String> savedGamesMap = FileHandler.getSavedGames();
     for (String game : savedGamesMap.keySet()) {
