@@ -1,7 +1,12 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 
 public class SnakesAndLaddersPage extends HBox {
   SnakesAndLaddersCanvasView board;
@@ -11,6 +16,8 @@ public class SnakesAndLaddersPage extends HBox {
    * Constructs snake and ladders page.
    * */
   public SnakesAndLaddersPage(LaderGame snakesAndLadders) {
+    getStyleClass().add("snakes-and-ladders-game-page");
+    setAlignment(Pos.CENTER);
     if (getClass().getResource("/style.css") != null) {
       this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
     } else {
@@ -18,7 +25,14 @@ public class SnakesAndLaddersPage extends HBox {
     }
     this.board = new SnakesAndLaddersCanvasView(snakesAndLadders);
     this.sidePanel = new SnakesAndLaddersSidePanelView(snakesAndLadders);
-    getChildren().addAll(sidePanel, board);
+    setMargin(sidePanel, new Insets(40));
+    Region splitterRegion = new Region();
+    HBox.setHgrow(splitterRegion, Priority.ALWAYS);
+    getChildren().addAll(
+        sidePanel,
+        board,
+        splitterRegion
+    );
   }
 
   public SnakesAndLaddersSidePanelView getSidePanelView() {

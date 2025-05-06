@@ -4,12 +4,27 @@
   -fx-background-repeat: no-repeat;
 }
 
+.snakes-and-ladders-game-page {
+  -fx-background-image: url("snakes_and_ladders_background.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
 .fantasy-title {
   -fx-font-family: "Papyrus", "Georgia", serif;
   -fx-font-size: 60px;
   -fx-font-weight: bold;
   -fx-text-fill: #FFD700;
   -fx-effect: dropshadow(one-pass-box, black, 2, 0.5, 1, 1);
+}
+
+.fantasy {
+  -fx-font-family: "Papyrus", "Georgia", serif;
+  -fx-text-fill: #FFD700;
+}
+.title-3 {
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
 }
 
 .fantasy-text {

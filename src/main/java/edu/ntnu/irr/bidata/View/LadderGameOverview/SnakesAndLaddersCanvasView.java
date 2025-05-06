@@ -11,7 +11,16 @@ import java.util.HashMap;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
+import javafx.scene.effect.Shadow;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -24,8 +33,8 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
 
   private final int boardRowsAmount = 10;
   private final int boardColumnAmount = 9;
-  private final int boardWidth = 600;
-  private final int boardHeight = 600;
+  private final int boardWidth = 500;
+  private final int boardHeight = 500;
 
   private final ArrayList<CanvasTileView> tileViews = new ArrayList<>(boardColumnAmount * boardRowsAmount+1);
 
@@ -65,8 +74,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
           x = width * boardColumnAmount - col * width;
         }
         y = height * (boardRowsAmount - 1) - row * height;
-        Color color = tileNumber % 2 == 0 ? Color.valueOf("#CECECE") : Color.valueOf("#EAE9E1");
-        CanvasTileView tileView = new CanvasTileView(x, y, width, height, color, tileNumber, gc);
+        CanvasTileView tileView = new CanvasTileView(x, y, width, height, tileNumber, gc);
         tileView.drawBox();
         tileView.drawNumber();
         tileViews.set(tileNumber, tileView);
@@ -111,9 +119,20 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   private void drawSnakesAndLadders(LaderGame snakesAndLadders) {
     GraphicsContext gc = getGraphicsContext2D();
     HashMap<Integer, Event> events = snakesAndLadders.getBoard().getEvents();
+
     events.keySet().forEach(tileIndex -> {
       if (events.get(tileIndex) instanceof LadderEvent event) {
-        drawSnakeOrLadder(tileIndex, event.getDestination());
+        if (tileIndex >= event.getDestination()) {
+          drawSnake(tileIndex, event.getDestination());
+        }
+      }
+    });
+
+    events.keySet().forEach(tileIndex -> {
+      if (events.get(tileIndex) instanceof LadderEvent event) {
+        if (tileIndex < event.getDestination()) {
+          drawLadder(tileIndex, event.getDestination());
+        }
       }
     });
   }
@@ -134,28 +153,101 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   private void drawQuizEvent(int tileIndex) {
     GraphicsContext gc = getGraphicsContext2D();
     CanvasTileView tileView = tileViews.get(tileIndex);
-    gc.setFill(Color.DARKBLUE);
-    gc.fillRect(
+
+    Image quizImage = new Image(getClass().getResourceAsStream("/quiz_tile_transparent.png"));
+    gc.drawImage(quizImage,
         tileView.getX(),
         tileView.getY(),
         tileView.getWidth(),
         tileView.getHeight()
     );
-
-    int fontSize = (int) Math.ceil(tileView.getHeight() * 0.5);
-    int x = tileView.getCenterX();
-    int y = tileView.getCenterY();
-    gc.setFont(Font.font("Arial", FontWeight.BOLD, fontSize));
-    gc.setFill(Color.WHITE);
-    gc.setTextAlign(TextAlignment.CENTER);
-    gc.setTextBaseline(VPos.CENTER);
-    gc.fillText("?", x, y);
   }
 
-  private void drawSnakeOrLadder(int fromIndex, int toIndex) {
+  private void drawSnake(int fromIndex, int toIndex) {
     GraphicsContext gc = getGraphicsContext2D();
     CanvasTileView fromTileView = tileViews.get(fromIndex);
     CanvasTileView toTileView = tileViews.get(toIndex);
+    gc.save();
+
+    // center position of from tile
+    int fromCenterX = fromTileView.getCenterX();
+    int fromCenterY = fromTileView.getCenterY();
+
+    // center position of to tile
+    int toCenterX = toTileView.getCenterX();
+    int toCenterY = toTileView.getCenterY();
+
+    // vector between from-to
+    int dx = toCenterX - fromCenterX;
+    int dy = toCenterY - fromCenterY;
+
+    // length of non-normalized vector
+    double length = Math.sqrt(dx * dx + dy * dy);
+    double snakeWidth = 5;
+    gc.setStroke(Color.RED);
+    gc.setLineWidth(snakeWidth);
+    gc.setLineCap(StrokeLineCap.ROUND);
+
+    DropShadow drop = new DropShadow();
+    drop.setOffsetX(2);
+    drop.setOffsetY(2);
+    drop.setRadius(4);
+    drop.setColor(Color.color(0, 0, 0, 0.65));
+
+    Light.Distant light = new Light.Distant();
+    light.setAzimuth(-45);              // direction of the light
+    light.setElevation(60);            // angle above the surface
+    light.setColor(Color.WHITE);
+
+    Lighting lighting = new Lighting();
+    lighting.setLight(light);
+    lighting.setSurfaceScale(2.0);
+    lighting.setDiffuseConstant(1.0);
+    lighting.setSpecularConstant(0.5);
+    lighting.setSpecularExponent(10);
+
+    lighting.setContentInput(drop);
+    gc.setEffect(lighting);
+
+    int amountOfSteps = 300; // TODO: Scale with length & amplitude
+    double amplitude = 10;
+
+    gc.beginPath();
+    gc.moveTo(fromCenterX, fromCenterY);
+
+    for (int i = 1; i < amountOfSteps; i++) {
+      double t = i / (double) amountOfSteps; // curve param in range 0 to 1
+      double distanceTraveled = t * length;
+      double pixelsPerWiggle = 60;
+
+      // current angle of snake
+      double curveAngle = (distanceTraveled / pixelsPerWiggle) * (2 * Math.PI);
+      double offset = amplitude * Math.sin(curveAngle); // from center
+
+      double perpX = -dy / length;
+      double perpY = dx / length;
+
+      double x = fromCenterX + dx * t + offset * perpX;
+      double y = fromCenterY + dy * t + offset * perpY;
+
+      gc.lineTo(x, y);
+    }
+
+    gc.stroke();
+
+    double headWidth = snakeWidth * 3;
+    double headHeight = snakeWidth * 3;
+    gc.setFill(Color.RED);
+    gc.fillOval(fromCenterX - headWidth/2, fromCenterY - headHeight/2, headWidth, headHeight);
+
+    gc.restore();
+  }
+
+  private void drawLadder(int fromIndex, int toIndex) {
+    GraphicsContext gc = getGraphicsContext2D();
+    CanvasTileView fromTileView = tileViews.get(fromIndex);
+    CanvasTileView toTileView = tileViews.get(toIndex);
+    gc.save();
 
     // center position of from tile
     int fromCenterX = fromTileView.getCenterX();
@@ -179,80 +271,80 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
     // length of non-normalized vector
     double length = Math.sqrt(dx * dx + dy * dy);
 
-    if (fromIndex < toIndex) { // We render a ladder
-      gc.setStroke(Color.BROWN);
-      gc.setLineWidth(3.0);
-      gc.setLineCap(StrokeLineCap.SQUARE);
 
-      double offset = 10;
+    Light.Distant sun = new Light.Distant();
+    sun.setAzimuth(-45);
+    sun.setElevation(60);
+    sun.setColor(Color.WHITE);
 
-      // left ladder pole point from
-      double fromLeftX = fromCenterX - offset * normalVectorX;
-      double fromLeftY = fromCenterY - offset * normalVectorY;
+    DropShadow shadow = new DropShadow(
+        BlurType.GAUSSIAN,
+        Color.rgb(0, 0, 0, 0.4),
+        8,
+        0.1,
+        3,
+        3);
 
-      // right ladder pole point from
-      double fromRightX = fromCenterX + offset * normalVectorX;
-      double fromRightY = fromCenterY + offset * normalVectorY;
+    Lighting lighting = new Lighting();
+    lighting.setLight(sun);
+    lighting.setSurfaceScale(3);
+    lighting.setSpecularConstant(0.3);
+    lighting.setDiffuseConstant(1.2);
+    lighting.setBumpInput(shadow);
 
-      // left ladder pole point to
-      double toLeftX = toCenterX - offset * normalVectorX;
-      double toLeftY = toCenterY - offset * normalVectorY;
+    gc.setEffect(lighting);
 
-      // right ladder pole point to
-      double toRightX = toCenterX + offset * normalVectorX;
-      double toRightY = toCenterY + offset * normalVectorY;
+    double offset = 10;
 
-      double distanceBetweenLadderSteps = 20;
-      int amountOfSteps = (int) Math.floor(length / distanceBetweenLadderSteps);
+    // left ladder pole point from
+    double fromLeftX = fromCenterX - offset * normalVectorX;
+    double fromLeftY = fromCenterY - offset * normalVectorY;
 
-      // draws all steps on the ladder
-      for (int i = 1; i < amountOfSteps; i++) {
-        double t = i / (double) amountOfSteps; // curve param in range 0 to 1
+    // right ladder pole point from
+    double fromRightX = fromCenterX + offset * normalVectorX;
+    double fromRightY = fromCenterY + offset * normalVectorY;
 
-        // left point from
-        double stepLeftX = fromLeftX + t * dx;
-        double stepLeftY = fromLeftY + t * dy;
+    // left ladder pole point to
+    double toLeftX = toCenterX - offset * normalVectorX;
+    double toLeftY = toCenterY - offset * normalVectorY;
 
-        // right point from
-        double stepRightX = fromRightX + t * dx;
-        double stepRightY = fromRightY + t * dy;
+    // right ladder pole point to
+    double toRightX = toCenterX + offset * normalVectorX;
+    double toRightY = toCenterY + offset * normalVectorY;
 
-        gc.strokeLine(stepLeftX, stepLeftY, stepRightX, stepRightY);
-      }
+    gc.setLineCap(StrokeLineCap.SQUARE);
 
-      gc.strokeLine(fromLeftX, fromLeftY, toLeftX, toLeftY);
-      gc.strokeLine(fromRightX, fromRightY, toRightX, toRightY);
-    } else { // draw snake
-      gc.setStroke(Color.GREEN);
-      gc.setLineWidth(5.0);
-      gc.setLineCap(StrokeLineCap.ROUND);
+    gc.setLineWidth(8);
+    gc.setStroke(Color.SADDLEBROWN.brighter().desaturate());
+    gc.strokeLine(fromRightX, fromRightY, toRightX, toRightY);
 
-      int amountOfSteps = 300; // TODO: Scale with length & amplitude
-      double amplitude = 10;
+    double distanceBetweenLadderSteps = 20;
+    int amountOfSteps = (int) Math.floor(length / distanceBetweenLadderSteps);
 
-      gc.beginPath();
-      gc.moveTo(fromCenterX, fromCenterY);
+    gc.setLineWidth(3);
+    // draws all steps on the ladder
+    gc.setStroke(Color.SADDLEBROWN.brighter().desaturate());
+    for (int i = 1; i < amountOfSteps; i++) {
+      double t = i / (double) amountOfSteps; // curve param in range 0 to 1
 
-      for (int i = 1; i < amountOfSteps; i++) {
-        double t = i / (double) amountOfSteps; // curve param in range 0 to 1
-        double distanceTraveled = t * length;
-        double pixelsPerWiggle = 60;
+      // left point from
+      double stepLeftX = fromLeftX + t * dx;
+      double stepLeftY = fromLeftY + t * dy;
 
-        // current angle of snake
-        double curveAngle = (distanceTraveled / pixelsPerWiggle) * (2 * Math.PI);
-        double offset = amplitude * Math.sin(curveAngle); // from center
+      // right point from
+      double stepRightX = fromRightX + t * dx;
+      double stepRightY = fromRightY + t * dy;
 
-        double perpX = -dy / length;
-        double perpY = dx / length;
-
-        double x = fromCenterX + dx * t + offset * perpX;
-        double y = fromCenterY + dy * t + offset * perpY;
-
-        gc.lineTo(x, y);
-      }
-
-      gc.stroke();
+      gc.strokeLine(stepLeftX, stepLeftY, stepRightX, stepRightY);
     }
+
+    // Set here for layering
+    gc.setLineWidth(8);
+    gc.setStroke(Color.SADDLEBROWN.brighter().desaturate());
+    gc.strokeLine(fromLeftX, fromLeftY, toLeftX, toLeftY);
+
+    gc.setEffect(null);
+    gc.restore();
   }
 
   /**
