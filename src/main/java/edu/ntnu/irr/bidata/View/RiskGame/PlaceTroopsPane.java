@@ -47,20 +47,19 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     this.ok.getStyleClass().add("fantasy-button-sidbar");
     VBox.setMargin(ok, new javafx.geometry.Insets(10, 5, 10, 10));
 
-    
-    countryComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
-        boolean isDefined = newFrom != null;
-        ok.setVisible(isDefined);
-    });
 
     ok.setOnAction(event -> {
+      if (countryComboBox.getValue() == null) {
+        PopUp.showError("Must select a county","Please select a country to place troops on.");
+      } else {
         boolean placingTroopsWasSuccessful = risk.placeTroops(
-            countryComboBox.getValue().getName(), 
-            amountOfTroopsSpinner.getValue()
-        );
-      if (placingTroopsWasSuccessful)
-        notifyObservers(this.getNextSidebarPane());
-      else update();
+            countryComboBox.getValue().getName(),
+            amountOfTroopsSpinner.getValue());
+        if (placingTroopsWasSuccessful)
+          notifyObservers(this.getNextSidebarPane());
+        else
+          update();
+      }
     });
 
     getContainer().getChildren().addAll(
@@ -89,6 +88,5 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     countryComboBox.setValue(null);
     ((SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory())
         .setMax(risk.getTroopsAvailable());
-    ok.setVisible(false);
   }
 }

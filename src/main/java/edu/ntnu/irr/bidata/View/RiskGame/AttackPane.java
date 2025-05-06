@@ -31,13 +31,47 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     this.dieBox = new FlowPane();
     dieBox.setHgap(10);
     dieBox.setVgap(10);
-    this.attackFromComboBox = new ComboBox<>();
-    this.attackTargetComboBox = new ComboBox<>();
-    this.performAttackOnceButton = new Button("Perform attack once");
-    this.performAttackUntilResultButton = new Button("Perform until result");
-    this.ok = new Button("OK, i am done");
     this.setText("Attack");
     this.setLineSpacing(10);
+
+
+    Label attackFromLabel = new Label("Attack from:");
+    attackFromLabel.getStyleClass().add("fantasy-text-sidbar");
+    VBox.setMargin(attackFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+
+
+    this.attackFromComboBox = new ComboBox<>();
+    this.attackFromComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    attackFromComboBox.setPromptText("Select country to attack from");
+    VBox.setMargin(attackFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
+    
+
+
+    Label attackToLabel = new Label("Attack to:");
+    attackToLabel.getStyleClass().add("fantasy-text-sidbar");
+    VBox.setMargin(attackToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+
+
+    this.attackTargetComboBox = new ComboBox<>();
+    this.attackTargetComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    attackTargetComboBox.setPromptText("Select country to attack to");
+    VBox.setMargin(attackTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
+
+
+    this.performAttackOnceButton = new Button("Perform attack once");
+    this.performAttackOnceButton.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(performAttackOnceButton, new javafx.geometry.Insets(0, 0, 10, 10));
+
+
+    this.performAttackUntilResultButton = new Button("Perform until result");
+    this.performAttackUntilResultButton.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(performAttackUntilResultButton, new javafx.geometry.Insets(0, 0, 10, 10));
+
+
+    this.ok = new Button("OK, i am done");
+    this.ok.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
+
 
     attackFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
       boolean isFromDefined = newFrom != null;
@@ -72,9 +106,9 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     });
 
     getContainer().getChildren().addAll(
-        new Label("Attack from"),
+        attackFromLabel,
         attackFromComboBox,
-        new Label("Attack country"),
+        attackToLabel,
         attackTargetComboBox,
         performAttackOnceButton,
         performAttackUntilResultButton,
