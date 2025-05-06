@@ -21,24 +21,24 @@ public class StartPage extends VBox {
 
     Label tittel = new Label("Choose your next adventure!");
     tittel.getStyleClass().add("fantasy-title");
-    VBox.setMargin(tittel, new Insets(20, 0, 10, 0)); // Top, Right, Bottom, Left
+    VBox.setMargin(tittel, new Insets(20, 3, 10, 5));
 
 
     TextField gameNameField = new TextField();
     gameNameField.setPromptText("Game Name");
     VBox.setMargin(gameNameField, new Insets(5, 100, 10, 100));
-    gameNameField.getStyleClass().add("game-name-field");
+    gameNameField.getStyleClass().add("fantasy-text-field");
 
 
     ComboBox<Integer> amountOfPlayersComboBox = new ComboBox<>();
-    amountOfPlayersComboBox.getStyleClass().add("combo-box");
+    amountOfPlayersComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(amountOfPlayersComboBox, new Insets(5, 5, 5, 5));
     amountOfPlayersComboBox.getItems().addAll(2, 3, 4, 5);
     amountOfPlayersComboBox.setPromptText("Select Number of Players");
 
 
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
-    WhatGameComboBox.getStyleClass().add("combo-box");
+    WhatGameComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(WhatGameComboBox, new Insets(5, 5, 5, 5));
     WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
     WhatGameComboBox.setPromptText("Select a Game to play");
@@ -47,6 +47,7 @@ public class StartPage extends VBox {
     Button ConfirmButton = new Button("Confirm");
     ConfirmButton.getStyleClass().add("fantasy-button");
     VBox.setMargin(ConfirmButton, new Insets(5, 5, 5, 5));
+    ConfirmButton.setDisable(true);
 
     ConfirmButton.setOnAction(e -> {
     Integer selectedPlayers = amountOfPlayersComboBox.getValue();
@@ -64,7 +65,7 @@ public class StartPage extends VBox {
 
 
     ComboBox<String> savedGames = new ComboBox<>();
-    savedGames.getStyleClass().add("combo-box");
+    savedGames.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(savedGames, new Insets(5, 5, 5, 5));
     HashMap<String, String> savedGamesMap = FileHandler.getSavedGames();
     for (String game : savedGamesMap.keySet()) {
@@ -77,6 +78,7 @@ public class StartPage extends VBox {
     Button LoadGameButton = new Button("Load Game");
     LoadGameButton.getStyleClass().add("fantasy-button");
     VBox.setMargin(LoadGameButton, new Insets(5, 5, 5, 5));
+    LoadGameButton.setDisable(true);
 
     LoadGameButton.setOnAction(e -> {
       String selectedGame = savedGames.getValue();
@@ -91,6 +93,7 @@ public class StartPage extends VBox {
     });
 
 
+
     HBox newGameBox = new HBox(10);
     newGameBox.setAlignment(Pos.CENTER);
     newGameBox.getChildren().addAll(gameNameField, amountOfPlayersComboBox, WhatGameComboBox, ConfirmButton);
@@ -99,9 +102,42 @@ public class StartPage extends VBox {
     HBox savedGameBox = new HBox(10);
     savedGameBox.setAlignment(Pos.CENTER);
     savedGameBox.getChildren().addAll(savedGames, LoadGameButton);
-    HBox.setMargin(savedGameBox, new Insets(5, 5, 5, 5));
+    HBox.setMargin(savedGameBox, new Insets(5, 5, 15, 5));
     
 
     getChildren().addAll(tittel, gameNameField, newGameBox, or, savedGameBox);
+
+
+    savedGames.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (newFrom != null) {
+        LoadGameButton.setDisable(false);
+      } else {
+        LoadGameButton.setDisable(true);
+      }
+    });
+
+    amountOfPlayersComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (newFrom != null && WhatGameComboBox.getValue() != null && !gameNameField.getText().isEmpty()) {
+        ConfirmButton.setDisable(false);
+      } else {
+        ConfirmButton.setDisable(true);
+      }
+    });
+
+    WhatGameComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (newFrom != null && amountOfPlayersComboBox.getValue() != null && !gameNameField.getText().isEmpty()) {
+        ConfirmButton.setDisable(false);
+      } else {
+        ConfirmButton.setDisable(true);
+      }
+    });
+
+    gameNameField.textProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (!newFrom.isEmpty() && amountOfPlayersComboBox.getValue() != null && WhatGameComboBox.getValue() != null) {
+        ConfirmButton.setDisable(false);
+      } else {
+        ConfirmButton.setDisable(true);
+      }
+    });
   }
 }

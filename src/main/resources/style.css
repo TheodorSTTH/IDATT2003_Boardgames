@@ -4,20 +4,6 @@
   -fx-background-repeat: no-repeat;
 }
 
-.snakes-and-ladders-game-page {
-  -fx-background-image: url("snakes_and_ladders_background.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.fantasy-title {
-  -fx-font-family: "Papyrus", "Georgia", serif;
-  -fx-font-size: 60px;
-  -fx-font-weight: bold;
-  -fx-text-fill: #FFD700;
-  -fx-effect: dropshadow(one-pass-box, black, 2, 0.5, 1, 1);
-}
-
 .fantasy {
   -fx-font-family: "Papyrus", "Georgia", serif;
   -fx-text-fill: #FFD700;
@@ -27,99 +13,198 @@
   -fx-font-weight: bold;
 }
 
-.fantasy-text {
+.snakes-and-ladders-game-page {
+  -fx-background-image: url("snakes_and_ladders_background.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.risk-background {
+  -fx-background-image: url("riskBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.attack-pane {
+  -fx-background-image: url("riskAttackBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.move-troops-pane {
+  -fx-background-image: url("riskMoveTroopsBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.risk-pane {
+  -fx-background-image: url("riskPaneBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.place-troops-pane {
+  -fx-background-image: url("riskPlaceTroopsBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.fantasy-title, .fantasy-dialog, .fantasy-text, .fantasy-choice-dialog, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-title-sidbar, .country-view, .fantasy-choice-dialog .label, .fantasy-choice-dialog .button, .fantasy-choice-dialog .combo-box {
   -fx-font-family: "Papyrus", "Georgia", serif;
-  -fx-font-size: 40px;
-  -fx-font-weight: bold;
-  -fx-text-fill: #FFD700;
-  -fx-effect: dropshadow(one-pass-box, black, 2, 0.5, 1, 1);
 }
 
 
-
-.game-name-field {
+.fantasy-text-field,.fantasy-dialog, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-choice-dialog .combo-box, .fantasy-choice-dialog .button {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
-  -fx-border-color: #5a381e;
-  -fx-border-width: 3;
-  -fx-border-radius: 6;
-  -fx-background-radius: 6;
-  -fx-padding: 10;
-  -fx-font-family: "Papyrus", "Georgia", serif;
-  -fx-font-size: 20px;
   -fx-text-fill: #2e1d0e;
-  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0.5, 0, 2);
-}
-
-.game-name-field:hover {
-  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
-  -fx-cursor: hand;
-}
-
-.game-name-field:focused {
-  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* lighter parchment when focused */
-}
-
-.game-name-field {
-  -fx-prompt-text-fill: #5a381eac;
-}
-
-
-.fantasy-button {
-  -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-border-color: #5a381e;
   -fx-border-width: 3;
   -fx-border-radius: 8;
-  -fx-background-radius: 8;
-  -fx-padding: 10 20 10 20;
-  -fx-font-family: "Papyrus", "Georgia", serif;
-  -fx-font-size: 18px;
-  -fx-text-fill: #2e1d0e;
+  -fx-background-radius: 6;
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
-  -fx-cursor: hand;
-  -fx-font-weight: bold;
 }
 
-.fantasy-button:hover {
+.fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-button:hover, .fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
+.fantasy-spinner .decrement-button:hover,.fantasy-choice-dialog .button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-button-sidbar:hover, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-button-sidbar:focused, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused, .fantasy-choice-dialog .combo-box:hover, .fantasy-choice-dialog .combo-box:focused, .fantasy-choice-dialog .button:focused, .fantasy-choice-dialog .button:hover  {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
-  -fx-text-fill: #3c2a1e;
+  -fx-cursor: hand;
 }
 
-.fantasy-button:pressed {
-  -fx-background-color: #cbb994;
+
+
+.fantasy-title, .fantasy-text{
+  -fx-font-weight: bold;
+  -fx-text-fill: #FFD700;
+}
+
+.fantasy-title{
+  -fx-font-size: 60px;
+}
+
+.fantasy-text {
+  -fx-font-size: 40px;
+}
+
+.fantasy-text-sidbar {
+  -fx-font-size: 30px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #000000;
+}
+
+.fantasy-title-sidbar {
+  -fx-font-size: 15px;
+  -fx-font-weight: bold;
   -fx-text-fill: #000000;
 }
 
 
+.fantasy-text-field {
+  -fx-padding: 10;
+  -fx-font-size: 20px;
 
-.combo-box {
-  -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c); /* parchment look */
-  -fx-border-color: #5a381e;
-  -fx-border-width: 3;
-  -fx-border-radius: 6;
-  -fx-background-radius: 6;
-  -fx-padding: 5;
-  -fx-font-family: "Papyrus", "Georgia", serif;
+}
+
+.fantasy-text-field {
+  -fx-prompt-text-fill: #4e301aac;
+}
+
+.fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-choice-dialog .combo-box, .fantasy-choice-dialog .button {
+  -fx-padding: 10 20 10 20;
   -fx-font-size: 18px;
-  -fx-text-fill: #2e1d0e;
-  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0.5, 0, 2);
-}
-
-.combo-box:hover {
-  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
+  -fx-font-weight: bold;
 }
 
-.combo-box .list-cell {
+
+.fantasy-combo-box .list-cell, .fantasy-combo-box-sidbar .list-cell, .fantasy-choice-dialog .combo-box {
   -fx-background-color: transparent;
   -fx-text-fill: #2e1d0e;
 }
 
-.combo-box-popup .list-view {
-  -fx-background-color: #f8f0e3;
-  -fx-border-color: #5a381e;
-  -fx-border-width: 2;
-}
-
-.combo-box .arrow {
+.fantasy-combo-box .arrow, .fantasy-combo-box-sidbar .arrow, .fantasy-choice-dialog .combo-box .arrow {
   -fx-background-color: #5a381e;
 }
+
+
+.fantasy-spinner {
+  -fx-pref-width: 210px;
+}
+
+
+
+
+/* Spinner Arrow Button Styling */
+.fantasy-spinner .increment-button,
+.fantasy-spinner .decrement-button, fantasay-spinner-sidbar .increment-button, fantasy-spinner-sidbar .decrement-button {
+  -fx-background-color: #5a381e; /* Dark brown button for the spinner arrows */
+  -fx-text-fill: #f0e4c3; /* Light text color for arrows */
+  -fx-padding: 5; /* Padding inside the arrow buttons */
+  -fx-background-radius: 4; /* Slightly rounded corners for the arrows */
+  -fx-font-size: 18px; /* Adjust font size for better arrow visibility */
+}
+
+/* Spinner Text Field (Editable Area) */
+.fantasy-spinner .text-field, .fantasy-spinner-sidbar .text-field {
+  -fx-background-color: transparent; /* Transparent background for the text input part */
+  -fx-text-fill: #2e1d0e; /* Dark text color */
+  -fx-border-width: 0; /* No border on the text input area */
+  -fx-padding: 2; /* Same padding as the button and input fields */
+  -fx-font-size: 20px; /* Font size to match the overall theme */
+}
+
+/* Hover Effect on Text Field */
+.fantasy-spinner .text-field:hover, .fantasy-spinner-sidbar .text-field:hover {
+  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
+  -fx-cursor: text;
+  -fx-font-weight: bold;
+}
+
+.fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar {
+  -fx-pref-width: 350px;
+  -fx-pref-height: 40px;
+  -fx-padding: 10 15 10 15;
+  -fx-font-size: 16px;
+  -fx-cursor: hand;
+  -fx-font-weight: bold;
+}
+
+.country-view {
+  -fx-font-size: 7pt;
+  -fx-font-weight: bold;
+  -fx-text-fill: white;
+  -fx-cursor: hand;
+}
+
+.country-view:hover {
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 8pt;
+  -fx-cursor: hand;
+}
+
+
+.fantasy-choice-dialog {
+  -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
+  -fx-border-color: #5a381e;
+  -fx-border-width: 4;
+  -fx-border-radius: 10;
+  -fx-background-radius: 10;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.6, 0, 4);
+  -fx-padding: 20;
+}
+
+.fantasy-choice-dialog .dialog-pane {
+  -fx-background-color: transparent;
+}
+
+.fantasy-choice-dialog .label {
+  -fx-font-size: 30px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2e1d0e;
+}
+
+.fantasy-choice-dialog .combo-box .list-cell {
+  -fx-background-color: transparent;
+  -fx-text-fill: #2e1d0e;
+}
+
+

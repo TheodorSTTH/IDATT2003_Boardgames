@@ -26,11 +26,8 @@ public class CountryView extends Button implements ISimpleObserver {
   public void render() {
     this.setText(Integer.toString(country.getArmies()));
     //this.setText(country.getName());
-    this.setStyle("-fx-font-size: 8; "
-        + "-fx-padding: 4; "
-        + "-fx-border-radius: 100; "
-        + "-fx-font-weight: bold;"
-        + "-fx-background-color: " + country.getOwnerColor() + "; ");
+    this.getStyleClass().add("country-view");
+    this.setStyle("-fx-background-color: " + country.getOwnerColor() + "; ");
     setLayoutX(boardWidth * country.getRelativeX());
     setLayoutY(boardHeight * country.getRelativeY());
   }

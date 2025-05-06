@@ -3,9 +3,18 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
+
+import javafx.scene.control.Label;
 import java.util.HashMap;
+
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+
+
 
 public class RiskPage extends HBox {
   RiskBoardView board;
@@ -13,20 +22,33 @@ public class RiskPage extends HBox {
 
   public RiskPage(Risk risk) {
     super(new HBox());
-    if (getClass().getResource("/style.css") != null) {
-      this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-    } else {
-      System.err.println("Warning: style.css not found!");
-    }
     this.board = new RiskBoardView(risk.getBoard().getCountries());
     this.sidePanel = new RiskSidePanelView(risk);
+    this.setStyle("-fx-background-color:rgb(72, 163, 255);");
     updateViews(risk.getBoard().getCountries());
-    Button saveButton = new Button("Save current game");
+
+
+    Label bonusesLabel = new Label("Euorupe: 5   Asia: 7   North America: 5\nSouth America: 2   Africa: 3   Australia: 2");
+    bonusesLabel.getStyleClass().add("fantasy-text-sidbar");
+
+
+    Button saveButton = new Button("SAVE");
+    saveButton.getStyleClass().add("fantasy-button");
+
+
+    HBox underlay = new HBox(bonusesLabel, saveButton);
+    underlay.setAlignment(Pos.CENTER);
+    underlay.setSpacing(20);
+
+
+    VBox mainStage = new VBox(10);
+    mainStage.getChildren().addAll(board, underlay);
+
     saveButton.setOnAction(e -> {
       risk.saveGame();
       PopUp.showInfo("Game saved", "Game has been saved as " + risk.getGameName());
     });
-    getChildren().addAll(sidePanel, board, saveButton);
+    getChildren().addAll(sidePanel, mainStage);
   }
 
   /**
