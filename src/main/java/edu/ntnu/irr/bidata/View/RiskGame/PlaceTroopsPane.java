@@ -42,7 +42,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
 
 
     this.amountOfTroopsSpinner = new Spinner<>(
-        new SpinnerValueFactory.IntegerSpinnerValueFactory(1, risk.getTroopsAvailable(), 1)
+        new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1)
     );
     this.amountOfTroopsSpinner.getStyleClass().add("fantasy-spinner-sidbar");
     this.amountOfTroopsSpinner.setEditable(true);
@@ -58,13 +58,8 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
       if (countryComboBox.getValue() == null) {
         PopUp.showError("Must select a county","Please select a country to place troops on.");
       } else {
-        boolean placingTroopsWasSuccessful = risk.placeTroops(
-            countryComboBox.getValue().getName(),
-            amountOfTroopsSpinner.getValue());
-        if (placingTroopsWasSuccessful)
-          notifyObservers(this.getNextSidebarPane());
-        else
-          update();
+        risk.placeTroops(countryComboBox.getValue().getName(), amountOfTroopsSpinner.getValue());
+        update();
       }
     });
 
@@ -97,12 +92,16 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
   }
 
   private void update() {
+    if (risk.getTroopsAvailable() > 0) {
+      ((SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory())
+        .setMax(risk.getTroopsAvailable());
+    } else {
+      notifyObservers(this.getNextSidebarPane());
+    }
     List<Country> placeOptions = risk.getCountriesControlledByActivePlayer();
     this.infoLabel.setText("Place troops on country\n"+"You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
     countryComboBox.setItems(FXCollections.observableArrayList(placeOptions));
     countryComboBox.setValue(null);
     ok.setDisable(true);
-    ((SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory())
-        .setMax(risk.getTroopsAvailable());
   }
 }
