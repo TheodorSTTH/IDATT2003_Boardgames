@@ -78,7 +78,7 @@ public class PopUp {
         dialog.setHeaderText(null);
         dialog.setContentText(contentText);
         dialog.getDialogPane().getStylesheets().add(PopUp.class.getResource("/style.css").toExternalForm());
-        dialog.getDialogPane().getStyleClass().add("fantasy-choice-dialog");
+        dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
 
         Optional<Integer> result = dialog.showAndWait();
 
@@ -98,6 +98,8 @@ public static boolean askQuestion(String question, String correctAnswer) {
     dialog.setTitle("Quiz Question");
     dialog.setHeaderText(null);
     dialog.setContentText(question);
+    dialog.getDialogPane().getStylesheets().add(PopUp.class.getResource("/style.css").toExternalForm());
+    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
 
     Optional<String> result = dialog.showAndWait();
 
