@@ -87,13 +87,8 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     moveFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
       boolean isFromDefined = newFrom != null;
       if (isFromDefined) {
-        moveTargetComboBox.setItems(FXCollections.observableArrayList(
-            risk.getCountriesControlledByActivePlayer()
-        ));
         amountOfTroopsSpinner.getValueFactory().setValue(1);
         spinnerValueFactory.setMax(newFrom.getArmies()-1);
-      } else {
-        moveTargetComboBox.getItems().clear();
       }
     });
   
@@ -116,14 +111,31 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     this.expandedProperty().addListener((obs, wasExpanded, isNowExpanded) -> {
       if (isNowExpanded) update();
     });
+
+    moveFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (newFrom != null && moveTargetComboBox.getValue() != null) {
+        ok.setDisable(false);
+      } else {
+        ok.setDisable(true);
+      }
+    });
+
+    moveTargetComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      if (newFrom != null && moveFromComboBox.getValue() != null) {
+        ok.setDisable(false);
+      } else {
+        ok.setDisable(true);
+      }
+    });
   
     update();
   }
 
   private void update() {
     List<Country> moveFromOptions = risk.getCountriesCurrentPlayerCanMoveFrom();
+    ok.setDisable(true);
     moveFromComboBox.setItems(FXCollections.observableArrayList(moveFromOptions));
+    moveTargetComboBox.setItems(FXCollections.observableArrayList(risk.getCountriesControlledByActivePlayer()));
     moveTargetComboBox.setValue(null);
-    moveTargetComboBox.getItems().clear();
   }
 }
