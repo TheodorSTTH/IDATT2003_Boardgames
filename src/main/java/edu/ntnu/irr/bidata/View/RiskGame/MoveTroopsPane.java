@@ -52,13 +52,13 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       if (from != null && to != null) {
         risk.transferTroops(from.getName(), to.getName(), amount);
         risk.endTurn();
-        notifyObservers();
+        notifyObservers(this.getNextSidebarPane());
       }
     });
 
     dontMoveTroops.setOnAction(event -> {
       risk.endTurn();
-      notifyObservers();
+      notifyObservers(this.getNextSidebarPane());
     });
 
     getContainer().getChildren().addAll(

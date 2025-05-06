@@ -35,9 +35,9 @@ public class AbstractSidebarPane extends TitledPane implements ISubject<Abstract
   }
 
   @Override
-  public void notifyObservers() {
+  public void notifyObservers(AbstractSidebarPane nextSidebarPane) {
     for (IObserver<AbstractSidebarPane> observer : allObservers) {
-      observer.update(this.getNextSidebarPane());
+      observer.update(nextSidebarPane);
     }
   }
 

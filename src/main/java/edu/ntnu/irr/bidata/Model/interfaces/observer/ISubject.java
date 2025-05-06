@@ -11,5 +11,5 @@ public interface ISubject<T> {
    * */
   void registerObserver(IObserver<T> o);
   void removeObserver(IObserver<T> o);
-  void notifyObservers();
+  void notifyObservers(T data);
 }
