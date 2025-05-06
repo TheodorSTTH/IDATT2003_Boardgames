@@ -17,12 +17,18 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
   private final ComboBox<Country> countryComboBox;
   private final Spinner<Integer> amountOfTroopsSpinner;
   private final Button ok;
+  private Label currentUserLabel;
 
   public PlaceTroopsPane(Risk risk) {
     super(risk);
     getContainer().getStyleClass().add("place-troops-pane");
     this.setText("Place Troops");
     this.setLineSpacing(10);
+
+
+    currentUserLabel = new Label("Current Player: " + risk.getCurrentPlayer().getName());
+    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
+    VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
 
     this.infoLabel = new Label("Place troops on country\n"+"You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
@@ -63,6 +69,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     });
 
     getContainer().getChildren().addAll(
+        currentUserLabel,
         infoLabel,
         countryComboBox,
         amountOfTroopsSpinner,

@@ -16,6 +16,12 @@
   -fx-background-repeat: no-repeat;
 }
 
+.risk-pane {
+  -fx-background-image: url("riskPaneBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
 .place-troops-pane {
   -fx-background-image: url("riskPlaceTroopsBackground.png");
   -fx-background-size: cover;

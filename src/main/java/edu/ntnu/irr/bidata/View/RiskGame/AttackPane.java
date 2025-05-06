@@ -24,6 +24,7 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
   private final Button performAttackUntilResultButton;
   private final Button ok;
   private final FlowPane dieBox;
+  private Label currentUserLabel;
 
   public AttackPane(Risk risk) {
     super(risk);
@@ -33,6 +34,12 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     dieBox.setHgap(12);
     dieBox.setVgap(12);
     VBox.setMargin(dieBox, new javafx.geometry.Insets(0, 0, 0, 50));
+
+
+    currentUserLabel = new Label("Current Player: " + risk.getCurrentPlayer().getName());
+    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
+    VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+
 
     this.setText("Attack");
     this.setLineSpacing(10);
@@ -116,6 +123,7 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     });
 
     getContainer().getChildren().addAll(
+        currentUserLabel,
         attackFromLabel,
         attackFromComboBox,
         attackToLabel,
@@ -149,6 +157,7 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     updateOnIsFromDefined(false);
     performAttackUntilResultButton.setDisable(true);
     performAttackOnceButton.setDisable(true);
+    this.currentUserLabel.setText("Current Player: " + risk.getCurrentPlayer().getName());
 
     attackTargetComboBox.getItems().clear();
 

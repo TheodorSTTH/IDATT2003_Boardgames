@@ -20,10 +20,18 @@ public class MoveTroopsPane extends AbstractSidebarPane {
   private final Spinner<Integer> amountOfTroopsSpinner;
   private final Button ok;
   private final Button dontMoveTroops;
+  private Label currentUserLabel;
+
 
   public MoveTroopsPane(Risk risk) {
     super(risk);
     getContainer().getStyleClass().add("move-troops-pane");
+
+
+    currentUserLabel = new Label("Current Player: " + risk.getCurrentPlayer().getName());
+    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
+    VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+
 
     Label moveFromLabel = new Label("Move from:");
     moveFromLabel.getStyleClass().add("fantasy-text-sidbar");
@@ -99,6 +107,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     });
 
     getContainer().getChildren().addAll(
+        currentUserLabel,
         moveFromLabel,
         moveFromComboBox,
         moveToLabel,
@@ -137,5 +146,6 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     moveFromComboBox.setItems(FXCollections.observableArrayList(moveFromOptions));
     moveTargetComboBox.setItems(FXCollections.observableArrayList(risk.getCountriesControlledByActivePlayer()));
     moveTargetComboBox.setValue(null);
+    this.currentUserLabel.setText("Current Player: " + risk.getCurrentPlayer().getName());
   }
 }

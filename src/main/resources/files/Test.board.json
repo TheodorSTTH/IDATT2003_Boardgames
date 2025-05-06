@@ -193,7 +193,7 @@
       "name" : "Argentina",
       "owner" : "Imre",
       "ownerColor" : "Black",
-      "armies" : 3,
+      "armies" : 7,
       "neighbors" : [ "Peru", "Brazil" ],
       "relativeX" : 0.24,
       "relativeY" : 0.78

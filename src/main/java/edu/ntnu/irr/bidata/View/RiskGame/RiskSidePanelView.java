@@ -3,12 +3,10 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import javafx.scene.control.Accordion;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebarPane> {
-  private final Label currentUserLabel;
   private final Accordion parentAccordion;
   private final PlaceTroopsPane placeTroopsPane;
   private final AttackPane attackPane;
@@ -19,8 +17,6 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
     this.placeTroopsPane = new PlaceTroopsPane(risk);
     this.attackPane = new AttackPane(risk);
     this.moveTroopsPane = new MoveTroopsPane(risk);
-    this.currentUserLabel = new Label();
-    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
     this.parentAccordion = new Accordion();
     this.risk = risk;
     placeTroopsPane.registerObserver(this);
@@ -40,7 +36,6 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
         moveTroopsPane
     );
     this.getChildren().addAll(
-        currentUserLabel,
         parentAccordion
     );
     update(placeTroopsPane);
@@ -70,6 +65,5 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
    * */
   public void update(AbstractSidebarPane nextPane) {
     setPaneActive(nextPane);
-    this.currentUserLabel.setText("Current Player: " + risk.getCurrentPlayer().getName());
   }
 }
