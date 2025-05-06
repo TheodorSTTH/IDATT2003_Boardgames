@@ -20,6 +20,7 @@ public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebar
     this.attackPane = new AttackPane(risk);
     this.moveTroopsPane = new MoveTroopsPane(risk);
     this.currentUserLabel = new Label();
+    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
     this.parentAccordion = new Accordion();
     this.risk = risk;
     placeTroopsPane.registerObserver(this);
