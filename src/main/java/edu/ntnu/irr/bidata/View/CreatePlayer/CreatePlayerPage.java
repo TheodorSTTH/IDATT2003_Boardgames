@@ -2,6 +2,7 @@ package edu.ntnu.irr.bidata.View.CreatePlayer;
 
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.View.PopUp;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -9,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -30,36 +32,46 @@ public class CreatePlayerPage extends VBox {
     setAlignment(Pos.TOP_CENTER);
 
 
-    Spinner<Integer> ageSpinner = new Spinner<>(
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
-    ageSpinner.getStyleClass().add("fantasy-combo-box");
-    ageSpinner.setEditable(true);
-
-
     Label tittelLabel = new Label("Create a new player");
     tittelLabel.getStyleClass().add("fantasy-title");
+    VBox.setMargin(tittelLabel, new Insets(20, 5, 10, 5));
 
 
     TextField usernameField = new TextField();
     usernameField.getStyleClass().add("fantasy-text-field");
-
+    VBox.setMargin(usernameField, new Insets(5, 100, 10, 100));
     usernameField.setPromptText("Username");
     usernameField.getStyleClass().add("fantasy-text");
     usernameField.getStyleClass().addAll("styled-textfield", "w-s-text", "w-radius");
 
 
+    Label colorLabel = new Label("Choose a color: ");
+    VBox.setMargin(colorLabel, new Insets(5, 5, 5, 5));
+    colorLabel.getStyleClass().add("fantasy-text");
+
+
     ComboBox<String> playerColureField = new ComboBox<>();
+    VBox.setMargin(playerColureField, new Insets(5, 5, 5, 5));
     playerColureField.getStyleClass().add("fantasy-combo-box");
     playerColureField.getItems().addAll(UI.getGame().getAvailableColors());
     playerColureField.setPromptText("Chose a color");
     
     
-    Label ageLabel = new Label("How old are you?");
+    Label ageLabel = new Label("How old are you: ");
+    VBox.setMargin(ageLabel, new Insets(5, 5, 5, 5));
     ageLabel.getStyleClass().add("fantasy-text");
+
+
+    Spinner<Integer> ageSpinner = new Spinner<>(
+            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
+    ageSpinner.getStyleClass().add("fantasy-spinner");
+    VBox.setMargin(ageSpinner, new Insets(5, 5, 5, 5));
+    ageSpinner.setEditable(true);
 
 
     Button createPlayerButton = new Button("New player");
     createPlayerButton.getStyleClass().add("fantasy-button");
+    VBox.setMargin(createPlayerButton, new Insets(10, 5, 5, 5));
 
 
     createPlayerButton.setOnAction(e -> {
@@ -76,6 +88,18 @@ public class CreatePlayerPage extends VBox {
         }
     });
 
-    getChildren().addAll(tittelLabel, usernameField, playerColureField, ageLabel, ageSpinner, createPlayerButton);
+
+    HBox chooseAColureBox = new HBox(10);
+    chooseAColureBox.setAlignment(Pos.CENTER);
+    chooseAColureBox.getChildren().addAll(colorLabel, playerColureField);
+    HBox.setMargin(chooseAColureBox, new Insets(5, 5, 5, 5));
+
+
+    HBox chooseAgeBox = new HBox(10);
+    chooseAgeBox.setAlignment(Pos.CENTER);
+    chooseAgeBox.getChildren().addAll(ageLabel, ageSpinner);
+    HBox.setMargin(chooseAgeBox, new Insets(5, 5, 5, 5));
+
+    getChildren().addAll(tittelLabel, usernameField, chooseAColureBox, chooseAgeBox, createPlayerButton);
   }
 }

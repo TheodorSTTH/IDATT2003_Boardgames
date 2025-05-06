@@ -21,7 +21,7 @@ public class StartPage extends VBox {
 
     Label tittel = new Label("Choose your next adventure!");
     tittel.getStyleClass().add("fantasy-title");
-    VBox.setMargin(tittel, new Insets(20, 0, 10, 0)); // Top, Right, Bottom, Left
+    VBox.setMargin(tittel, new Insets(20, 3, 10, 5));
 
 
     TextField gameNameField = new TextField();

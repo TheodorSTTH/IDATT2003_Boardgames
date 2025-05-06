@@ -4,7 +4,7 @@
   -fx-background-repeat: no-repeat;
 }
 
-.fantasy-title, .fantasy-text, .fantasy-text-field, .fantasy-button, .fantasy-combo-box {
+.fantasy-title, .fantasy-text, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field {
   -fx-font-family: "Papyrus", "Georgia", serif;
 }
 
@@ -23,7 +23,7 @@
 }
 
 
-.fantasy-text-field, .fantasy-button, .fantasy-combo-box {
+.fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-text-fill: #2e1d0e;
   -fx-border-color: #5a381e;
@@ -33,7 +33,8 @@
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
 }
 
-.fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-button:hover, .fantasy-combo-box:hover {
+.fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-button:hover, .fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
+.fantasy-spinner .decrement-button:hover, .fantasy-spinner:focused {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
@@ -78,4 +79,37 @@
 
 .fantasy-combo-box .arrow {
   -fx-background-color: #5a381e;
+}
+
+/* Fantasy Spinner */
+.fantasy-spinner {
+  -fx-padding: 10;
+  -fx-font-size: 20px;
+}
+
+
+/* Spinner Arrow Button Styling */
+.fantasy-spinner .increment-button,
+.fantasy-spinner .decrement-button {
+  -fx-background-color: #5a381e; /* Dark brown button for the spinner arrows */
+  -fx-text-fill: #f0e4c3; /* Light text color for arrows */
+  -fx-padding: 5; /* Padding inside the arrow buttons */
+  -fx-background-radius: 4; /* Slightly rounded corners for the arrows */
+  -fx-font-size: 18px; /* Adjust font size for better arrow visibility */
+}
+
+/* Spinner Text Field (Editable Area) */
+.fantasy-spinner .text-field {
+  -fx-background-color: transparent; /* Transparent background for the text input part */
+  -fx-text-fill: #2e1d0e; /* Dark text color */
+  -fx-border-width: 0; /* No border on the text input area */
+  -fx-padding: 2; /* Same padding as the button and input fields */
+  -fx-font-size: 20px; /* Font size to match the overall theme */
+}
+
+/* Hover Effect on Text Field */
+.fantasy-spinner .text-field:hover {
+  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
+  -fx-cursor: text;
+  -fx-font-weight: bold;
 }
