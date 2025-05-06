@@ -4,6 +4,21 @@
   -fx-background-repeat: no-repeat;
 }
 
+.fantasy {
+  -fx-font-family: "Papyrus", "Georgia", serif;
+  -fx-text-fill: #FFD700;
+}
+.title-3 {
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+}
+
+.snakes-and-ladders-game-page {
+  -fx-background-image: url("snakes_and_ladders_background.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
 .risk-background {
   -fx-background-image: url("riskBackground.png");
   -fx-background-size: cover;

@@ -3,10 +3,12 @@ package edu.ntnu.irr.bidata.View.LadderGameOverview;
 import edu.ntnu.irr.bidata.Model.Player;
 import java.util.ArrayList;
 import javafx.geometry.VPos;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
 public class CanvasTileView {
@@ -14,7 +16,6 @@ public class CanvasTileView {
   private final int y;
   private final int width;
   private final int height;
-  private final Color color;
   private final int tileNumber;
   private final GraphicsContext graphicsContext;
   private final ArrayList<Player> players;
@@ -22,12 +23,11 @@ public class CanvasTileView {
   /**
    * Constructs object with values passed and renders it.
    * */
-  public CanvasTileView(int x, int y, int width, int height, Color color, int tileNumber, GraphicsContext graphicsContext) {
+  public CanvasTileView(int x, int y, int width, int height, int tileNumber, GraphicsContext graphicsContext) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
-    this.color = color;
     this.tileNumber = tileNumber;
     this.graphicsContext = graphicsContext;
     this.players = new ArrayList<>();
@@ -37,8 +37,13 @@ public class CanvasTileView {
    * Draws the tile box.
    * */
   public void drawBox() {
-    graphicsContext.setFill(color);
-    graphicsContext.fillRect(x, y, width, height);
+    Image tileImage;
+    if (tileNumber % 2 == 0) {
+      tileImage = new Image(getClass().getResourceAsStream("/grass.png"));
+    } else {
+      tileImage = new Image(getClass().getResourceAsStream("/grass_dark.png"));
+    }
+    graphicsContext.drawImage(tileImage, x, y, width, height);
   }
 
   /**
@@ -49,8 +54,8 @@ public class CanvasTileView {
     int padding = (int) Math.ceil(height * 0.05);
     graphicsContext.setTextAlign(TextAlignment.LEFT);
     graphicsContext.setTextBaseline(VPos.TOP);
-    graphicsContext.setFont(Font.font(fontSize));
-    graphicsContext.setFill(color.darker());
+    graphicsContext.setFont(Font.font("Papyrus", FontWeight.BLACK, fontSize));
+    graphicsContext.setFill(Paint.valueOf("rgba(255, 255, 255, 0.8)"));
     graphicsContext.fillText(Integer.toString(tileNumber), x + padding, y + padding);
   }
 
@@ -70,12 +75,30 @@ public class CanvasTileView {
     final double playerAreaY = y + (height * 0.3); // Place player area below the number
 
     // Calculate radius based on available space and max players per row
-    double radius = Math.min(playerAreaWidth / maxPlayersPerRow, playerAreaHeight / Math.ceil((double) players.size() / maxPlayersPerRow)) / 2;
+    double size = Math.min(playerAreaWidth / maxPlayersPerRow, playerAreaHeight / Math.ceil((double) players.size() / maxPlayersPerRow)) + 7;
 
     // --- Draw each player ---
     for (int i = 0; i < players.size(); i++) {
       Player player = players.get(i);
-      Color playerColor = Color.valueOf(player.getColor()); // Assuming Player has getColor()
+      Image playerImage = null;
+      switch (player.getColor().toLowerCase()) {
+        case "red":
+          playerImage = new Image(getClass().getResourceAsStream("/wizard_red.png"));
+          break;
+        case "yellow":
+          playerImage = new Image(getClass().getResourceAsStream("/wizard_yellow.png"));
+          break;
+        case "blue":
+          playerImage = new Image(getClass().getResourceAsStream("/wizard_blue.png"));
+          break;
+        case "green":
+          playerImage = new Image(getClass().getResourceAsStream("/wizard_green.png"));
+          break;
+      }
+      if (playerImage == null) {
+        System.err.println("Player image not defined");
+        continue;
+      }
 
       // Calculate position within the player area grid
       int row = i / maxPlayersPerRow;
@@ -84,14 +107,7 @@ public class CanvasTileView {
       double centerX = playerAreaX + (col + 0.5) * (playerAreaWidth / maxPlayersPerRow);
       double centerY = playerAreaY + (row + 0.5) * (playerAreaHeight / Math.ceil((double) players.size() / maxPlayersPerRow));
 
-      // Draw the circle
-      graphicsContext.setFill(playerColor);
-      graphicsContext.fillOval(centerX - radius, centerY - radius, radius * 2, radius * 2);
-
-      // Optional: Draw a border around the player circle for contrast
-      graphicsContext.setStroke(Color.BLACK);
-      graphicsContext.setLineWidth(1.0);
-      graphicsContext.strokeOval(centerX - radius, centerY - radius, radius * 2, radius * 2);
+      graphicsContext.drawImage(playerImage, centerX - size / 2, centerY - size / 2 - 10, size * 2, size * 2);
     }
   }
 
