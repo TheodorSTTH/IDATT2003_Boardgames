@@ -4,6 +4,12 @@
   -fx-background-repeat: no-repeat;
 }
 
+.risk-background {
+  -fx-background-image: url("riskBackground.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
 .attack-pane {
   -fx-background-image: url("riskAttackBackground.png");
   -fx-background-size: cover;
@@ -28,7 +34,7 @@
   -fx-background-repeat: no-repeat;
 }
 
-.fantasy-title, .fantasy-text, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-title-sidbar {
+.fantasy-title, .fantasy-text, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-title-sidbar, .country-view {
   -fx-font-family: "Papyrus", "Georgia", serif;
 }
 
@@ -150,4 +156,17 @@
   -fx-font-size: 16px;
   -fx-cursor: hand;
   -fx-font-weight: bold;
+}
+
+.country-view {
+  -fx-font-size: 7pt;
+  -fx-font-weight: bold;
+  -fx-text-fill: white;
+  -fx-cursor: hand;
+}
+
+.country-view:hover {
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 8pt;
+  -fx-cursor: hand;
 }
