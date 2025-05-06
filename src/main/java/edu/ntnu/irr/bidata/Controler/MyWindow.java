@@ -16,7 +16,9 @@ public class MyWindow extends Application {
     MyWindow.primaryStage = primaryStage;
     NavigationManager.setStage(primaryStage);
     primaryStage.setTitle("BoardGame");
-    primaryStage.setScene(new Scene(new StartPage()));
+    Scene scene = new Scene(new StartPage());
+    scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+    primaryStage.setScene(scene);
     primaryStage.show();
     primaryStage.setMaximized(true);
   }

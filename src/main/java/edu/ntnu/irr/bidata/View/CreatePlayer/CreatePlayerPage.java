@@ -28,6 +28,8 @@ public class CreatePlayerPage extends VBox {
             new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
     ageSpinner.setEditable(true);
 
+    Label ageLabel = new Label("How old are you?");
+
     Label label = new Label("Create a new player");
     label.getStyleClass().addAll("styled-label", "w-p-text");
 
@@ -56,7 +58,7 @@ public class CreatePlayerPage extends VBox {
         }
     });
 
-    getChildren().addAll(label, usernameField, playerColureField, ageSpinner, createPlayerButton);
+    getChildren().addAll(label, usernameField, playerColureField, ageLabel, ageSpinner, createPlayerButton);
     getStyleClass().addAll("createUser-card", "w-radius");
   }
 }
