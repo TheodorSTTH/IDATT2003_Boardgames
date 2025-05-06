@@ -32,7 +32,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
 
     this.countryComboBox = new ComboBox<>();
     this.countryComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
-    VBox.setMargin(countryComboBox, new javafx.geometry.Insets(5, 5, 10, 10));
+    VBox.setMargin(countryComboBox, new javafx.geometry.Insets(0, 5, 10, 10));
 
 
     this.amountOfTroopsSpinner = new Spinner<>(
@@ -45,7 +45,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     
     this.ok = new Button("OK");
     this.ok.getStyleClass().add("fantasy-button-sidbar");
-    VBox.setMargin(ok, new javafx.geometry.Insets(10, 5, 10, 10));
+    VBox.setMargin(ok, new javafx.geometry.Insets(0, 5, 10, 10));
 
 
     ok.setOnAction(event -> {

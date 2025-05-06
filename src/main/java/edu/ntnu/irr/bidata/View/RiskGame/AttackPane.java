@@ -6,6 +6,7 @@ import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.View.LadderGameOverview.DieView;
+import edu.ntnu.irr.bidata.View.PopUp;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
@@ -29,68 +30,50 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     getContainer().getStyleClass().add("attack-pane");
     risk.registerObserver(this);
     this.dieBox = new FlowPane();
-    dieBox.setHgap(10);
-    dieBox.setVgap(10);
+    dieBox.setHgap(12);
+    dieBox.setVgap(12);
+    VBox.setMargin(dieBox, new javafx.geometry.Insets(0, 0, 0, 50));
+
+
     this.setText("Attack");
     this.setLineSpacing(10);
-
 
     Label attackFromLabel = new Label("Attack from:");
     attackFromLabel.getStyleClass().add("fantasy-text-sidbar");
     VBox.setMargin(attackFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
-
     this.attackFromComboBox = new ComboBox<>();
     this.attackFromComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
     attackFromComboBox.setPromptText("Select country to attack from");
     VBox.setMargin(attackFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
-    
-
 
     Label attackToLabel = new Label("Attack to:");
     attackToLabel.getStyleClass().add("fantasy-text-sidbar");
     VBox.setMargin(attackToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
-
 
     this.attackTargetComboBox = new ComboBox<>();
     this.attackTargetComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
     attackTargetComboBox.setPromptText("Select country to attack to");
     VBox.setMargin(attackTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
 
-
     this.performAttackOnceButton = new Button("Perform attack once");
     this.performAttackOnceButton.getStyleClass().add("fantasy-button-sidbar");
     VBox.setMargin(performAttackOnceButton, new javafx.geometry.Insets(0, 0, 10, 10));
 
-
-    this.performAttackUntilResultButton = new Button("Perform until result");
-    this.performAttackUntilResultButton.getStyleClass().add("fantasy-button-sidbar");
-    VBox.setMargin(performAttackUntilResultButton, new javafx.geometry.Insets(0, 0, 10, 10));
-
-
-    this.ok = new Button("OK, i am done");
-    this.ok.getStyleClass().add("fantasy-button-sidbar");
-    VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
-
-
-    attackFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
-      boolean isFromDefined = newFrom != null;
-      updateOnIsFromDefined(newFrom != null);
-      if (isFromDefined) {
-        attackTargetComboBox.setItems(FXCollections.observableArrayList(risk.getCountriesCurrentPlayerCanAttackFromCountry(newFrom)));
-      } else {
-        attackTargetComboBox.getItems().clear();
-      }
-    });
-    
     performAttackOnceButton.setOnAction(event -> {
       Country from = attackFromComboBox.getValue();
       Country to = attackTargetComboBox.getValue();
       if (from != null && to != null) {
         risk.attackOnce(from.getName(), to.getName());
         updateMap();
+      } else {
+        PopUp.showError("Must select a county", "Please select a country to attack from and a country to attack to.");
       }
     });
+
+    this.performAttackUntilResultButton = new Button("Perform until result");
+    this.performAttackUntilResultButton.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(performAttackUntilResultButton, new javafx.geometry.Insets(0, 0, 10, 10));
 
     performAttackUntilResultButton.setOnAction(event -> {
       Country from = attackFromComboBox.getValue();
@@ -98,6 +81,22 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
       if (from != null && to != null) {
         risk.attackUntilResult(from.getName(), to.getName());
         updateMap();
+      } else {
+        PopUp.showError("Must select a county", "Please select a country to attack from and a country to attack to.");
+      }
+    });
+
+    this.ok = new Button("OK, i am done");
+    this.ok.getStyleClass().add("fantasy-button-sidbar");
+    VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
+
+    attackFromComboBox.valueProperty().addListener((obs, oldFrom, newFrom) -> {
+      boolean isFromDefined = newFrom != null;
+      if (isFromDefined) {
+        attackTargetComboBox
+            .setItems(FXCollections.observableArrayList(risk.getCountriesCurrentPlayerCanAttackFromCountry(newFrom)));
+      } else {
+        attackTargetComboBox.getItems().clear();
       }
     });
 
@@ -112,23 +111,17 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
         attackTargetComboBox,
         performAttackOnceButton,
         performAttackUntilResultButton,
-        dieBox,
-        ok
-    );
+        ok,
+        dieBox);
 
     this.expandedProperty().addListener((obs, wasExpanded, isNowExpanded) -> {
-      if (isNowExpanded) updateMap();
+      if (isNowExpanded)
+        updateMap();
     });
 
     updateMap();
   }
-
-  private void updateOnIsFromDefined(boolean isFromDefined) {
-    attackTargetComboBox.setVisible(isFromDefined);
-    attackTargetComboBox.setManaged(isFromDefined);
-    performAttackUntilResultButton.setVisible(isFromDefined);
-    performAttackOnceButton.setVisible(isFromDefined);
-  }
+  
 
   private void updateMap() {
     Country selectedFrom = attackFromComboBox.getValue();
@@ -138,7 +131,6 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
     attackFromComboBox.setValue(null);
     attackTargetComboBox.setValue(null);
-    updateOnIsFromDefined(false);
     attackTargetComboBox.getItems().clear();
 
     if (attackFromOptions.contains(selectedFrom) && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
