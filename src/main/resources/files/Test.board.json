@@ -20,9 +20,9 @@
     },
     "Western Australia" : {
       "name" : "Western Australia",
-      "owner" : "Imre",
-      "ownerColor" : "Red",
-      "armies" : 2,
+      "owner" : "Eine",
+      "ownerColor" : "Blue",
+      "armies" : 1,
       "neighbors" : [ "Indonesia", "New Guinea", "Eastern Australia" ],
       "relativeX" : 0.83,
       "relativeY" : 0.81
@@ -130,7 +130,7 @@
       "name" : "Mongolia",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 5,
+      "armies" : 9,
       "neighbors" : [ "Siberia", "China", "Irkutsk", "Japan", "Kamchatka" ],
       "relativeX" : 0.79,
       "relativeY" : 0.33
@@ -184,7 +184,7 @@
       "name" : "Eastern Australia",
       "owner" : "Eine",
       "ownerColor" : "Blue",
-      "armies" : 2,
+      "armies" : 1,
       "neighbors" : [ "New Guinea", "Western Australia" ],
       "relativeX" : 0.93,
       "relativeY" : 0.85
@@ -229,7 +229,7 @@
       "name" : "Japan",
       "owner" : "Eine",
       "ownerColor" : "Blue",
-      "armies" : 3,
+      "armies" : 1,
       "neighbors" : [ "Mongolia", "Kamchatka" ],
       "relativeX" : 0.89,
       "relativeY" : 0.37
@@ -292,7 +292,7 @@
       "name" : "New Guinea",
       "owner" : "Eine",
       "ownerColor" : "Blue",
-      "armies" : 4,
+      "armies" : 3,
       "neighbors" : [ "Indonesia", "Eastern Australia", "Western Australia" ],
       "relativeX" : 0.88,
       "relativeY" : 0.65

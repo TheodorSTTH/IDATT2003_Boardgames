@@ -6,11 +6,14 @@ import edu.ntnu.irr.bidata.View.PopUp;
 
 import javafx.scene.control.Label;
 import java.util.HashMap;
+
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
+
 
 
 public class RiskPage extends HBox {
@@ -34,6 +37,8 @@ public class RiskPage extends HBox {
 
 
     HBox underlay = new HBox(bonusesLabel, saveButton);
+    underlay.setAlignment(Pos.CENTER);
+    underlay.setSpacing(20);
 
 
     VBox mainStage = new VBox(10);

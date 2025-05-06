@@ -66,20 +66,23 @@ public class PopUp {
      * @param max The maximum number the user can select.
      * @return The number selected by the user.
      */
-public static int promptForNumberInRange(String title, int max) {
-    List<Integer> choices = new ArrayList<>();
-    for (int i = 1; i <= max; i++) {
-        choices.add(i);
-    }
+    public static int promptForNumberInRange(String title, String contentText, int max) {
+        List<Integer> choices = new ArrayList<>();
+        for (int i = 1; i <= max; i++) {
+            choices.add(i);
+        }
 
-    ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
-    dialog.setTitle(title);
-    dialog.setHeaderText(null);
-    dialog.setContentText("Choose a number between 1 and " + max + ":");
+        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
+        dialog.setTitle(title);
+        dialog.setGraphic(null);
+        dialog.setHeaderText(null);
+        dialog.setContentText(contentText);
+        dialog.getDialogPane().getStylesheets().add(PopUp.class.getResource("/style.css").toExternalForm());
+        dialog.getDialogPane().getStyleClass().add("fantasy-choice-dialog");
 
-    Optional<Integer> result = dialog.showAndWait();
+        Optional<Integer> result = dialog.showAndWait();
 
-    return result.orElse(1); // Defaults to 1 if user cancels or closes
+        return result.orElse(1); // Defaults to 1 if user cancels or closes
 }
     
 
