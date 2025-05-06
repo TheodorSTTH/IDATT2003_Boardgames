@@ -38,8 +38,7 @@ public class CreatePlayerPage extends VBox {
         usernameField.getStyleClass().add("fantasy-text-field");
         VBox.setMargin(usernameField, new Insets(5, 100, 10, 100));
         usernameField.setPromptText("Username");
-        usernameField.getStyleClass().add("fantasy-text");
-        usernameField.getStyleClass().addAll("styled-textfield", "w-s-text", "w-radius");
+        
 
         Label colorLabel = new Label("Choose a color: ");
         VBox.setMargin(colorLabel, new Insets(5, 5, 5, 5));

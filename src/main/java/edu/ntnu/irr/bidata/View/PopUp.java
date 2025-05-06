@@ -130,6 +130,11 @@ public static void showScrollablePopup(String title, String content) {
     dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
     dialog.setResizable(true);
 
+    dialog.getDialogPane().getStylesheets().add(
+        PopUp.class.getResource("/style.css").toExternalForm()
+    );
+    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
+
     dialog.showAndWait();
 }
 }
