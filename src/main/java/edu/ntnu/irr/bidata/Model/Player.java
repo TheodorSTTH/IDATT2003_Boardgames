@@ -13,10 +13,13 @@ public class Player {
   private final String name;
   @JsonProperty
   private final String color;
+  @JsonProperty
+  private final int age;
 
-  public Player(String name, String color) {
+  public Player(String name, String color, int age) {
     this.name = name;
     this.color = color;
+    this.age = age;
   }
   
   public String getName() {
@@ -24,27 +27,14 @@ public class Player {
   }
 
   public String getSaveFormat() {
-    return name + "," + color;
+    return name + "," + color + "," + age;
   }
   
   public String getColor() {
     return color;
   }
 
-  /**
-   * Turns the player class into a key for json storage
-   * */
-  @JsonValue
-  public String toJsonKey() {
-    return name + "," + color;
-  }
-
-  /**
-   * Reads json player key from file and turns it into player object.
-   * */
-  @JsonCreator
-  public static Player fromJsonKey(String key) {
-    String[] parts = key.split(",", 2);
-    return new Player(parts[0], parts.length>1 ? parts[1] : "");
+  public int getAge() {
+    return age;
   }
 }

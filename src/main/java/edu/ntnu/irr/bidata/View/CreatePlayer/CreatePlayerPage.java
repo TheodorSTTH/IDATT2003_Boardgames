@@ -5,8 +5,16 @@ import edu.ntnu.irr.bidata.View.PopUp;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
+
 
 public class CreatePlayerPage extends VBox {
   public CreatePlayerPage() {
@@ -15,6 +23,11 @@ public class CreatePlayerPage extends VBox {
     } else {
         System.err.println("Warning: style.css not found!");
     }
+
+    Spinner<Integer> ageSpinner = new Spinner<>(
+            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
+    ageSpinner.setEditable(true);
+
     Label label = new Label("Create a new player");
     label.getStyleClass().addAll("styled-label", "w-p-text");
 
@@ -30,20 +43,20 @@ public class CreatePlayerPage extends VBox {
     playerColureField.setPromptText("Chose a color");
 
     createPlayerButton.setOnAction(e -> {
-        if (usernameField.getText().isEmpty() || playerColureField.getValue() == null) {
+        if (usernameField.getText().isEmpty() || playerColureField.getValue() == null || ageSpinner.getValue() <= 1) {
             PopUp.showWarning("Selection Required",
-                "Please select a username and a color before continuing.");
+                "Please select a username, color and age before continuing.");
             return;
         }
 
-        if (UI.newPlayer(usernameField.getText(), playerColureField.getValue())) {
+        if (UI.newPlayer(usernameField.getText(), playerColureField.getValue(), ageSpinner.getValue())) {
             playerColureField.getItems().remove(playerColureField.getValue());
             usernameField.clear();
             playerColureField.setValue(null);
         }
     });
 
-    getChildren().addAll(label, usernameField, playerColureField, createPlayerButton);
+    getChildren().addAll(label, usernameField, playerColureField, ageSpinner, createPlayerButton);
     getStyleClass().addAll("createUser-card", "w-radius");
   }
 }

@@ -22,8 +22,8 @@ public class UI {
     NavigationManager.navigate(new CreatePlayerPage());
   }
 
-  public static boolean newPlayer(String name, String color) {
-    return (game.addPlayer(name, color));
+  public static boolean newPlayer(String name, String color, int age) {
+    return (game.addPlayer(name, color, age));
   }
 
   public static Game getGame() {

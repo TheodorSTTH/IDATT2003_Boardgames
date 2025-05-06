@@ -24,6 +24,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
     this.amountOfTroopsSpinner = new Spinner<>(
         new SpinnerValueFactory.IntegerSpinnerValueFactory(1, risk.getTroopsAvailable(), 1)
     );
+    this.amountOfTroopsSpinner.setEditable(true);
     this.countryComboBox = new ComboBox<>();
     this.ok = new Button("OK");
     avalibuleTropesTextField = new Label("You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
