@@ -97,7 +97,7 @@ public class CanvasTileView {
       }
       if (playerImage == null) {
         System.err.println("Player image not defined");
-        return;
+        continue;
       }
 
       // Calculate position within the player area grid
