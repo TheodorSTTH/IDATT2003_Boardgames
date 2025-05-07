@@ -6,7 +6,6 @@ import edu.ntnu.irr.bidata.model.snakesandladders.BoardSnakesAndLadders;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.EventMaker;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -17,7 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
 
 /**
  * Handles saving and loading of game data such as players, boards, and game state. Supports both
@@ -36,8 +34,8 @@ public class FileHandler {
   /**
    * Builds the full file path from a filename relative to the base directory.
    *
-   * <p>Note: this method was created by chat GTP when
-   * he changed the file path in all the methods<\p>
+   * <p>Note: this method was created by chat GTP when he changed the file path in all the
+   * methods<\p>
    *
    * @param fileName The name of the file (e.g., "SavedGames.csv")
    * @return The full path to the file
@@ -90,7 +88,7 @@ public class FileHandler {
 
     if (!file.exists()) {
       return savedGames; // No games saved yet
-    } 
+    }
 
     try (Scanner scanner = new Scanner(file)) {
       while (scanner.hasNextLine()) {
@@ -141,7 +139,7 @@ public class FileHandler {
     File file = new File(getFilePath("SavedGames.csv"));
     if (!file.exists()) {
       return;
-    } 
+    }
 
     List<String> remainingLines = new ArrayList<>();
 
