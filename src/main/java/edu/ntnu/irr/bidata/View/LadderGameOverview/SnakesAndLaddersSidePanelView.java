@@ -4,7 +4,7 @@ import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.Die;
 import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.StartPage.StartPage;
@@ -18,9 +18,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<LaderGame> {
+public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<SnakesAndLadders> {
   private final Label usernameLabel;
-  public SnakesAndLaddersSidePanelView(LaderGame snakesAndLadders) {
+  public SnakesAndLaddersSidePanelView(SnakesAndLadders snakesAndLadders) {
     this.usernameLabel = new Label();
     this.usernameLabel.getStyleClass().addAll("fantasy", "title-3");
     update(snakesAndLadders);
@@ -86,7 +86,7 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
     );
   }
 
-  public void update(LaderGame snakesAndLadders) {
+  public void update(SnakesAndLadders snakesAndLadders) {
     usernameLabel.setText(snakesAndLadders.getCurrentPlayer().getName());
   }
 }

@@ -13,24 +13,24 @@ import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Player;
 
 
-public class LaderGame extends Game implements ISubject<LaderGame> {
+public class SnakesAndLadders extends Game implements ISubject<SnakesAndLadders> {
     private BoardSnakesAndLadders board;
     private final Dice dice = new Dice(2, 6);
-    private final ArrayList<IObserver<LaderGame>> allObservers;
+    private final ArrayList<IObserver<SnakesAndLadders>> allObservers;
 
     @Override
-    public void registerObserver(IObserver<LaderGame> o) {
+    public void registerObserver(IObserver<SnakesAndLadders> o) {
         allObservers.add(o);
     }
 
     @Override
-    public void removeObserver(IObserver<LaderGame> o) {
+    public void removeObserver(IObserver<SnakesAndLadders> o) {
         allObservers.remove(o);
     }
 
     @Override
-    public void notifyObservers(LaderGame game) {
-        for (IObserver<LaderGame> observer : allObservers) {
+    public void notifyObservers(SnakesAndLadders game) {
+        for (IObserver<SnakesAndLadders> observer : allObservers) {
             observer.update(game);
         }
     }
@@ -39,13 +39,13 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
         return dice;
     }
 
-    public LaderGame(int amountOfPlayers, String gameName, String boardType) {
+    public SnakesAndLadders(int amountOfPlayers, String gameName, String boardType) {
         super(amountOfPlayers, gameName);
         this.board = new BoardSnakesAndLadders(boardType);
         this.allObservers = new ArrayList<>();
     }
 
-    public LaderGame(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardSnakesAndLadders board,
+    public SnakesAndLadders(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardSnakesAndLadders board,
             Player currentPlayer) {
         super(amountOfPlayers, gameName, players, currentPlayer);
         this.board = board;

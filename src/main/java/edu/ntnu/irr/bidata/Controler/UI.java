@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Model.FileHandler;
@@ -11,10 +11,10 @@ public class UI {
   private static Game game;
 
   public static void StartPageCreateNewGameButon(int plyers, String gameType, String gameName) {
-    if (gameType.equals("Lader Game Classic")) {
-      game = new LaderGame(plyers, gameName, "Classic");
-    } else if (gameType.equals("Lader Game Quiz")) {
-      game = new LaderGame(plyers, gameName, "Quiz");
+    if (gameType.equals("Snakes And Ladders Classic")) {
+      game = new SnakesAndLadders(plyers, gameName, "Classic");
+    } else if (gameType.equals("Snakes And Ladders Quiz")) {
+      game = new SnakesAndLadders(plyers, gameName, "Quiz");
     } 
     else if (gameType.equals("Risk")) {
       game = new Risk(plyers, gameName);

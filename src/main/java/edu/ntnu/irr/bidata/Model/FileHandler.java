@@ -13,7 +13,7 @@ import java.util.Random;
 
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Model.SnakesAndLadders.BoardSnakesAndLadders;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
 import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.EventMaker;
 import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
@@ -29,8 +29,8 @@ public class FileHandler {
   }
 
   public static void saveGame(Game game) {
-    if (game instanceof LaderGame) {
-      saveLaderGame(game);
+    if (game instanceof SnakesAndLadders) {
+      saveSnakesAndLadders(game);
     } else if (game instanceof Risk) {
       saveRiskGame(game);
     } else {
@@ -39,8 +39,8 @@ public class FileHandler {
   }
 
   public static Game loadGame(String name, String type) {
-    if (type.equals("LaderGame")) {
-      return loadLaderGame(name);
+    if (type.equals("SnakesAndLadders")) {
+      return loadSnakesAndLadders(name);
     } else if (type.equals("Risk")) {
       return loadRiskGame(name);
     } else {
@@ -210,10 +210,10 @@ public class FileHandler {
 
 
 
-  private static void saveLaderGame(Game game) {
+  private static void saveSnakesAndLadders(Game game) {
     savePlyers(game);
     saveGameState(game);
-    saveBoardLadderGame((LaderGame) game);
+    saveBoardLadderGame((SnakesAndLadders) game);
     addGameToSavedGames(game);
   }
 
@@ -224,9 +224,9 @@ public class FileHandler {
     addGameToSavedGames(game);
   }
 
-  private static LaderGame loadLaderGame(String name) {
+  private static SnakesAndLadders loadSnakesAndLadders(String name) {
     ArrayList<Player> players = loadPlyers(name);
-    return new LaderGame(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
+    return new SnakesAndLadders(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
   }
 
   private static Risk loadRiskGame(String name) {
@@ -242,7 +242,7 @@ public class FileHandler {
     return BoardRisk.loadBoard(name);
   }
 
-  private static void saveBoardLadderGame(LaderGame game) {
+  private static void saveBoardLadderGame(SnakesAndLadders game) {
     game.getBoard().saveBoard(game.getGameName());
   }
 
