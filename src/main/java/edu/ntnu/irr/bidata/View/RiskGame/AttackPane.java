@@ -7,6 +7,9 @@ import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.View.LadderGameOverview.DieView;
 import edu.ntnu.irr.bidata.View.PopUp;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
@@ -100,8 +103,10 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
       boolean isFromDefined = newFrom != null;
       updateOnIsFromDefined(newFrom != null);
       if (isFromDefined) {
+        List<Country> attackTargetOptions = risk.getCountriesCurrentPlayerCanAttackFromCountry(newFrom);
+        Collections.sort(attackTargetOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
         attackTargetComboBox
-            .setItems(FXCollections.observableArrayList(risk.getCountriesCurrentPlayerCanAttackFromCountry(newFrom)));
+            .setItems(FXCollections.observableArrayList(attackTargetOptions));
       } else {
         attackTargetComboBox.getItems().clear();
       }
@@ -150,7 +155,8 @@ public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Di
     Country selectedFrom = attackFromComboBox.getValue();
     Country selectedTo = attackTargetComboBox.getValue();
     
-    List<Country> attackFromOptions = risk.getCountriesCurrentPlayerCanAttackFrom();
+    List<Country> attackFromOptions = new ArrayList<>(risk.getCountriesCurrentPlayerCanAttackFrom());
+    Collections.sort(attackFromOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
     attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
     attackFromComboBox.setValue(null);
     attackTargetComboBox.setValue(null);

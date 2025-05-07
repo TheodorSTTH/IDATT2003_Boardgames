@@ -8,6 +8,9 @@ import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 
 import edu.ntnu.irr.bidata.View.RiskWin.RiskWinningPage;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
@@ -156,10 +159,13 @@ public class MoveTroopsPane extends AbstractSidebarPane {
   }
 
   private void update() {
-    List<Country> moveFromOptions = risk.getCountriesCurrentPlayerCanMoveFrom();
+    List<Country> moveFromOptions = new ArrayList<>(risk.getCountriesCurrentPlayerCanMoveFrom());
+    Collections.sort(moveFromOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
     ok.setDisable(true);
     moveFromComboBox.setItems(FXCollections.observableArrayList(moveFromOptions));
-    moveTargetComboBox.setItems(FXCollections.observableArrayList(risk.getCountriesControlledByActivePlayer()));
+    List<Country> moveToOptions = risk.getCountriesControlledByActivePlayer();
+    Collections.sort(moveToOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
+    moveTargetComboBox.setItems(FXCollections.observableArrayList(moveToOptions));
     moveTargetComboBox.setValue(null);
     this.currentUserLabel.setText("Current Player: " + risk.getCurrentPlayer().getName());
   }

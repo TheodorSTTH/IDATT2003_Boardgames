@@ -3,6 +3,8 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
+
+import java.util.Collections;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
@@ -99,6 +101,7 @@ public class PlaceTroopsPane extends AbstractSidebarPane {
       notifyObservers(this.getNextSidebarPane());
     }
     List<Country> placeOptions = risk.getCountriesControlledByActivePlayer();
+    Collections.sort(placeOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
     this.infoLabel.setText("Place troops on country\n"+"You have " + Integer.toString(risk.getTroopsAvailable()) + " troops available");
     countryComboBox.setItems(FXCollections.observableArrayList(placeOptions));
     countryComboBox.setValue(null);
