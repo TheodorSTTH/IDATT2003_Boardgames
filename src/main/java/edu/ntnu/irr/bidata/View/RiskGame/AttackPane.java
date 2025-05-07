@@ -1,12 +1,12 @@
-package edu.ntnu.irr.bidata.View.RiskGame;
+package edu.ntnu.irr.bidata.view.RiskGame;
 
-import edu.ntnu.irr.bidata.View.LadderGameOverview.DieView;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Die;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
-import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.LadderGameOverview.DieView;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,14 +1,14 @@
-package edu.ntnu.irr.bidata.View.LadderGameOverview;
+package edu.ntnu.irr.bidata.view.LadderGameOverview;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.StartPage.StartPage;
-import edu.ntnu.irr.bidata.View.WinPage.WinningPage;
 import edu.ntnu.irr.bidata.model.Die;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.StartPage.StartPage;
+import edu.ntnu.irr.bidata.view.WinPage.WinningPage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;

@@ -1,9 +1,9 @@
-package edu.ntnu.irr.bidata.View.RiskGame;
+package edu.ntnu.irr.bidata.view.RiskGame;
 
-import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
 import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.view.PopUp;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

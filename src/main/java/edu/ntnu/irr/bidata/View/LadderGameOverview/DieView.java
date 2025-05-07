@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.View.LadderGameOverview;
+package edu.ntnu.irr.bidata.view.LadderGameOverview;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;

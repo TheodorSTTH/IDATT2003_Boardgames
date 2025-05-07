@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.View.RiskGame;
+package edu.ntnu.irr.bidata.view.RiskGame;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.risk.Risk;

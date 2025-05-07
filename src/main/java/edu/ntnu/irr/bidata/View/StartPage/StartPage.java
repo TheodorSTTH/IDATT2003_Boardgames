@@ -1,9 +1,9 @@
-package edu.ntnu.irr.bidata.View.StartPage;
+package edu.ntnu.irr.bidata.view.StartPage;
 
 import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.model.FileHandler;
+import edu.ntnu.irr.bidata.view.PopUp;
 
 import java.util.HashMap;
 

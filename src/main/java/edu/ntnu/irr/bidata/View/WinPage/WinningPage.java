@@ -1,8 +1,8 @@
-package edu.ntnu.irr.bidata.View.WinPage;
+package edu.ntnu.irr.bidata.view.WinPage;
 
 import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.View.StartPage.StartPage;
+import edu.ntnu.irr.bidata.view.StartPage.StartPage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

@@ -1,12 +1,12 @@
-package edu.ntnu.irr.bidata.View.RiskGame;
+package edu.ntnu.irr.bidata.view.RiskGame;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.WinPage.WinningPage;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.WinPage.WinningPage;
 
 import java.util.ArrayList;
 import java.util.Collections;
