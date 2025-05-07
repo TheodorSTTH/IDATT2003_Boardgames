@@ -1,7 +1,7 @@
-package edu.ntnu.irr.bidata.view.StartPage;
+package edu.ntnu.irr.bidata.view.startpage;
 
-import edu.ntnu.irr.bidata.Controler.MyWindow;
-import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.controler.MyWindow;
+import edu.ntnu.irr.bidata.controler.UI;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.view.PopUp;
 

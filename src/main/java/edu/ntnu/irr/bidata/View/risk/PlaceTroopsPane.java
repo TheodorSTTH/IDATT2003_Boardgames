@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.view.RiskGame;
+package edu.ntnu.irr.bidata.view.risk;
 
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;

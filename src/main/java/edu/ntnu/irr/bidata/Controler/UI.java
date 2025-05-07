@@ -1,10 +1,10 @@
-package edu.ntnu.irr.bidata.Controler;
+package edu.ntnu.irr.bidata.controler;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.view.PopUp;
-import edu.ntnu.irr.bidata.view.CreatePlayer.CreatePlayerPage;
+import edu.ntnu.irr.bidata.view.createPlayer.CreatePlayerPage;
 
 // TODO: Separate start page logic form UI class
 public class UI {

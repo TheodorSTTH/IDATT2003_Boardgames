@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.view.LadderGameOverview;
+package edu.ntnu.irr.bidata.view.snakesandladders;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package edu.ntnu.irr.bidata.Controler;
+package edu.ntnu.irr.bidata.controler;
 
-import edu.ntnu.irr.bidata.view.StartPage.StartPage;
+import edu.ntnu.irr.bidata.view.startpage.StartPage;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;

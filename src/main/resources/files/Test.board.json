@@ -65,8 +65,8 @@
     },
     "North Africa" : {
       "name" : "North Africa",
-      "owner" : "Eine",
-      "ownerColor" : "Green",
+      "owner" : "Imre",
+      "ownerColor" : "Blue",
       "armies" : 1,
       "neighbors" : [ "Brazil", "Western Europe", "Southern Europe", "Egypt", "East Africa", "Congo" ],
       "relativeX" : 0.42,
@@ -121,7 +121,7 @@
       "name" : "Great Britain",
       "owner" : "Imre",
       "ownerColor" : "Blue",
-      "armies" : 3,
+      "armies" : 1,
       "neighbors" : [ "Iceland", "Scandinavia", "Northern Europe", "Western Europe" ],
       "relativeX" : 0.39,
       "relativeY" : 0.28
@@ -202,7 +202,7 @@
       "name" : "Northern Europe",
       "owner" : "Eine",
       "ownerColor" : "Green",
-      "armies" : 2,
+      "armies" : 6,
       "neighbors" : [ "Scandinavia", "Great Britain", "Western Europe", "Southern Europe", "Ukraine" ],
       "relativeX" : 0.48,
       "relativeY" : 0.3
@@ -256,7 +256,7 @@
       "name" : "Congo",
       "owner" : "Imre",
       "ownerColor" : "Blue",
-      "armies" : 3,
+      "armies" : 1,
       "neighbors" : [ "North Africa", "East Africa", "South Africa" ],
       "relativeX" : 0.53,
       "relativeY" : 0.71
@@ -373,7 +373,7 @@
       "name" : "Indonesia",
       "owner" : "Imre",
       "ownerColor" : "Blue",
-      "armies" : 7,
+      "armies" : 12,
       "neighbors" : [ "Siam", "New Guinea", "Western Australia" ],
       "relativeX" : 0.8,
       "relativeY" : 0.72
