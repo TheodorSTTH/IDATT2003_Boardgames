@@ -13,8 +13,6 @@ import java.util.Random;
 
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.NewLogic.models.Board;
-import javafx.concurrent.Task;
 import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
 import edu.ntnu.irr.bidata.Model.LadderGame.Event.EventMaker;
