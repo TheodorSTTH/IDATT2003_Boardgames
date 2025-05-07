@@ -1,12 +1,12 @@
 package edu.ntnu.irr.bidata.View.RiskGame;
 
-import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import javafx.scene.control.Accordion;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class RiskSidePanelView extends VBox implements IObserver<AbstractSidebarPane> {
+public class RiskSidePanelView extends VBox implements Observer<AbstractSidebarPane> {
   private final Accordion parentAccordion;
   private final PlaceTroopsPane placeTroopsPane;
   private final AttackPane attackPane;

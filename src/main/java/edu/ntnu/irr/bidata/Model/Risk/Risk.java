@@ -6,32 +6,32 @@ import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.model.interfaces.observer.ISubject;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
 
-public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
+public class Risk extends Game implements Subject<Pair<Dice, Dice>> {
   private final BoardRisk board;
   private int tropesAvailable = 0;
   private final Dice attackDice = new Dice(3, 6);
   private final Dice defenceDice = new Dice(2, 6);
-  private final ArrayList<IObserver<Pair<Dice, Dice>>> allObservers;
+  private final ArrayList<Observer<Pair<Dice, Dice>>> allObservers;
 
   @Override
-  public void registerObserver(IObserver<Pair<Dice, Dice>> o) {
+  public void registerObserver(Observer<Pair<Dice, Dice>> o) {
     allObservers.add(o);
   }
 
   @Override
-  public void removeObserver(IObserver<Pair<Dice, Dice>> o) {
+  public void removeObserver(Observer<Pair<Dice, Dice>> o) {
     allObservers.remove(o);
   }
 
   @Override
   public void notifyObservers(Pair<Dice, Dice> dice) {
-    for (IObserver<Pair<Dice, Dice>> observer : allObservers) {
+    for (Observer<Pair<Dice, Dice>> observer : allObservers) {
       observer.update(dice);
     }
   }

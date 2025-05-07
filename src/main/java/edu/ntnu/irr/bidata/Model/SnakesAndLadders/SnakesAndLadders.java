@@ -6,29 +6,29 @@ import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.model.interfaces.observer.ISubject;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SnakesAndLadders extends Game implements ISubject<SnakesAndLadders> {
+public class SnakesAndLadders extends Game implements Subject<SnakesAndLadders> {
   private BoardSnakesAndLadders board;
   private final Dice dice = new Dice(2, 6);
-  private final ArrayList<IObserver<SnakesAndLadders>> allObservers;
+  private final ArrayList<Observer<SnakesAndLadders>> allObservers;
 
   @Override
-  public void registerObserver(IObserver<SnakesAndLadders> o) {
+  public void registerObserver(Observer<SnakesAndLadders> o) {
     allObservers.add(o);
   }
 
   @Override
-  public void removeObserver(IObserver<SnakesAndLadders> o) {
+  public void removeObserver(Observer<SnakesAndLadders> o) {
     allObservers.remove(o);
   }
 
   @Override
   public void notifyObservers(SnakesAndLadders game) {
-    for (IObserver<SnakesAndLadders> observer : allObservers) {
+    for (Observer<SnakesAndLadders> observer : allObservers) {
       observer.update(game);
     }
   }

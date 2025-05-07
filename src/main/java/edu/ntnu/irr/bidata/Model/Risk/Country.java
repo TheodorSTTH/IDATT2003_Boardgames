@@ -3,8 +3,8 @@ package edu.ntnu.irr.bidata.model.risk;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.interfaces.observer.ISimpleObserver;
-import edu.ntnu.irr.bidata.model.interfaces.observer.ISimpleSubject;
+import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
+import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleSubject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * relative position on the map, an owner, an army count, and a list of neighboring countries. It
  * also implements an observer pattern to notify listeners on state changes.
  */
-public class Country implements ISimpleSubject {
+public class Country implements SimpleSubject {
 
   private final String name;
   private final double relativeX;
@@ -23,7 +23,7 @@ public class Country implements ISimpleSubject {
   private String ownerColor;
   private final List<String> neighbors;
 
-  private final ArrayList<ISimpleObserver> allObservers;
+  private final ArrayList<SimpleObserver> allObservers;
 
   /**
    * Constructor used by Jackson for deserialization.
@@ -68,18 +68,18 @@ public class Country implements ISimpleSubject {
   }
 
   @Override
-  public void registerObserver(ISimpleObserver o) {
+  public void registerObserver(SimpleObserver o) {
     allObservers.add(o);
   }
 
   @Override
-  public void removeObserver(ISimpleObserver o) {
+  public void removeObserver(SimpleObserver o) {
     allObservers.remove(o);
   }
 
   @Override
   public void notifyObservers() {
-    for (ISimpleObserver observer : allObservers) {
+    for (SimpleObserver observer : allObservers) {
       observer.update();
     }
   }

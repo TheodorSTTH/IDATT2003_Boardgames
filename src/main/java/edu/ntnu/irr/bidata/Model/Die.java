@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.model;
 
-import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.model.interfaces.observer.ISubject;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,12 +9,12 @@ import java.util.Random;
  * Represents a single die with a specified number of faces. Implements the Observer pattern,
  * notifying observers when the die is rolled.
  */
-public class Die implements ISubject<Integer> {
+public class Die implements Subject<Integer> {
   private final Random random = new Random(); // Random number generator
   private final int amountOfFaces; // Total number of faces on the die
   private int previousRoll; // Stores result of the last roll
   private boolean wasRolledPreviousRound; // Tracks if the die was rolled in the last round
-  private final ArrayList<IObserver<Integer>> allObservers; // List of observers
+  private final ArrayList<Observer<Integer>> allObservers; // List of observers
 
   /**
    * Constructs a Die with a specified number of faces.
@@ -73,7 +73,7 @@ public class Die implements ISubject<Integer> {
    * @param o the observer to add
    */
   @Override
-  public void registerObserver(IObserver<Integer> o) {
+  public void registerObserver(Observer<Integer> o) {
     allObservers.add(o);
   }
 
@@ -83,7 +83,7 @@ public class Die implements ISubject<Integer> {
    * @param o the observer to remove
    */
   @Override
-  public void removeObserver(IObserver<Integer> o) {
+  public void removeObserver(Observer<Integer> o) {
     allObservers.remove(o);
   }
 
@@ -94,7 +94,7 @@ public class Die implements ISubject<Integer> {
    */
   @Override
   public void notifyObservers(Integer amountOfDots) {
-    for (IObserver<Integer> observer : allObservers) {
+    for (Observer<Integer> observer : allObservers) {
       observer.update(amountOfDots);
     }
   }

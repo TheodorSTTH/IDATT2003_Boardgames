@@ -5,6 +5,6 @@ package edu.ntnu.irr.bidata.model.interfaces.observer;
  * the object observing another object. Does not support passing
  * values upwards
  * */
-public interface ISimpleObserver {
+public interface SimpleObserver {
   void update();
 }

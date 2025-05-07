@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent;
@@ -30,7 +30,7 @@ import javafx.scene.text.TextAlignment;
 /**
  * Is responsible for displaying board with events and players ready for the user to view.
  * */
-public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<SnakesAndLadders> {
+public class SnakesAndLaddersCanvasView extends Canvas implements Observer<SnakesAndLadders> {
 
   private final int boardRowsAmount = 10;
   private final int boardColumnAmount = 9;

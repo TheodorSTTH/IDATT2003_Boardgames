@@ -7,7 +7,7 @@ import edu.ntnu.irr.bidata.View.WinPage.WinningPage;
 import edu.ntnu.irr.bidata.model.Die;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,7 +18,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<SnakesAndLadders> {
+public class SnakesAndLaddersSidePanelView extends VBox implements Observer<SnakesAndLadders> {
   private final Label usernameLabel;
   public SnakesAndLaddersSidePanelView(SnakesAndLadders snakesAndLadders) {
     this.usernameLabel = new Label();
