@@ -52,8 +52,8 @@ public class RiskSidePanelView extends VBox {
   
   private void makeAllCollapsible() {
     placeTroopsPaneView.setCollapsible(true);
-    placeTroopsPaneView.setCollapsible(true);
-    placeTroopsPaneView.setCollapsible(true);
+    attackPaneView.setCollapsible(true);
+    moveTroopsPaneView.setCollapsible(true);
   }
 
   private void resetAll() {
