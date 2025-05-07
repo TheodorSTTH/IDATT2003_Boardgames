@@ -1,12 +1,10 @@
-package edu.ntnu.irr.bidata.model.Risk;
+package edu.ntnu.irr.bidata.model.risk;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.ISimpleObserver;
 import edu.ntnu.irr.bidata.model.interfaces.observer.ISimpleSubject;
-
 import java.util.ArrayList;
 import java.util.List;
 

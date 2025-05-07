@@ -2,9 +2,9 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 
 import java.util.ArrayList;
 
-import edu.ntnu.irr.bidata.model.Risk.Risk;
 import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.model.interfaces.observer.ISubject;
+import edu.ntnu.irr.bidata.model.risk.Risk;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.ScrollPane;

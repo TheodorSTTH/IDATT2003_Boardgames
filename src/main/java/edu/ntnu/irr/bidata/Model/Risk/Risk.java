@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.model.Risk;
+package edu.ntnu.irr.bidata.model.risk;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.View.PopUp;
@@ -8,10 +8,8 @@ import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.model.interfaces.observer.ISubject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.util.Pair;
 
 public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
@@ -52,8 +50,13 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
     return defenceDice;
   }
 
-  public Risk(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardRisk boardRisk,
-      Player currentPlayer, int tropesAvailable) {
+  public Risk(
+      int amountOfPlayers,
+      String gameName,
+      ArrayList<Player> players,
+      BoardRisk boardRisk,
+      Player currentPlayer,
+      int tropesAvailable) {
     super(amountOfPlayers, gameName, players, currentPlayer);
     this.board = boardRisk;
     this.tropesAvailable = tropesAvailable;
@@ -103,8 +106,9 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
   }
 
   public List<Country> getCountriesCurrentPlayerCanMoveFrom() {
-    return board.getCountriesControlledByPlayer(getCurrentPlayer())
-        .stream().filter(country -> country.getArmies() > 1).toList();
+    return board.getCountriesControlledByPlayer(getCurrentPlayer()).stream()
+        .filter(country -> country.getArmies() > 1)
+        .toList();
   }
 
   public List<Country> getCountriesCurrentPlayerCanAttackFrom() {
@@ -159,8 +163,13 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
 
     if (board.getUnits(defender) == 0) {
       board.takeControlOfCountry(defender, currentPlayer);
-      board.transferTroops(attacker, defender, PopUp.promptForNumberInRange("Transfer troops",
-          "How many trops do you want\n to transfer to " + defender, board.getUnits(attacker) - 1));
+      board.transferTroops(
+          attacker,
+          defender,
+          PopUp.promptForNumberInRange(
+              "Transfer troops",
+              "How many trops do you want\n to transfer to " + defender,
+              board.getUnits(attacker) - 1));
     }
 
     notifyObservers(new Pair<>(attackDice, defenceDice));
@@ -172,8 +181,8 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
   }
 
   /**
-   * Attack until you don't have any units to attack with from your given country,
-   * or you won the attack.
+   * Attack until you don't have any units to attack with from your given country, or you won the
+   * attack.
    *
    * @param attacker The attacking country
    * @param defender The defending country
@@ -212,15 +221,21 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
   }
 
   public void showRueles() {
-    PopUp.showScrollablePopup("Rules", "The rules of the game are as follows:\n"
-        + "1. Players take turns in clockwise order.\n"
-        + "2. You gain reinforcements each turn based on the number of territories you own, continent control, and other bonuses like controling a continet.\n"
-        + "3. On your turn, can reinforce your own, counteries.\n"
-        + "4. You can attack other players' territories.\n"
-        + "5. You must have at least one tropp in each country.\n"
-        + "6. Battles are resolved by rolling dice; the attacker can roll up to 3 dice, and the defender up to 2. You roll one dice for each trope you controle\n"
-        + "7. The highest two dice are compared; ties go to the defender. Losers remove troops. They can lose one each\n"
-        + "8. At the end of your turn, you may fortify by moving troops between two territories.\n"
-        + "9. The goal is to conquer the entire world by eliminating all other players.");
+    PopUp.showScrollablePopup(
+        "Rules",
+        "The rules of the game are as follows:\n"
+            + "1. Players take turns in clockwise order.\n"
+            + "2. You gain reinforcements each turn based on the number of territories you own,"
+            + " continent control, and other bonuses like controling a continet.\n"
+            + "3. On your turn, can reinforce your own, counteries.\n"
+            + "4. You can attack other players' territories.\n"
+            + "5. You must have at least one tropp in each country.\n"
+            + "6. Battles are resolved by rolling dice; the attacker can roll up to 3 dice, and the"
+            + " defender up to 2. You roll one dice for each trope you controle\n"
+            + "7. The highest two dice are compared; ties go to the defender. Losers remove troops."
+            + " They can lose one each\n"
+            + "8. At the end of your turn, you may fortify by moving troops between two"
+            + " territories.\n"
+            + "9. The goal is to conquer the entire world by eliminating all other players.");
   }
 }

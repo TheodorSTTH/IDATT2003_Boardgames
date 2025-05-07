@@ -5,8 +5,8 @@ import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.WinPage.WinningPage;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.Risk.Country;
-import edu.ntnu.irr.bidata.model.Risk.Risk;
+import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.risk.Risk;
 
 import java.util.ArrayList;
 import java.util.Collections;

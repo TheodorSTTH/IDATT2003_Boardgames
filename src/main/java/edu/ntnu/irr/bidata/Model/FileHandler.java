@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.model;
 
-import edu.ntnu.irr.bidata.model.Risk.BoardRisk;
-import edu.ntnu.irr.bidata.model.Risk.Risk;
+import edu.ntnu.irr.bidata.model.risk.BoardRisk;
+import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.model.snakesandladders.BoardSnakesAndLadders;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;

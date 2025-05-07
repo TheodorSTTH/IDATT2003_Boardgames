@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.model.Risk;
+package edu.ntnu.irr.bidata.model.risk;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

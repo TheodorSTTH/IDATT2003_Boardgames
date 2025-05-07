@@ -2,7 +2,7 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 
 import java.util.HashMap;
 
-import edu.ntnu.irr.bidata.model.Risk.Country;
+import edu.ntnu.irr.bidata.model.risk.Country;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
