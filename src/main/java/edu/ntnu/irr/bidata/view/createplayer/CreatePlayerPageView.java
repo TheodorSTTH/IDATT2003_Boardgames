@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.View.CreatePlayer;
+package edu.ntnu.irr.bidata.view.createplayer;
 
 import java.util.List;
 import javafx.geometry.Insets;

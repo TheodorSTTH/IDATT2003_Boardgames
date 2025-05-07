@@ -1,8 +1,6 @@
-package edu.ntnu.irr.bidata.controler;
+package edu.ntnu.irr.bidata.controller;
 
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**

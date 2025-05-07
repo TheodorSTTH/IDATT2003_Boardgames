@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.View.StartPage;
+package edu.ntnu.irr.bidata.view.startpage;
 
 import java.util.HashMap;
 import javafx.geometry.Insets;
@@ -41,7 +41,7 @@ public class StartPageView extends VBox {
 
     gameSelectorBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(gameSelectorBox, new Insets(5, 5, 5, 5));
-    gameSelectorBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
+    gameSelectorBox.getItems().addAll("Lader Game Classic","Lader Game Quiz", "Risk");
     gameSelectorBox.setPromptText("Select an Adventure");
 
 

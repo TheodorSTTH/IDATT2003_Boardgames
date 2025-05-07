@@ -1,15 +1,15 @@
-package edu.ntnu.irr.bidata.View.StartPage;
+package edu.ntnu.irr.bidata.view.startpage;
 
-import edu.ntnu.irr.bidata.Controler.MyWindow;
-import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.Model.FileHandler;
-import edu.ntnu.irr.bidata.Model.Game;
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
-import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPageController;
-import edu.ntnu.irr.bidata.View.LadderGameOverview.SnakesAndLaddersPageView;
-import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
+import edu.ntnu.irr.bidata.controller.MyWindow;
+import edu.ntnu.irr.bidata.controller.NavigationManager;
+import edu.ntnu.irr.bidata.model.FileHandler;
+import edu.ntnu.irr.bidata.model.Game;
+import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.view.createplayer.CreatePlayerPageController;
+import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
+import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.risk.RiskPage;
 import java.util.HashMap;
 import javafx.beans.value.ChangeListener;
 
@@ -62,9 +62,9 @@ public class StartPageController {
   private void startGame(Integer playerCount, String gameType, String gameName) {
     Game game;
     if (gameType.equals("Lader Game Classic")) {
-      game = new LaderGame(playerCount, gameName, "classic");
-    } else if (gameType.equals("Lader Game Qizz")) {
-      game = new LaderGame(playerCount, gameName, "qizz");
+      game = new SnakesAndLadders(playerCount, gameName, "classic");
+    } else if (gameType.equals("Lader Game Quiz")) {
+      game = new SnakesAndLadders(playerCount, gameName, "quiz");
     } else {
       game = new Risk(playerCount, gameName);
     }
@@ -80,8 +80,8 @@ public class StartPageController {
       String gameType = gameData[1].replace(")", "").trim();
 
       Game game = FileHandler.loadGame(gameName, gameType);
-      if (game instanceof LaderGame) {
-        NavigationManager.navigate(new SnakesAndLaddersPageView((LaderGame) game));
+      if (game instanceof SnakesAndLadders) {
+        NavigationManager.navigate(new SnakesAndLaddersPageView((SnakesAndLadders) game));
       } else {
         NavigationManager.navigate(new RiskPage((Risk) game));
       }

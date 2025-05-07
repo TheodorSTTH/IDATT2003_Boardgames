@@ -1,7 +1,7 @@
-package edu.ntnu.irr.bidata.View.CreatePlayer;
+package edu.ntnu.irr.bidata.view.createplayer;
 
-import edu.ntnu.irr.bidata.Model.Game;
-import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.model.Game;
+import edu.ntnu.irr.bidata.view.PopUp;
 import javafx.scene.control.Button;
 
 public class CreatePlayerPageController {

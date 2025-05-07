@@ -1,6 +1,6 @@
 package edu.ntnu.irr.bidata.model.risk;
 
-import edu.ntnu.irr.bidata.controler.NavigationManager;
+import edu.ntnu.irr.bidata.controller.NavigationManager;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
