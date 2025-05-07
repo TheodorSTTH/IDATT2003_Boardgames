@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
   @JsonSubTypes.Type(
       value = LadderEvent.class,
       name = "LadderEvent"), // Register LadderEvent as a subtype
-  @JsonSubTypes.Type(value = QuizEvent.class, name = "QizzEvent") // Register QizzEvent as a subtype
+  @JsonSubTypes.Type(value = QuizEvent.class, name = "QuizEvent") // Register QizzEvent as a subtype
 })
 public abstract class Event {
   /**

@@ -1,9 +1,9 @@
 package edu.ntnu.irr.bidata.model;
 
+import edu.ntnu.irr.bidata.view.PopUp;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.ntnu.irr.bidata.view.PopUp;
 
 /**
  * This abstract class represents a Game that includes functionality for managing players and game

@@ -1,14 +1,14 @@
 package edu.ntnu.irr.bidata.model.snakesandladders;
 
-import edu.ntnu.irr.bidata.controler.NavigationManager;
+import edu.ntnu.irr.bidata.controller.NavigationManager;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import edu.ntnu.irr.bidata.view.PopUp;
-import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPage;
 
+import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -106,14 +106,14 @@ public class SnakesAndLadders extends Game implements Subject<SnakesAndLadders> 
   protected void init() {
     super.init();
     board.setPlayers(players);
-    SnakesAndLaddersPage snakesAndLaddersPage = new SnakesAndLaddersPage(this);
-    NavigationManager.navigate(snakesAndLaddersPage);
+    SnakesAndLaddersPageView snakesAndLaddersPageView = new SnakesAndLaddersPageView(this);
+    NavigationManager.navigate(snakesAndLaddersPageView);
     showRules();
   }
 
   /** Starts a saved game by navigating to the SnakesAndLadders page. */
   public void startSavedGame() {
-    NavigationManager.navigate(new SnakesAndLaddersPage(this));
+    NavigationManager.navigate(new SnakesAndLaddersPageView(this));
   }
 
   /**

@@ -1,20 +1,16 @@
 package edu.ntnu.irr.bidata.view.risk;
 
-import edu.ntnu.irr.bidata.controler.NavigationManager;
+import edu.ntnu.irr.bidata.controller.NavigationManager;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
-import edu.ntnu.irr.bidata.view.PopUp;
-import edu.ntnu.irr.bidata.view.startpage.StartPage;
+import edu.ntnu.irr.bidata.view.startpage.StartPageController;
 import javafx.scene.control.Label;
 import java.util.HashMap;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.image.ImageView;
-
 
 
 public class RiskPage extends HBox {
@@ -24,7 +20,7 @@ public class RiskPage extends HBox {
   public RiskPage(Risk risk) {
     super(new HBox());
     this.board = new RiskBoardView(risk.getBoard().getCountries());
-    this.sidePanel = new RiskSidePanelView(risk);
+    this.sidePanel = new RiskSidePanelController(risk).getView();
     this.setStyle("-fx-background-color:rgb(72, 163, 255);");
     updateViews(risk.getBoard().getCountries());
 
@@ -39,7 +35,7 @@ public class RiskPage extends HBox {
     Button exitGameButton = new Button("Exit game");
     exitGameButton.getStyleClass().addAll("fantasy-button");
     exitGameButton.setOnAction(e -> {
-      NavigationManager.navigate(new StartPage());
+      NavigationManager.navigate(new StartPageController().getView());
       });
 
 

@@ -1,62 +1,57 @@
 package edu.ntnu.irr.bidata.view.risk;
 
-import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.model.risk.Risk;
 import javafx.scene.control.Accordion;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class RiskSidePanelView extends VBox implements Observer<AbstractSidebarPane> {
+public class RiskSidePanelView extends VBox {
   private final Accordion parentAccordion;
-  private final PlaceTroopsPane placeTroopsPane;
-  private final AttackPane attackPane;
-  private final MoveTroopsPane moveTroopsPane;
-  private final Risk risk;
+  private final PlaceTroopsPaneView placeTroopsPaneView;
+  private final AttackPaneView attackPaneView;
+  private final MoveTroopsPaneView moveTroopsPaneView;
 
-  public RiskSidePanelView(Risk risk) {
-    this.placeTroopsPane = new PlaceTroopsPane(risk);
-    this.attackPane = new AttackPane(risk);
-    this.moveTroopsPane = new MoveTroopsPane(risk);
+  public RiskSidePanelView(
+      PlaceTroopsPaneView placeTroopsPaneView,
+      AttackPaneView attackPaneView,
+      MoveTroopsPaneView moveTroopsPaneView
+  ) {
+    this.placeTroopsPaneView = placeTroopsPaneView;
+    this.attackPaneView = attackPaneView;
+    this.moveTroopsPaneView = moveTroopsPaneView;
+
     this.parentAccordion = new Accordion();
-    this.risk = risk;
     this.setStyle("-fx-background-color:rgb(255, 255, 255);");
-    placeTroopsPane.registerObserver(this);
-    attackPane.registerObserver(this);
-    moveTroopsPane.registerObserver(this);
-    placeTroopsPane.setNextSidebarPane(attackPane);
-    attackPane.setNextSidebarPane(moveTroopsPane);
-    moveTroopsPane.setNextSidebarPane(placeTroopsPane);
+
     this.setMinWidth(200);
     parentAccordion.setMaxHeight(Double.MAX_VALUE);
     setVgrow(parentAccordion, Priority.ALWAYS);
 
-    setPaneActive(placeTroopsPane);
     this.parentAccordion.getPanes().addAll(
-        placeTroopsPane,
-        attackPane,
-        moveTroopsPane
+        placeTroopsPaneView,
+        attackPaneView,
+        moveTroopsPaneView
     );
     this.getChildren().addAll(
         parentAccordion
     );
-    update(placeTroopsPane);
   }
+
   private void disableAll() {
-    placeTroopsPane.setDisable(true);
-    attackPane.setDisable(true);
-    moveTroopsPane.setDisable(true);
+    placeTroopsPaneView.setDisable(true);
+    attackPaneView.setDisable(true);
+    moveTroopsPaneView.setDisable(true);
   }
 
   private void closeAll() {
-    placeTroopsPane.setExpanded(false);
-    attackPane.setExpanded(false);
-    moveTroopsPane.setExpanded(false);
+    placeTroopsPaneView.setExpanded(false);
+    attackPaneView.setExpanded(false);
+    moveTroopsPaneView.setExpanded(false);
   }
   
   private void makeAllCollapsible() {
-    placeTroopsPane.setCollapsible(true);
-    attackPane.setCollapsible(true);
-    moveTroopsPane.setCollapsible(true);
+    placeTroopsPaneView.setCollapsible(true);
+    attackPaneView.setCollapsible(true);
+    moveTroopsPaneView.setCollapsible(true);
   }
 
   private void resetAll() {
@@ -65,20 +60,14 @@ public class RiskSidePanelView extends VBox implements Observer<AbstractSidebarP
     disableAll();
   }
 
-  private void setPaneActive(AbstractSidebarPane pane) {
+  /**
+   * Sets which pane should be active and closes & disables the rest of them.
+   * */
+  public void setPaneActive(AbstractSidebarPaneView pane) {
     resetAll();
     pane.setExpanded(true);
     pane.setDisable(false);
     pane.setCollapsible(false);
     parentAccordion.setExpandedPane(pane);
-  }
-
-  /**
-   * Updates which pane is currently open.
-   *
-   * @param nextPane is the pane we are going to open.
-   * */
-  public void update(AbstractSidebarPane nextPane) {
-    setPaneActive(nextPane);
   }
 }

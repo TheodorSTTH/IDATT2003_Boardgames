@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata;
 
-import edu.ntnu.irr.bidata.controler.MyWindow;
+import edu.ntnu.irr.bidata.controller.MyWindow;
+
 
 /**
  * Main class that serves as the entry point for the application.

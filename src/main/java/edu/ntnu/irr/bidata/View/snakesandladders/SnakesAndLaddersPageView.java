@@ -1,31 +1,25 @@
 package edu.ntnu.irr.bidata.view.snakesandladders;
 
-import edu.ntnu.irr.bidata.controler.NavigationManager;
+import edu.ntnu.irr.bidata.controller.NavigationManager;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 
-public class SnakesAndLaddersPage extends HBox {
-  SnakesAndLaddersCanvasView board;
+public class SnakesAndLaddersPageView extends HBox {
+  SnakesAndLaddersCanvasView canvasBoardView;
   SnakesAndLaddersSidePanelView sidePanel;
 
   /**
    * Constructs snake and ladders page.
    * */
-  public SnakesAndLaddersPage(SnakesAndLadders snakesAndLadders) {
+  public SnakesAndLaddersPageView(SnakesAndLadders snakesAndLadders) {
     getStyleClass().add("snakes-and-ladders-game-page");
     setAlignment(Pos.CENTER);
-    if (getClass().getResource("/style.css") != null) {
-      this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-    } else {
-      System.err.println("Warning: style.css not found!");
-    }
-    this.board = new SnakesAndLaddersCanvasView(snakesAndLadders);
-    this.sidePanel = new SnakesAndLaddersSidePanelView(snakesAndLadders);
+    this.canvasBoardView = new SnakesAndLaddersCanvasController(snakesAndLadders).getView();
+    this.sidePanel = new SnakesAndLaddersSidePanelController(snakesAndLadders).getView();
     sidePanel.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
     setMargin(sidePanel, new Insets(40));
     NavigationManager.getStage().widthProperty().addListener((obs, oldW, newW) -> {
@@ -40,7 +34,7 @@ public class SnakesAndLaddersPage extends HBox {
     HBox.setHgrow(splitterRegion, Priority.ALWAYS);
     getChildren().addAll(
         sidePanel,
-        board,
+        canvasBoardView,
         splitterRegion
     );
   }
