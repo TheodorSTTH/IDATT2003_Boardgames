@@ -282,7 +282,7 @@ public class FileHandler {
     return questionAndAnswer;
   }
 
-  public static HashMap<Integer, Event> loadLaderGameEvents(String boardType) {
+  public static HashMap<Integer, Event> loadSnakesAndLaddersEvents(String boardType) {
     HashMap<Integer, Event> events = new HashMap<>();
 
     try {

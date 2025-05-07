@@ -39,27 +39,7 @@ public class BoardSnakesAndLadders {
      * @param boardType the type of board to load (e.g., Classic, Quiz)
      */
     public BoardSnakesAndLadders(String boardType) {
-        events = FileHandler.loadLaderGameEvents(boardType); // Load events from file
-    }
-
-    /**
-     * Gets the events map, where tile numbers is associated with an event.
-     *
-     * @return a HashMap of events with their respective tile numbers
-     */
-    public HashMap<Integer, Event> getEvents() {
-        return events;
-    }
-
-    /**
-     * Sets up the players on the board, initializing their positions to 0.
-     *
-     * @param players the list of players to add to the board
-     */
-    public void setPlayers(ArrayList<Player> players) {
-        for (Player player : players) {
-            playerPositions.put(player.getName(), 0); // Initialize player positions to 0
-        }
+        events = FileHandler.loadSnakesAndLaddersEvents(boardType); // Load events from file
     }
 
     /**
@@ -88,6 +68,27 @@ public class BoardSnakesAndLadders {
     public boolean hasWon(Player player) {
         return playerPositions.get(player.getName()) >= endTile;
     }
+
+    /**
+     * Gets the events map, where tile numbers is associated with an event.
+     *
+     * @return a HashMap of events with their respective tile numbers
+     */
+    public HashMap<Integer, Event> getEvents() {
+        return events;
+    }
+
+    /**
+     * Sets up the players on the board, initializing their positions to 0.
+     *
+     * @param players the list of players to add to the board
+     */
+    public void setPlayers(ArrayList<Player> players) {
+        for (Player player : players) {
+            playerPositions.put(player.getName(), 0); // Initialize player positions to 0
+        }
+    }
+
 
     /**
      * Gets the current positions of all players.
@@ -153,7 +154,7 @@ public class BoardSnakesAndLadders {
      * <p>
      *
      * @param gameName the name of the board file to load
-     * @return the loaded BoardLaderGame instance, or null if loading failed
+     * @return the loaded BoardSnakesAndLadders instance, or null if loading failed
      */
     public static BoardSnakesAndLadders loadBoard(String gameName) {
         ObjectMapper objectMapper = new ObjectMapper();
