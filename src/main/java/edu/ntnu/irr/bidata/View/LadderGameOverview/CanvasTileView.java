@@ -94,6 +94,9 @@ public class CanvasTileView {
         case "green":
           playerImage = new Image(getClass().getResourceAsStream("/wizard_green.png"));
           break;
+        case "white":
+          playerImage = new Image(getClass().getResourceAsStream("/wizard_white.png"));
+          break;
       }
       if (playerImage == null) {
         System.err.println("Player image not defined");

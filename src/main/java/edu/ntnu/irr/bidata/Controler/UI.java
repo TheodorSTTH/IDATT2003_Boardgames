@@ -5,6 +5,7 @@ import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Model.FileHandler;
+import edu.ntnu.irr.bidata.View.SnakesAndLaddersWin.SnakesAndLaddersWinningPage;
 
 // TODO: Separate start page logic form UI class
 public class UI {
@@ -32,12 +33,6 @@ public class UI {
 
   public static void setGame(Game savedGame) {
     game = savedGame;
-  }
-
-  public static void endGame(String winner) {
-    MyWindow.getPrimaryStage().hide();
-    MyWindow.getPrimaryStage().setMaximized(false);
-    PopUp.showInfo("Game Over", "Winner: " + winner);
   }
 
   public static void loadGame(String gameName, String gameType) {

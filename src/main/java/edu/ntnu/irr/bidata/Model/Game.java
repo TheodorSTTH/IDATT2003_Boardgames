@@ -53,12 +53,7 @@ public abstract class Game {
     }
 
     public abstract void startSavedGame();
-
-    protected void endGame(Player winner) {
-        FileHandler.deleteGame(gameName);
-        UI.endGame(winner.getName());
-    }
-
+    
     public ArrayList<Player> getPlayers() {
         return players;
     }

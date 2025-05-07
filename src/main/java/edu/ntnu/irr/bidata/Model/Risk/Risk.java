@@ -83,9 +83,6 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
   }
 
   public void endTurn() {
-      if (board.hasWon(currentPlayer)) {
-          endGame(currentPlayer);
-      }
       currentPlayer = getNextPlayer();
       startTurn();
   }
