@@ -77,7 +77,7 @@ public class SnakesAndLadders extends Game implements ISubject<SnakesAndLadders>
 
     @Override
     public String getGameType() {
-        return "LaderGame";
+        return "SnakesAndLadders";
     }
 
     public HashMap<Player, Integer> getPlayerPositions() {

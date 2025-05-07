@@ -1,0 +1,116 @@
+{
+  "events" : {
+    "64" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 26
+    },
+    "65" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 82
+    },
+    "2" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 35
+    },
+    "34" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 3
+    },
+    "36" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 52
+    },
+    "68" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 85
+    },
+    "5" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 25
+    },
+    "70" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What is the name of Sherlock Holmes' assistant?",
+      "answer" : "Dr. Watson",
+      "tileNumber" : 70
+    },
+    "40" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What is the fastest land animal?",
+      "answer" : "Cheetah",
+      "tileNumber" : 40
+    },
+    "10" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What animal can live both in water and on land?",
+      "answer" : "Amphibian",
+      "tileNumber" : 10
+    },
+    "42" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 31
+    },
+    "74" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 12
+    },
+    "80" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What is the fastest aquatic animal?",
+      "answer" : "Sailfish",
+      "tileNumber" : 80
+    },
+    "49" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 79
+    },
+    "50" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "Which bird is a universal symbol of peace?",
+      "answer" : "Dove",
+      "tileNumber" : 50
+    },
+    "20" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What is the study of living things called?",
+      "answer" : "Biology",
+      "tileNumber" : 20
+    },
+    "24" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 6
+    },
+    "56" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 37
+    },
+    "89" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent",
+      "destination" : 71
+    },
+    "90" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What country is shaped like a boot?",
+      "answer" : "Italy",
+      "tileNumber" : 90
+    },
+    "60" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What is the largest island in the world?",
+      "answer" : "Greenland",
+      "tileNumber" : 60
+    },
+    "30" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent",
+      "question" : "What instrument has 88 keys?",
+      "answer" : "Piano",
+      "tileNumber" : 30
+    }
+  },
+  "endTile" : 90,
+  "playerPositions" : {
+    "Imre" : 46,
+    "Gandalf" : 27,
+    "Theodor" : 37
+  }
+}
