@@ -1,6 +1,8 @@
 package edu.ntnu.irr.bidata.view.snakesandladders;
 
-import edu.ntnu.irr.bidata.controller.NavigationManager;
+import edu.ntnu.irr.bidata.NavigationManager;
+import edu.ntnu.irr.bidata.controller.snakesandladders.SnakesAndLaddersCanvasController;
+import edu.ntnu.irr.bidata.controller.snakesandladders.SnakesAndLaddersSidePanelController;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

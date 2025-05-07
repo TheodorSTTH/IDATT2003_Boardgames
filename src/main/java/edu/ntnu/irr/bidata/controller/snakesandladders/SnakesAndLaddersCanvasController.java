@@ -1,7 +1,8 @@
-package edu.ntnu.irr.bidata.view.snakesandladders;
+package edu.ntnu.irr.bidata.controller.snakesandladders;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersCanvasView;
 
 public class SnakesAndLaddersCanvasController implements Observer<SnakesAndLadders> {
   private SnakesAndLaddersCanvasView view;
@@ -17,11 +18,11 @@ public class SnakesAndLaddersCanvasController implements Observer<SnakesAndLadde
   }
 
   /**
-   * Renders the current board with quiz boxes, snakes and ladders. Also places & renders players
-   * on the board. Effectively updating the board for the user.
+   * Renders the current board with quiz boxes, snakes and ladders. Also places & renders players on
+   * the board. Effectively updating the board for the user.
    *
    * @param snakesAndLadders is the current snakes and ladders game object.
-   * */
+   */
   @Override
   public void update(SnakesAndLadders snakesAndLadders) {
     view.renderBoard();

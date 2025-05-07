@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.view.winningpage;
+package edu.ntnu.irr.bidata.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

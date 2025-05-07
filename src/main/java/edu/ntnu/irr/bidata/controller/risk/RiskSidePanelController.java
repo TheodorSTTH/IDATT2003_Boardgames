@@ -1,7 +1,8 @@
-package edu.ntnu.irr.bidata.view.risk;
+package edu.ntnu.irr.bidata.controller.risk;
 
-import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.view.risk.RiskSidePanelView;
 
 public class RiskSidePanelController implements Observer<AbstractSidebarPaneController> {
   private RiskSidePanelView view;
@@ -13,11 +14,11 @@ public class RiskSidePanelController implements Observer<AbstractSidebarPaneCont
     this.placeTroopsPaneController = new PlaceTroopsPaneController(risk);
     this.attackPaneController = new AttackPaneController(risk);
     this.moveTroopsPaneController = new MoveTroopsPaneController(risk);
-    this.view = new RiskSidePanelView(
-        placeTroopsPaneController.getView(),
-        attackPaneController.getView(),
-        moveTroopsPaneController.getView()
-    );
+    this.view =
+        new RiskSidePanelView(
+            placeTroopsPaneController.getView(),
+            attackPaneController.getView(),
+            moveTroopsPaneController.getView());
 
     placeTroopsPaneController.registerObserver(this);
     attackPaneController.registerObserver(this);
@@ -34,7 +35,7 @@ public class RiskSidePanelController implements Observer<AbstractSidebarPaneCont
    * Updates which pane is currently open.
    *
    * @param nextPane is the pane we are going to open.
-   * */
+   */
   public void update(AbstractSidebarPaneController nextPane) {
     view.setPaneActive(nextPane.getView());
   }

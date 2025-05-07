@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.view.snakesandladders;
+package edu.ntnu.irr.bidata.view;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
@@ -9,9 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-/**
- * Is responsible for showing a die.
- * */
+/** Is responsible for showing a die. */
 public class DieView extends Pane implements Observer<Integer> {
   private final Circle center;
   private final Circle topRight;
@@ -41,12 +39,9 @@ public class DieView extends Pane implements Observer<Integer> {
 
     this.setMaxSize(size, size);
     this.setPrefSize(size, size);
-    this.setBackground(new Background(
-        new BackgroundFill(dieColor,
-            new CornerRadii(10),
-            null))
-    );
-    getChildren().addAll(center, topLeft, topRight, centerLeft, centerRight, bottomLeft, bottomRight);
+    this.setBackground(new Background(new BackgroundFill(dieColor, new CornerRadii(10), null)));
+    getChildren()
+        .addAll(center, topLeft, topRight, centerLeft, centerRight, bottomLeft, bottomRight);
     center.setVisible(false);
     setVisible(false);
   }
@@ -65,7 +60,7 @@ public class DieView extends Pane implements Observer<Integer> {
    * Displays the die roll. If an invalid number is given then nothing is displayed.
    *
    * @param numberOfDots should be between 1 and 6.
-   * */
+   */
   public void update(Integer numberOfDots) {
     hideAllDots();
     setVisible(true);

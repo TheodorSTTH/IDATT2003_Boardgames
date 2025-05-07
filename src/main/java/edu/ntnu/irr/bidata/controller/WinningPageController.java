@@ -1,8 +1,8 @@
-package edu.ntnu.irr.bidata.view.winningpage;
+package edu.ntnu.irr.bidata.controller;
 
-import edu.ntnu.irr.bidata.controller.MyWindow;
-import edu.ntnu.irr.bidata.controller.NavigationManager;
-import edu.ntnu.irr.bidata.view.startpage.StartPageController;
+import edu.ntnu.irr.bidata.MyWindow;
+import edu.ntnu.irr.bidata.NavigationManager;
+import edu.ntnu.irr.bidata.view.WinningPageView;
 
 public class WinningPageController {
   private final WinningPageView view;

@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.view.createplayer;
+package edu.ntnu.irr.bidata.view;
 
 import java.util.List;
 import javafx.geometry.Insets;
@@ -18,7 +18,8 @@ public class CreatePlayerPageView extends VBox {
   ComboBox<String> playerColorField = new ComboBox<>();
   Label colorLabel = new Label("Choose a color: ");
   Label ageLabel = new Label("How old are your hero: ");
-  Spinner<Integer> ageSpinner = new Spinner<>(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
+  Spinner<Integer> ageSpinner =
+      new Spinner<>(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 99, 1));
   Button createPlayerButton = new Button("New Hero");
 
   public TextField getUsernameField() {
@@ -47,7 +48,6 @@ public class CreatePlayerPageView extends VBox {
     usernameField.getStyleClass().add("fantasy-text-field");
     VBox.setMargin(usernameField, new Insets(5, 100, 10, 100));
     usernameField.setPromptText("Hero Name");
-
 
     VBox.setMargin(colorLabel, new Insets(5, 5, 5, 5));
     colorLabel.getStyleClass().add("fantasy-text");
@@ -79,6 +79,7 @@ public class CreatePlayerPageView extends VBox {
     chooseAgeBox.getChildren().addAll(ageLabel, ageSpinner);
     HBox.setMargin(chooseAgeBox, new Insets(5, 5, 5, 5));
 
-    getChildren().addAll(titleLabel, usernameField, chooseColorBox, chooseAgeBox, createPlayerButton);
+    getChildren()
+        .addAll(titleLabel, usernameField, chooseColorBox, chooseAgeBox, createPlayerButton);
   }
 }

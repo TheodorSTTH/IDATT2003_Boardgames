@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.view.startpage;
+package edu.ntnu.irr.bidata.view;
 
 import java.util.HashMap;
 import javafx.geometry.Insets;

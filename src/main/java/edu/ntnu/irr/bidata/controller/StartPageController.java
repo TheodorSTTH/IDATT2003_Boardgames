@@ -1,7 +1,7 @@
-package edu.ntnu.irr.bidata.view.startpage;
+package edu.ntnu.irr.bidata.controller;
 
-import edu.ntnu.irr.bidata.controller.MyWindow;
-import edu.ntnu.irr.bidata.controller.NavigationManager;
+import edu.ntnu.irr.bidata.MyWindow;
+import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
@@ -9,6 +9,7 @@ import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.view.createplayer.CreatePlayerPageController;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.StartPageView;
 import edu.ntnu.irr.bidata.view.risk.RiskPage;
 import java.util.HashMap;
 import javafx.beans.value.ChangeListener;

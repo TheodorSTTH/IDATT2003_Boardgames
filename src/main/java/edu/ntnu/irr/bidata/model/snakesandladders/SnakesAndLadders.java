@@ -1,13 +1,12 @@
 package edu.ntnu.irr.bidata.model.snakesandladders;
 
-import edu.ntnu.irr.bidata.controller.NavigationManager;
+import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import edu.ntnu.irr.bidata.view.PopUp;
-
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import java.util.ArrayList;
 import java.util.HashMap;

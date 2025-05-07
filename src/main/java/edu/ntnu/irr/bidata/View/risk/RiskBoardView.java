@@ -1,7 +1,8 @@
 package edu.ntnu.irr.bidata.view.risk;
 
-import java.util.HashMap;
+import edu.ntnu.irr.bidata.controller.risk.CountryController;
 import edu.ntnu.irr.bidata.model.risk.Country;
+import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -20,7 +21,8 @@ public class RiskBoardView extends Pane {
       imageView.setFitHeight(imagePixelHeight);
       getChildren().add(imageView);
       for (Country country : countries.values()) {
-        CountryController countryController = new CountryController(country, imagePixelWidth, imagePixelHeight);
+        CountryController countryController =
+            new CountryController(country, imagePixelWidth, imagePixelHeight);
         country.registerObserver(countryController);
         getChildren().add(countryController.getView());
       }

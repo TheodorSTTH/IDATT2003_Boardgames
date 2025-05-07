@@ -1,13 +1,15 @@
-package edu.ntnu.irr.bidata.view.snakesandladders;
+package edu.ntnu.irr.bidata.controller.snakesandladders;
 
-import edu.ntnu.irr.bidata.controller.NavigationManager;
+import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.model.Die;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.view.DieView;
+import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersSidePanelView;
+import edu.ntnu.irr.bidata.controller.WinningPageController; // Ensure this is the correct package path
+import edu.ntnu.irr.bidata.controller.StartPageController; // Ensure this is the correct package path
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.view.startpage.StartPageController;
-import edu.ntnu.irr.bidata.view.winningpage.WinningPageController;
 import javafx.scene.paint.Color;
 
 public class SnakesAndLaddersSidePanelController implements Observer<SnakesAndLadders> {

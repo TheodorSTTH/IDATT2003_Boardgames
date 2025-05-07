@@ -1,11 +1,13 @@
-package edu.ntnu.irr.bidata.view.risk;
+package edu.ntnu.irr.bidata.controller.risk;
 
-import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
+import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.view.risk.AbstractSidebarPaneView;
 import java.util.ArrayList;
 
-public abstract class AbstractSidebarPaneController implements Subject<AbstractSidebarPaneController> {
+public abstract class AbstractSidebarPaneController
+    implements Subject<AbstractSidebarPaneController> {
   private final ArrayList<Observer<AbstractSidebarPaneController>> allObservers;
   protected final Risk risk;
   private AbstractSidebarPaneController nextSidebarPane;
