@@ -2,18 +2,22 @@
   "countries" : {
     "Ural" : {
       "name" : "Ural",
-      "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 1,
+
+      "owner" : "Imre",
+      "ownerColor" : "White",
+      "armies" : 3,
+
       "neighbors" : [ "Ukraine", "Siberia", "China", "Afghanistan" ],
       "relativeX" : 0.67,
       "relativeY" : 0.25
     },
     "Central America" : {
       "name" : "Central America",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 4,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 3,
+
       "neighbors" : [ "Western United States", "Eastern United States", "Venezuela" ],
       "relativeX" : 0.14,
       "relativeY" : 0.42
@@ -21,8 +25,10 @@
     "Western Australia" : {
       "name" : "Western Australia",
       "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 1,
+
+      "ownerColor" : "Yellow",
+      "armies" : 3,
+
       "neighbors" : [ "Indonesia", "New Guinea", "Eastern Australia" ],
       "relativeX" : 0.83,
       "relativeY" : 0.81
@@ -30,15 +36,19 @@
     "Afghanistan" : {
       "name" : "Afghanistan",
       "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 3,
+
+      "ownerColor" : "Yellow",
+      "armies" : 1,
+
       "neighbors" : [ "Ukraine", "Ural", "China", "India", "Middle East" ],
       "relativeX" : 0.63,
       "relativeY" : 0.37
     },
     "Alberta" : {
       "name" : "Alberta",
-      "owner" : "Theodor",
+
+      "owner" : "Ingeb",
+
       "ownerColor" : "Blue",
       "armies" : 3,
       "neighbors" : [ "Alaska", "Northwest Territory", "Ontario", "Western United States" ],
@@ -47,9 +57,11 @@
     },
     "Siam" : {
       "name" : "Siam",
-      "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 3,
+
+      "owner" : "Imre",
+      "ownerColor" : "White",
+      "armies" : 1,
+
       "neighbors" : [ "China", "India", "Indonesia" ],
       "relativeX" : 0.79,
       "relativeY" : 0.56
@@ -57,8 +69,10 @@
     "Egypt" : {
       "name" : "Egypt",
       "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 4,
+
+      "ownerColor" : "Yellow",
+      "armies" : 2,
+
       "neighbors" : [ "Southern Europe", "North Africa", "East Africa", "Middle East" ],
       "relativeX" : 0.53,
       "relativeY" : 0.53
@@ -66,8 +80,10 @@
     "North Africa" : {
       "name" : "North Africa",
       "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 5,
+
+      "ownerColor" : "Yellow",
+      "armies" : 6,
+
       "neighbors" : [ "Brazil", "Western Europe", "Southern Europe", "Egypt", "East Africa", "Congo" ],
       "relativeX" : 0.42,
       "relativeY" : 0.57
@@ -83,16 +99,20 @@
     },
     "Scandinavia" : {
       "name" : "Scandinavia",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 1,
+
       "neighbors" : [ "Iceland", "Great Britain", "Northern Europe", "Ukraine" ],
       "relativeX" : 0.47,
       "relativeY" : 0.2
     },
     "Iceland" : {
       "name" : "Iceland",
-      "owner" : "Theodor",
+
+      "owner" : "Ingeb",
+
       "ownerColor" : "Blue",
       "armies" : 2,
       "neighbors" : [ "Greenland", "Scandinavia", "Great Britain" ],
@@ -101,17 +121,21 @@
     },
     "Middle East" : {
       "name" : "Middle East",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 3,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 5,
+
       "neighbors" : [ "Southern Europe", "Ukraine", "Afghanistan", "India", "East Africa", "Egypt" ],
       "relativeX" : 0.59,
       "relativeY" : 0.47
     },
     "Yakutsk" : {
       "name" : "Yakutsk",
-      "owner" : "Imre",
-      "ownerColor" : "White",
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+
       "armies" : 3,
       "neighbors" : [ "Siberia", "Irkutsk", "Kamchatka" ],
       "relativeX" : 0.79,
@@ -119,8 +143,10 @@
     },
     "Great Britain" : {
       "name" : "Great Britain",
-      "owner" : "Imre",
-      "ownerColor" : "White",
+
+      "owner" : "Theodor",
+      "ownerColor" : "Yellow",
+
       "armies" : 4,
       "neighbors" : [ "Iceland", "Scandinavia", "Northern Europe", "Western Europe" ],
       "relativeX" : 0.39,
@@ -128,17 +154,21 @@
     },
     "Mongolia" : {
       "name" : "Mongolia",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 1,
+
       "neighbors" : [ "Siberia", "China", "Irkutsk", "Japan", "Kamchatka" ],
       "relativeX" : 0.79,
       "relativeY" : 0.33
     },
     "China" : {
       "name" : "China",
-      "owner" : "Theodor",
-      "ownerColor" : "Blue",
+
+      "owner" : "Imre",
+      "ownerColor" : "White",
+
       "armies" : 4,
       "neighbors" : [ "Ural", "Siberia", "Mongolia", "Afghanistan", "India", "Siam" ],
       "relativeX" : 0.77,
@@ -146,36 +176,45 @@
     },
     "Siberia" : {
       "name" : "Siberia",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 1,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 5,
+
       "neighbors" : [ "Ural", "China", "Mongolia", "Irkutsk", "Yakutsk" ],
       "relativeX" : 0.71,
       "relativeY" : 0.12
     },
     "Brazil" : {
       "name" : "Brazil",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 4,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 1,
+
+
       "neighbors" : [ "Venezuela", "Peru", "Argentina", "North Africa" ],
       "relativeX" : 0.31,
       "relativeY" : 0.64
     },
     "Alaska" : {
       "name" : "Alaska",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Ingeb",
+      "ownerColor" : "Blue",
+      "armies" : 3,
+
       "neighbors" : [ "Northwest Territory", "Alberta", "Kamchatka" ],
       "relativeX" : 0.07,
       "relativeY" : 0.16
     },
     "Kamchatka" : {
       "name" : "Kamchatka",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 1,
+
       "neighbors" : [ "Alaska", "Japan", "Mongolia", "Irkutsk", "Yakutsk" ],
       "relativeX" : 0.88,
       "relativeY" : 0.14
@@ -184,15 +223,16 @@
       "name" : "Eastern Australia",
       "owner" : "Imre",
       "ownerColor" : "White",
-      "armies" : 4,
+
+      "armies" : 5,
       "neighbors" : [ "New Guinea", "Western Australia" ],
       "relativeX" : 0.93,
       "relativeY" : 0.85
     },
     "Argentina" : {
       "name" : "Argentina",
-      "owner" : "Theodor",
-      "ownerColor" : "Blue",
+      "owner" : "Imre",
+      "ownerColor" : "White",
       "armies" : 3,
       "neighbors" : [ "Peru", "Brazil" ],
       "relativeX" : 0.24,
@@ -200,36 +240,42 @@
     },
     "Northern Europe" : {
       "name" : "Northern Europe",
-      "owner" : "Theodor",
+
+      "owner" : "Ingeb",
       "ownerColor" : "Blue",
-      "armies" : 2,
+      "armies" : 4,
+
       "neighbors" : [ "Scandinavia", "Great Britain", "Western Europe", "Southern Europe", "Ukraine" ],
       "relativeX" : 0.48,
       "relativeY" : 0.3
     },
     "Northwest Territory" : {
       "name" : "Northwest Territory",
-      "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 1,
+
+      "owner" : "Imre",
+      "ownerColor" : "White",
+      "armies" : 2,
       "neighbors" : [ "Alaska", "Alberta", "Ontario", "Greenland" ],
       "relativeX" : 0.16,
       "relativeY" : 0.14
     },
     "Eastern United States" : {
       "name" : "Eastern United States",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Theodor",
+      "ownerColor" : "Yellow",
+      "armies" : 3,
       "neighbors" : [ "Ontario", "Quebec", "Western United States", "Central America" ],
       "relativeX" : 0.23,
       "relativeY" : 0.34
     },
     "Japan" : {
       "name" : "Japan",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 5,
+
+      "owner" : "Ingeb",
+      "ownerColor" : "Blue",
+      "armies" : 3,
+
       "neighbors" : [ "Mongolia", "Kamchatka" ],
       "relativeX" : 0.89,
       "relativeY" : 0.37
@@ -237,7 +283,9 @@
     "Quebec" : {
       "name" : "Quebec",
       "owner" : "Theodor",
-      "ownerColor" : "Blue",
+
+      "ownerColor" : "Yellow",
+
       "armies" : 3,
       "neighbors" : [ "Greenland", "Ontario", "Eastern United States" ],
       "relativeX" : 0.29,
@@ -245,18 +293,21 @@
     },
     "Ukraine" : {
       "name" : "Ukraine",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Ingeb",
+      "ownerColor" : "Blue",
+      "armies" : 1,
       "neighbors" : [ "Scandinavia", "Northern Europe", "Southern Europe", "Ural", "Afghanistan", "Middle East" ],
       "relativeX" : 0.57,
       "relativeY" : 0.28
     },
     "Congo" : {
       "name" : "Congo",
-      "owner" : "Theodor",
-      "ownerColor" : "Blue",
-      "armies" : 5,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 2,
+
       "neighbors" : [ "North Africa", "East Africa", "South Africa" ],
       "relativeX" : 0.53,
       "relativeY" : 0.71
@@ -265,33 +316,41 @@
       "name" : "Western Europe",
       "owner" : "Imre",
       "ownerColor" : "White",
-      "armies" : 3,
+
+      "armies" : 1,
+
       "neighbors" : [ "Great Britain", "Northern Europe", "Southern Europe", "North Africa" ],
       "relativeX" : 0.41,
       "relativeY" : 0.45
     },
     "India" : {
       "name" : "India",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Imre",
+      "ownerColor" : "White",
+      "armies" : 4,
+
       "neighbors" : [ "China", "Afghanistan", "Middle East", "Siam" ],
       "relativeX" : 0.71,
       "relativeY" : 0.5
     },
     "Venezuela" : {
       "name" : "Venezuela",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Ingeb",
+      "ownerColor" : "Blue",
+      "armies" : 5,
+
       "neighbors" : [ "Central America", "Peru", "Brazil" ],
       "relativeX" : 0.23,
       "relativeY" : 0.53
     },
     "New Guinea" : {
       "name" : "New Guinea",
-      "owner" : "",
-      "ownerColor" : "Pink",
+
+      "owner" : "Ingeb",
+      "ownerColor" : "Blue",
+
       "armies" : 2,
       "neighbors" : [ "Indonesia", "Eastern Australia", "Western Australia" ],
       "relativeX" : 0.88,
@@ -299,17 +358,19 @@
     },
     "Irkutsk" : {
       "name" : "Irkutsk",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 2,
+
+      "owner" : "Ingeb",
+      "ownerColor" : "Blue",
+      "armies" : 3,
+
       "neighbors" : [ "Siberia", "Yakutsk", "Kamchatka", "Mongolia" ],
       "relativeX" : 0.79,
       "relativeY" : 0.25
     },
     "Southern Europe" : {
       "name" : "Southern Europe",
-      "owner" : "",
-      "ownerColor" : "Pink",
+      "owner" : "Theodor",
+      "ownerColor" : "Yellow",
       "armies" : 2,
       "neighbors" : [ "Northern Europe", "Western Europe", "Ukraine", "Middle East", "Egypt", "North Africa" ],
       "relativeX" : 0.5,
@@ -317,26 +378,30 @@
     },
     "South Africa" : {
       "name" : "South Africa",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+      "owner" : "Theodor",
+      "ownerColor" : "Yellow",
+      "armies" : 1,
       "neighbors" : [ "Congo", "East Africa", "Madagascar" ],
       "relativeX" : 0.52,
       "relativeY" : 0.82
     },
     "Western United States" : {
       "name" : "Western United States",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 2,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 5,
+
       "neighbors" : [ "Alberta", "Ontario", "Eastern United States", "Central America" ],
       "relativeX" : 0.14,
       "relativeY" : 0.34
     },
     "Ontario" : {
       "name" : "Ontario",
-      "owner" : "",
-      "ownerColor" : "Pink",
+
+      "owner" : "Imre",
+      "ownerColor" : "White",
+
       "armies" : 2,
       "neighbors" : [ "Northwest Territory", "Alberta", "Greenland", "Quebec", "Eastern United States", "Western United States" ],
       "relativeX" : 0.23,
@@ -344,9 +409,11 @@
     },
     "Peru" : {
       "name" : "Peru",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Eine",
+      "ownerColor" : "Red",
+      "armies" : 3,
+
       "neighbors" : [ "Venezuela", "Brazil", "Argentina" ],
       "relativeX" : 0.25,
       "relativeY" : 0.65
@@ -355,25 +422,31 @@
       "name" : "Greenland",
       "owner" : "Imre",
       "ownerColor" : "White",
-      "armies" : 2,
+
+      "armies" : 3,
+
       "neighbors" : [ "Northwest Territory", "Ontario", "Quebec", "Iceland" ],
       "relativeX" : 0.32,
       "relativeY" : 0.09
     },
     "East Africa" : {
       "name" : "East Africa",
-      "owner" : "Imre",
-      "ownerColor" : "White",
-      "armies" : 1,
+
+      "owner" : "Ingeb",
+      "ownerColor" : "Blue",
+      "armies" : 4,
+
       "neighbors" : [ "North Africa", "Egypt", "Congo", "South Africa", "Madagascar", "Middle East" ],
       "relativeX" : 0.55,
       "relativeY" : 0.64
     },
     "Indonesia" : {
       "name" : "Indonesia",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+
+      "owner" : "Theodor",
+      "ownerColor" : "Yellow",
+      "armies" : 5,
+
       "neighbors" : [ "Siam", "New Guinea", "Western Australia" ],
       "relativeX" : 0.8,
       "relativeY" : 0.72
