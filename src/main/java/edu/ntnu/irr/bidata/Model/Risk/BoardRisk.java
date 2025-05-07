@@ -30,7 +30,7 @@ public class BoardRisk {
   public void placeTropes(String countryName, int tropes) {
       Country country = countries.get(countryName);
       if (country != null) {
-          country.placeTropes(tropes);
+          country.placeTroops(tropes);
       } else {
           throw new IllegalArgumentException("Country not found: " + countryName);
       }
@@ -78,7 +78,7 @@ public class BoardRisk {
             int tropes = 50 - players.size() * 5 - countries.size();
             for (int i = 0; i < tropes; i++) {
                 int randomIndex = (int) (Math.random() * countries.size());
-                this.countries.get(countries.get(randomIndex)).placeTropes(1);
+                this.countries.get(countries.get(randomIndex)).placeTroops(1);
             }
         }
   }

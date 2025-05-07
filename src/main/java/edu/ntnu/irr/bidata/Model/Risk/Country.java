@@ -1,4 +1,5 @@
 package edu.ntnu.irr.bidata.Model.Risk;
+
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleSubject;
@@ -8,7 +9,14 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * The {@code Country} class represents a country in the Risk game.
+ * Each country has a name, a relative position on the map, an owner,
+ * an army count, and a list of neighboring countries.
+ * It also implements an observer pattern to notify listeners on state changes.
+ */
 public class Country implements ISimpleSubject {
+
   private final String name;
   private final double relativeX;
   private final double relativeY;
@@ -19,6 +27,22 @@ public class Country implements ISimpleSubject {
 
   private final ArrayList<ISimpleObserver> allObservers;
 
+  /**
+   * Constructor used by Jackson for deserialization.
+   * 
+   * <p>
+   * Note: Using JsonProperty in the constructor to allow Jackson to map 
+   * JSON properties to class fields. Was suggested by chatGTP.
+   * 
+   * 
+   * @param name        the name of the country
+   * @param owner       the name of the player who owns this country
+   * @param ownerColor  the color of the owner's pieces
+   * @param armies      the number of armies present in the country
+   * @param neighbors   list of neighboring country names
+   * @param relativeX   horizontal position (0.0–1.0) on the game map
+   * @param relativeY   vertical position (0.0–1.0) on the game map
+   */
   @JsonCreator
   public Country(
       @JsonProperty("name") String name,
@@ -33,20 +57,21 @@ public class Country implements ISimpleSubject {
     this.ownerColor = ownerColor;
     this.armies = armies;
     this.neighbors = neighbors;
-    this.relativeX = Math.clamp(relativeX, 0, 1);
-    this.relativeY = Math.clamp(relativeY, 0, 1);
+    this.relativeX = clamp(relativeX, 0, 1);
+    this.relativeY = clamp(relativeY, 0, 1);
     this.allObservers = new ArrayList<>();
   }
 
+  /**
+   * Constructor for manual creation without an owner or army count.
+   */
   public Country(String name, List<String> neighbors, double relativeX, double relativeY) {
     this.name = name;
     this.neighbors = neighbors;
-    this.relativeX = Math.clamp(relativeX, 0, 1);
-    this.relativeY = Math.clamp(relativeY, 0, 1);
+    this.relativeX = clamp(relativeX, 0, 1);
+    this.relativeY = clamp(relativeY, 0, 1);
     this.allObservers = new ArrayList<>();
   }
-
-
 
   @Override
   public void registerObserver(ISimpleObserver o) {
@@ -65,8 +90,27 @@ public class Country implements ISimpleSubject {
     }
   }
 
-  public void placeTropes(int tropes) {
-    this.armies += tropes;
+  /**
+   * Adds troops to the country.
+   *
+   * @param troops the number of troops to add
+   */
+  public void placeTroops(int troops) {
+    this.armies += troops;
+    notifyObservers();
+  }
+
+  /**
+   * Removes troops from the country.
+   *
+   * @param troops the number of troops to remove
+   * @throws IllegalArgumentException if trying to remove more than available
+   */
+  public void loseTroops(int troops) {
+    if (troops > this.armies) {
+      throw new IllegalArgumentException("Country " + name + " does not have enough troops.");
+    }
+    this.armies -= troops;
     notifyObservers();
   }
 
@@ -78,26 +122,16 @@ public class Country implements ISimpleSubject {
     return name;
   }
 
-  public void loseTroops(int tropes) {
-    if (tropes > this.armies) {
-      throw new IllegalArgumentException("Country " + name + " does not have enough troops.");
-  }
-  this.armies -= tropes;
-  notifyObservers();
-  }
-
   /**
-   * Is the relative x coordinate position of the country on any board
-   * position is from 0 to 1.
-   * */
+   * Returns the X coordinate relative to the map (0.0–1.0).
+   */
   public double getRelativeX() {
     return this.relativeX;
   }
 
   /**
-   * Is the relative y coordinate position of the country on any board
-   * position is from 0 to 1.
-   * */
+   * Returns the Y coordinate relative to the map (0.0–1.0).
+   */
   public double getRelativeY() {
     return this.relativeY;
   }
@@ -119,6 +153,9 @@ public class Country implements ISimpleSubject {
     return ownerColor;
   }
 
+  /**
+   * Updates the country's owner and notifies observers.
+   */
   public void setOwner(Player owner) {
     this.owner = owner.getName();
     this.ownerColor = owner.getColor();
@@ -128,5 +165,13 @@ public class Country implements ISimpleSubject {
   @Override
   public String toString() {
     return name;
+  }
+
+  /**
+   * Utility method to clamp a value between a minimum and maximum.
+   * (Replaces use of Math.clamp, which doesn't exist in standard Java.)
+   */
+  private double clamp(double value, double min, double max) {
+    return Math.max(min, Math.min(max, value));
   }
 }
