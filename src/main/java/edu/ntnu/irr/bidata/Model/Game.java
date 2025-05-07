@@ -10,7 +10,7 @@ public abstract class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected Player currentPlayer;
     private int amountOfPlayers = 0;
-    private final List<String> availableColors = new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "Black"));
+    private final List<String> availableColors = new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "White"));
     private final String gameName;
 
 
@@ -29,6 +29,10 @@ public abstract class Game {
     public boolean addPlayer(String name, String color, int age) {
         if (getPlayerNames().contains(name)) {
             PopUp.showWarning("Player already exists", "Player with this name already exists");
+            return false;
+        }
+        if (name.contains(",")) {
+            PopUp.showWarning("Invalid name", "Name cannot contain a comma(,)");
             return false;
         }
         players.add(new Player(name, color, age));

@@ -4,9 +4,13 @@ import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
 import edu.ntnu.irr.bidata.View.PopUp;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
 
 public class CountryView extends Button implements ISimpleObserver {
   private final Country country;
@@ -19,13 +23,29 @@ public class CountryView extends Button implements ISimpleObserver {
     this.boardHeight = boardHeight;
     this.country = country;
     this.setOnAction(e -> {
-      PopUp.showInfo(country.getName(), "Owner: " + country.getOwner() + "\nArmies: " + country.getArmies());
+      PopUp.showInfo(country.getName(),
+          country.getName() + "\nOwner: " + country.getOwner() + "\nArmies: " + country.getArmies());
     });
     render();
   }
+  
   public void render() {
-    this.setText(Integer.toString(country.getArmies()));
-    //this.setText(country.getName());
+    Label text = new Label(Integer.toString(country.getArmies()));
+    text.getStyleClass().add("country-label");
+
+    ImageView swordIcon = new ImageView(new Image(
+        getClass().getResource("/sword.png").toExternalForm()
+    ));
+    swordIcon.setFitHeight(12);
+    swordIcon.setPreserveRatio(true);
+    swordIcon.setSmooth(true);
+
+
+    HBox content = new HBox(5, text, swordIcon); 
+    content.setAlignment(Pos.CENTER_RIGHT);
+    this.setGraphic(content);
+
+
     this.getStyleClass().add("country-view");
     this.setStyle("-fx-background-color: " + country.getOwnerColor() + "; ");
     setLayoutX(boardWidth * country.getRelativeX());
