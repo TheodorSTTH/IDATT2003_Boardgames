@@ -19,7 +19,7 @@ public class SnakesAndLaddersWinningPage extends VBox {
 
 
     Button backToMenuButton = new Button("Back to the start page");
-    backToMenuButton.getStyleClass().addAll("fantasy-button");
+    backToMenuButton.getStyleClass().addAll("fantasy-button-sidbar");
     VBox.setMargin(backToMenuButton, new Insets(25, 25, 25, 25));
     backToMenuButton.setOnAction(e -> {
       NavigationManager.navigate(new StartPage());
@@ -27,7 +27,7 @@ public class SnakesAndLaddersWinningPage extends VBox {
       
 
     Button exitButton = new Button("Leave Runeborne");
-    exitButton.getStyleClass().add("fantasy-button");
+    exitButton.getStyleClass().add("fantasy-button-sidbar");
     VBox.setMargin(exitButton, new Insets(25, 25, 25, 25));
     exitButton.setOnAction(e -> {
       MyWindow.closeApplication();
