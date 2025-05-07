@@ -57,7 +57,6 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
     });
     saveButton.setOnAction(e -> {
       snakesAndLadders.saveGame();
-      PopUp.showInfo("Game saved", "Game has been saved as " + snakesAndLadders.getGameName());
     });
 
     Region splitterRegion = new Region();
