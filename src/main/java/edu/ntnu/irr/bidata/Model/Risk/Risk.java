@@ -13,22 +13,22 @@ import java.util.List;
 import javafx.util.Pair;
 
 
-public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
-  private final BoardRisk board;
-  private int tropesAvailable = 0;
-  private final Dice attackDice = new Dice(3, 6);
-  private final Dice defenceDice = new Dice(2, 6);
-  private final ArrayList<IObserver<Pair<Dice, Dice>>> allObservers;
+  public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
+    private final BoardRisk board;
+    private int tropesAvailable = 0;
+    private final Dice attackDice = new Dice(3, 6);
+    private final Dice defenceDice = new Dice(2, 6);
+    private final ArrayList<IObserver<Pair<Dice, Dice>>> allObservers;
 
-  @Override
-  public void registerObserver(IObserver<Pair<Dice, Dice>> o) {
-      allObservers.add(o);
-  }
+    @Override
+    public void registerObserver(IObserver<Pair<Dice, Dice>> o) {
+        allObservers.add(o);
+    }
 
-  @Override
-  public void removeObserver(IObserver<Pair<Dice, Dice>> o) {
+    @Override
+    public void removeObserver(IObserver<Pair<Dice, Dice>> o) {
       allObservers.remove(o);
-  }
+    }
 
   @Override
   public void notifyObservers(Pair<Dice, Dice> dice) {
@@ -78,7 +78,7 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
       while (board.hasLost(currentPlayer)) {
           currentPlayer = getNextPlayer();
       }
-      tropesAvailable = board.NewTropes(currentPlayer);
+      tropesAvailable = board.newTroops(currentPlayer);
       // * Open place troops menu after this
   }
 
@@ -89,7 +89,7 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
 
   public boolean placeTroops(String country, int troopsPlaced) {
       if (troopsPlaced <= tropesAvailable) {
-          board.placeTropes(country, troopsPlaced);
+          board.placeTroops(country, troopsPlaced);
           tropesAvailable -= troopsPlaced;
           if (tropesAvailable == 0) {
               // * Open attack menu
@@ -101,23 +101,23 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
       return false;
   }
 
-  public List<Country> getCountriesCurrentPlayerCanMoveFrom() {
+    public List<Country> getCountriesCurrentPlayerCanMoveFrom() {
       return board.getCountriesControlledByPlayer(getCurrentPlayer())
-          .stream().filter(country -> country.getArmies() > 1).toList();
-  }
+        .stream().filter(country -> country.getArmies() > 1).toList();
+    }
 
-  public List<Country> getCountriesCurrentPlayerCanAttackFrom() {
+    public List<Country> getCountriesCurrentPlayerCanAttackFrom() {
       return board.getAttackOptions(getCurrentPlayer()).keySet().stream().toList();
-  }
+    }
 
-  public List<Country> getCountriesCurrentPlayerCanAttackFromCountry(Country attackingCountry) {
+    public List<Country> getCountriesCurrentPlayerCanAttackFromCountry(Country attackingCountry) {
       return board.getAttackOptions(getCurrentPlayer()).get(attackingCountry);
-  }
+    }
 
-  private void attack(String attacker, String defender) {
-    if (board.controldBySamePlayer(attacker, defender)) {
-      PopUp.showInfo("You can not attack your own country", "You can not attack your own country");
-      return;
+    private void attack(String attacker, String defender) {
+      if (board.controlledBySamePlayer(attacker, defender)) {
+        PopUp.showInfo("You can not attack your own country", "You can not attack your own country");
+        return;
     }
 
     List<Integer> attackRolls;
@@ -178,7 +178,7 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
    * @param defender The defending country
    * */
   public void attackUntilResult(String attacker, String defender) {
-    while ((board.getUnits(attacker) >= 2) && (!board.controldBySamePlayer(attacker, defender))) {
+    while ((board.getUnits(attacker) >= 2) && (!board.controlledBySamePlayer(attacker, defender))) {
       attack(attacker, defender);
     }
   }
