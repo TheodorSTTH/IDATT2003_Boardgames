@@ -20,7 +20,7 @@ public class RiskPage extends HBox {
   public RiskPage(Risk risk) {
     super(new HBox());
     this.board = new RiskBoardView(risk.getBoard().getCountries());
-    this.sidePanel = new RiskSidePanelView(risk);
+    this.sidePanel = new RiskSidePanelController(risk).getView();
     this.setStyle("-fx-background-color:rgb(72, 163, 255);");
     updateViews(risk.getBoard().getCountries());
 
