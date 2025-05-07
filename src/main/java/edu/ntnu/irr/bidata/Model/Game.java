@@ -10,7 +10,7 @@ public abstract class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected Player currentPlayer;
     private int amountOfPlayers = 0;
-    private final List<String> availableColors = new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "Black"));
+    private final List<String> availableColors = new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "White"));
     private final String gameName;
 
 
