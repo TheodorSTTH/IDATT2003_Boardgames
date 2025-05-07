@@ -2,13 +2,12 @@ package edu.ntnu.irr.bidata.Model;
 
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISubject;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Represents a single die with a specified number of faces.
- * Implements the Observer pattern, notifying observers when the die is rolled.
+ * Represents a single die with a specified number of faces. Implements the Observer pattern,
+ * notifying observers when the die is rolled.
  */
 public class Die implements ISubject<Integer> {
   private final Random RANDOM = new Random(); // Random number generator

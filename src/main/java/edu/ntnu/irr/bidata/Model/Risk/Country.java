@@ -1,19 +1,17 @@
 package edu.ntnu.irr.bidata.Model.Risk;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleSubject;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
- * The {@code Country} class represents a country in the Risk game.
- * Each country has a name, a relative position on the map, an owner,
- * an army count, and a list of neighboring countries.
- * It also implements an observer pattern to notify listeners on state changes.
+ * The {@code Country} class represents a country in the Risk game. Each country has a name, a
+ * relative position on the map, an owner, an army count, and a list of neighboring countries. It
+ * also implements an observer pattern to notify listeners on state changes.
  */
 public class Country implements ISimpleSubject {
 
@@ -29,19 +27,17 @@ public class Country implements ISimpleSubject {
 
   /**
    * Constructor used by Jackson for deserialization.
-   * 
-   * <p>
-   * Note: Using JsonProperty in the constructor to allow Jackson to map 
-   * JSON properties to class fields. Was suggested by chatGTP.
-   * 
-   * 
-   * @param name        the name of the country
-   * @param owner       the name of the player who owns this country
-   * @param ownerColor  the color of the owner's pieces
-   * @param armies      the number of armies present in the country
-   * @param neighbors   list of neighboring country names
-   * @param relativeX   horizontal position (0.0–1.0) on the game map
-   * @param relativeY   vertical position (0.0–1.0) on the game map
+   *
+   * <p>Note: Using JsonProperty in the constructor to allow Jackson to map JSON properties to class
+   * fields. Was suggested by chatGTP.
+   *
+   * @param name the name of the country
+   * @param owner the name of the player who owns this country
+   * @param ownerColor the color of the owner's pieces
+   * @param armies the number of armies present in the country
+   * @param neighbors list of neighboring country names
+   * @param relativeX horizontal position (0.0–1.0) on the game map
+   * @param relativeY vertical position (0.0–1.0) on the game map
    */
   @JsonCreator
   public Country(
@@ -62,9 +58,7 @@ public class Country implements ISimpleSubject {
     this.allObservers = new ArrayList<>();
   }
 
-  /**
-   * Constructor for manual creation without an owner or army count.
-   */
+  /** Constructor for manual creation without an owner or army count. */
   public Country(String name, List<String> neighbors, double relativeX, double relativeY) {
     this.name = name;
     this.neighbors = neighbors;
@@ -122,16 +116,12 @@ public class Country implements ISimpleSubject {
     return name;
   }
 
-  /**
-   * Returns the X coordinate relative to the map (0.0–1.0).
-   */
+  /** Returns the X coordinate relative to the map (0.0–1.0). */
   public double getRelativeX() {
     return this.relativeX;
   }
 
-  /**
-   * Returns the Y coordinate relative to the map (0.0–1.0).
-   */
+  /** Returns the Y coordinate relative to the map (0.0–1.0). */
   public double getRelativeY() {
     return this.relativeY;
   }
@@ -153,9 +143,7 @@ public class Country implements ISimpleSubject {
     return ownerColor;
   }
 
-  /**
-   * Updates the country's owner and notifies observers.
-   */
+  /** Updates the country's owner and notifies observers. */
   public void setOwner(Player owner) {
     this.owner = owner.getName();
     this.ownerColor = owner.getColor();
@@ -168,8 +156,8 @@ public class Country implements ISimpleSubject {
   }
 
   /**
-   * Utility method to clamp a value between a minimum and maximum.
-   * (Replaces use of Math.clamp, which doesn't exist in standard Java.)
+   * Utility method to clamp a value between a minimum and maximum. (Replaces use of Math.clamp,
+   * which doesn't exist in standard Java.)
    */
   private double clamp(double value, double min, double max) {
     return Math.max(min, Math.min(max, value));

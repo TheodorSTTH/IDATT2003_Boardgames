@@ -3,8 +3,8 @@ package edu.ntnu.irr.bidata.Model;
 import java.util.ArrayList;
 
 /**
- * Represents a collection of dice that can be rolled together.
- * Useful for games that use multiple dice.
+ * Represents a collection of dice that can be rolled together. Useful for games that use multiple
+ * dice.
  */
 public class Dice {
   private ArrayList<Die> dice = new ArrayList<>(); // List of individual dice
@@ -44,8 +44,8 @@ public class Dice {
   }
 
   /**
-   * Rolls a specified number of dice.
-   * Dice not rolled will have their "wasRolledPreviousRound" flag set to false.
+   * Rolls a specified number of dice. Dice not rolled will have their "wasRolledPreviousRound" flag
+   * set to false.
    *
    * @param numberOfDice number of dice to roll
    * @return list of results from rolled dice

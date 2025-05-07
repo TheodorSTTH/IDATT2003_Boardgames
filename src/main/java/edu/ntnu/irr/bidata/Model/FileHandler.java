@@ -1,26 +1,25 @@
 package edu.ntnu.irr.bidata.Model;
 
+import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
+import edu.ntnu.irr.bidata.Model.Risk.Risk;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.BoardSnakesAndLadders;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.EventMaker;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.SnakesAndLadders;
 import java.io.*;
 import java.util.*;
 
-import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.BoardSnakesAndLadders;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.SnakesAndLadders;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.EventMaker;
-import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
-
 /**
-  * Handles saving and loading of game data such as players, boards, and game state.
-  * Supports both SnakesAndLadders and Risk game types, as well as quiz questions.
-  * The data is stored in CSV files for easy access and manipulation.
-  * 
-  *<p>
-  * Note: When i added a file path insted of just storing the file in the project folder,
-  * i used Chat GTP to go through the code and add change the file path in all the methods
-  * that esisted at that point in the project.
-  *<p>
-  */
+ * Handles saving and loading of game data such as players, boards, and game state. Supports both
+ * SnakesAndLadders and Risk game types, as well as quiz questions. The data is stored in CSV files
+ * for easy access and manipulation.
+ *
+ * <p>Note: When i added a file path insted of just storing the file in the project folder, i used
+ * Chat GTP to go through the code and add change the file path in all the methods that esisted at
+ * that point in the project.
+ *
+ * <p>
+ */
 public class FileHandler {
 
   // The directory where all save files are stored.
@@ -28,9 +27,8 @@ public class FileHandler {
 
   /**
    * Builds the full file path from a filename relative to the base directory.
-   * 
-   * <p>
-   * Note: this method was created by chat GTP when he changed the file path in all the methods
+   *
+   * <p>Note: this method was created by chat GTP when he changed the file path in all the methods
    * <p<
    *
    * @param fileName The name of the file (e.g., "SavedGames.csv")
@@ -82,8 +80,7 @@ public class FileHandler {
     HashMap<String, String> savedGames = new HashMap<>();
     File file = new File(getFilePath("SavedGames.csv"));
 
-    if (!file.exists())
-      return savedGames; // No games saved yet
+    if (!file.exists()) return savedGames; // No games saved yet
 
     try (Scanner scanner = new Scanner(file)) {
       while (scanner.hasNextLine()) {
@@ -113,8 +110,7 @@ public class FileHandler {
       throw new IllegalArgumentException("Invalid File Name");
     }
 
-    try (
-        FileWriter fileWriter = new FileWriter(getFilePath("SavedGames.csv"), true);
+    try (FileWriter fileWriter = new FileWriter(getFilePath("SavedGames.csv"), true);
         PrintWriter writer = new PrintWriter(fileWriter)) {
       writer.println(name + "," + game.getGameType());
     } catch (IOException e) {
@@ -133,8 +129,7 @@ public class FileHandler {
     }
 
     File file = new File(getFilePath("SavedGames.csv"));
-    if (!file.exists())
-      return;
+    if (!file.exists()) return;
 
     List<String> remainingLines = new ArrayList<>();
 
@@ -162,10 +157,10 @@ public class FileHandler {
   }
 
   /**
-  * Deletes all saved files related to a specific game.
-  *
-  * @param name The name of the game to delete
-  */
+   * Deletes all saved files related to a specific game.
+   *
+   * @param name The name of the game to delete
+   */
   public static void deleteGame(String name) {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
@@ -188,10 +183,10 @@ public class FileHandler {
   }
 
   /**
-  * Saves all players in the game to a CSV file.
-  *
-  * @param game The game object containing player data
-  */
+   * Saves all players in the game to a CSV file.
+   *
+   * @param game The game object containing player data
+   */
   private static void savePlayers(Game game) {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
@@ -208,11 +203,11 @@ public class FileHandler {
   }
 
   /**
-  * Loads the list of players from the saved CSV file.
-  *
-  * @param gameName The name of the saved game
-  * @return A list of Player objects reconstructed from file
-  */
+   * Loads the list of players from the saved CSV file.
+   *
+   * @param gameName The name of the saved game
+   * @return A list of Player objects reconstructed from file
+   */
   private static ArrayList<Player> loadPlayers(String gameName) {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
@@ -246,10 +241,10 @@ public class FileHandler {
   }
 
   /**
-  * Saves the current game state, such as the current player and available troops (if Risk).
-  *
-  * @param game The game object to save state from
-  */
+   * Saves the current game state, such as the current player and available troops (if Risk).
+   *
+   * @param game The game object to save state from
+   */
   private static void saveGameState(Game game) {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
@@ -269,12 +264,12 @@ public class FileHandler {
   }
 
   /**
-  * Loads the current player from the saved game state file.
-  *
-  * @param gameName The name of the game to load
-  * @param players The list of all players in the game
-  * @return The Player object representing the current player
-  */
+   * Loads the current player from the saved game state file.
+   *
+   * @param gameName The name of the game to load
+   * @param players The list of all players in the game
+   * @return The Player object representing the current player
+   */
   private static Player loadCurrentPlayer(String gameName, ArrayList<Player> players) {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
@@ -323,10 +318,10 @@ public class FileHandler {
   }
 
   /**
-  * Saves a Snakes and Ladders game to the file system.
-  *
-  * @param game The SnakesAndLadders game instance
-  */
+   * Saves a Snakes and Ladders game to the file system.
+   *
+   * @param game The SnakesAndLadders game instance
+   */
   private static void saveSnakesAndLadders(Game game) {
     savePlayers(game);
     saveGameState(game);
@@ -335,10 +330,10 @@ public class FileHandler {
   }
 
   /**
-  * Saves a Risk game to the file system.
-  *
-  * @param game The Risk game instance
-  */
+   * Saves a Risk game to the file system.
+   *
+   * @param game The Risk game instance
+   */
   private static void saveRiskGame(Game game) {
     savePlayers(game);
     saveGameState(game);
@@ -347,77 +342,77 @@ public class FileHandler {
   }
 
   /**
-  * Loads a Snakes and Ladders game from saved files.
-  *
-  * @param name The name of the saved game
-  * @return A SnakesAndLadders instance reconstructed from saved data
-  */
+   * Loads a Snakes and Ladders game from saved files.
+   *
+   * @param name The name of the saved game
+   * @return A SnakesAndLadders instance reconstructed from saved data
+   */
   private static SnakesAndLadders loadSnakesAndLadders(String name) {
     ArrayList<Player> players = loadPlayers(name);
     return new SnakesAndLadders(
-        players.size(), name, players,
-        loadBoardLadderGame(name),
-        loadCurrentPlayer(name, players));
+        players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
   }
 
   /**
-  * Loads a Risk game from saved files.
-  *
-  * @param name The name of the saved game
-  * @return A Risk instance reconstructed from saved data
-  */
+   * Loads a Risk game from saved files.
+   *
+   * @param name The name of the saved game
+   * @return A Risk instance reconstructed from saved data
+   */
   private static Risk loadRiskGame(String name) {
     ArrayList<Player> players = loadPlayers(name);
     return new Risk(
-        players.size(), name, players,
+        players.size(),
+        name,
+        players,
         loadBoardRisk(name),
         loadCurrentPlayer(name, players),
         loadAvailableTroops(name));
   }
 
   /**
-  * Loads a Snakes and Ladders board from a file.
-  *
-  * @param name The game name used as the board file identifier
-  * @return A BoardSnakesAndLadders instance
-  */
+   * Loads a Snakes and Ladders board from a file.
+   *
+   * @param name The game name used as the board file identifier
+   * @return A BoardSnakesAndLadders instance
+   */
   private static BoardSnakesAndLadders loadBoardLadderGame(String name) {
     return BoardSnakesAndLadders.loadBoard(name);
   }
 
   /**
-  * Loads a Risk board from a file.
-  *
-  * @param name The game name used as the board file identifier
-  * @return A BoardRisk instance
-  */
+   * Loads a Risk board from a file.
+   *
+   * @param name The game name used as the board file identifier
+   * @return A BoardRisk instance
+   */
   private static BoardRisk loadBoardRisk(String name) {
     return BoardRisk.loadBoard(name);
   }
 
   /**
-  * Saves the board of a Snakes and Ladders game to file.
-  *
-  * @param game The SnakesAndLadders instance to save
-  */
+   * Saves the board of a Snakes and Ladders game to file.
+   *
+   * @param game The SnakesAndLadders instance to save
+   */
   private static void saveBoardLadderGame(SnakesAndLadders game) {
     game.getBoard().saveBoard(game.getGameName());
   }
 
   /**
-  * Saves the board of a Risk game to file.
-  *
-  * @param game The Risk instance to save
-  */
+   * Saves the board of a Risk game to file.
+   *
+   * @param game The Risk instance to save
+   */
   private static void saveBoardRisk(Risk game) {
     game.getBoard().saveBoard(game.getGameName());
   }
 
   /**
-  * Loads a random quiz question and answer pair from a file.
-  *
-  * @return A list with two elements: question (index 0) and answer (index 1)
-  */
+   * Loads a random quiz question and answer pair from a file.
+   *
+   * @return A list with two elements: question (index 0) and answer (index 1)
+   */
   public static List<String> getRandomQuizQuestion() {
     List<String> questionAndAnswer = new ArrayList<>();
     List<String> allLines = new ArrayList<>();
@@ -447,11 +442,11 @@ public class FileHandler {
   }
 
   /**
-  * Loads event data for a Snakes and Ladders board from a CSV file.
-  *
-  * @param boardType The type of board (used to identify the file)
-  * @return A map of tile positions to their corresponding event
-  */
+   * Loads event data for a Snakes and Ladders board from a CSV file.
+   *
+   * @param boardType The type of board (used to identify the file)
+   * @return A map of tile positions to their corresponding event
+   */
   public static HashMap<Integer, Event> loadSnakesAndLaddersEvents(String boardType) {
     HashMap<Integer, Event> events = new HashMap<>();
 

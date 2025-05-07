@@ -3,8 +3,8 @@ package edu.ntnu.irr.bidata.Model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The {@code Player} class represents a user/player in the game.
- * It stores basic attributes such as the player's name, color, and age.
+ * The {@code Player} class represents a user/player in the game. It stores basic attributes such as
+ * the player's name, color, and age.
  */
 public class Player {
   private final String name;
@@ -14,9 +14,9 @@ public class Player {
   /**
    * Constructs a new {@code Player} with the specified name, color, and age.
    *
-   * @param name  The name of the player.
+   * @param name The name of the player.
    * @param color The color assigned to the player's piece.
-   * @param age   The age of the player.
+   * @param age The age of the player.
    */
   public Player(String name, String color, int age) {
     this.name = name;
@@ -52,8 +52,7 @@ public class Player {
   }
 
   /**
-   * Returns a CSV-formatted string for saving the player data.
-   * Format: name,color,age
+   * Returns a CSV-formatted string for saving the player data. Format: name,color,age
    *
    * @return The string representing the player's save format.
    */
