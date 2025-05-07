@@ -24,9 +24,7 @@ public class MyWindow extends Application {
     primaryStage.setTitle("Runeborne");
     primaryStage.getIcons().add(iconImage);
 
-    StartPageView view = new StartPageView(FileHandler.getSavedGames());
-    new StartPageController(view);
-    Scene scene = new Scene(view);
+    Scene scene = new Scene(new StartPageController().getView());
     scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
     primaryStage.setScene(scene);

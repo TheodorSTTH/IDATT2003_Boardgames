@@ -11,13 +11,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class StartPageView extends VBox {
-  private TextField gameNameField = new TextField();
-  private ComboBox<String> gameSelectorBox = new ComboBox<>();
-  private ComboBox<String> savedGames = new ComboBox<>();
-  private Button confirmButton = new Button("Confirm");
-  private Button LoadGameButton = new Button("Load Game");
-  private Button exitButton = new Button("Leave Runeborne");
-  private ComboBox<Integer> playerCountBox = new ComboBox<>();
+  private final TextField gameNameField = new TextField();
+  private final ComboBox<String> gameSelectorBox = new ComboBox<>();
+  private final ComboBox<String> savedGames = new ComboBox<>();
+  private final Button confirmButton = new Button("Confirm");
+  private final Button loadGameButton = new Button("Load Game");
+  private final Button exitButton = new Button("Leave Runeborne");
+  private final ComboBox<Integer> playerCountBox = new ComboBox<>();
 
   public StartPageView(HashMap<String, String> savedGamesMap) {
     getStyleClass().add("start-page");
@@ -63,9 +63,9 @@ public class StartPageView extends VBox {
     savedGames.setPromptText("Select a saved adventure");
 
 
-    LoadGameButton.getStyleClass().add("fantasy-button");
-    VBox.setMargin(LoadGameButton, new Insets(5, 5, 5, 5));
-    LoadGameButton.setDisable(true);
+    loadGameButton.getStyleClass().add("fantasy-button");
+    VBox.setMargin(loadGameButton, new Insets(5, 5, 5, 5));
+    loadGameButton.setDisable(true);
 
     exitButton.getStyleClass().add("fantasy-button");
     exitButton.getStyleClass().add("close-button");
@@ -78,7 +78,7 @@ public class StartPageView extends VBox {
 
     HBox savedGameBox = new HBox(10);
     savedGameBox.setAlignment(Pos.CENTER);
-    savedGameBox.getChildren().addAll(savedGames, LoadGameButton);
+    savedGameBox.getChildren().addAll(savedGames, loadGameButton);
     HBox.setMargin(savedGameBox, new Insets(5, 5, 15, 5));
 
 
@@ -106,7 +106,7 @@ public class StartPageView extends VBox {
   }
 
   public Button getLoadGameButton() {
-    return LoadGameButton;
+    return loadGameButton;
   }
 
   public Button getExitButton() {

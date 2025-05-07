@@ -2,15 +2,23 @@ package edu.ntnu.irr.bidata.View.StartPage;
 
 import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.UI;
+import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.View.PopUp;
+import java.util.HashMap;
 import javafx.beans.value.ChangeListener;
 
 public class StartPageController {
   private final StartPageView view;
+  private HashMap<String, String> savedGamesMap;
 
-  public StartPageController(StartPageView view) {
-    this.view = view;
+  public StartPageController() {
+    this.savedGamesMap = FileHandler.getSavedGames();
+    this.view = new StartPageView(savedGamesMap);
     initialize();
+  }
+
+  public StartPageView getView() {
+    return view;
   }
 
   private void initialize() {
