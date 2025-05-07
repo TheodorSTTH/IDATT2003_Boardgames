@@ -1,6 +1,4 @@
-package edu.ntnu.irr.bidata.Model;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package edu.ntnu.irr.bidata.model;
 
 /**
  * The {@code Player} class represents a user/player in the game. It stores basic attributes such as

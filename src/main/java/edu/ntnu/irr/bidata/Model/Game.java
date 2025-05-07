@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.model;
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.View.PopUp;
 

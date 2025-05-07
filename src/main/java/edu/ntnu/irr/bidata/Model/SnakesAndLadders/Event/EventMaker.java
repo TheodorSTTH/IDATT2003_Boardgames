@@ -1,7 +1,8 @@
-package edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event;
+package edu.ntnu.irr.bidata.model.SnakesAndLadders.Event;
 
-import edu.ntnu.irr.bidata.Model.FileHandler;
 import java.util.List;
+
+import edu.ntnu.irr.bidata.model.FileHandler;
 
 /**
  * Factory class responsible for creating different types of game events.

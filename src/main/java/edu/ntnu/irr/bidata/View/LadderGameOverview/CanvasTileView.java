@@ -1,7 +1,8 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
-import edu.ntnu.irr.bidata.Model.Player;
 import java.util.ArrayList;
+
+import edu.ntnu.irr.bidata.model.Player;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

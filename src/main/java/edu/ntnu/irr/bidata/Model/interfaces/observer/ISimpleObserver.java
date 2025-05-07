@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.interfaces.observer;
+package edu.ntnu.irr.bidata.model.interfaces.observer;
 
 /**
  * Is the observer in the Observer design pattern. Is meant for

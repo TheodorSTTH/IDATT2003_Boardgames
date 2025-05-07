@@ -1,8 +1,8 @@
 package edu.ntnu.irr.bidata.View.RiskGame;
 
-import edu.ntnu.irr.bidata.Model.Risk.Country;
-import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.model.Risk.Country;
+import edu.ntnu.irr.bidata.model.Risk.Risk;
 
 import java.util.Collections;
 import java.util.List;

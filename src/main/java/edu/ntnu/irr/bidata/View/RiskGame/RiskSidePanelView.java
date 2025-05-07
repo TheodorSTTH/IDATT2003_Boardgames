@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.View.RiskGame;
 
-import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
+import edu.ntnu.irr.bidata.model.Risk.Risk;
+import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
 import javafx.scene.control.Accordion;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;

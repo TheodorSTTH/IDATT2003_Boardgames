@@ -2,8 +2,9 @@ package edu.ntnu.irr.bidata.View.StartPage;
 
 import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.model.FileHandler;
+
 import java.util.HashMap;
 
 import javafx.geometry.Insets;

@@ -1,8 +1,10 @@
-package edu.ntnu.irr.bidata.Model.Risk;
+package edu.ntnu.irr.bidata.model.Risk;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import edu.ntnu.irr.bidata.Model.Player;
+
+import edu.ntnu.irr.bidata.model.Player;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

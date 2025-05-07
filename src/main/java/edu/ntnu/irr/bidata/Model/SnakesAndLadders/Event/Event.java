@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event;
+package edu.ntnu.irr.bidata.model.SnakesAndLadders.Event;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

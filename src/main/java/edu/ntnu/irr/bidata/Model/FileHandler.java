@@ -1,13 +1,14 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.model;
 
-import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
-import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.BoardSnakesAndLadders;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.EventMaker;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.SnakesAndLadders;
 import java.io.*;
 import java.util.*;
+
+import edu.ntnu.irr.bidata.model.Risk.BoardRisk;
+import edu.ntnu.irr.bidata.model.Risk.Risk;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.BoardSnakesAndLadders;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.Event;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.EventMaker;
 
 /**
  * Handles saving and loading of game data such as players, boards, and game state. Supports both

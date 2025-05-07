@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event;
+package edu.ntnu.irr.bidata.model.SnakesAndLadders.Event;
 
 /**
  * Represents a ladder event in the Snakes and Ladders game.

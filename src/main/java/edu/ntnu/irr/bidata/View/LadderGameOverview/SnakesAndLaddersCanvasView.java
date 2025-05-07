@@ -1,13 +1,14 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
-import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.SnakesAndLadders;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import edu.ntnu.irr.bidata.model.Player;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.Event;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.LadderEvent;
+import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.QuizEvent;
+import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

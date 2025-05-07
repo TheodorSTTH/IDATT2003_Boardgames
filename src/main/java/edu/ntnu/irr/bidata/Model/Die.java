@@ -1,9 +1,10 @@
-package edu.ntnu.irr.bidata.Model;
+package edu.ntnu.irr.bidata.model;
 
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.ISubject;
 import java.util.ArrayList;
 import java.util.Random;
+
+import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
+import edu.ntnu.irr.bidata.model.interfaces.observer.ISubject;
 
 /**
  * Represents a single die with a specified number of faces. Implements the Observer pattern,
