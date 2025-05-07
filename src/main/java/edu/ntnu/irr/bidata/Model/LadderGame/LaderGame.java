@@ -4,7 +4,7 @@ import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.ISubject;
 import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.LadderGameOverview.SnakesAndLaddersPage;
+import edu.ntnu.irr.bidata.View.LadderGameOverview.SnakesAndLaddersPageView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -56,13 +56,13 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
     protected void init() {
         super.init();
         board.setPlayers(players);
-        SnakesAndLaddersPage snakesAndLaddersPage = new SnakesAndLaddersPage(this);
-        NavigationManager.navigate(snakesAndLaddersPage); // TODO: Find way around doing this here
+        SnakesAndLaddersPageView snakesAndLaddersPageView = new SnakesAndLaddersPageView(this);
+        NavigationManager.navigate(snakesAndLaddersPageView); // TODO: Find way around doing this here
         showRueles();
     }
 
     public void startSavedGame() {
-        NavigationManager.navigate(new SnakesAndLaddersPage(this));
+        NavigationManager.navigate(new SnakesAndLaddersPageView(this));
     }
 
     public void takeAction() {

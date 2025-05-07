@@ -7,16 +7,15 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 
-public class SnakesAndLaddersPage extends HBox {
+public class SnakesAndLaddersPageView extends HBox {
   SnakesAndLaddersCanvasView board;
   SnakesAndLaddersSidePanelView sidePanel;
 
   /**
    * Constructs snake and ladders page.
    * */
-  public SnakesAndLaddersPage(LaderGame snakesAndLadders) {
+  public SnakesAndLaddersPageView(LaderGame snakesAndLadders) {
     getStyleClass().add("snakes-and-ladders-game-page");
     setAlignment(Pos.CENTER);
     if (getClass().getResource("/style.css") != null) {
@@ -25,7 +24,7 @@ public class SnakesAndLaddersPage extends HBox {
       System.err.println("Warning: style.css not found!");
     }
     this.board = new SnakesAndLaddersCanvasView(snakesAndLadders);
-    this.sidePanel = new SnakesAndLaddersSidePanelView(snakesAndLadders);
+    this.sidePanel = new SnakesAndLaddersSidePanelController(snakesAndLadders).getView();
     sidePanel.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
     setMargin(sidePanel, new Insets(40));
     NavigationManager.getStage().widthProperty().addListener((obs, oldW, newW) -> {
