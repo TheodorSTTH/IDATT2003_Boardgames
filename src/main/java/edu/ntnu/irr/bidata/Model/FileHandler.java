@@ -51,7 +51,7 @@ public class FileHandler {
   public static HashMap<String, String> getSavedGames() {
     HashMap<String, String> savedGames = new HashMap<>();
     try {
-      Scanner scanner = new Scanner(new File(getFilePath("savedGames.csv")));
+      Scanner scanner = new Scanner(new File(getFilePath("SavedGames.csv")));
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
         String[] data = line.split(",");
@@ -69,7 +69,7 @@ public class FileHandler {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
-    try (FileWriter fileWriter = new FileWriter(getFilePath("savedGames.csv"), true);
+    try (FileWriter fileWriter = new FileWriter(getFilePath("SavedGames.csv"), true);
         PrintWriter writer = new PrintWriter(fileWriter)) {
       writer.println(game.getGameName() + "," + game.getGameType());
     } catch (IOException e) {
@@ -82,7 +82,7 @@ public class FileHandler {
       throw new IllegalArgumentException("Invalid File Name");
     }
     try {
-      Scanner scanner = new Scanner(new File(getFilePath("savedGames.csv")));
+      Scanner scanner = new Scanner(new File(getFilePath("SavedGames.csv")));
       ArrayList<String> lines = new ArrayList<>();
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
@@ -91,7 +91,7 @@ public class FileHandler {
         }
       }
       scanner.close();
-      PrintWriter writer = new PrintWriter(getFilePath("savedGames.csv"));
+      PrintWriter writer = new PrintWriter(getFilePath("SavedGames.csv"));
       for (String line : lines) {
         writer.println(line);
       }
@@ -286,7 +286,7 @@ public class FileHandler {
     HashMap<Integer, Event> events = new HashMap<>();
 
     try {
-      Scanner scanner = new Scanner(new File(getFilePath("LaderSetup" + boardType + ".csv")));
+      Scanner scanner = new Scanner(new File(getFilePath("EventSetup" + boardType + ".csv")));
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
         String[] data = line.split(",");
