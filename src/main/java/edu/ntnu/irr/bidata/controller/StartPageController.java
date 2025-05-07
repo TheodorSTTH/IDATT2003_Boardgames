@@ -4,13 +4,12 @@ import edu.ntnu.irr.bidata.MyWindow;
 import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Game;
-import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.model.risk.Risk;
-import edu.ntnu.irr.bidata.view.createplayer.CreatePlayerPageController;
-import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
+import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.StartPageView;
 import edu.ntnu.irr.bidata.view.risk.RiskPage;
+import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import java.util.HashMap;
 import javafx.beans.value.ChangeListener;
 
@@ -33,11 +32,14 @@ public class StartPageController {
     view.getExitButton().setOnAction(event -> MyWindow.closeApplication());
     view.getLoadGameButton().setOnAction(event -> handleLoad());
 
-    ChangeListener<Object> enabler = (obs, oldV, newV) -> view.getConfirmButton().setDisable(!allInputsValid());
+    ChangeListener<Object> enabler =
+        (obs, oldV, newV) -> view.getConfirmButton().setDisable(!allInputsValid());
     view.getGameNameField().textProperty().addListener(enabler);
     view.getPlayerCountBox().valueProperty().addListener(enabler);
     view.getGameSelectorBox().valueProperty().addListener(enabler);
-    view.getSavedGamesBox().valueProperty().addListener((obs, oldV, newV) -> view.getLoadGameButton().setDisable(newV.isEmpty()));
+    view.getSavedGamesBox()
+        .valueProperty()
+        .addListener((obs, oldV, newV) -> view.getLoadGameButton().setDisable(newV.isEmpty()));
   }
 
   private boolean allInputsValid() {
@@ -56,7 +58,8 @@ public class StartPageController {
     if (selectedPlayerCount != null && !gameName.isEmpty()) {
       startGame(selectedPlayerCount, view.getGameSelectorBox().getValue(), gameName);
     } else {
-      PopUp.showWarning("Invalid name", "Please select the number of players and a game before continuing.");
+      PopUp.showWarning(
+          "Invalid name", "Please select the number of players and a game before continuing.");
     }
   }
 
