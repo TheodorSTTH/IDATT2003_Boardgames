@@ -7,8 +7,8 @@ import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.SnakesAndLaddersWin.SnakesAndLaddersWinningPage;
 import edu.ntnu.irr.bidata.View.StartPage.StartPage;
+import edu.ntnu.irr.bidata.View.WinPage.WinningPage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -64,7 +64,7 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
       snakesAndLadders.takeAction();
       if (snakesAndLadders.getBoard().hasWon(currentPlayer)) {
         FileHandler.deleteGame(snakesAndLadders.getGameName());
-        NavigationManager.navigate(new SnakesAndLaddersWinningPage(currentPlayer.getName()));
+        NavigationManager.navigate(new WinningPage(currentPlayer.getName(), "snakes-and-ladders-win-page"));
       }
     });
     saveButton.setOnAction(e -> {

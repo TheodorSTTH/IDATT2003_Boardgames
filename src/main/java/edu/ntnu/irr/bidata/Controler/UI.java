@@ -5,7 +5,6 @@ import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Model.FileHandler;
-import edu.ntnu.irr.bidata.View.SnakesAndLaddersWin.SnakesAndLaddersWinningPage;
 
 // TODO: Separate start page logic form UI class
 public class UI {

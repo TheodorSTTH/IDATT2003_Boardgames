@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.View.SnakesAndLaddersWin;
+package edu.ntnu.irr.bidata.View.WinPage;
 
 import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
@@ -9,9 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class SnakesAndLaddersWinningPage extends VBox {
-  public SnakesAndLaddersWinningPage(String winner) {
-    getStyleClass().add("snakes-and-ladders-win-page");
+public class WinningPage extends VBox {
+  public WinningPage(String winner, String winPageKey) {
+    getStyleClass().add(winPageKey);
     setAlignment(Pos.TOP_RIGHT);
     Label winLabel = new Label("You win " + winner + "!");
     VBox.setMargin(winLabel, new Insets(10, 20, 10, 20));
