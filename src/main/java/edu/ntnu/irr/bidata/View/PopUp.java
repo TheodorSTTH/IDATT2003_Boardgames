@@ -26,6 +26,9 @@ public class PopUp {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
+        alert.setGraphic(null);
+        alert.getDialogPane().getStylesheets().add(PopUp.class.getResource("/style.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("fantasy-dialog");
         alert.showAndWait();
     }
 
@@ -97,6 +100,7 @@ public static boolean askQuestion(String question, String correctAnswer) {
     TextInputDialog dialog = new TextInputDialog();
     dialog.setTitle("Quiz Question");
     dialog.setHeaderText(null);
+    dialog.setGraphic(null);
     dialog.setContentText(question);
     dialog.getDialogPane().getStylesheets().add(PopUp.class.getResource("/style.css").toExternalForm());
     dialog.getDialogPane().getStyleClass().add("fantasy-dialog");

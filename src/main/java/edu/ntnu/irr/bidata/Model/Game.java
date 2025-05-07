@@ -31,6 +31,10 @@ public abstract class Game {
             PopUp.showWarning("Player already exists", "Player with this name already exists");
             return false;
         }
+        if (name.contains(",")) {
+            PopUp.showWarning("Invalid name", "Name cannot contain a comma(,)");
+            return false;
+        }
         players.add(new Player(name, color, age));
         availableColors.remove(color);
         if (players.size() == amountOfPlayers) {
