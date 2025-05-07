@@ -3,7 +3,7 @@ package edu.ntnu.irr.bidata;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
-/** Class is responsible for switching java fx scenes based of given scene */
+/** Class is responsible for switching java fx scenes based of given scene. */
 public class NavigationManager {
   private static Stage primaryStage;
 

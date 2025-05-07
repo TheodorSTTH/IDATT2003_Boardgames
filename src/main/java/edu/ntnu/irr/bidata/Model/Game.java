@@ -73,7 +73,7 @@ public abstract class Game {
 
     // Check if the name contains a comma, which is not allowed
     if (name.contains(",")) {
-      PopUp.showWarning("Invalid name", "Name cannot contain a comma(,)");
+      PopUp.showWarning("Invalid name", "Name cannot contain\na comma(,)");
       return false;
     }
 

@@ -1,7 +1,6 @@
 package edu.ntnu.irr.bidata.view;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -9,8 +8,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-/** Is responsible for showing a die. */
+/**
+ * Responsible for displaying a die face from 1 to 6. It observes a value (from 1 to 6) and updates
+ * the visible dots accordingly.
+ */
 public class DieView extends Pane implements Observer<Integer> {
+
+  // Circle nodes representing die pips (dots)
   private final Circle center;
   private final Circle topRight;
   private final Circle topLeft;
@@ -19,16 +23,25 @@ public class DieView extends Pane implements Observer<Integer> {
   private final Circle bottomRight;
   private final Circle bottomLeft;
 
+  /**
+   * Constructs a die view with a given size and colors.
+   *
+   * @param size the size of the die (width and height in pixels)
+   * @param dieColor the background color of the die
+   * @param dotColor the color of the dots/pips
+   */
   public DieView(int size, Color dieColor, Color dotColor) {
+    // Calculate positions and sizes based on provided size
     int padding = (int) Math.floor(size * 0.225);
     int topY = padding;
     int leftX = padding;
     int rightX = size - padding;
     int centerX = size / 2;
     int centerY = size / 2;
-    int bottomY = size - padding;
     int radius = size / 10;
+    int bottomY = size - padding;
 
+    // Initialize each dot (Circle)
     center = new Circle(centerX, centerY, radius, dotColor);
     topLeft = new Circle(leftX, topY, radius, dotColor);
     topRight = new Circle(rightX, topY, radius, dotColor);
@@ -37,15 +50,21 @@ public class DieView extends Pane implements Observer<Integer> {
     bottomLeft = new Circle(leftX, bottomY, radius, dotColor);
     bottomRight = new Circle(rightX, bottomY, radius, dotColor);
 
+    // Set die background and size
     this.setMaxSize(size, size);
     this.setPrefSize(size, size);
     this.setBackground(new Background(new BackgroundFill(dieColor, new CornerRadii(10), null)));
+
+    // Add all pips to the Pane
     getChildren()
         .addAll(center, topLeft, topRight, centerLeft, centerRight, bottomLeft, bottomRight);
+
+    // Hide all dots initially
     center.setVisible(false);
     setVisible(false);
   }
 
+  /** Hides all dots from the die face. */
   private void hideAllDots() {
     center.setVisible(false);
     topLeft.setVisible(false);
@@ -57,13 +76,17 @@ public class DieView extends Pane implements Observer<Integer> {
   }
 
   /**
-   * Displays the die roll. If an invalid number is given then nothing is displayed.
+   * Updates the die to display the given number of dots (1-6). If the value is not valid (outside
+   * 1-6), an error is printed.
    *
-   * @param numberOfDots should be between 1 and 6.
+   * @param numberOfDots the number of dots to display (expected between 1 and 6)
    */
+  @Override
   public void update(Integer numberOfDots) {
-    hideAllDots();
-    setVisible(true);
+    hideAllDots(); // Clear previous die face
+    setVisible(true); // Show die
+
+    // Show appropriate dots based on number
     switch (numberOfDots) {
       case 1:
         center.setVisible(true);
@@ -99,6 +122,7 @@ public class DieView extends Pane implements Observer<Integer> {
         centerRight.setVisible(true);
         break;
       default:
+        // Error handling for unexpected input
         System.err.println("Number of dots is " + numberOfDots + ". Max number is 6");
         break;
     }
