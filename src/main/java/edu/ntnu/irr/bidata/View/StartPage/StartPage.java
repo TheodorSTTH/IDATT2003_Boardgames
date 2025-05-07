@@ -20,7 +20,7 @@ public class StartPage extends VBox {
     getStyleClass().add("start-page");
     setAlignment(Pos.TOP_CENTER);
 
-    Label tittel = new Label("Wellcome to the kindom of Runeborne");
+    Label tittel = new Label("Welcome to the kindom of Runeborne");
     tittel.getStyleClass().add("fantasy-title");
 
     Label subtittel = new Label("Choose your next adventure!");

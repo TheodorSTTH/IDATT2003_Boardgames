@@ -48,6 +48,11 @@ public class FileHandler {
     }
   }
 
+  /**
+   * Gets a hashmap with all saved games found locally.
+   *
+   * @return Hashmap with key as game name and value game type.
+   * */
   public static HashMap<String, String> getSavedGames() {
     HashMap<String, String> savedGames = new HashMap<>();
     try {

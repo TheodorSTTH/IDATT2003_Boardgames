@@ -1,6 +1,9 @@
 package edu.ntnu.irr.bidata.Controler;
 
+import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.View.StartPage.StartPage;
+import edu.ntnu.irr.bidata.View.StartPage.StartPageController;
+import edu.ntnu.irr.bidata.View.StartPage.StartPageView;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -20,8 +23,12 @@ public class MyWindow extends Application {
     Image iconImage = new Image("/favicon.png");
     primaryStage.setTitle("Runeborne");
     primaryStage.getIcons().add(iconImage);
-    Scene scene = new Scene(new StartPage());
+
+    StartPageView view = new StartPageView(FileHandler.getSavedGames());
+    new StartPageController(view);
+    Scene scene = new Scene(view);
     scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
     primaryStage.setScene(scene);
     primaryStage.show();
     primaryStage.setMaximized(true);
