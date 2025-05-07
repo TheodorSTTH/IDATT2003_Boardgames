@@ -88,7 +88,8 @@
 }
 
 .fantasy-title{
-  -fx-font-size: 60px;
+  -fx-font-size: 55px;
+  
 }
 
 .fantasy-text {
@@ -176,6 +177,11 @@
   -fx-font-size: 16px;
   -fx-cursor: hand;
   -fx-font-weight: bold;
+}
+
+.close-button {
+  -fx-pref-width: 510px;
+  -fx-pref-height: 65px;
 }
 
 .country-view {

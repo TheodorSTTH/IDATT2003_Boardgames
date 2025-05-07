@@ -30,14 +30,14 @@ public class CreatePlayerPage extends VBox {
         getStyleClass().add("start-page");
         setAlignment(Pos.TOP_CENTER);
 
-        Label tittelLabel = new Label("Create a new player");
+        Label tittelLabel = new Label("Create a New Hero");
         tittelLabel.getStyleClass().add("fantasy-title");
         VBox.setMargin(tittelLabel, new Insets(20, 5, 10, 5));
 
         TextField usernameField = new TextField();
         usernameField.getStyleClass().add("fantasy-text-field");
         VBox.setMargin(usernameField, new Insets(5, 100, 10, 100));
-        usernameField.setPromptText("Username");
+        usernameField.setPromptText("Hero Name");
         
 
         Label colorLabel = new Label("Choose a color: ");
@@ -50,7 +50,7 @@ public class CreatePlayerPage extends VBox {
         playerColureField.getItems().addAll(UI.getGame().getAvailableColors());
         playerColureField.setPromptText("Chose a color");
 
-        Label ageLabel = new Label("How old are you: ");
+        Label ageLabel = new Label("How old are your hero: ");
         VBox.setMargin(ageLabel, new Insets(5, 5, 5, 5));
         ageLabel.getStyleClass().add("fantasy-text");
 
@@ -60,8 +60,9 @@ public class CreatePlayerPage extends VBox {
         VBox.setMargin(ageSpinner, new Insets(5, 5, 5, 5));
         ageSpinner.setEditable(true);
 
-        Button createPlayerButton = new Button("New player");
+        Button createPlayerButton = new Button("New Hero");
         createPlayerButton.getStyleClass().add("fantasy-button");
+        createPlayerButton.getStyleClass().add("close-button");
         VBox.setMargin(createPlayerButton, new Insets(10, 5, 5, 5));
         createPlayerButton.setDisable(true);
 

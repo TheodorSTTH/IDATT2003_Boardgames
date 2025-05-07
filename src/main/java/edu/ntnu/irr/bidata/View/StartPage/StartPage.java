@@ -1,5 +1,6 @@
 package edu.ntnu.irr.bidata.View.StartPage;
 
+import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.View.PopUp;
@@ -19,14 +20,16 @@ public class StartPage extends VBox {
     getStyleClass().add("start-page");
     setAlignment(Pos.TOP_CENTER);
 
-    Label tittel = new Label("Choose your next adventure!");
+    Label tittel = new Label("Wellcome to the kindom of Runeborne");
     tittel.getStyleClass().add("fantasy-title");
-    VBox.setMargin(tittel, new Insets(20, 3, 10, 5));
 
+    Label subtittel = new Label("Choose your next adventure!");
+    subtittel.getStyleClass().add("fantasy-text");
+    
 
     TextField gameNameField = new TextField();
-    gameNameField.setPromptText("Game Name");
-    VBox.setMargin(gameNameField, new Insets(5, 100, 10, 100));
+    gameNameField.setPromptText("Adventure Name");
+    VBox.setMargin(gameNameField, new Insets(0, 100, 10, 100));
     gameNameField.getStyleClass().add("fantasy-text-field");
 
 
@@ -34,14 +37,14 @@ public class StartPage extends VBox {
     amountOfPlayersComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(amountOfPlayersComboBox, new Insets(5, 5, 5, 5));
     amountOfPlayersComboBox.getItems().addAll(2, 3, 4, 5);
-    amountOfPlayersComboBox.setPromptText("Select Number of Players");
+    amountOfPlayersComboBox.setPromptText("Select Number of Heros");
 
 
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
     WhatGameComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(WhatGameComboBox, new Insets(5, 5, 5, 5));
     WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
-    WhatGameComboBox.setPromptText("Select a Game to play");
+    WhatGameComboBox.setPromptText("Select an Adventure");
 
 
     Button ConfirmButton = new Button("Confirm");
@@ -77,7 +80,7 @@ public class StartPage extends VBox {
       String gameType = savedGamesMap.get(game);
       savedGames.getItems().add(game + " (" + gameType + ")");
     }
-    savedGames.setPromptText("Select a Game, form saved games");
+    savedGames.setPromptText("Select a saved adventure");
 
 
     Button LoadGameButton = new Button("Load Game");
@@ -98,6 +101,15 @@ public class StartPage extends VBox {
     });
 
 
+    Button exitButton = new Button("Leave Runeborne");
+    exitButton.getStyleClass().add("fantasy-button");
+    exitButton.getStyleClass().add("close-button");
+    VBox.setMargin(exitButton, new Insets(32, 5, 5, 5));
+    exitButton.setOnAction(e -> {
+      MyWindow.closeApplication();
+    });
+
+
 
     HBox newGameBox = new HBox(10);
     newGameBox.setAlignment(Pos.CENTER);
@@ -110,7 +122,7 @@ public class StartPage extends VBox {
     HBox.setMargin(savedGameBox, new Insets(5, 5, 15, 5));
     
 
-    getChildren().addAll(tittel, gameNameField, newGameBox, or, savedGameBox);
+    getChildren().addAll(tittel,subtittel, gameNameField, newGameBox, or, savedGameBox, exitButton);
 
 
     savedGames.valueProperty().addListener((obs, oldFrom, newFrom) -> {

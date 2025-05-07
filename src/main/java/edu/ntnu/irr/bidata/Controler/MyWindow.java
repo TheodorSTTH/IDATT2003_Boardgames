@@ -2,6 +2,7 @@ package edu.ntnu.irr.bidata.Controler;
 
 import edu.ntnu.irr.bidata.View.StartPage.StartPage;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -17,7 +18,7 @@ public class MyWindow extends Application {
     MyWindow.primaryStage = primaryStage;
     NavigationManager.setStage(primaryStage);
     Image iconImage = new Image("/favicon.png");
-    primaryStage.setTitle("BoardGame");
+    primaryStage.setTitle("Runeborne");
     primaryStage.getIcons().add(iconImage);
     Scene scene = new Scene(new StartPage());
     scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
@@ -28,6 +29,12 @@ public class MyWindow extends Application {
 
   public static Stage getPrimaryStage() {
     return primaryStage;
+  }
+
+  public static void closeApplication() {
+    System.out.println("Application is closing...");
+    Platform.exit();
+    System.exit(0);
   }
 
   public static void main(String[] args) {
