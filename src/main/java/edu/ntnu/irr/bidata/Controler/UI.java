@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.Controler;
 import edu.ntnu.irr.bidata.Model.Game;
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
 import edu.ntnu.irr.bidata.Model.FileHandler;

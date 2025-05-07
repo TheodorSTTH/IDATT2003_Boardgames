@@ -11,12 +11,12 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.Random;
 
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Model.LadderGame.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.EventMaker;
 import edu.ntnu.irr.bidata.Model.Risk.BoardRisk;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.EventMaker;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
 
 public class FileHandler {
 
@@ -250,7 +250,7 @@ public class FileHandler {
     game.getBoard().saveBoard(game.getGameName());
   }
 
-  public static List<String> getRandomQizzQestion() {
+  public static List<String> getRandomQuizQuestion() {
     List<String> questionAndAnswer = new ArrayList<>();
     List<String> allLines = new ArrayList<>();
     try {
@@ -296,7 +296,7 @@ public class FileHandler {
           int destination = Integer.parseInt(data[2]);
           events.put(tile, EventMaker.newLadder(destination));
         } else if (eventType.equals("qestion")) {
-          events.put(tile, EventMaker.newQizzTile(tile));
+          events.put(tile, EventMaker.newQuizTile(tile));
         }
       }
       scanner.close();
