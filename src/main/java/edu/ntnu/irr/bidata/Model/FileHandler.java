@@ -114,7 +114,7 @@ public class FileHandler {
     removeGameFromSavedGames(name);
   }
 
-  private static void savePlyers(Game game) {
+  private static void savePlayers(Game game) {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -129,7 +129,7 @@ public class FileHandler {
     }
   }
 
-  private static ArrayList<Player> loadPlyers(String gameName) {
+  private static ArrayList<Player> loadPlayers(String gameName) {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -192,7 +192,7 @@ public class FileHandler {
     return player;
   }
 
-  private static int loadAvalibleTroops(String gameName) {
+  private static int loadAvailableTroops(String gameName) {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -211,27 +211,27 @@ public class FileHandler {
 
 
   private static void saveSnakesAndLadders(Game game) {
-    savePlyers(game);
+    savePlayers(game);
     saveGameState(game);
     saveBoardLadderGame((SnakesAndLadders) game);
     addGameToSavedGames(game);
   }
 
   private static void saveRiskGame(Game game) {
-    savePlyers(game);
+    savePlayers(game);
     saveGameState(game);
     saveBoardRisk((Risk) game);
     addGameToSavedGames(game);
   }
 
   private static SnakesAndLadders loadSnakesAndLadders(String name) {
-    ArrayList<Player> players = loadPlyers(name);
+    ArrayList<Player> players = loadPlayers(name);
     return new SnakesAndLadders(players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
   }
 
   private static Risk loadRiskGame(String name) {
-    ArrayList<Player> players = loadPlyers(name);
-    return new Risk(players.size(), name, players, loadBoardRisk(name), loadCurrentPlayer(name, players), loadAvalibleTroops(name));
+    ArrayList<Player> players = loadPlayers(name);
+    return new Risk(players.size(), name, players, loadBoardRisk(name), loadCurrentPlayer(name, players), loadAvailableTroops(name));
   }
 
   private static BoardSnakesAndLadders loadBoardLadderGame(String name) {
@@ -295,7 +295,7 @@ public class FileHandler {
         if (eventType.equals("ladder")) {
           int destination = Integer.parseInt(data[2]);
           events.put(tile, EventMaker.newLadder(destination));
-        } else if (eventType.equals("qestion")) {
+        } else if (eventType.equals("question")) {
           events.put(tile, EventMaker.newQuizTile(tile));
         }
       }
