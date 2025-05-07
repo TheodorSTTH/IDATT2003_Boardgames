@@ -9,31 +9,32 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class WinningPage extends VBox {
-  public WinningPage(String winner, String winPageKey) {
-    getStyleClass().add(winPageKey);
+public class WinningPageView extends VBox {
+  Label winLabel = new Label();
+  Button backToMenuButton = new Button("Back to the start page");
+  Button exitButton = new Button("Leave Runeborne");
+
+  public WinningPageView(String winner, String winPageClass) {
+    getStyleClass().add(winPageClass);
     setAlignment(Pos.TOP_RIGHT);
-    Label winLabel = new Label("You win " + winner + "!");
+    winLabel.setText("You win " + winner + "!");
     VBox.setMargin(winLabel, new Insets(10, 20, 10, 20));
     winLabel.getStyleClass().add("fantasy-title");
 
-
-    Button backToMenuButton = new Button("Back to the start page");
     backToMenuButton.getStyleClass().addAll("fantasy-button-sidbar");
     VBox.setMargin(backToMenuButton, new Insets(25, 25, 25, 25));
-    backToMenuButton.setOnAction(e -> {
-      NavigationManager.navigate(new StartPageController().getView());
-    });
-      
 
-    Button exitButton = new Button("Leave Runeborne");
     exitButton.getStyleClass().add("fantasy-button-sidbar");
     VBox.setMargin(exitButton, new Insets(25, 25, 25, 25));
-    exitButton.setOnAction(e -> {
-      MyWindow.closeApplication();
-    });
-
 
     getChildren().addAll(winLabel, backToMenuButton, exitButton);
+  }
+
+  public Button getBackToMenuButton() {
+    return backToMenuButton;
+  }
+
+  public Button getExitButton() {
+    return exitButton;
   }
 }

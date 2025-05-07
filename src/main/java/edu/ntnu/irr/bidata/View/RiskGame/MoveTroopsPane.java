@@ -6,8 +6,8 @@ import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.WinPage.WinningPage;
 
+import edu.ntnu.irr.bidata.View.WinPage.WinningPageController;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -85,7 +85,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
         Player currentPlayer = risk.getCurrentPlayer();
         if (risk.getBoard().hasWon(currentPlayer)) { // TODO: Move code out of a controller somehow
           FileHandler.deleteGame(risk.getGameName());
-          NavigationManager.navigate(new WinningPage(currentPlayer.getName(), "snakes-and-ladders-win-page"));
+          NavigationManager.navigate(new WinningPageController(currentPlayer.getName(), "snakes-and-ladders-win-page").getView());
         }
         notifyObservers(this.getNextSidebarPane());
       } else {
@@ -117,7 +117,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       risk.endTurn();
       if (risk.getBoard().hasWon(currentPlayer)) { // TODO: Move code out of a controller somehow
         FileHandler.deleteGame(risk.getGameName());
-        NavigationManager.navigate(new WinningPage(currentPlayer.getName(), "risk-win-page"));
+        NavigationManager.navigate(new WinningPageController(currentPlayer.getName(), "risk-win-page").getView());
       }
       notifyObservers(this.getNextSidebarPane());
     });
