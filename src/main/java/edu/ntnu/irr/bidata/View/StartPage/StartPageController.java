@@ -7,7 +7,9 @@ import edu.ntnu.irr.bidata.Model.Game;
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPageController;
+import edu.ntnu.irr.bidata.View.LadderGameOverview.SnakesAndLaddersPageView;
 import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.View.RiskGame.RiskPage;
 import java.util.HashMap;
 import javafx.beans.value.ChangeListener;
 
@@ -34,6 +36,7 @@ public class StartPageController {
     view.getGameNameField().textProperty().addListener(enabler);
     view.getPlayerCountBox().valueProperty().addListener(enabler);
     view.getGameSelectorBox().valueProperty().addListener(enabler);
+    view.getSavedGamesBox().valueProperty().addListener((obs, oldV, newV) -> view.getLoadGameButton().setDisable(newV.isEmpty()));
   }
 
   private boolean allInputsValid() {
@@ -77,7 +80,11 @@ public class StartPageController {
       String gameType = gameData[1].replace(")", "").trim();
 
       Game game = FileHandler.loadGame(gameName, gameType);
-      NavigationManager.navigate(new CreatePlayerPageController(game).getView());
+      if (game instanceof LaderGame) {
+        NavigationManager.navigate(new SnakesAndLaddersPageView((LaderGame) game));
+      } else {
+        NavigationManager.navigate(new RiskPage((Risk) game));
+      }
     } else {
       PopUp.showWarning("Selection Required", "Please select a saved game to load.");
     }

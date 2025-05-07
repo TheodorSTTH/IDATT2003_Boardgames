@@ -49,6 +49,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
       boolean isFromDefined = newFrom != null;
       if (isFromDefined) {
         amountOfTroopsSpinner.getValueFactory().setValue(1);
+        view.getSpinnerValueFactory().setMax(newFrom.getArmies()-1);
       }
     });
 

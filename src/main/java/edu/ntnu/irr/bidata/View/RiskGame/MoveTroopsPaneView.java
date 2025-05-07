@@ -16,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
 import javafx.scene.layout.VBox;
 
 public class MoveTroopsPaneView extends AbstractSidebarPaneView {
@@ -26,6 +27,7 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
   private final Button ok;
   private final Button dontMoveTroops;
   private final Label currentUserLabel;
+  SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory;
 
   public MoveTroopsPaneView(String currentPlayerName) {
     getContainer().getStyleClass().add("move-troops-pane");
@@ -59,6 +61,7 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
     this.amountOfTroopsSpinner = new Spinner<>(
         new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1)
     );
+    spinnerValueFactory = (SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory();
     this.amountOfTroopsSpinner.getStyleClass().add("fantasy-spinner-sidbar");
     amountOfTroopsSpinner.setEditable(true);
     VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(0, 0, 10, 10));
@@ -84,6 +87,10 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
         ok,
         dontMoveTroops
     );
+  }
+
+  public IntegerSpinnerValueFactory getSpinnerValueFactory() {
+    return spinnerValueFactory;
   }
 
   public Button getDontMoveTroops() {
