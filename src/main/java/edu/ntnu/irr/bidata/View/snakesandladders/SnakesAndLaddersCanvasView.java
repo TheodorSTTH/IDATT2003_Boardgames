@@ -3,11 +3,9 @@ package edu.ntnu.irr.bidata.view.snakesandladders;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
-import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
-import edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.BlurType;
@@ -18,9 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
 
-/**
- * Is responsible for displaying board with events and players ready for the user to view.
- * */
+/** Is responsible for displaying board with events and players ready for the user to view. */
 public class SnakesAndLaddersCanvasView extends Canvas {
 
   private final int boardRowsAmount = 10;
@@ -28,11 +24,10 @@ public class SnakesAndLaddersCanvasView extends Canvas {
   private final int boardWidth = 500;
   private final int boardHeight = 500;
 
-  private final ArrayList<CanvasTileView> tileViews = new ArrayList<>(boardColumnAmount * boardRowsAmount+1);
+  private final ArrayList<CanvasTileView> tileViews =
+      new ArrayList<>(boardColumnAmount * boardRowsAmount + 1);
 
-  /**
-   * Constructs the board view variables.
-   * */
+  /** Constructs the board view variables. */
   public SnakesAndLaddersCanvasView() {
     for (int i = 0; i < 91; i++) {
       tileViews.add(null);
@@ -46,14 +41,14 @@ public class SnakesAndLaddersCanvasView extends Canvas {
   }
 
   /**
-   * Renders the underlying board squares. Not including any events or players.
-   * Just tile underlying tile and number.
-   * */
+   * Renders the underlying board squares. Not including any events or players. Just tile underlying
+   * tile and number.
+   */
   public void renderBoard() {
     GraphicsContext gc = getGraphicsContext2D();
     for (int row = 0; row < boardRowsAmount; row++) {
       for (int col = 1; col < boardColumnAmount + 1; col++) {
-        final int tileNumber = row*9 + col;
+        final int tileNumber = row * 9 + col;
         int width = boardWidth / boardColumnAmount;
         int height = boardHeight / boardRowsAmount;
         int x;
@@ -72,9 +67,7 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     }
   }
 
-  /**
-   * Places players on all tile views without rendering them.
-   * */
+  /** Places players on all tile views without rendering them. */
   public void placePlayers(HashMap<Player, Integer> playerPositions) {
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
@@ -86,9 +79,7 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     }
   }
 
-  /**
-   * Draws all players on board.
-   * */
+  /** Draws all players on board. */
   public void drawPlayers(HashMap<Player, Integer> playerPositions) {
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
@@ -100,36 +91,41 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     }
   }
 
-  /**
-   * Draws all snakes and ladders on board.
-   * */
+  /** Draws all snakes and ladders on board. */
   public void drawSnakesAndLadders(HashMap<Integer, Event> events) {
-    events.keySet().forEach(tileIndex -> {
-      if (events.get(tileIndex) instanceof LadderEvent event) {
-        if (tileIndex >= event.getDestination()) {
-          drawSnake(tileIndex, event.getDestination());
-        }
-      }
-    });
+    events
+        .keySet()
+        .forEach(
+            tileIndex -> {
+              if (events.get(tileIndex) instanceof LadderEvent event) {
+                if (tileIndex >= event.getDestination()) {
+                  drawSnake(tileIndex, event.getDestination());
+                }
+              }
+            });
 
-    events.keySet().forEach(tileIndex -> {
-      if (events.get(tileIndex) instanceof LadderEvent event) {
-        if (tileIndex < event.getDestination()) {
-          drawLadder(tileIndex, event.getDestination());
-        }
-      }
-    });
+    events
+        .keySet()
+        .forEach(
+            tileIndex -> {
+              if (events.get(tileIndex) instanceof LadderEvent event) {
+                if (tileIndex < event.getDestination()) {
+                  drawLadder(tileIndex, event.getDestination());
+                }
+              }
+            });
   }
 
-  /**
-   * Draws all quiz boxes on board.
-   * */
+  /** Draws all quiz boxes on board. */
   public void drawQuizEvents(HashMap<Integer, Event> events) {
-    events.keySet().forEach(tileIndex -> {
-      if (events.get(tileIndex) instanceof QuizEvent event) {
-        drawQuizEvent(event.getTileNumber());
-      }
-    });
+    events
+        .keySet()
+        .forEach(
+            tileIndex -> {
+              if (events.get(tileIndex) instanceof QuizEvent event) {
+                drawQuizEvent(event.getTileNumber());
+              }
+            });
   }
 
   private void drawQuizEvent(int tileIndex) {
@@ -137,12 +133,8 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     CanvasTileView tileView = tileViews.get(tileIndex);
 
     Image quizImage = new Image(getClass().getResourceAsStream("/quiz_tile_transparent.png"));
-    gc.drawImage(quizImage,
-        tileView.getX(),
-        tileView.getY(),
-        tileView.getWidth(),
-        tileView.getHeight()
-    );
+    gc.drawImage(
+        quizImage, tileView.getX(), tileView.getY(), tileView.getWidth(), tileView.getHeight());
   }
 
   private void drawSnake(int fromIndex, int toIndex) {
@@ -177,8 +169,8 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     drop.setColor(Color.color(0, 0, 0, 0.65));
 
     Light.Distant light = new Light.Distant();
-    light.setAzimuth(-45);              // direction of the light
-    light.setElevation(60);            // angle above the surface
+    light.setAzimuth(-45); // direction of the light
+    light.setElevation(60); // angle above the surface
     light.setColor(Color.WHITE);
 
     Lighting lighting = new Lighting();
@@ -220,7 +212,7 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     double headWidth = snakeWidth * 3;
     double headHeight = snakeWidth * 3;
     gc.setFill(Color.RED);
-    gc.fillOval(fromCenterX - headWidth/2, fromCenterY - headHeight/2, headWidth, headHeight);
+    gc.fillOval(fromCenterX - headWidth / 2, fromCenterY - headHeight / 2, headWidth, headHeight);
 
     gc.restore();
   }
@@ -253,19 +245,12 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     // length of non-normalized vector
     double length = Math.sqrt(dx * dx + dy * dy);
 
-
     Light.Distant sun = new Light.Distant();
     sun.setAzimuth(-45);
     sun.setElevation(60);
     sun.setColor(Color.WHITE);
 
-    DropShadow shadow = new DropShadow(
-        BlurType.GAUSSIAN,
-        Color.rgb(0, 0, 0, 0.4),
-        8,
-        0.1,
-        3,
-        3);
+    DropShadow shadow = new DropShadow(BlurType.GAUSSIAN, Color.rgb(0, 0, 0, 0.4), 8, 0.1, 3, 3);
 
     Lighting lighting = new Lighting();
     lighting.setLight(sun);
