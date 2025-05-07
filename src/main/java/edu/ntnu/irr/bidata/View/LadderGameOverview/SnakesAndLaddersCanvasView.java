@@ -89,9 +89,8 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
     HashMap<Player, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
-      if (playerTileIndex == 0) {
-        continue; // Player is not on board yet
-        
+      if (playerTileIndex == 0 || playerTileIndex > 90) { // player is not on board
+        continue;
       }
       CanvasTileView playerTileView = getTile(playerTileIndex);
       playerTileView.addPlayer(player);
@@ -105,8 +104,8 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
     HashMap<Player, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
-      if (playerTileIndex == 0) {
-        continue; // Player is not on board yet
+      if (playerTileIndex == 0 || playerTileIndex > 90) { // Player is not on board
+        continue;
       }
       CanvasTileView playerTileView = getTile(playerTileIndex);
       playerTileView.drawPlayers();

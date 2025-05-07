@@ -67,9 +67,6 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
 
     public void takeAction() {
         board.move(currentPlayer, dice.roll());
-        if (board.hasWon(currentPlayer)) {
-            endGame(currentPlayer);
-        }
         currentPlayer = getNextPlayer();
         notifyObservers(this);
     }

@@ -19,6 +19,18 @@
   -fx-background-repeat: no-repeat;
 }
 
+.snakes-and-ladders-win-page {
+  -fx-background-image: url("snakes_and_ladders_win.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+.risk-win-page {
+  -fx-background-image: url("snakes_and_ladders_win.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
 .risk-background {
   -fx-background-image: url("riskBackground.png");
   -fx-background-size: cover;

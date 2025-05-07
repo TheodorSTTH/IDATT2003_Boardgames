@@ -1,9 +1,13 @@
 package edu.ntnu.irr.bidata.View.RiskGame;
 
+import edu.ntnu.irr.bidata.Controler.NavigationManager;
+import edu.ntnu.irr.bidata.Model.FileHandler;
+import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 
+import edu.ntnu.irr.bidata.View.RiskWin.RiskWinningPage;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
@@ -76,6 +80,11 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       if (from != null && to != null) {
         risk.transferTroops(from.getName(), to.getName(), amount);
         risk.endTurn();
+        Player currentPlayer = risk.getCurrentPlayer();
+        if (risk.getBoard().hasWon(currentPlayer)) { // TODO: Move code out of a controller somehow
+          FileHandler.deleteGame(risk.getGameName());
+          NavigationManager.navigate(new RiskWinningPage(currentPlayer.getName()));
+        }
         notifyObservers(this.getNextSidebarPane());
       } else {
         PopUp.showError("Invalid Selections","Please select a country to move from and a country to move to.");
@@ -102,7 +111,11 @@ public class MoveTroopsPane extends AbstractSidebarPane {
   
 
     dontMoveTroops.setOnAction(event -> {
-      risk.endTurn();
+      Player currentPlayer = risk.getCurrentPlayer();
+      if (risk.getBoard().hasWon(currentPlayer)) { // TODO: Move code out of a controller somehow
+        FileHandler.deleteGame(risk.getGameName());
+        NavigationManager.navigate(new RiskWinningPage(currentPlayer.getName()));
+      }
       notifyObservers(this.getNextSidebarPane());
     });
 

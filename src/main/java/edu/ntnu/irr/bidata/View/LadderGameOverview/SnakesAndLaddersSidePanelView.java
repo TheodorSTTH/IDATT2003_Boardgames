@@ -1,9 +1,13 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
+import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.Die;
+import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.View.SnakesAndLaddersWin.SnakesAndLaddersWinningPage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -44,7 +48,12 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
     }
 
     rollButton.setOnAction(e -> {
+      Player currentPlayer = snakesAndLadders.getCurrentPlayer();
       snakesAndLadders.takeAction();
+      if (snakesAndLadders.getBoard().hasWon(currentPlayer)) {
+        FileHandler.deleteGame(snakesAndLadders.getGameName());
+        NavigationManager.navigate(new SnakesAndLaddersWinningPage(currentPlayer.getName()));
+      }
     });
     saveButton.setOnAction(e -> {
       snakesAndLadders.saveGame();
