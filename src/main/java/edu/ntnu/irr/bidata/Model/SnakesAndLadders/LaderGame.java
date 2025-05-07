@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.LadderGame;
+package edu.ntnu.irr.bidata.Model.SnakesAndLadders;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;

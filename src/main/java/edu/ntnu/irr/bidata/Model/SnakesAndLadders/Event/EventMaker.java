@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.LadderGame.Event;
+package edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event;
 
 import edu.ntnu.irr.bidata.Model.FileHandler;
 
@@ -14,6 +14,6 @@ public class EventMaker {
     List<String> questionList = FileHandler.getRandomQizzQestion();
     String question = questionList.get(0);
     String answer = questionList.get(1);
-    return new QizzEvent(question, answer, tileNumber);
+    return new QuizEvent(question, answer, tileNumber);
   }
 }

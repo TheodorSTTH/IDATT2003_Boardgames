@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.LadderGame;
+package edu.ntnu.irr.bidata.Model.SnakesAndLadders;
 
 import java.util.HashMap;
 import java.io.File;
@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.EventMaker;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.EventMaker;
 
 public class BoardLaderGame {
     @JsonProperty
@@ -45,7 +45,7 @@ public class BoardLaderGame {
     public void move(Player player, int steps) {
         playerPositions.put(player.getName(), playerPositions.get(player.getName()) + steps);
         if (events.containsKey(playerPositions.get(player.getName()))) {
-            playerPositions.put(player.getName(), events.get(playerPositions.get(player.getName())).Action());
+            playerPositions.put(player.getName(), events.get(playerPositions.get(player.getName())).action());
         } 
     }
     
