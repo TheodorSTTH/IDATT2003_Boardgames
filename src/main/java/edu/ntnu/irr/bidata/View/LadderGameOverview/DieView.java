@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -12,7 +12,7 @@ import javafx.scene.shape.Circle;
 /**
  * Is responsible for showing a die.
  * */
-public class DieView extends Pane implements IObserver<Integer> {
+public class DieView extends Pane implements Observer<Integer> {
   private final Circle center;
   private final Circle topRight;
   private final Circle topLeft;

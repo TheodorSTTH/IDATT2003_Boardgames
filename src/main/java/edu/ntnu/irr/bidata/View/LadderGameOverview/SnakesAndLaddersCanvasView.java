@@ -1,13 +1,14 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent;
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
-import edu.ntnu.irr.bidata.Model.Player;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import edu.ntnu.irr.bidata.model.Player;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -29,7 +30,7 @@ import javafx.scene.text.TextAlignment;
 /**
  * Is responsible for displaying board with events and players ready for the user to view.
  * */
-public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<LaderGame> {
+public class SnakesAndLaddersCanvasView extends Canvas implements Observer<SnakesAndLadders> {
 
   private final int boardRowsAmount = 10;
   private final int boardColumnAmount = 9;
@@ -41,7 +42,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   /**
    * Constructs the board view variables.
    * */
-  public SnakesAndLaddersCanvasView(LaderGame snakesAndLadders) {
+  public SnakesAndLaddersCanvasView(SnakesAndLadders snakesAndLadders) {
     for (int i = 0; i < 91; i++) {
       tileViews.add(null);
     }
@@ -59,7 +60,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
    * Renders the underlying board squares. Not including any events or players.
    * Just tile underlying tile and number.
    * */
-  public void renderBoard(LaderGame snakesAndLadders) {
+  public void renderBoard(SnakesAndLadders snakesAndLadders) {
     GraphicsContext gc = getGraphicsContext2D();
     for (int row = 0; row < boardRowsAmount; row++) {
       for (int col = 1; col < boardColumnAmount + 1; col++) {
@@ -85,7 +86,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   /**
    * Places players on all tile views without rendering them.
    * */
-  private void placePlayers(LaderGame snakesAndLadders) {
+  private void placePlayers(SnakesAndLadders snakesAndLadders) {
     HashMap<Player, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
@@ -100,7 +101,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   /**
    * Draws all players on board.
    * */
-  private void drawPlayers(LaderGame snakesAndLadders) {
+  private void drawPlayers(SnakesAndLadders snakesAndLadders) {
     HashMap<Player, Integer> playerPositions = snakesAndLadders.getPlayerPositions();
     for (Player player : playerPositions.keySet()) {
       int playerTileIndex = playerPositions.get(player);
@@ -115,7 +116,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   /**
    * Draws all snakes and ladders on board.
    * */
-  private void drawSnakesAndLadders(LaderGame snakesAndLadders) {
+  private void drawSnakesAndLadders(SnakesAndLadders snakesAndLadders) {
     GraphicsContext gc = getGraphicsContext2D();
     HashMap<Integer, Event> events = snakesAndLadders.getBoard().getEvents();
 
@@ -139,11 +140,11 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
   /**
    * Draws all quiz boxes on board.
    * */
-  private void drawQuizEvents(LaderGame snakesAndLadders) {
+  private void drawQuizEvents(SnakesAndLadders snakesAndLadders) {
     GraphicsContext gc = getGraphicsContext2D();
     HashMap<Integer, Event> events = snakesAndLadders.getBoard().getEvents();
     events.keySet().forEach(tileIndex -> {
-      if (events.get(tileIndex) instanceof QizzEvent event) {
+      if (events.get(tileIndex) instanceof QuizEvent event) {
         drawQuizEvent(event.getTileNumber());
       }
     });
@@ -353,7 +354,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
    * @param snakesAndLadders is the current snakes and ladders game object.
    * */
   @Override
-  public void update(LaderGame snakesAndLadders) {
+  public void update(SnakesAndLadders snakesAndLadders) {
     renderBoard(snakesAndLadders);
     drawQuizEvents(snakesAndLadders);
     drawSnakesAndLadders(snakesAndLadders);

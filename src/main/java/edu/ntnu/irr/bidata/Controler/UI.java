@@ -1,20 +1,20 @@
 package edu.ntnu.irr.bidata.Controler;
-import edu.ntnu.irr.bidata.Model.Game;
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
-import edu.ntnu.irr.bidata.Model.Risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.CreatePlayer.CreatePlayerPage;
-import edu.ntnu.irr.bidata.Model.FileHandler;
+import edu.ntnu.irr.bidata.model.FileHandler;
+import edu.ntnu.irr.bidata.model.Game;
+import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 
 // TODO: Separate start page logic form UI class
 public class UI {
   private static Game game;
 
   public static void StartPageCreateNewGameButon(int plyers, String gameType, String gameName) {
-    if (gameType.equals("Lader Game Classic")) {
-      game = new LaderGame(plyers, gameName, "classic");
-    } else if (gameType.equals("Lader Game Qizz")) {
-      game = new LaderGame(plyers, gameName, "qizz");
+    if (gameType.equals("Snakes And Ladders Classic")) {
+      game = new SnakesAndLadders(plyers, gameName, "Classic");
+    } else if (gameType.equals("Snakes And Ladders Quiz")) {
+      game = new SnakesAndLadders(plyers, gameName, "Quiz");
     } 
     else if (gameType.equals("Risk")) {
       game = new Risk(plyers, gameName);

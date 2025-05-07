@@ -1,11 +1,11 @@
 package edu.ntnu.irr.bidata.View.RiskGame;
 
-import edu.ntnu.irr.bidata.Model.Dice;
-import edu.ntnu.irr.bidata.Model.Die;
-import edu.ntnu.irr.bidata.Model.Risk.Country;
-import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.View.LadderGameOverview.DieView;
+import edu.ntnu.irr.bidata.model.Dice;
+import edu.ntnu.irr.bidata.model.Die;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.View.PopUp;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
-public class AttackPane extends AbstractSidebarPane implements IObserver<Pair<Dice, Dice>> {
+public class AttackPane extends AbstractSidebarPane implements Observer<Pair<Dice, Dice>> {
   private final ComboBox<Country> attackFromComboBox;
   private final ComboBox<Country> attackTargetComboBox;
   private final Button performAttackOnceButton;

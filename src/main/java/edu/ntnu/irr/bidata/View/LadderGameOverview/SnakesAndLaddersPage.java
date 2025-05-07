@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
@@ -16,7 +16,7 @@ public class SnakesAndLaddersPage extends HBox {
   /**
    * Constructs snake and ladders page.
    * */
-  public SnakesAndLaddersPage(LaderGame snakesAndLadders) {
+  public SnakesAndLaddersPage(SnakesAndLadders snakesAndLadders) {
     getStyleClass().add("snakes-and-ladders-game-page");
     setAlignment(Pos.CENTER);
     if (getClass().getResource("/style.css") != null) {

@@ -2,8 +2,9 @@ package edu.ntnu.irr.bidata.View.StartPage;
 
 import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.model.FileHandler;
+
 import java.util.HashMap;
 
 import javafx.geometry.Insets;
@@ -43,7 +44,7 @@ public class StartPage extends VBox {
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
     WhatGameComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(WhatGameComboBox, new Insets(5, 5, 5, 5));
-    WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
+    WhatGameComboBox.getItems().addAll("Snakes And Ladders Classic","Snakes And Ladders Quiz", "Risk");
     WhatGameComboBox.setPromptText("Select an Adventure");
 
 

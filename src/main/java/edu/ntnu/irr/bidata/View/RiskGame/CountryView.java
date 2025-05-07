@@ -1,9 +1,9 @@
 package edu.ntnu.irr.bidata.View.RiskGame;
 
-import edu.ntnu.irr.bidata.Model.Risk.Country;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
-import edu.ntnu.irr.bidata.Model.interfaces.observer.ISimpleObserver;
 import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
+import edu.ntnu.irr.bidata.model.risk.Country;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
 
-public class CountryView extends Button implements ISimpleObserver {
+public class CountryView extends Button implements SimpleObserver {
   private final Country country;
   private final double boardWidth;
   private final double boardHeight;
