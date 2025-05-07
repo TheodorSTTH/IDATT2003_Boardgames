@@ -10,6 +10,7 @@ import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.SnakesAndLaddersWin.SnakesAndLaddersWinningPage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -22,7 +23,6 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
     this.usernameLabel = new Label();
     this.usernameLabel.getStyleClass().addAll("fantasy", "title-3");
     update(snakesAndLadders);
-    this.setMinWidth(300);
     this.setStyle(
         "-fx-padding: 20px;"
         + "-fx-background-radius: 20px;"
@@ -37,8 +37,9 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
     rollButton.getStyleClass().addAll("fantasy-button");
     Button saveButton = new Button("Save current game");
     saveButton.getStyleClass().addAll("fantasy-button");
-    HBox diceBox = new HBox();
-    diceBox.setSpacing(5);
+    FlowPane diceBox = new FlowPane();
+    diceBox.setHgap(5);
+    diceBox.setVgap(5);
 
     for (Die die : snakesAndLadders.getDice().getDice()) {
       DieView newDieView = new DieView(40, Color.WHITE, Color.BLACK);

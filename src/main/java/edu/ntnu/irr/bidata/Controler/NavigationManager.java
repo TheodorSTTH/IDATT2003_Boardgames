@@ -20,6 +20,10 @@ public class NavigationManager {
     primaryStage = stage;
   }
 
+  public static Stage getStage() {
+    return primaryStage;
+  }
+
   /**
    * Switches out the current parent node of the scene with a new parent root.
    *
