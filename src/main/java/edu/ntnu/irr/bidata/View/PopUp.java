@@ -104,6 +104,7 @@ public static boolean askQuestion(String question, String correctAnswer) {
     dialog.setContentText(question);
     dialog.getDialogPane().getStylesheets().add(PopUp.class.getResource("/style.css").toExternalForm());
     dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
+    dialog.getDialogPane().getStyleClass().add("fantasy-text-field");
 
     Optional<String> result = dialog.showAndWait();
 

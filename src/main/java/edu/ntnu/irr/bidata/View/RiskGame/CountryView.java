@@ -19,7 +19,7 @@ public class CountryView extends Button implements ISimpleObserver {
     this.boardHeight = boardHeight;
     this.country = country;
     this.setOnAction(e -> {
-      PopUp.showInfo(country.getName(), "Owner: " + country.getOwner() + "\nArmies: " + country.getArmies());
+      PopUp.showInfo(country.getName(), country.getName() + "\nOwner: " + country.getOwner() + "\nArmies: " + country.getArmies());
     });
     render();
   }
