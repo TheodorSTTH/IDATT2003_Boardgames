@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * It stores basic attributes such as the player's name, color, and age.
  */
 public class Player {
-
   private final String name;
   private final String color;
   private final int age;
