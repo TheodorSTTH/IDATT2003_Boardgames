@@ -1,6 +1,6 @@
 package edu.ntnu.irr.bidata.model.snakesandladders.event;
 
-import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.view.PopUp;
 
 /**
  * Represents a quiz event in the Snakes and Ladders game.

@@ -1,7 +1,7 @@
-package edu.ntnu.irr.bidata.View.CreatePlayer;
+package edu.ntnu.irr.bidata.view.createPlayer;
 
-import edu.ntnu.irr.bidata.Controler.UI;
-import edu.ntnu.irr.bidata.View.PopUp;
+import edu.ntnu.irr.bidata.controler.UI;
+import edu.ntnu.irr.bidata.view.PopUp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

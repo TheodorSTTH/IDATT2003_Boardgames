@@ -1,10 +1,10 @@
-package edu.ntnu.irr.bidata.View.RiskGame;
+package edu.ntnu.irr.bidata.view.risk;
 
-import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.StartPage.StartPage;
+import edu.ntnu.irr.bidata.controler.NavigationManager;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.startpage.StartPage;
 import javafx.scene.control.Label;
 import java.util.HashMap;
 

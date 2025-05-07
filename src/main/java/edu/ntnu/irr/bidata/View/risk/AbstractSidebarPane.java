@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.View.RiskGame;
+package edu.ntnu.irr.bidata.view.risk;
 
 import java.util.ArrayList;
 
