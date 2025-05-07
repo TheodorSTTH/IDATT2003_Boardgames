@@ -124,20 +124,20 @@ public class Risk extends Game implements ISubject<Pair<Dice, Dice>> {
     List<Integer> defendRolls;
 
     if (board.getUnits(attacker) > 3) {
-      attackRolls = attackDice.rollSet(3);
+      attackRolls = attackDice.rollSetOfDice(3);
     } else if (board.getUnits(attacker) == 3) {
-      attackRolls = attackDice.rollSet(2);
+      attackRolls = attackDice.rollSetOfDice(2);
     } else if (board.getUnits(attacker) == 2) {
-        attackRolls = attackDice.rollSet(1);
+        attackRolls = attackDice.rollSetOfDice(1);
     } else {
       PopUp.showInfo("To few troops", "You can not attack from a country with only one troops");
       return;
     }
 
     if (board.getUnits(defender) > 1) {
-      defendRolls = defenceDice.rollSet(2);
+      defendRolls = defenceDice.rollSetOfDice(2);
     } else if (board.getUnits(defender) == 1) {
-      defendRolls = defenceDice.rollSet(1);
+      defendRolls = defenceDice.rollSetOfDice(1);
     } else {
       PopUp.showInfo("To few troops", "You can not attack a country with no troops");
       return;
