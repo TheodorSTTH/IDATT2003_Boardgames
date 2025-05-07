@@ -1,5 +1,6 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
+import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,7 +26,16 @@ public class SnakesAndLaddersPage extends HBox {
     }
     this.board = new SnakesAndLaddersCanvasView(snakesAndLadders);
     this.sidePanel = new SnakesAndLaddersSidePanelView(snakesAndLadders);
+    sidePanel.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
     setMargin(sidePanel, new Insets(40));
+    NavigationManager.getStage().widthProperty().addListener((obs, oldW, newW) -> {
+      double stageWidth = newW.doubleValue();
+      if (stageWidth < 800) {
+        setMargin(sidePanel, new Insets(10));
+      } else {
+        setMargin(sidePanel, new Insets(40));
+      }
+    });
     Region splitterRegion = new Region();
     HBox.setHgrow(splitterRegion, Priority.ALWAYS);
     getChildren().addAll(
