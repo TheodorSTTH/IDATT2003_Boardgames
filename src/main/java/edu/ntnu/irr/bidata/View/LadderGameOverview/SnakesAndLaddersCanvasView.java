@@ -1,10 +1,10 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.Event;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent;
-import edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent;
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Player;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.LadderEvent;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.QuizEvent;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -143,7 +143,7 @@ public class SnakesAndLaddersCanvasView extends Canvas implements IObserver<Lade
     GraphicsContext gc = getGraphicsContext2D();
     HashMap<Integer, Event> events = snakesAndLadders.getBoard().getEvents();
     events.keySet().forEach(tileIndex -> {
-      if (events.get(tileIndex) instanceof QizzEvent event) {
+      if (events.get(tileIndex) instanceof QuizEvent event) {
         drawQuizEvent(event.getTileNumber());
       }
     });

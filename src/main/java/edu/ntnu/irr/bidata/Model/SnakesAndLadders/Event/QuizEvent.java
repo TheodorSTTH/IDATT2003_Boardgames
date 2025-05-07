@@ -1,24 +1,24 @@
-package edu.ntnu.irr.bidata.Model.LadderGame.Event;
+package edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event;
 import edu.ntnu.irr.bidata.View.PopUp;
 
 
-public class QizzEvent extends Event {
+public class QuizEvent extends Event {
   private String question;
   private String answer;
   private int tileNumber;
 
-  public QizzEvent() {
+  public QuizEvent() {
       // For Json Saving and Loading
   }
 
-  public QizzEvent(String question, String answer, int tileNumber) {
+  public QuizEvent(String question, String answer, int tileNumber) {
       this.question = question;
       this.answer = answer;
       this.tileNumber = tileNumber;
   }
 
   @Override
-  public int Action() {
+  public int action() {
       if (PopUp.askQuestion(question, answer)) {
           return tileNumber + 3;
       } else {

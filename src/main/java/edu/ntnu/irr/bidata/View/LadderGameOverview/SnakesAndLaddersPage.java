@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.View.LadderGameOverview;
 
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
-import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;

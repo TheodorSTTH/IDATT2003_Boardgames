@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.Model.LadderGame.Event;
+package edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event;
 
 public class LadderEvent extends Event {
   private int destination;
@@ -12,7 +12,7 @@ public class LadderEvent extends Event {
   }
 
   @Override
-  public int Action() {
+  public int action() {
       return destination;
   }
 
