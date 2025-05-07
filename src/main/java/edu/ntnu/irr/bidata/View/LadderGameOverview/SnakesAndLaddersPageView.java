@@ -9,7 +9,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 
 public class SnakesAndLaddersPageView extends HBox {
-  SnakesAndLaddersCanvasView board;
+  SnakesAndLaddersCanvasView canvasBoardView;
   SnakesAndLaddersSidePanelView sidePanel;
 
   /**
@@ -23,7 +23,7 @@ public class SnakesAndLaddersPageView extends HBox {
     } else {
       System.err.println("Warning: style.css not found!");
     }
-    this.board = new SnakesAndLaddersCanvasView(snakesAndLadders);
+    this.canvasBoardView = new SnakesAndLaddersCanvasController(snakesAndLadders).getView();
     this.sidePanel = new SnakesAndLaddersSidePanelController(snakesAndLadders).getView();
     sidePanel.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
     setMargin(sidePanel, new Insets(40));
@@ -39,7 +39,7 @@ public class SnakesAndLaddersPageView extends HBox {
     HBox.setHgrow(splitterRegion, Priority.ALWAYS);
     getChildren().addAll(
         sidePanel,
-        board,
+        canvasBoardView,
         splitterRegion
     );
   }
