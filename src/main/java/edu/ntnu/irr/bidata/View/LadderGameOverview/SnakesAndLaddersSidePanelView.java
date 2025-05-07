@@ -8,6 +8,7 @@ import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.View.PopUp;
 import edu.ntnu.irr.bidata.View.SnakesAndLaddersWin.SnakesAndLaddersWinningPage;
+import edu.ntnu.irr.bidata.View.StartPage.StartPage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -40,6 +41,16 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
     HBox diceBox = new HBox();
     diceBox.setSpacing(5);
 
+
+    Button exitGameButton = new Button("Exit game");
+    exitGameButton.getStyleClass().addAll("fantasy-button");
+    exitGameButton.setOnAction(e -> {
+      NavigationManager.navigate(new StartPage());
+      });
+
+
+    
+
     for (Die die : snakesAndLadders.getDice().getDice()) {
       DieView newDieView = new DieView(40, Color.WHITE, Color.BLACK);
       newDieView.setVisible(false);
@@ -59,6 +70,8 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
       snakesAndLadders.saveGame();
     });
 
+
+
     Region splitterRegion = new Region();
     VBox.setVgrow(splitterRegion, Priority.ALWAYS);
 
@@ -67,6 +80,7 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
         rollButton,
         diceBox,
         splitterRegion,
+        exitGameButton,
         saveButton
     );
   }

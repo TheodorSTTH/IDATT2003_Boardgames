@@ -49,12 +49,17 @@ public class StartPage extends VBox {
     VBox.setMargin(ConfirmButton, new Insets(5, 5, 5, 5));
     ConfirmButton.setDisable(true);
 
+
     ConfirmButton.setOnAction(e -> {
-    Integer selectedPlayers = amountOfPlayersComboBox.getValue();
+      Integer selectedPlayers = amountOfPlayersComboBox.getValue();
+      if (gameNameField.getText().contains(",")) {
+        PopUp.showWarning("Invalid name","Name canot contain a coma(,)");
+        return;
+      }
       if (selectedPlayers != null && WhatGameComboBox.getValue() != null && !gameNameField.getText().isEmpty()) {
         UI.StartPageCreateNewGameButon(selectedPlayers, WhatGameComboBox.getValue(), gameNameField.getText());
       } else {
-        PopUp.showWarning("Selection Required","Please select the number of players and a game before continuing.");
+        PopUp.showWarning("Invalid name","Please select the number of players and a game before continuing.");
         }
     });
       

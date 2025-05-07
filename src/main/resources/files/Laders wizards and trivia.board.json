@@ -1,0 +1,116 @@
+{
+  "events" : {
+    "64" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 26
+    },
+    "65" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 82
+    },
+    "2" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 35
+    },
+    "34" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 3
+    },
+    "36" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 52
+    },
+    "68" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 85
+    },
+    "5" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 25
+    },
+    "70" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What fruit is known to keep doctors away if eaten daily?",
+      "answer" : "Apple",
+      "tileNumber" : 70
+    },
+    "40" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What shape is a stop sign?",
+      "answer" : "Octagon",
+      "tileNumber" : 40
+    },
+    "10" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is the name of the highest waterfall in the world?",
+      "answer" : "Angel Falls",
+      "tileNumber" : 10
+    },
+    "42" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 31
+    },
+    "74" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 12
+    },
+    "80" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "How many letters are in the English alphabet?",
+      "answer" : "26",
+      "tileNumber" : 80
+    },
+    "49" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 79
+    },
+    "50" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is the name of Mickey Mouse's dog?",
+      "answer" : "Pluto",
+      "tileNumber" : 50
+    },
+    "20" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "In what country is the Great Pyramid of Giza?",
+      "answer" : "Egypt",
+      "tileNumber" : 20
+    },
+    "24" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 6
+    },
+    "56" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 37
+    },
+    "89" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.LadderEvent",
+      "destination" : 71
+    },
+    "90" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What is the main ingredient of guacamole?",
+      "answer" : "Avocado",
+      "tileNumber" : 90
+    },
+    "60" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "What month has Halloween?",
+      "answer" : "October",
+      "tileNumber" : 60
+    },
+    "30" : {
+      "@class" : "edu.ntnu.irr.bidata.Model.LadderGame.Event.QizzEvent",
+      "question" : "In what city is the Statue of Liberty located?",
+      "answer" : "New York City",
+      "tileNumber" : 30
+    }
+  },
+  "endTile" : 90,
+  "playerPositions" : {
+    "Imre" : 25,
+    "Eine" : 22,
+    "Theodor" : 31
+  }
+}
