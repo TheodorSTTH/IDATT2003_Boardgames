@@ -115,6 +115,7 @@ public class MoveTroopsPane extends AbstractSidebarPane {
 
     dontMoveTroops.setOnAction(event -> {
       Player currentPlayer = risk.getCurrentPlayer();
+      risk.endTurn();
       if (risk.getBoard().hasWon(currentPlayer)) { // TODO: Move code out of a controller somehow
         FileHandler.deleteGame(risk.getGameName());
         NavigationManager.navigate(new RiskWinningPage(currentPlayer.getName()));
