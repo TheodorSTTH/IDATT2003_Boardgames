@@ -18,14 +18,14 @@ import javafx.scene.control.Spinner;
 
 public class MoveTroopsPaneController extends AbstractSidebarPaneController {
   private MoveTroopsPaneView view;
-
+  
   public MoveTroopsPaneController(Risk risk) {
     super(risk);
     this.view = new MoveTroopsPaneView(risk.getCurrentPlayer().getName());
-
+    
+    Spinner<Integer> amountOfTroopsSpinner = view.getAmountOfTroopsSpinner();
     ComboBox<Country> moveFromComboBox = view.getMoveFromComboBox();
     ComboBox<Country> moveTargetComboBox = view.getMoveTargetComboBox();
-    Spinner<Integer> amountOfTroopsSpinner = view.getAmountOfTroopsSpinner();
     Button ok = view.getOk();
 
     view.getOk()
@@ -62,8 +62,10 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
             (obs, oldFrom, newFrom) -> {
               boolean isFromDefined = newFrom != null;
               if (isFromDefined) {
-                amountOfTroopsSpinner.getValueFactory().setValue(1);
+                amountOfTroopsSpinner.setDisable(false);
                 view.getSpinnerValueFactory().setMax(newFrom.getArmies() - 1);
+              } else {
+                amountOfTroopsSpinner.setDisable(true);
               }
             });
 
@@ -115,6 +117,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
     view.getMoveTargetComboBox().setItems(FXCollections.observableArrayList(moveToOptions));
     view.getMoveTargetComboBox().setValue(null);
     view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
+    view.getAmountOfTroopsSpinner().setDisable(true);
   }
 
   public MoveTroopsPaneView getView() {
