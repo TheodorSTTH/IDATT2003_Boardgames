@@ -98,6 +98,17 @@ public class MoveTroopsPane extends AbstractSidebarPane {
     VBox.setMargin(dontMoveTroops, new javafx.geometry.Insets(0, 0, 10, 10));
     
     
+    dontMoveTroops.setOnAction(event -> {
+      risk.endTurn();
+      Player currentPlayer = risk.getCurrentPlayer();
+      if (risk.getBoard().hasWon(currentPlayer)) { // TODO: Move code out of a controller somehow
+        FileHandler.deleteGame(risk.getGameName());
+        NavigationManager.navigate(new RiskWinningPage(currentPlayer.getName()));
+      }
+      notifyObservers(this.getNextSidebarPane());
+    });
+
+
     this.setLineSpacing(10);
 
 
@@ -109,15 +120,6 @@ public class MoveTroopsPane extends AbstractSidebarPane {
       }
     });
   
-
-    dontMoveTroops.setOnAction(event -> {
-      Player currentPlayer = risk.getCurrentPlayer();
-      if (risk.getBoard().hasWon(currentPlayer)) { // TODO: Move code out of a controller somehow
-        FileHandler.deleteGame(risk.getGameName());
-        NavigationManager.navigate(new RiskWinningPage(currentPlayer.getName()));
-      }
-      notifyObservers(this.getNextSidebarPane());
-    });
 
     getContainer().getChildren().addAll(
         currentUserLabel,
