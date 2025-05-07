@@ -12,9 +12,9 @@ public class UI {
 
   public static void StartPageCreateNewGameButon(int plyers, String gameType, String gameName) {
     if (gameType.equals("Lader Game Classic")) {
-      game = new LaderGame(plyers, gameName, "classic");
-    } else if (gameType.equals("Lader Game Qizz")) {
-      game = new LaderGame(plyers, gameName, "qizz");
+      game = new LaderGame(plyers, gameName, "Classic");
+    } else if (gameType.equals("Lader Game Quiz")) {
+      game = new LaderGame(plyers, gameName, "Quiz");
     } 
     else if (gameType.equals("Risk")) {
       game = new Risk(plyers, gameName);

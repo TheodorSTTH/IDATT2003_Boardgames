@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.Model.SnakesAndLadders.BoardLaderGame;
+import edu.ntnu.irr.bidata.Model.SnakesAndLadders.BoardSnakesAndLadders;
 import edu.ntnu.irr.bidata.Model.SnakesAndLadders.LaderGame;
 import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.Event;
 import edu.ntnu.irr.bidata.Model.SnakesAndLadders.Event.EventMaker;
@@ -234,8 +234,8 @@ public class FileHandler {
     return new Risk(players.size(), name, players, loadBoardRisk(name), loadCurrentPlayer(name, players), loadAvalibleTroops(name));
   }
 
-  private static BoardLaderGame loadBoardLadderGame(String name) {
-    return BoardLaderGame.loadBoard(name);
+  private static BoardSnakesAndLadders loadBoardLadderGame(String name) {
+    return BoardSnakesAndLadders.loadBoard(name);
   }
 
   private static BoardRisk loadBoardRisk(String name) {
@@ -254,7 +254,7 @@ public class FileHandler {
     List<String> questionAndAnswer = new ArrayList<>();
     List<String> allLines = new ArrayList<>();
     try {
-      Scanner scanner = new Scanner(new File(getFilePath("QizzQestion.csv")));
+      Scanner scanner = new Scanner(new File(getFilePath("QuizQuestion.csv")));
       // Read all lines into a list
       while (scanner.hasNextLine()) {
         allLines.add(scanner.nextLine());

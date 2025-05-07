@@ -14,7 +14,7 @@ import edu.ntnu.irr.bidata.Model.Player;
 
 
 public class LaderGame extends Game implements ISubject<LaderGame> {
-    private BoardLaderGame board;
+    private BoardSnakesAndLadders board;
     private final Dice dice = new Dice(2, 6);
     private final ArrayList<IObserver<LaderGame>> allObservers;
 
@@ -41,11 +41,11 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
 
     public LaderGame(int amountOfPlayers, String gameName, String boardType) {
         super(amountOfPlayers, gameName);
-        this.board = new BoardLaderGame(boardType);
+        this.board = new BoardSnakesAndLadders(boardType);
         this.allObservers = new ArrayList<>();
     }
 
-    public LaderGame(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardLaderGame board,
+    public LaderGame(int amountOfPlayers, String gameName, ArrayList<Player> players, BoardSnakesAndLadders board,
             Player currentPlayer) {
         super(amountOfPlayers, gameName, players, currentPlayer);
         this.board = board;
@@ -71,7 +71,7 @@ public class LaderGame extends Game implements ISubject<LaderGame> {
         notifyObservers(this);
     }
 
-    public BoardLaderGame getBoard() {
+    public BoardSnakesAndLadders getBoard() {
         return board;
     }
 

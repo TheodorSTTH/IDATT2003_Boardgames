@@ -43,7 +43,7 @@ public class StartPage extends VBox {
     ComboBox<String> WhatGameComboBox = new ComboBox<>();
     WhatGameComboBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(WhatGameComboBox, new Insets(5, 5, 5, 5));
-    WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Qizz", "Risk");
+    WhatGameComboBox.getItems().addAll("Lader Game Classic","Lader Game Quiz", "Risk");
     WhatGameComboBox.setPromptText("Select an Adventure");
 
 
