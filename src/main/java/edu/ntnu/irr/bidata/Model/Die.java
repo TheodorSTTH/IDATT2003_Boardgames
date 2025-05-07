@@ -1,17 +1,16 @@
 package edu.ntnu.irr.bidata.model;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
 import edu.ntnu.irr.bidata.model.interfaces.observer.ISubject;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Represents a single die with a specified number of faces. Implements the Observer pattern,
  * notifying observers when the die is rolled.
  */
 public class Die implements ISubject<Integer> {
-  private final Random RANDOM = new Random(); // Random number generator
+  private final Random random = new Random(); // Random number generator
   private final int amountOfFaces; // Total number of faces on the die
   private int previousRoll; // Stores result of the last roll
   private boolean wasRolledPreviousRound; // Tracks if the die was rolled in the last round
@@ -34,7 +33,7 @@ public class Die implements ISubject<Integer> {
    * @return a random number between 1 and amountOfFaces (inclusive)
    */
   public int roll() {
-    int rollResult = RANDOM.nextInt(1, amountOfFaces + 1); // Random result
+    int rollResult = random.nextInt(1, amountOfFaces + 1); // Random result
     this.previousRoll = rollResult;
     notifyObservers(rollResult); // Notify all observers
     setWasRolledPreviousRound(true);

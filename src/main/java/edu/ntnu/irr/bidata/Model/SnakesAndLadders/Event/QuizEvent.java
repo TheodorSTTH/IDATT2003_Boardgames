@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.model.SnakesAndLadders.Event;
+package edu.ntnu.irr.bidata.model.snakesandladders.event;
 
 import edu.ntnu.irr.bidata.View.PopUp;
 

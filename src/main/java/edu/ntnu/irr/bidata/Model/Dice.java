@@ -13,7 +13,7 @@ public class Dice {
    * Constructs a Dice object with the specified number of dice and faces per die.
    *
    * @param numberOfDice number of dice to include
-   * @param numberOfDice number of faces on each die
+   * @param numberOfFaces number of faces on each die
    */
   public Dice(int numberOfDice, int numberOfFaces) {
     for (int i = 0; i < numberOfDice; i++) {

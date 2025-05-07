@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.SnakesAndLadders.SnakesAndLadders;
-import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.Event;
-import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.LadderEvent;
-import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.QuizEvent;
 import edu.ntnu.irr.bidata.model.interfaces.observer.IObserver;
+import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

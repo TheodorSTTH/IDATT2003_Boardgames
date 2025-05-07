@@ -1,4 +1,4 @@
-package edu.ntnu.irr.bidata.model.SnakesAndLadders;
+package edu.ntnu.irr.bidata.model.snakesandladders;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.SnakesAndLadders.Event.Event;
+import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
 
 import java.io.File;
 import java.io.IOException;
