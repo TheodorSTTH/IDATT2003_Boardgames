@@ -3,6 +3,7 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
+import edu.ntnu.irr.bidata.View.StartPage.StartPageController;
 import javafx.scene.control.Label;
 import java.util.HashMap;
 
@@ -34,7 +35,7 @@ public class RiskPage extends HBox {
     Button exitGameButton = new Button("Exit game");
     exitGameButton.getStyleClass().addAll("fantasy-button");
     exitGameButton.setOnAction(e -> {
-      NavigationManager.navigate(new StartPage());
+      NavigationManager.navigate(new StartPageController().getView());
       });
 
 

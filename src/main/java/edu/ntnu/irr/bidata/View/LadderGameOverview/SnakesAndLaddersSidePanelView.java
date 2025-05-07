@@ -6,6 +6,7 @@ import edu.ntnu.irr.bidata.Model.FileHandler;
 import edu.ntnu.irr.bidata.Model.LadderGame.LaderGame;
 import edu.ntnu.irr.bidata.Model.Player;
 import edu.ntnu.irr.bidata.Model.interfaces.observer.IObserver;
+import edu.ntnu.irr.bidata.View.StartPage.StartPageController;
 import edu.ntnu.irr.bidata.View.WinPage.WinningPage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,10 +44,8 @@ public class SnakesAndLaddersSidePanelView extends VBox implements IObserver<Lad
     Button exitGameButton = new Button("Exit game");
     exitGameButton.getStyleClass().addAll("fantasy-button");
     exitGameButton.setOnAction(e -> {
-      NavigationManager.navigate(new StartPage());
-      });
-
-
+      NavigationManager.navigate(new StartPageController().getView());
+    });
     
 
     for (Die die : snakesAndLadders.getDice().getDice()) {

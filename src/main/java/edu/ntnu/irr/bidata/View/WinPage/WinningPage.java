@@ -2,6 +2,7 @@ package edu.ntnu.irr.bidata.View.WinPage;
 
 import edu.ntnu.irr.bidata.Controler.MyWindow;
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
+import edu.ntnu.irr.bidata.View.StartPage.StartPageController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -21,7 +22,7 @@ public class WinningPage extends VBox {
     backToMenuButton.getStyleClass().addAll("fantasy-button-sidbar");
     VBox.setMargin(backToMenuButton, new Insets(25, 25, 25, 25));
     backToMenuButton.setOnAction(e -> {
-      NavigationManager.navigate(new StartPage());
+      NavigationManager.navigate(new StartPageController().getView());
     });
       
 
