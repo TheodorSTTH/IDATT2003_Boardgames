@@ -40,11 +40,6 @@ public class UI {
     PopUp.showInfo("Game Over", "Winner: " + winner);
   }
 
-  public static void saveGame() {
-    game.saveGame();
-    PopUp.showInfo("Game saved", "Game has been saved as " + game.getGameName());
-  }
-
   public static void loadGame(String gameName, String gameType) {
     game = FileHandler.loadGame(gameName, gameType);
     game.startSavedGame();

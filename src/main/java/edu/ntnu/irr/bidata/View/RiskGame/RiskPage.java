@@ -46,7 +46,6 @@ public class RiskPage extends HBox {
 
     saveButton.setOnAction(e -> {
       risk.saveGame();
-      PopUp.showInfo("Game saved", "Game has been saved as " + risk.getGameName());
     });
     getChildren().addAll(sidePanel, mainStage);
   }

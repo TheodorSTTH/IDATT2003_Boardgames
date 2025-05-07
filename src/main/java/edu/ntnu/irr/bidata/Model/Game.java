@@ -109,6 +109,7 @@ public abstract class Game {
 
     public void saveGame() {
         FileHandler.saveGame(this);
+        PopUp.showInfo("Game saved", "Game saved as\n" + gameName);
     }
 
     protected List<String> getPlayerNames() {
