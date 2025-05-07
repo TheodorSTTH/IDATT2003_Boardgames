@@ -3,18 +3,13 @@ package edu.ntnu.irr.bidata.View.RiskGame;
 import edu.ntnu.irr.bidata.Controler.NavigationManager;
 import edu.ntnu.irr.bidata.Model.Risk.Country;
 import edu.ntnu.irr.bidata.Model.Risk.Risk;
-import edu.ntnu.irr.bidata.View.PopUp;
-import edu.ntnu.irr.bidata.View.StartPage.StartPage;
 import javafx.scene.control.Label;
 import java.util.HashMap;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.image.ImageView;
-
 
 
 public class RiskPage extends HBox {

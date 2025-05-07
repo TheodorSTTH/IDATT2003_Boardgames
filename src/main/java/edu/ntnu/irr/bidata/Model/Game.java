@@ -1,5 +1,4 @@
 package edu.ntnu.irr.bidata.Model;
-import edu.ntnu.irr.bidata.Controler.UI;
 import edu.ntnu.irr.bidata.View.PopUp;
 
 import java.util.ArrayList;
