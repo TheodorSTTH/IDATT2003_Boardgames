@@ -17,7 +17,7 @@ public class PlaceTroopsPaneController extends AbstractSidebarPaneController {
 
     view.getOk().setOnAction(event -> {
       if (view.getCountryComboBox().getValue() == null) {
-        PopUp.showError("Must select a county","Please select a country to place troops on.");
+        PopUp.showError("Must select a country","Please select a country to place troops on.");
       } else {
         risk.placeTroops(view.getCountryComboBox().getValue().getName(), view.getAmountOfTroopsSpinner().getValue());
         update();

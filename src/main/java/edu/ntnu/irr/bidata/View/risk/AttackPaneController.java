@@ -37,7 +37,7 @@ public class AttackPaneController extends AbstractSidebarPaneController implemen
         risk.attackOnce(from.getName(), to.getName());
         updateView();
       } else {
-        PopUp.showError("Must select a county", "Please select a country to attack from and a country to attack to.");
+        PopUp.showError("Must select a country", "Please select a country to attack from and a country to attack to.");
       }
     });
 
@@ -48,7 +48,7 @@ public class AttackPaneController extends AbstractSidebarPaneController implemen
         risk.attackUntilResult(from.getName(), to.getName());
         updateView();
       } else {
-        PopUp.showError("Must select a county", "Please select a country to attack from and a country to attack to.");
+        PopUp.showError("Must select a country", "Please select a country to attack from and a country to attack to.");
       }
     });
 
