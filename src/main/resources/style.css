@@ -1,52 +1,54 @@
-.start-page {
-  -fx-background-image: url("images/backgroundStartPage.png");
+.background {
+  background-size: cover;
+  background-repeat: no-repeat;
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
 
+
+.start-page {
+  background-image: url("images/backgroundStartPage.png");
+  -fx-background-image: url("images/backgroundStartPage.png");
+}
+
+.snakes-and-ladders-game-page {
+  background-image: url("images/snakesandladders/snakes_and_ladders_background.png");
+  -fx-background-image: url("images/snakesandladders/snakes_and_ladders_background.png");
+}
+
+.snakes-and-ladders-win-page {
+  background-image: url("images/snakesandladders/snakes_and_ladders_win.png");
+  -fx-background-image: url("images/snakesandladders/snakes_and_ladders_win.png");
+}
+
+.risk-win-page {
+  background-image: url("images/risk/risk_win.png");
+  -fx-background-image: url("images/risk/risk_win.png");
+}
+
+.attack-pane {
+  background-image: url("images/risk/riskAttackBackground.png");
+  -fx-background-image: url("images/risk/riskAttackBackground.png");
+}
+
+.move-troops-pane {
+  background-image: url("images/risk/riskMoveTroopsBackground.png");
+  -fx-background-image: url("images/risk/riskMoveTroopsBackground.png");
+}
+
+.place-troops-pane {
+  background-image: url("images/risk/riskPlaceTroopsBackground.png");
+  -fx-background-image: url("images/risk/riskPlaceTroopsBackground.png");
+}
+
 .fantasy {
+  font-family: "Papyrus", "Georgia", serif;
   -fx-font-family: "Papyrus", "Georgia", serif;
   -fx-text-fill: #FFD700;
 }
 .title-3 {
   -fx-font-size: 20px;
   -fx-font-weight: bold;
-}
-
-.snakes-and-ladders-game-page {
-  -fx-background-image: url("images/snakesandladders/snakes_and_ladders_background.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.snakes-and-ladders-win-page {
-  -fx-background-image: url("images/snakesandladders/snakes_and_ladders_win.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.risk-win-page {
-  -fx-background-image: url("images/risk/risk_win.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.attack-pane {
-  -fx-background-image: url("images/risk/riskAttackBackground.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.move-troops-pane {
-  -fx-background-image: url("images/risk/riskMoveTroopsBackground.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.place-troops-pane {
-  -fx-background-image: url("images/risk/riskPlaceTroopsBackground.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
 }
 
 .fantasy-title, .fantasy-text, .fantasy-dialog, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-title-sidbar, .country-view, .fantasy-dialog .label, .fantasy-dialog .button, .fantasy-dialog .combo-box {

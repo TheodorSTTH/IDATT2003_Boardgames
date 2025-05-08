@@ -24,7 +24,7 @@ public class SnakesAndLaddersPageView extends HBox {
    */
   public SnakesAndLaddersPageView(SnakesAndLadders snakesAndLadders) {
     // Set up the style and alignment of the HBox container
-    getStyleClass().add("snakes-and-ladders-game-page");
+    getStyleClass().addAll("snakes-and-ladders-game-page", "background");
     setAlignment(Pos.CENTER);
 
     // Initialize the canvas view for the board and side panel

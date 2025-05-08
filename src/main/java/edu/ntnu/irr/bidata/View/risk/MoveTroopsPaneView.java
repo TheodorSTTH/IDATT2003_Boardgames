@@ -34,7 +34,7 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
    */
   public MoveTroopsPaneView(String currentPlayerName) {
     // Apply style to the container
-    getContainer().getStyleClass().add("move-troops-pane");
+    getContainer().getStyleClass().addAll("move-troops-pane", "background");
 
     // Initialize and style the current user label
     currentUserLabel = new Label("Current Player: " + currentPlayerName);

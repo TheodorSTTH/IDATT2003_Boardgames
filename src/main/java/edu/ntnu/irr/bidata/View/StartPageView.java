@@ -28,7 +28,7 @@ public class StartPageView extends VBox {
    * @param savedGamesMap A map containing saved game names and their corresponding types.
    */
   public StartPageView(HashMap<String, String> savedGamesMap) {
-    getStyleClass().add("start-page");
+    getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER);
 
     // Title

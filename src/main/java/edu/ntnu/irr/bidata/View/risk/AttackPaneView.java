@@ -30,7 +30,7 @@ public class AttackPaneView extends AbstractSidebarPaneView {
    */
   public AttackPaneView() {
     // Set style for the container of the pane
-    getContainer().getStyleClass().add("attack-pane");
+    getContainer().getStyleClass().addAll("attack-pane", "background");
 
     // Initialize the dieBox (where dice rolls will be displayed)
     this.dieBox = new FlowPane();

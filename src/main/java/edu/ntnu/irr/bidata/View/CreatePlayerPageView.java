@@ -73,7 +73,7 @@ public class CreatePlayerPageView extends VBox {
    * @param availableColors a list of color options to display in the color picker.
    */
   public CreatePlayerPageView(List<String> availableColors) {
-    getStyleClass().add("start-page");
+    getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER); // Align the VBox content at the top center
 
     titleLabel.getStyleClass().add("fantasy-title");

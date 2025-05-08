@@ -31,7 +31,7 @@ public class WinningPageView extends VBox {
    */
   public WinningPageView(String winner, String winPageClass) {
     // Apply the custom style class for this winning page.
-    getStyleClass().add(winPageClass);
+    getStyleClass().addAll(winPageClass, "background");
 
     // Set alignment for the elements in the VBox to be at the top-right corner.
     setAlignment(Pos.TOP_RIGHT);

@@ -28,7 +28,7 @@ public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
    */
   public PlaceTroopsPaneView() {
     // Apply style to the container
-    getContainer().getStyleClass().add("place-troops-pane");
+    getContainer().getStyleClass().addAll("place-troops-pane", "background");
     this.setText("Place Troops");
     this.setLineSpacing(10);
 
