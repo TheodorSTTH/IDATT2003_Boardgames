@@ -98,4 +98,14 @@ public class Die implements Subject<Integer> {
       observer.update(amountOfDots);
     }
   }
+
+  /**
+   * Is responsible for returning the amount faces on this die. Is mainly
+   * meant to be used for testing purposes.
+   *
+   * @return amount of faces on die.
+   * */
+  public int getAmountOfFaces() {
+    return this.amountOfFaces;
+  }
 }

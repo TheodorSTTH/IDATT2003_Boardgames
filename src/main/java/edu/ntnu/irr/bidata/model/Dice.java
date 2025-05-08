@@ -35,15 +35,6 @@ public class Dice {
   }
 
   /**
-   * Rolls all dice and returns each result individually.
-   *
-   * @return a list of each die's roll result
-   */
-  public ArrayList<Integer> rollSetOfDice() {
-    return rollSetOfDice(dice.size()); // Roll all dice
-  }
-
-  /**
    * Rolls a specified number of dice. Dice not rolled will have their "wasRolledPreviousRound" flag
    * set to false.
    *

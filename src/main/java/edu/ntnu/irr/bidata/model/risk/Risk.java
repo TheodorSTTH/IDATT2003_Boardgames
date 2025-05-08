@@ -1,13 +1,11 @@
 package edu.ntnu.irr.bidata.model.risk;
 
-import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import edu.ntnu.irr.bidata.view.PopUp;
-import edu.ntnu.irr.bidata.view.risk.RiskPage;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
@@ -115,15 +113,6 @@ public class Risk extends Game implements Subject<Pair<Dice, Dice>> {
     super.init();
     board.setUpBoard(this.players);
     startTurn();
-    RiskPage riskPage = new RiskPage(this);
-    NavigationManager.navigate(riskPage);
-    showRules();
-  }
-
-  /** Starts a saved game by navigating to the Risk page. */
-  public void startSavedGame() {
-    RiskPage riskPage = new RiskPage(this);
-    NavigationManager.navigate(riskPage);
   }
 
   /** Starts the player's turn by checking if they have lost and updating available troops. */
@@ -324,11 +313,13 @@ public class Risk extends Game implements Subject<Pair<Dice, Dice>> {
     return troopesAvailable;
   }
 
-  /** Shows the rules of the game in a popup. */
-  public void showRules() {
-    PopUp.showScrollablePopup(
-        "Rules",
-        "The rules of the game are as follows:\n"
+  /**
+   * Is responsible for holding and return the rules of the game of Risk.
+   *
+   * @return Rules for the game of risk.
+   * */
+  public String getRules() {
+    return "The rules of the game are as follows:\n"
             + "1. Players take turns in clockwise order.\n"
             + "2. You gain reinforcements each turn based on the number of territories you own, "
             + "continent control, and other bonuses like controlling a continent.\n"
@@ -341,6 +332,6 @@ public class Risk extends Game implements Subject<Pair<Dice, Dice>> {
             + " They can lose one each.\n"
             + "8. At the end of your turn, you may fortify by moving troops between two "
             + "territories.\n"
-            + "9. The goal is to conquer the entire world by eliminating all other players.");
+            + "9. The goal is to conquer the entire world by eliminating all other players.";
   }
 }

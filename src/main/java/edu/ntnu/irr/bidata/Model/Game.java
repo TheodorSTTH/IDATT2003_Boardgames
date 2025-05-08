@@ -1,10 +1,8 @@
 package edu.ntnu.irr.bidata.model;
 
-import edu.ntnu.irr.bidata.view.PopUp;
 import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * This abstract class represents a Game that includes functionality for managing players and game
@@ -65,17 +63,24 @@ public abstract class Game {
    * @param age the age of the player
    * @return true if the player was added successfully, false if there was an error
    */
-  public boolean addPlayer(String name, String color, int age) {
+  public boolean addPlayer(String name, String color, int age) throws IllegalArgumentException {
     // Check if the player already exists in the game by name
     if (getPlayerNames().contains(name)) {
-      PopUp.showWarning("Player already exists", "Player named " + name + "\nalready exists");
-      return false;
+      throw new IllegalArgumentException("Player named " + name + "\nalready exists");
     }
 
     // Check if the name contains a comma, which is not allowed
     if (name.contains(",")) {
-      PopUp.showWarning("Invalid name", "Name cannot contain\na comma(,)");
-      return false;
+      throw new IllegalArgumentException("Name contains invalid characters. Cannot have comma (,)");
+    }
+
+    if (players.size() >= amountOfPlayers) {
+      throw new IllegalArgumentException(
+          "You cannot add more players to the game. Max amount of players: " + amountOfPlayers);
+    }
+
+    if (!availableColors.contains(color)) {
+      throw new IllegalArgumentException("Figure color does not exist");
     }
 
     // Add the new player to the game
@@ -101,9 +106,6 @@ public abstract class Game {
     sortPlayersByAge();
     currentPlayer = players.get(0);
   }
-
-  /** Starts the saved game. This method should be implemented in a subclass. */
-  public abstract void startSavedGame();
 
   /**
    * Returns the list of players in the game.
@@ -230,4 +232,6 @@ public abstract class Game {
   public List<String> getAvailableColors() {
     return availableColors;
   }
+
+  public abstract String getRules();
 }

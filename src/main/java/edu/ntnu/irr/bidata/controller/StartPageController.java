@@ -8,7 +8,7 @@ import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.StartPageView;
-import edu.ntnu.irr.bidata.view.risk.RiskPage;
+import edu.ntnu.irr.bidata.view.risk.RiskPageController;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import java.io.UncheckedIOException;
 import java.util.HashMap;
@@ -130,7 +130,7 @@ public class StartPageController {
         if (game instanceof SnakesAndLadders) {
           NavigationManager.navigate(new SnakesAndLaddersPageView((SnakesAndLadders) game));
         } else {
-          NavigationManager.navigate(new RiskPage((Risk) game));
+          NavigationManager.navigate(new RiskPageController((Risk) game).getView());
         }
       } catch (UncheckedIOException e) {
         PopUp.showError("A file related error occurred trying to load game", e.getMessage());

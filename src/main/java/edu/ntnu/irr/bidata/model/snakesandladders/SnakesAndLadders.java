@@ -1,13 +1,10 @@
 package edu.ntnu.irr.bidata.model.snakesandladders;
 
-import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
-import edu.ntnu.irr.bidata.view.PopUp;
-import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -107,14 +104,6 @@ public class SnakesAndLadders extends Game implements Subject<SnakesAndLadders> 
   protected void init() {
     super.init();
     board.setPlayers(players);
-    SnakesAndLaddersPageView snakesAndLaddersPageView = new SnakesAndLaddersPageView(this);
-    NavigationManager.navigate(snakesAndLaddersPageView);
-    showRules();
-  }
-
-  /** Starts a saved game by navigating to the SnakesAndLadders page. */
-  public void startSavedGame() {
-    NavigationManager.navigate(new SnakesAndLaddersPageView(this));
   }
 
   /**
@@ -163,17 +152,14 @@ public class SnakesAndLadders extends Game implements Subject<SnakesAndLadders> 
     return playerPositions;
   }
 
-  /** Displays the game rules in a pop-up window. */
-  public void showRules() {
-    PopUp.showScrollablePopup(
-        "Rules",
-        "The rules of the game are as follows:\n"
+  public String getRules() {
+    return "The rules of the game are as follows:\n"
             + "1. Players take turns rolling two dice.\n"
             + "2. The player moves their token forward the number of spaces shown on the dice.\n"
             + "3. If a player lands on a snake, they must slide down to the tail of the snake.\n"
             + "4. If a player lands on a ladder, they can climb up to the top of the ladder.\n"
             + "5. If a player lands on a quiz tile, they must answer a if they answer correctly"
             + " they move 3 forward, if they get wrong they move 3 back.\n"
-            + "6. The first player to reach the end of the board wins.");
+            + "6. The first player to reach the end of the board wins.";
   }
 }
