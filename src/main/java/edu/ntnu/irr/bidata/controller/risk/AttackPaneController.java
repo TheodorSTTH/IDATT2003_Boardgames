@@ -137,8 +137,11 @@ public class AttackPaneController extends AbstractSidebarPaneController
    * available attack options and resetting the selections.
    */
   private void updateView() {
-    Country selectedFrom = view.getAttackFromComboBox().getValue();
-    Country selectedTo = view.getAttackTargetComboBox().getValue();
+
+    // Disable the attack buttons until both countries are selected
+    view.getPerformAttackUntilResultButton().setDisable(true);
+    view.getPerformAttackOnceButton().setDisable(true);
+    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
 
     // Get the available countries for the current player to attack from
     List<Country> attackFromOptions =
@@ -148,20 +151,14 @@ public class AttackPaneController extends AbstractSidebarPaneController
     ComboBox<Country> attackFromComboBox = view.getAttackFromComboBox();
     ComboBox<Country> attackTargetComboBox = view.getAttackTargetComboBox();
 
+    Country selectedFrom = attackFromComboBox.getValue();
+    Country selectedTo = attackTargetComboBox.getValue();
+
     // Set the ComboBox options for "Attack From"
     attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
-    attackFromComboBox.setValue(null);
-    attackTargetComboBox.setValue(null);
-    view.getAttackTargetComboBox().setDisable(true);
-
-    // Disable the attack buttons until both countries are selected
-    view.getPerformAttackUntilResultButton().setDisable(true);
-    view.getPerformAttackOnceButton().setDisable(true);
-    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
-
     attackTargetComboBox.getItems().clear();
 
-    // Set the value for the attack combo boxes if valid selections are made
+    // If the old selections are still valid, set them back to the ComboBoxes
     if (attackFromOptions.contains(selectedFrom)
         && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
       attackFromComboBox.setValue(selectedFrom);
@@ -169,6 +166,10 @@ public class AttackPaneController extends AbstractSidebarPaneController
           FXCollections.observableArrayList(
               risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
       attackTargetComboBox.setValue(selectedTo);
+    } else {
+      attackFromComboBox.setValue(null);
+      attackTargetComboBox.setValue(null);
+      attackTargetComboBox.setDisable(true);
     }
   }
 
