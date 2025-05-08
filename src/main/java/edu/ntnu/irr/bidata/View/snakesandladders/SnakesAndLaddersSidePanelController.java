@@ -6,6 +6,7 @@ import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
+import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.startpage.StartPageController;
 import edu.ntnu.irr.bidata.view.winningpage.WinningPageController;
 import javafx.scene.paint.Color;
@@ -25,7 +26,11 @@ public class SnakesAndLaddersSidePanelController implements Observer<SnakesAndLa
       }
     });
     view.getSaveButton().setOnAction(e -> {
-      snakesAndLadders.saveGame();
+      try {
+        snakesAndLadders.saveGame();
+      } catch (RuntimeException ex) {
+        PopUp.showError("An error occurred while saving.", ex.getMessage());
+      }
     });
     view.getExitGameButton().setOnAction(e -> {
       NavigationManager.navigate(new StartPageController().getView());

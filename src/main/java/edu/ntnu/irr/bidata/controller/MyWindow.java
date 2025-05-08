@@ -6,11 +6,14 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Main window for my application!
  */
 public class MyWindow extends Application {
+  private static final Logger log = LoggerFactory.getLogger(MyWindow.class);
   private static Stage primaryStage;
 
   @Override
@@ -34,7 +37,7 @@ public class MyWindow extends Application {
   }
 
   public static void closeApplication() {
-    System.out.println("Application is closing...");
+    log.info("Application is closing...");
     Platform.exit();
     System.exit(0);
   }

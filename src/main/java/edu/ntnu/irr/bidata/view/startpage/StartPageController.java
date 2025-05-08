@@ -10,6 +10,8 @@ import edu.ntnu.irr.bidata.view.createplayer.CreatePlayerPageController;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.RiskPage;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.HashMap;
 import javafx.beans.value.ChangeListener;
 
@@ -18,7 +20,11 @@ public class StartPageController {
   private HashMap<String, String> savedGamesMap;
 
   public StartPageController() {
-    this.savedGamesMap = FileHandler.getSavedGames();
+    try {
+      this.savedGamesMap = FileHandler.getSavedGames();
+    } catch (UncheckedIOException e) {
+      PopUp.showError("Something went wrong trying to get saved games", e.getMessage());
+    }
     this.view = new StartPageView(savedGamesMap);
     initialize();
   }
@@ -60,16 +66,20 @@ public class StartPageController {
   }
 
   private void startGame(Integer playerCount, String gameType, String gameName) {
-    Game game;
-    if (gameType.equals("Lader Game Classic")) {
-      game = new SnakesAndLadders(playerCount, gameName, "classic");
-    } else if (gameType.equals("Lader Game Quiz")) {
-      game = new SnakesAndLadders(playerCount, gameName, "quiz");
-    } else {
-      game = new Risk(playerCount, gameName);
-    }
+    try {
+      Game game;
+      if (gameType.equals("Lader Game Classic")) {
+        game = new SnakesAndLadders(playerCount, gameName, "classic");
+      } else if (gameType.equals("Lader Game Quiz")) {
+        game = new SnakesAndLadders(playerCount, gameName, "quiz");
+      } else {
+        game = new Risk(playerCount, gameName);
+      }
 
-    NavigationManager.navigate(new CreatePlayerPageController(game).getView());
+      NavigationManager.navigate(new CreatePlayerPageController(game).getView());
+    } catch (UncheckedIOException e) {
+      PopUp.showError("A file related error occurred", e.getMessage());
+    }
   }
 
   private void handleLoad() {
@@ -79,11 +89,15 @@ public class StartPageController {
       String gameName = gameData[0].trim();
       String gameType = gameData[1].replace(")", "").trim();
 
-      Game game = FileHandler.loadGame(gameName, gameType);
-      if (game instanceof SnakesAndLadders) {
-        NavigationManager.navigate(new SnakesAndLaddersPageView((SnakesAndLadders) game));
-      } else {
-        NavigationManager.navigate(new RiskPage((Risk) game));
+      try {
+        Game game = FileHandler.loadGame(gameName, gameType);
+        if (game instanceof SnakesAndLadders) {
+          NavigationManager.navigate(new SnakesAndLaddersPageView((SnakesAndLadders) game));
+        } else {
+          NavigationManager.navigate(new RiskPage((Risk) game));
+        }
+      } catch (UncheckedIOException e) {
+        PopUp.showError("A file related error occurred trying to load game", e.getMessage());
       }
     } else {
       PopUp.showWarning("Selection Required", "Please select a saved game to load.");

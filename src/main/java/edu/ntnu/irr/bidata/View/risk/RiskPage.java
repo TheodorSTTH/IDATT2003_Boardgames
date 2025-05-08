@@ -3,6 +3,7 @@ package edu.ntnu.irr.bidata.view.risk;
 import edu.ntnu.irr.bidata.controller.NavigationManager;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.startpage.StartPageController;
 import javafx.scene.control.Label;
 import java.util.HashMap;
@@ -48,7 +49,12 @@ public class RiskPage extends HBox {
     mainStage.getChildren().addAll(board, underlay);
 
     saveButton.setOnAction(e -> {
-      risk.saveGame();
+      try {
+        risk.saveGame();
+        PopUp.showInfo("Game saved", "Game saved as\n" + risk.getGameName());
+      } catch (RuntimeException ex) {
+        PopUp.showError("Error saving game", ex.getMessage());
+      }
     });
     getChildren().addAll(sidePanel, mainStage);
   }

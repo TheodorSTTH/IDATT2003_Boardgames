@@ -11,11 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Handles saving and loading of game data such as players, boards, and game state. Supports both
@@ -27,6 +30,7 @@ import java.util.Scanner;
  * that point in the project.<\p>
  */
 public class FileHandler {
+  private static final Logger log = LoggerFactory.getLogger(FileHandler.class);
 
   // The directory where all save files are stored.
   private static final String FILE_DIRECTORY = "src/main/resources/files/";
@@ -49,7 +53,7 @@ public class FileHandler {
    *
    * @param game The game object to be saved
    */
-  public static void saveGame(Game game) {
+  public static void saveGame(Game game) throws UncheckedIOException {
     if (game instanceof SnakesAndLadders) {
       saveSnakesAndLadders(game); // Save SnakesAndLadders-specific state
     } else if (game instanceof Risk) {
@@ -66,7 +70,7 @@ public class FileHandler {
    * @param type The type of game ("SnakesAndLadders" or "Risk")
    * @return A reconstructed Game object
    */
-  public static Game loadGame(String name, String type) {
+  public static Game loadGame(String name, String type) throws UncheckedIOException {
     switch (type) {
       case "SnakesAndLadders":
         return loadSnakesAndLadders(name);
@@ -82,7 +86,7 @@ public class FileHandler {
    *
    * @return A map from game name to game type
    */
-  public static HashMap<String, String> getSavedGames() {
+  public static HashMap<String, String> getSavedGames() throws UncheckedIOException{
     HashMap<String, String> savedGames = new HashMap<>();
     File file = new File(getFilePath("SavedGames.csv"));
 
@@ -101,7 +105,8 @@ public class FileHandler {
         }
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Failed to read file when getting saved games", e);
+      throw new UncheckedIOException("Failed to read file when getting saved games", e);
     }
 
     return savedGames;
@@ -122,7 +127,8 @@ public class FileHandler {
         PrintWriter writer = new PrintWriter(fileWriter)) {
       writer.println(name + "," + game.getGameType());
     } catch (IOException e) {
-      e.printStackTrace();
+      log.error("Failed to write file when adding game to saved games", e);
+      throw new UncheckedIOException("Failed to write file when adding game to saved games", e);
     }
   }
 
@@ -131,7 +137,7 @@ public class FileHandler {
    *
    * @param name The name of the game to remove
    */
-  private static void removeGameFromSavedGames(String name) {
+  private static void removeGameFromSavedGames(String name) throws UncheckedIOException {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -152,8 +158,8 @@ public class FileHandler {
         }
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
-      return;
+      log.error("Failed to read file when removing game from saved games", e);
+      throw new UncheckedIOException("Failed to read file when removing game from saved games", e);
     }
 
     // Rewrite the file without the removed game
@@ -162,7 +168,8 @@ public class FileHandler {
         writer.println(line);
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Failed to write to file when removing game from saved games", e);
+      throw new UncheckedIOException("Failed to write to file when removing saved game", e);
     }
   }
 
@@ -171,7 +178,7 @@ public class FileHandler {
    *
    * @param name The name of the game to delete
    */
-  public static void deleteGame(String name) {
+  public static void deleteGame(String name) throws UncheckedIOException {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -208,7 +215,8 @@ public class FileHandler {
         writer.println(player.getSaveFormat());
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Failed to save players. Couldn't find file", e);
+      throw new UncheckedIOException("Failed to save players. Couldn't find file", e);
     }
   }
 
@@ -218,7 +226,7 @@ public class FileHandler {
    * @param gameName The name of the saved game
    * @return A list of Player objects reconstructed from file
    */
-  private static ArrayList<Player> loadPlayers(String gameName) {
+  private static ArrayList<Player> loadPlayers(String gameName) throws UncheckedIOException {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -244,7 +252,8 @@ public class FileHandler {
         players.add(new Player(data[0], data[1], Integer.parseInt(data[2])));
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Failed to load file when loading players", e);
+      throw new UncheckedIOException("Failed to load file when loading players", e);
     }
 
     return players;
@@ -255,7 +264,7 @@ public class FileHandler {
    *
    * @param game The game object to save state from
    */
-  private static void saveGameState(Game game) {
+  private static void saveGameState(Game game) throws UncheckedIOException {
     if (game.getGameName() == null || game.getGameName().isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -269,7 +278,8 @@ public class FileHandler {
         writer.print("," + ((Risk) game).getTroopsAvailable());
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Failed to write to file when saving game state", e);
+      throw new UncheckedIOException("Failed to write to file when saving game state", e);
     }
   }
 
@@ -280,7 +290,7 @@ public class FileHandler {
    * @param players The list of all players in the game
    * @return The Player object representing the current player
    */
-  private static Player loadCurrentPlayer(String gameName, ArrayList<Player> players) {
+  private static Player loadCurrentPlayer(String gameName, ArrayList<Player> players) throws UncheckedIOException {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -298,7 +308,8 @@ public class FileHandler {
         }
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Failed to load current player from file", e);
+      throw new UncheckedIOException("Failed to load current player from file", e);
     }
 
     return player;
@@ -310,7 +321,7 @@ public class FileHandler {
    * @param gameName The name of the saved game
    * @return The number of available troops
    */
-  private static int loadAvailableTroops(String gameName) {
+  private static int loadAvailableTroops(String gameName) throws UncheckedIOException {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -321,7 +332,8 @@ public class FileHandler {
       String[] data = scanner.nextLine().split(",");
       troops = Integer.parseInt(data[1]); // Assumes the second value is the troop count
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Failed to load available troops from file", e);
+      throw new UncheckedIOException("Failed to load available troops from file", e);
     }
 
     return troops;
@@ -332,7 +344,7 @@ public class FileHandler {
    *
    * @param game The SnakesAndLadders game instance
    */
-  private static void saveSnakesAndLadders(Game game) {
+  private static void saveSnakesAndLadders(Game game) throws UncheckedIOException {
     savePlayers(game);
     saveGameState(game);
     saveBoardLadderGame((SnakesAndLadders) game);
@@ -344,7 +356,7 @@ public class FileHandler {
    *
    * @param game The Risk game instance
    */
-  private static void saveRiskGame(Game game) {
+  private static void saveRiskGame(Game game) throws UncheckedIOException{
     savePlayers(game);
     saveGameState(game);
     saveBoardRisk((Risk) game);
@@ -357,7 +369,7 @@ public class FileHandler {
    * @param name The name of the saved game
    * @return A SnakesAndLadders instance reconstructed from saved data
    */
-  private static SnakesAndLadders loadSnakesAndLadders(String name) {
+  private static SnakesAndLadders loadSnakesAndLadders(String name) throws UncheckedIOException {
     ArrayList<Player> players = loadPlayers(name);
     return new SnakesAndLadders(
         players.size(), name, players, loadBoardLadderGame(name), loadCurrentPlayer(name, players));
@@ -369,15 +381,15 @@ public class FileHandler {
    * @param name The name of the saved game
    * @return A Risk instance reconstructed from saved data
    */
-  private static Risk loadRiskGame(String name) {
+  private static Risk loadRiskGame(String name) throws UncheckedIOException {
     ArrayList<Player> players = loadPlayers(name);
     return new Risk(
-        players.size(),
-        name,
-        players,
-        loadBoardRisk(name),
-        loadCurrentPlayer(name, players),
-        loadAvailableTroops(name));
+      players.size(),
+      name,
+      players,
+      loadBoardRisk(name),
+      loadCurrentPlayer(name, players),
+      loadAvailableTroops(name));
   }
 
   /**
@@ -405,7 +417,7 @@ public class FileHandler {
    *
    * @param game The SnakesAndLadders instance to save
    */
-  private static void saveBoardLadderGame(SnakesAndLadders game) {
+  private static void saveBoardLadderGame(SnakesAndLadders game) throws UncheckedIOException {
     game.getBoard().saveBoard(game.getGameName());
   }
 
@@ -414,7 +426,7 @@ public class FileHandler {
    *
    * @param game The Risk instance to save
    */
-  private static void saveBoardRisk(Risk game) {
+  private static void saveBoardRisk(Risk game) throws UncheckedIOException {
     game.getBoard().saveBoard(game.getGameName());
   }
 
@@ -423,7 +435,7 @@ public class FileHandler {
    *
    * @return A list with two elements: question (index 0) and answer (index 1)
    */
-  public static List<String> getRandomQuizQuestion() {
+  public static List<String> getRandomQuizQuestion() throws UncheckedIOException {
     List<String> questionAndAnswer = new ArrayList<>();
     List<String> allLines = new ArrayList<>();
 
@@ -445,7 +457,8 @@ public class FileHandler {
         }
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Something went wrong trying to get random quiz question from quiz file", e);
+      throw new UncheckedIOException("Could not find quiz questions file", e);
     }
 
     return questionAndAnswer;
@@ -457,7 +470,7 @@ public class FileHandler {
    * @param boardType The type of board (used to identify the file)
    * @return A map of tile positions to their corresponding event
    */
-  public static HashMap<Integer, Event> loadSnakesAndLaddersEvents(String boardType) {
+  public static HashMap<Integer, Event> loadSnakesAndLaddersEvents(String boardType) throws UncheckedIOException {
     HashMap<Integer, Event> events = new HashMap<>();
 
     try (Scanner scanner = new Scanner(new File(getFilePath("EventSetup" + boardType + ".csv")))) {
@@ -476,7 +489,8 @@ public class FileHandler {
         }
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.error("Something went wrong trying to load a snakes and ladders event from file", e);
+      throw new UncheckedIOException("Something went wrong trying to load a snakes and ladders event from file", e);
     }
 
     return events;

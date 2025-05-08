@@ -1,5 +1,6 @@
 package edu.ntnu.irr.bidata.view.snakesandladders;
 
+import edu.ntnu.irr.bidata.controller.MyWindow;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
 import javafx.scene.layout.Background;
@@ -8,11 +9,15 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Is responsible for showing a die.
  * */
 public class DieView extends Pane implements Observer<Integer> {
+  private static final Logger log = LoggerFactory.getLogger(DieView.class);
+
   private final Circle center;
   private final Circle topRight;
   private final Circle topLeft;
@@ -104,7 +109,7 @@ public class DieView extends Pane implements Observer<Integer> {
         centerRight.setVisible(true);
         break;
       default:
-        System.err.println("Number of dots is " + numberOfDots + ". Max number is 6");
+        log.warn("Number of dots ({}) is above 6 or below 1. Displaying no dots", numberOfDots);
         break;
     }
   }

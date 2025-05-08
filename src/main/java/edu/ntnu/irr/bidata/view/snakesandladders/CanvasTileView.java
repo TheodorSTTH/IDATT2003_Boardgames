@@ -11,8 +11,11 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CanvasTileView {
+  private static final Logger log = LoggerFactory.getLogger(CanvasTileView.class);
   private final int x;
   private final int y;
   private final int width;
@@ -100,7 +103,7 @@ public class CanvasTileView {
           break;
       }
       if (playerImage == null) {
-        System.err.println("Player image not defined");
+        log.warn("Player image not defined. Handling it by not drawing it");
         continue;
       }
 

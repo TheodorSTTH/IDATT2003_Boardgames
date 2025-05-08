@@ -3,16 +3,20 @@ package edu.ntnu.irr.bidata.model.risk;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import edu.ntnu.irr.bidata.model.Player;
+import edu.ntnu.irr.bidata.view.snakesandladders.CanvasTileView;
 import java.io.File;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** Represents the Risk board and all logic for countries, continents, and troop deployment. */
 public class BoardRisk {
-
+  private static final Logger log = LoggerFactory.getLogger(BoardRisk.class);
   private HashMap<String, Country> countries = new HashMap<String, Country>();
   private HashMap<String, List<String>> continents = new HashMap<String, List<String>>();
   private HashMap<String, Integer> continentBonus = new HashMap<String, Integer>();
@@ -372,12 +376,14 @@ public class BoardRisk {
   public void saveBoard(String gameName) {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    String pathname = "src/main/resources/files/" + gameName + ".board.json";
     try {
       objectMapper.writeValue(
-          new File("src/main/resources/files/" + gameName + ".board.json"), this);
-      System.out.println("Board saved successfully.");
+          new File(pathname), this);
+      log.info("Board saved successfully.");
     } catch (IOException e) {
-      e.printStackTrace();
+      log.error("Failed to read board file at path={}", pathname, e);
+      throw new UncheckedIOException("Failed to read board file at path=" + pathname, e);
     }
   }
 
@@ -387,14 +393,14 @@ public class BoardRisk {
    * @param gameName the name of the game file to load
    * @return the loaded BoardRisk object or null if loading fails
    */
-  public static BoardRisk loadBoard(String gameName) {
+  public static BoardRisk loadBoard(String gameName) throws UncheckedIOException {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
       return objectMapper.readValue(
           new File("src/main/resources/files/" + gameName + ".board.json"), BoardRisk.class);
     } catch (IOException e) {
-      e.printStackTrace();
-      return null;
+      log.error("Failed to read board file from game {}", gameName, e);
+      throw new UncheckedIOException("Could not load board from file", e);
     }
   }
 
