@@ -78,29 +78,23 @@ public class CreatePlayerPageView extends VBox {
     setAlignment(Pos.TOP_CENTER); // Align the VBox content at the top center
 
     titleLabel.getStyleClass().addAll("fantasy", "text-gold", "text-55");
-    VBox.setMargin(titleLabel, new Insets(20, 0, 10, 5)); // Top margin for title
 
     usernameField.getStyleClass().addAll("text-field", "fantasy");
-    VBox.setMargin(usernameField, new Insets(5, 100, 10, 100)); // Side padding for text field
+    VBox.setMargin(usernameField, new Insets(0, 100, 0, 100)); // Side padding for text field
     usernameField.setPromptText("Hero Name"); // Placeholder text
 
-    VBox.setMargin(colorLabel, new Insets(5, 5, 5, 5));
     colorLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
 
-    VBox.setMargin(playerColorField, new Insets(5, 5, 5, 5));
     playerColorField.getStyleClass().addAll("combo-box", "text-18", "fantasy");
     playerColorField.getItems().addAll(availableColors); // Load available colors into dropdown
     playerColorField.setPromptText("Choose a color"); // Fixed spelling here
 
-    VBox.setMargin(ageLabel, new Insets(5, 5, 5, 5));
     ageLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
 
     ageSpinner.getStyleClass().addAll("fantasy-spinner", "fantasy");
-    VBox.setMargin(ageSpinner, new Insets(5, 5, 5, 5));
     ageSpinner.setEditable(true); // Allow user to type age
 
     createPlayerButton.getStyleClass().addAll("button", "large-size", "fantasy");
-    VBox.setMargin(createPlayerButton, new Insets(10, 5, 5, 5));
     createPlayerButton.setDisable(true); // Disabled by default until form is valid
 
     // Layout for choosing color: label + dropdown

@@ -28,6 +28,7 @@ public class StartPageView extends VBox {
    * @param savedGamesMap A map containing saved game names and their corresponding types.
    */
   public StartPageView(HashMap<String, String> savedGamesMap) {
+    setSpacing(10);
     getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER);
 
@@ -41,18 +42,16 @@ public class StartPageView extends VBox {
 
     // Game name input
     gameNameField.setPromptText("Adventure Name");
-    VBox.setMargin(gameNameField, new Insets(0, 100, 10, 100));
+    VBox.setMargin(gameNameField, new Insets(0, 100, 0, 100));
     gameNameField.getStyleClass().addAll("fantasy-text", "fantasy");
 
     // Player count selector
     playerCountBox.getStyleClass().addAll("combo-box", "text-18", "fantasy");
-    VBox.setMargin(playerCountBox, new Insets(5, 5, 5, 5));
     playerCountBox.getItems().addAll(2, 3, 4, 5);
     playerCountBox.setPromptText("Select Number of Heroes");
 
     // Game type selector
     gameSelectorBox.getStyleClass().addAll("combo-box", "text-18", "fantasy");
-    VBox.setMargin(gameSelectorBox, new Insets(5, 5, 5, 5));
     gameSelectorBox
         .getItems()
         .addAll("Snakes and Ladders Classic", "Snakes and Ladders Quiz", "Risk");
@@ -60,17 +59,14 @@ public class StartPageView extends VBox {
 
     // Confirm new game button
     confirmButton.getStyleClass().addAll("button", "text-18", "fantasy");
-    VBox.setMargin(confirmButton, new Insets(5, 5, 5, 5));
     confirmButton.setDisable(true); // Initially disabled
 
     // "OR" separator label
     Label or = new Label("OR");
-    or.getStyleClass().addAll("fantasy-text", "fantasy");
-    VBox.setMargin(or, new Insets(0, 0, 10, 0));
+    or.getStyleClass().addAll("fantasy", "text-30", "text-gold");
 
     // Saved games selector
     savedGames.getStyleClass().addAll("combo-box", "text-18", "fantasy");
-    VBox.setMargin(savedGames, new Insets(5, 5, 5, 5));
     for (String game : savedGamesMap.keySet()) {
       String gameType = savedGamesMap.get(game);
       savedGames.getItems().add(game + " (" + gameType + ")");
@@ -79,12 +75,10 @@ public class StartPageView extends VBox {
 
     // Load saved game button
     loadGameButton.getStyleClass().addAll("button", "text-18", "fantasy");
-    VBox.setMargin(loadGameButton, new Insets(5, 5, 5, 5));
     loadGameButton.setDisable(true); // Initially disabled
 
     // Exit button
     exitButton.getStyleClass().addAll("button", "large-size", "fantasy");
-    VBox.setMargin(exitButton, new Insets(32, 5, 5, 5));
 
     // Layout for new game options
     HBox newGameBox = new HBox(10);
@@ -96,7 +90,7 @@ public class StartPageView extends VBox {
     HBox savedGameBox = new HBox(10);
     savedGameBox.setAlignment(Pos.CENTER);
     savedGameBox.getChildren().addAll(savedGames, loadGameButton);
-    HBox.setMargin(savedGameBox, new Insets(5, 5, 15, 5));
+    HBox.setMargin(savedGameBox, new Insets(5, 5, 5, 5));
 
     // Add all components to the main VBox
     getChildren().addAll(title, subtitle, gameNameField, newGameBox, or, savedGameBox, exitButton);
