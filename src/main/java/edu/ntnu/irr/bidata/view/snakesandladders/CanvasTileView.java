@@ -17,8 +17,8 @@ import javafx.scene.text.TextAlignment;
  */
 public class CanvasTileView {
 
-  private final int x; // X-coordinate of the top-left corner of the tile
-  private final int y; // Y-coordinate of the top-left corner of the tile
+  private final int xcoordinate; // X-coordinate of the top-left corner of the tile
+  private final int ycoordinate; // Y-coordinate of the top-left corner of the tile
   private final int width; // Width of the tile
   private final int height; // Height of the tile
   private final int tileNumber; // Unique identifier for the tile
@@ -37,8 +37,8 @@ public class CanvasTileView {
    */
   public CanvasTileView(
       int x, int y, int width, int height, int tileNumber, GraphicsContext graphicsContext) {
-    this.x = x;
-    this.y = y;
+    this.xcoordinate = x;
+    this.ycoordinate = y;
     this.width = width;
     this.height = height;
     this.tileNumber = tileNumber;
@@ -58,7 +58,7 @@ public class CanvasTileView {
       tileImage = new Image(getClass().getResourceAsStream("/grass_dark.png"));
     }
     // Draw the tile image at the specified position and size
-    graphicsContext.drawImage(tileImage, x, y, width, height);
+    graphicsContext.drawImage(tileImage, xcoordinate, ycoordinate, width, height);
   }
 
   /**
@@ -76,7 +76,9 @@ public class CanvasTileView {
     graphicsContext.setFill(
         Paint.valueOf("rgba(255, 255, 255, 0.8)")); // Set the fill color for the number
     graphicsContext.fillText(
-        Integer.toString(tileNumber), x + padding, y + padding); // Draw the number
+        Integer.toString(tileNumber),
+        xcoordinate + padding,
+        ycoordinate + padding); // Draw the number
   }
 
   /**
@@ -93,9 +95,10 @@ public class CanvasTileView {
     final double playerAreaWidth = width * 0.8; // Area width for players (80% of the tile width)
     final double playerAreaHeight =
         height * 0.6; // Area height for players (60% of the tile height)
-    final double playerAreaX = x + (width * 0.1); // Horizontal offset to center the player area
+    final double playerAreaX =
+        xcoordinate + (width * 0.1); // Horizontal offset to center the player area
     final double playerAreaY =
-        y + (height * 0.3); // Vertical offset to place players below the number
+        ycoordinate + (height * 0.3); // Vertical offset to place players below the number
 
     // Calculate size of each player based on available space and number of players
     double size =
@@ -158,19 +161,19 @@ public class CanvasTileView {
   // Getter methods for tile coordinates and dimensions
 
   public int getCenterX() {
-    return x + width / 2; // Returns the center X-coordinate of the tile
+    return xcoordinate + width / 2; // Returns the center X-coordinate of the tile
   }
 
   public int getCenterY() {
-    return y + height / 2; // Returns the center Y-coordinate of the tile
+    return ycoordinate + height / 2; // Returns the center Y-coordinate of the tile
   }
 
   public int getX() {
-    return x; // Returns the X-coordinate of the top-left corner
+    return xcoordinate; // Returns the X-coordinate of the top-left corner
   }
 
   public int getY() {
-    return y; // Returns the Y-coordinate of the top-left corner
+    return ycoordinate; // Returns the Y-coordinate of the top-left corner
   }
 
   public int getWidth() {

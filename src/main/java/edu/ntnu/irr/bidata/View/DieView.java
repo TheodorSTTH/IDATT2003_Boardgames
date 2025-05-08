@@ -35,12 +35,13 @@ public class DieView extends Pane implements Observer<Integer> {
     int padding = (int) Math.floor(size * 0.225);
 
     int rightX = size - padding;
-    int centerX = size / 2;
+    int leftX = padding;
     int topY = padding;
     int bottomY = size - padding;
-    int leftX = padding;
+    int centerX = size / 2;
     int centerY = size / 2;
     int radius = size / 10;
+
 
     // Initialize each dot (Circle)
     center = new Circle(centerX, centerY, radius, dotColor);

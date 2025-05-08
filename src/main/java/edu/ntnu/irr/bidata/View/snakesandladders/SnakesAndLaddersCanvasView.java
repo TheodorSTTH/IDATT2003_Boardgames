@@ -183,7 +183,7 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     lighting.setContentInput(drop);
     gc.setEffect(lighting);
 
-    int amountOfSteps = 300; // TODO: Scale with length & amplitude
+    int amountOfSteps = 300;
     double amplitude = 10;
 
     gc.beginPath();
@@ -269,13 +269,13 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     double fromRightX = fromCenterX + offset * normalVectorX;
     double fromRightY = fromCenterY + offset * normalVectorY;
 
-    // left ladder pole point to
-    double toLeftX = toCenterX - offset * normalVectorX;
-    double toLeftY = toCenterY - offset * normalVectorY;
-
     // right ladder pole point to
     double toRightX = toCenterX + offset * normalVectorX;
     double toRightY = toCenterY + offset * normalVectorY;
+
+    // left ladder pole point to
+    double toLeftX = toCenterX - offset * normalVectorX;
+    double toLeftY = toCenterY - offset * normalVectorY;
 
     gc.setLineCap(StrokeLineCap.SQUARE);
 
