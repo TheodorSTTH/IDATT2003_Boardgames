@@ -56,7 +56,7 @@ public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
     VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(10, 5, 10, 10));
 
     // Initialize and style the "Place troops" button
-    this.ok.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    this.ok.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(ok, new javafx.geometry.Insets(0, 5, 10, 10));
 
     // Add all components to the container (VBox)

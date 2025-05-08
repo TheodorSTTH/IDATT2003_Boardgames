@@ -68,17 +68,17 @@ public class AttackPaneView extends AbstractSidebarPaneView {
 
     // Create the 'Perform Attack Once' button and style it
     this.performAttackOnceButton = new Button("Perform attack once");
-    this.performAttackOnceButton.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    this.performAttackOnceButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(performAttackOnceButton, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Create the 'Perform Attack Until Result' button and style it
     this.performAttackUntilResultButton = new Button("Perform until result");
-    this.performAttackUntilResultButton.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    this.performAttackUntilResultButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(performAttackUntilResultButton, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Create the 'OK, I am done' button and style it
     this.ok = new Button("OK, I am done");
-    this.ok.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    this.ok.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Add all components to the container (VBox)

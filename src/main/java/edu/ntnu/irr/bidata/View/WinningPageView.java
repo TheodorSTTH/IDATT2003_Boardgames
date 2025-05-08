@@ -42,11 +42,11 @@ public class WinningPageView extends VBox {
     winLabel.getStyleClass().addAll("text-gold", "fantasy", "text-55");
 
     // Style button that navigates back to the start page.
-    backToMenuButton.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    backToMenuButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(backToMenuButton, new Insets(25, 25, 25, 25));
 
     // Create a button to exit the application.
-    exitButton.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    exitButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(exitButton, new Insets(25, 25, 25, 25));
 
     // Add all the components (win label, back button, exit button) to the VBox.

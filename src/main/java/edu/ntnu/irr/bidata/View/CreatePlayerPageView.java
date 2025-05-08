@@ -98,8 +98,7 @@ public class CreatePlayerPageView extends VBox {
     VBox.setMargin(ageSpinner, new Insets(5, 5, 5, 5));
     ageSpinner.setEditable(true); // Allow user to type age
 
-    createPlayerButton.getStyleClass().addAll("fantasy-button", "fantasy");
-    createPlayerButton.getStyleClass().addAll("close-button", "fantasy");
+    createPlayerButton.getStyleClass().addAll("button", "large-size", "fantasy");
     VBox.setMargin(createPlayerButton, new Insets(10, 5, 5, 5));
     createPlayerButton.setDisable(true); // Disabled by default until form is valid
 

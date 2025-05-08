@@ -1,3 +1,14 @@
+/*
+This Css file is created whit some help form chat GTP
+
+Her is what chat gtp helped whit:
+ 1. Finding a fitting font type
+ 2. Original buton deisgn (editted later)
+ 3. Original cobo-box deisgn (editted later)
+ 4. Original text field deisgn (editted later)
+ 5  Original spinner deisgn (editted later)
+*/
+
 .background {
   background-size: cover;
   background-repeat: no-repeat;
@@ -83,8 +94,56 @@
   -fx-font-size: 15px;
 }
 
+.button{
+  background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
+  border-color: #5a381e;
+  border-width: 3;
+  border-radius: 8;
+  cursor: hand;
+  padding: 10 15 10 15;
+  font-weight: bold;
+  -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
+  -fx-border-color: #5a381e;
+  -fx-border-width: 3;
+  -fx-border-radius: 8;
+  -fx-cursor: hand;
+  -fx-background-radius: 6;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
+  -fx-padding: 10 15 10 15;
+  -fx-font-weight: bold;
+}
 
-.fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-dialog .combo-box, .fantasy-dialog .button {
+.button:hover, .button:focused{
+  background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
+  cursor: hand;
+  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
+  -fx-cursor: hand;
+}
+
+
+.sidebar-size {
+  font-size: 16px;
+  -fx-font-size: 16px;
+  -fx-pref-width: 350px;
+  -fx-pref-height: 40px;
+}
+
+.normal-size {
+  font-size: 18px;
+  -fx-font-size: 18px;
+}
+
+.large-size {
+  font-size: 20px;
+  -fx-font-size: 20px;
+  -fx-pref-width: 470px;
+  -fx-pref-height: 65px;
+}
+
+
+
+
+.fantasy-text-field, .fantasy-combo-box, .fantasy-spinner, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-dialog .combo-box, .fantasy-dialog .button {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-text-fill: #2e1d0e;
   -fx-border-color: #5a381e;
@@ -94,8 +153,8 @@
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
 }
 
-.fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-button:hover, .fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
-.fantasy-spinner .decrement-button:hover,.fantasy-dialog .button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-button-sidbar:hover, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-button-sidbar:focused, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused, .fantasy-dialog .combo-box:hover, .fantasy-dialog .combo-box:focused, .fantasy-dialog .button:focused, .fantasy-dialog .button:hover  {
+.fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
+.fantasy-spinner .decrement-button:hover,.fantasy-dialog .button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused, .fantasy-dialog .combo-box:hover, .fantasy-dialog .combo-box:focused, .fantasy-dialog .button:focused, .fantasy-dialog .button:hover  {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
@@ -111,7 +170,7 @@
   -fx-prompt-text-fill: #4e301aac;
 }
 
-.fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-dialog .combo-box, .fantasy-dialog .button {
+.fantasy-combo-box, .fantasy-spinner, .fantasy-dialog .combo-box, .fantasy-dialog .button {
   -fx-padding: 10 20 10 20;
   -fx-font-size: 18px;
   -fx-cursor: hand;
@@ -162,18 +221,13 @@
   -fx-font-weight: bold;
 }
 
-.fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar {
+.fantasy-combo-box-sidbar, .fantasy-spinner-sidbar {
   -fx-pref-width: 350px;
   -fx-pref-height: 40px;
   -fx-padding: 10 15 10 15;
   -fx-font-size: 16px;
   -fx-cursor: hand;
   -fx-font-weight: bold;
-}
-
-.close-button {
-  -fx-pref-width: 470px;
-  -fx-pref-height: 65px;
 }
 
 .country-view {

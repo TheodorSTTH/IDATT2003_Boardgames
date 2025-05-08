@@ -75,12 +75,12 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
 
     // Initialize and style the "Move & finish round" button
     this.ok = new Button("Move & finish round");
-    this.ok.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    this.ok.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Initialize and style the "Don't move troops" button
     this.dontMoveTroops = new Button("Don't move troops");
-    this.dontMoveTroops.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
+    this.dontMoveTroops.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(dontMoveTroops, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Set the title and line spacing for the pane

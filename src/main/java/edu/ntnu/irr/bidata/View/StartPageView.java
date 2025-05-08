@@ -59,7 +59,7 @@ public class StartPageView extends VBox {
     gameSelectorBox.setPromptText("Select an Adventure");
 
     // Confirm new game button
-    confirmButton.getStyleClass().addAll("fantasy-button", "fantasy");
+    confirmButton.getStyleClass().addAll("button", "normal-size", "fantasy");
     VBox.setMargin(confirmButton, new Insets(5, 5, 5, 5));
     confirmButton.setDisable(true); // Initially disabled
 
@@ -78,13 +78,12 @@ public class StartPageView extends VBox {
     savedGames.setPromptText("Select a saved adventure");
 
     // Load saved game button
-    loadGameButton.getStyleClass().addAll("fantasy-button", "fantasy");
+    loadGameButton.getStyleClass().addAll("button", "normal-size", "fantasy");
     VBox.setMargin(loadGameButton, new Insets(5, 5, 5, 5));
     loadGameButton.setDisable(true); // Initially disabled
 
     // Exit button
-    exitButton.getStyleClass().addAll("fantasy-button", "fantasy");
-    exitButton.getStyleClass().addAll("close-button", "fantasy");
+    exitButton.getStyleClass().addAll("button", "large-size", "fantasy");
     VBox.setMargin(exitButton, new Insets(32, 5, 5, 5));
 
     // Layout for new game options
