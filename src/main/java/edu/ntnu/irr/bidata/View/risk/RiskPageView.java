@@ -9,17 +9,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * The RiskPageView class is the main UI view for the Risk game. It contains the game board, the side
- * panel, and buttons for saving the game or exiting. This page is part of the game interface where
- * users interact with the board and the game state.
+ * The RiskPageView class is the main UI view for the Risk game. It contains the game board, the
+ * side panel, and buttons for saving the game or exiting. This page is part of the game interface
+ * where users interact with the board and the game state.
  */
 public class RiskPageView extends HBox {
   private final Button saveButton;
   private final Button exitGameButton;
 
   /**
-   * Constructs a new RiskPageView which represents the main view of the Risk game. The page includes
-   * the game board, the side panel, and buttons for game actions.
+   * Constructs a new RiskPageView which represents the main view of the Risk game. The page
+   * includes the game board, the side panel, and buttons for game actions.
    *
    * @param risk The current state of the Risk game, containing the game board and other
    *     game-related data.
@@ -50,8 +50,12 @@ public class RiskPageView extends HBox {
     underlay.setSpacing(15); // Add spacing between elements
 
     // Initialize the Risk game board and side panel
-    RiskBoardView board = new RiskBoardView(risk.getBoard().getCountries()); // The view representing the Risk game board
-    RiskSidePanelView sidePanel = new RiskSidePanelController(risk).getView(); // The side panel view showing additional game information
+    RiskBoardView board =
+        new RiskBoardView(
+            risk.getBoard().getCountries()); // The view representing the Risk game board
+    RiskSidePanelView sidePanel =
+        new RiskSidePanelController(risk)
+            .getView(); // The side panel view showing additional game information
 
     // Create a main stage container for the board and underlay elements
     VBox mainStage = new VBox(10);
@@ -64,7 +68,7 @@ public class RiskPageView extends HBox {
    * Save game button to attach listeners / action listeners.
    *
    * @return Button for saving game.
-   * */
+   */
   public Button getSaveButton() {
     return saveButton;
   }
@@ -73,7 +77,7 @@ public class RiskPageView extends HBox {
    * Exit game button to attach listeners / action listeners.
    *
    * @return Button for exiting game.
-   * */
+   */
   public Button getExitGameButton() {
     return exitGameButton;
   }

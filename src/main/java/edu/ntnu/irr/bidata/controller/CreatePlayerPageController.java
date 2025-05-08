@@ -61,11 +61,13 @@ public class CreatePlayerPageController {
                   view.getPlayerColorField().setValue(null);
                   view.getAgeSpinner().getValueFactory().setValue(1);
 
-                  boolean isFinishedAddingPlayers = game.getPlayers().size() == game.getAmountOfPlayers();
+                  boolean isFinishedAddingPlayers =
+                      game.getPlayers().size() == game.getAmountOfPlayers();
                   if (isFinishedAddingPlayers) {
                     if (game instanceof SnakesAndLadders) {
                       // Route to snakes and ladders page with created game
-                      SnakesAndLaddersPageView snakesAndLaddersPageView = new SnakesAndLaddersPageView((SnakesAndLadders) game);
+                      SnakesAndLaddersPageView snakesAndLaddersPageView =
+                          new SnakesAndLaddersPageView((SnakesAndLadders) game);
                       NavigationManager.navigate(snakesAndLaddersPageView);
                     } else {
                       // Route to risk page with created game
