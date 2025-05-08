@@ -18,19 +18,35 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
+/**
+ * Controller class for managing the Attack Pane in the Risk game. Handles user interactions with
+ * the attack phase of the game. Implements the Observer pattern to update the view when dice are
+ * rolled.
+ */
 public class AttackPaneController extends AbstractSidebarPaneController
     implements Observer<Pair<Dice, Dice>> {
+
   private final AttackPaneView view;
 
+  /**
+   * Constructor for the AttackPaneController. Initializes the view and binds actions to the
+   * corresponding events.
+   *
+   * @param risk The Risk game instance.
+   */
   public AttackPaneController(Risk risk) {
     super(risk);
     this.view = new AttackPaneView();
     risk.registerObserver(this);
+
+    // Set current player in the view
     view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
 
+    // Get the ComboBox elements for selecting attack countries
     ComboBox<Country> attackFromComboBox = view.getAttackFromComboBox();
     ComboBox<Country> attackTargetComboBox = view.getAttackTargetComboBox();
 
+    // Action for the "Perform Attack Once" button
     view.getPerformAttackOnceButton()
         .setOnAction(
             event -> {
@@ -46,6 +62,7 @@ public class AttackPaneController extends AbstractSidebarPaneController
               }
             });
 
+    // Action for the "Perform Attack Until Result" button
     view.getPerformAttackUntilResultButton()
         .setOnAction(
             event -> {
@@ -61,6 +78,7 @@ public class AttackPaneController extends AbstractSidebarPaneController
               }
             });
 
+    // Update the available targets when the "Attack From" country changes
     view.getAttackFromComboBox()
         .valueProperty()
         .addListener(
@@ -79,6 +97,7 @@ public class AttackPaneController extends AbstractSidebarPaneController
               }
             });
 
+    // Enable or disable attack buttons based on selections
     view.getAttackTargetComboBox()
         .valueProperty()
         .addListener(
@@ -94,12 +113,14 @@ public class AttackPaneController extends AbstractSidebarPaneController
               }
             });
 
+    // Action for the "OK" button to proceed to the next sidebar pane
     view.getOk()
         .setOnAction(
             event -> {
               notifyObservers(this.getNextSidebarPane());
             });
 
+    // Update the view when the attack pane is expanded
     view.expandedProperty()
         .addListener(
             (obs, wasExpanded, isNowExpanded) -> {
@@ -111,10 +132,15 @@ public class AttackPaneController extends AbstractSidebarPaneController
     updateView();
   }
 
+  /**
+   * Updates the view based on the current state of the Risk game. This includes setting the
+   * available attack options and resetting the selections.
+   */
   private void updateView() {
     Country selectedFrom = view.getAttackFromComboBox().getValue();
     Country selectedTo = view.getAttackTargetComboBox().getValue();
 
+    // Get the available countries for the current player to attack from
     List<Country> attackFromOptions =
         new ArrayList<>(risk.getCountriesCurrentPlayerCanAttackFrom());
     Collections.sort(attackFromOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
@@ -122,17 +148,20 @@ public class AttackPaneController extends AbstractSidebarPaneController
     ComboBox<Country> attackFromComboBox = view.getAttackFromComboBox();
     ComboBox<Country> attackTargetComboBox = view.getAttackTargetComboBox();
 
+    // Set the ComboBox options for "Attack From"
     attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
     attackFromComboBox.setValue(null);
     attackTargetComboBox.setValue(null);
     view.getAttackTargetComboBox().setDisable(true);
 
+    // Disable the attack buttons until both countries are selected
     view.getPerformAttackUntilResultButton().setDisable(true);
     view.getPerformAttackOnceButton().setDisable(true);
     view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
 
     attackTargetComboBox.getItems().clear();
 
+    // Set the value for the attack combo boxes if valid selections are made
     if (attackFromOptions.contains(selectedFrom)
         && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
       attackFromComboBox.setValue(selectedFrom);
@@ -143,10 +172,16 @@ public class AttackPaneController extends AbstractSidebarPaneController
     }
   }
 
-  /** Is responsible for updating dice view */
+  /**
+   * Updates the dice view when dice are rolled during the attack phase.
+   *
+   * @param dicePair The pair of Dice objects (attack and defense dice).
+   */
   public void update(Pair<Dice, Dice> dicePair) {
     FlowPane dieBox = view.getDieBox();
     dieBox.getChildren().clear();
+
+    // Display attack dice
     for (Die die : dicePair.getKey().getDice()) { // attack
       if (die.getWasRolledPreviousRound()) {
         DieView newDieView = new DieView(40, Color.BLACK, Color.WHITE);
@@ -154,7 +189,9 @@ public class AttackPaneController extends AbstractSidebarPaneController
         dieBox.getChildren().add(newDieView);
       }
     }
-    for (Die die : dicePair.getValue().getDice()) { // defence
+
+    // Display defense dice
+    for (Die die : dicePair.getValue().getDice()) { // defense
       if (die.getWasRolledPreviousRound()) {
         DieView newDieView = new DieView(40, Color.RED, Color.WHITE);
         newDieView.update(die.getPreviousDieRoll());
@@ -163,6 +200,11 @@ public class AttackPaneController extends AbstractSidebarPaneController
     }
   }
 
+  /**
+   * Returns the AttackPaneView associated with this controller.
+   *
+   * @return The AttackPaneView.
+   */
   public AttackPaneView getView() {
     return view;
   }

@@ -16,38 +16,50 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 
+/**
+ * Controller responsible for managing the move troops phase in the Risk game. This controller
+ * allows the player to transfer armies between their own connected territories, or to skip the
+ * transfer phase and end their turn. It also handles checking win conditions and navigating to the
+ * win screen if applicable.
+ */
 public class MoveTroopsPaneController extends AbstractSidebarPaneController {
+
   private MoveTroopsPaneView view;
-  
+
+  /**
+   * Constructs a MoveTroopsPaneController and sets up all interaction logic.
+   *
+   * @param risk the Risk game model instance
+   */
   public MoveTroopsPaneController(Risk risk) {
     super(risk);
     this.view = new MoveTroopsPaneView(risk.getCurrentPlayer().getName());
-    
+
     Spinner<Integer> amountOfTroopsSpinner = view.getAmountOfTroopsSpinner();
     ComboBox<Country> moveFromComboBox = view.getMoveFromComboBox();
     ComboBox<Country> moveTargetComboBox = view.getMoveTargetComboBox();
     Button ok = view.getOk();
 
+    // Confirm troop transfer
     view.getOk()
         .setOnAction(
             event -> {
               Country from = moveFromComboBox.getValue();
               Country to = moveTargetComboBox.getValue();
               int amount = amountOfTroopsSpinner.getValue();
+
               if (from != null && to != null) {
                 risk.transferTroops(from.getName(), to.getName(), amount);
                 risk.endTurn();
+
                 Player currentPlayer = risk.getCurrentPlayer();
                 if (risk.getBoard().hasWon(currentPlayer)) {
                   WinningPageController winningPageController =
                       new WinningPageController(
                           currentPlayer.getName(), "snakes-and-ladders-win-page");
                   NavigationManager.navigate(winningPageController.getView());
-                  NavigationManager.navigate(
-                      new WinningPageController(
-                              currentPlayer.getName(), "snakes-and-ladders-win-page")
-                          .getView());
                 }
+
                 notifyObservers(this.getNextSidebarPane());
               } else {
                 PopUp.showError(
@@ -56,12 +68,12 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
               }
             });
 
+    // Enable or disable spinner based on selected "from" country
     moveFromComboBox
         .valueProperty()
         .addListener(
             (obs, oldFrom, newFrom) -> {
-              boolean isFromDefined = newFrom != null;
-              if (isFromDefined) {
+              if (newFrom != null) {
                 amountOfTroopsSpinner.setDisable(false);
                 view.getSpinnerValueFactory().setMax(newFrom.getArmies() - 1);
               } else {
@@ -69,6 +81,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
               }
             });
 
+    // Handle "Don't Move Troops" button
     view.getDontMoveTroops()
         .setOnAction(
             event -> {
@@ -82,6 +95,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
               notifyObservers(this.getNextSidebarPane());
             });
 
+    // Update when pane is expanded
     view.expandedProperty()
         .addListener(
             (obs, wasExpanded, isNowExpanded) -> {
@@ -90,6 +104,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
               }
             });
 
+    // Enable OK button only when both combo boxes have values
     moveFromComboBox
         .valueProperty()
         .addListener(
@@ -104,14 +119,19 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
               ok.setDisable(newFrom == null || moveFromComboBox.getValue() == null);
             });
 
-    update();
+    update(); // Initial state setup
   }
 
+  /**
+   * Updates the move troops view with current valid options. Populates combo boxes, resets
+   * selections, disables controls, and updates the player's name label.
+   */
   private void update() {
     List<Country> moveFromOptions = new ArrayList<>(risk.getCountriesCurrentPlayerCanMoveFrom());
     Collections.sort(moveFromOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
     view.getOk().setDisable(true);
     view.getMoveFromComboBox().setItems(FXCollections.observableArrayList(moveFromOptions));
+
     List<Country> moveToOptions = risk.getCountriesControlledByActivePlayer();
     Collections.sort(moveToOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
     view.getMoveTargetComboBox().setItems(FXCollections.observableArrayList(moveToOptions));
@@ -120,6 +140,11 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
     view.getAmountOfTroopsSpinner().setDisable(true);
   }
 
+  /**
+   * Gets the view associated with this controller.
+   *
+   * @return the MoveTroopsPaneView managed by this controller
+   */
   public MoveTroopsPaneView getView() {
     return view;
   }
