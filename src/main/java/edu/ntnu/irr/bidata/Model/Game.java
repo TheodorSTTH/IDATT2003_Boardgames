@@ -68,7 +68,7 @@ public abstract class Game {
   public boolean addPlayer(String name, String color, int age) {
     // Check if the player already exists in the game by name
     if (getPlayerNames().contains(name)) {
-      PopUp.showWarning("Player already exists", "Player with this name already exists");
+      PopUp.showWarning("Player already exists", "Player named " + name + "\nalready exists");
       return false;
     }
 
