@@ -235,26 +235,38 @@ Her is what chat gtp helped whit:
 
 
 .fantasy-dialog {
+  background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
+  border-color: #5a381e;
+  border-width: 4;
+  border-radius: 10;
+  padding: 20;
+
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-border-color: #5a381e;
   -fx-border-width: 4;
   -fx-border-radius: 10;
+  -fx-padding: 20;
   -fx-background-radius: 10;
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.6, 0, 4);
-  -fx-padding: 20;
 }
 
 .fantasy-dialog .dialog-pane {
+  background-color: transparent;
   -fx-background-color: transparent;
 }
 
 .fantasy-dialog .label {
+  font-size: 30px;
+  font-weight: bold;
+
   -fx-font-size: 30px;
   -fx-font-weight: bold;
   -fx-text-fill: #2e1d0e;
 }
 
 .fantasy-dialog .combo-box .list-cell {
+  background-color: transparent;
+
   -fx-background-color: transparent;
   -fx-text-fill: #2e1d0e;
 }
