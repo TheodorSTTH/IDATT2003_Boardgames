@@ -1,0 +1,65 @@
+{
+  "events" : {
+    "64" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 27
+    },
+    "33" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 3
+    },
+    "65" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 82
+    },
+    "2" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 40
+    },
+    "36" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 52
+    },
+    "68" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 85
+    },
+    "8" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 10
+    },
+    "42" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 30
+    },
+    "74" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 12
+    },
+    "43" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 62
+    },
+    "49" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 79
+    },
+    "87" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 70
+    },
+    "24" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 5
+    },
+    "56" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 37
+    }
+  },
+  "endTile" : 90,
+  "playerPositions" : {
+    "Imre" : 3,
+    "Theodor" : 59
+  }
+}
