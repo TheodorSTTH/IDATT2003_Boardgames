@@ -51,7 +51,7 @@ public class CountryView extends Button {
 
     // Set the number of troops as text in the label
     text.setText(Integer.toString(amountOfTroops));
-    text.getStyleClass().addAll("country-label", "fantasy");
+    text.getStyleClass().addAll("fantasy", "text-black");
 
     // Create a sword icon (representing the presence of troops)
     ImageView swordIcon =

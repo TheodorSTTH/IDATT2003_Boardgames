@@ -191,10 +191,6 @@
   -fx-cursor: hand;
 }
 
-.country-label {
-  -fx-text-fill: rgb(0, 0, 0);
-}
-
 
 .fantasy-dialog {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
