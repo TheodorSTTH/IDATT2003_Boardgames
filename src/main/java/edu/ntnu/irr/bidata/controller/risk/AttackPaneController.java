@@ -137,8 +137,11 @@ public class AttackPaneController extends AbstractSidebarPaneController
    * available attack options and resetting the selections.
    */
   private void updateView() {
-    Country selectedFrom = view.getAttackFromComboBox().getValue();
-    Country selectedTo = view.getAttackTargetComboBox().getValue();
+
+    // Disable the attack buttons until both countries are selected
+    view.getPerformAttackUntilResultButton().setDisable(true);
+    view.getPerformAttackOnceButton().setDisable(true);
+    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
 
     // Get the available countries for the current player to attack from
     List<Country> attackFromOptions =
@@ -148,22 +151,27 @@ public class AttackPaneController extends AbstractSidebarPaneController
     ComboBox<Country> attackFromComboBox = view.getAttackFromComboBox();
     ComboBox<Country> attackTargetComboBox = view.getAttackTargetComboBox();
 
+    Country selectedFrom = attackFromComboBox.getValue();
+    Country selectedTo = attackTargetComboBox.getValue();
+
     // Set the ComboBox options for "Attack From"
     attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
-    attackFromComboBox.setValue(null);
-    attackTargetComboBox.setValue(null);
-    view.getAttackTargetComboBox().setDisable(true);
-
-    // Disable the attack buttons until both countries are selected
-    view.getPerformAttackUntilResultButton().setDisable(true);
-    view.getPerformAttackOnceButton().setDisable(true);
-    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
-
     attackTargetComboBox.getItems().clear();
 
-    // Set the value for the attack combo boxes if valid selections are made
-    if (attackFromOptions.contains(selectedFrom)
-        && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
+    if (!attackFromOptions.contains(selectedFrom)) {
+      // If the selected "Attack From" country is not valid, reset the selections
+      attackFromComboBox.setValue(null);
+      attackTargetComboBox.setValue(null);
+      attackTargetComboBox.setDisable(true);
+    } else if (!risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)
+        .contains(selectedTo)) {
+      // If the selected "Attack To" country is not valid, reset the selection
+      attackTargetComboBox.setValue(null);
+      attackTargetComboBox.setItems(
+          FXCollections.observableArrayList(
+              risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
+    } else {
+      // If both selections are valid, set the ComboBox values
       attackFromComboBox.setValue(selectedFrom);
       attackTargetComboBox.setItems(
           FXCollections.observableArrayList(

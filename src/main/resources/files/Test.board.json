@@ -373,7 +373,7 @@
       "name" : "Indonesia",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 4,
+      "armies" : 8,
       "neighbors" : [ "Siam", "New Guinea", "Western Australia" ],
       "relativeX" : 0.8,
       "relativeY" : 0.72
