@@ -179,6 +179,11 @@ Her is what chat gtp helped whit:
 
 /* Spinner Text Field (Editable Area) */
 .spinner .text-field{
+  background-color: transparent;
+  border-width: 0; 
+  padding: 2; 
+  font-size: 20px; 
+
   -fx-background-color: transparent; /* Transparent background for the text input part */
   -fx-text-fill: #2e1d0e; /* Dark text color */
   -fx-border-width: 0; /* No border on the text input area */
@@ -186,13 +191,9 @@ Her is what chat gtp helped whit:
   -fx-font-size: 20px; /* Font size to match the overall theme */
 }
 
-/* Hover Effect on Text Field */
-.spinner .text-field:hover{
-  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
-  -fx-cursor: text;
-  -fx-font-weight: bold;
+.spinner .text-field:hover {
+  background-color: transparent;
 }
-
 
 
 .fantasy-dialog .combo-box, .fantasy-dialog .button {
