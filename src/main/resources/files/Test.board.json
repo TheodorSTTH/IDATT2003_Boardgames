@@ -85,7 +85,7 @@
       "name" : "Scandinavia",
       "owner" : "Eine",
       "ownerColor" : "Blue",
-      "armies" : 3,
+      "armies" : 7,
       "neighbors" : [ "Iceland", "Great Britain", "Northern Europe", "Ukraine" ],
       "relativeX" : 0.47,
       "relativeY" : 0.2
@@ -175,7 +175,7 @@
       "name" : "Kamchatka",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 4,
+      "armies" : 12,
       "neighbors" : [ "Alaska", "Japan", "Mongolia", "Irkutsk", "Yakutsk" ],
       "relativeX" : 0.88,
       "relativeY" : 0.14
@@ -229,7 +229,7 @@
       "name" : "Japan",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 5,
+      "armies" : 1,
       "neighbors" : [ "Mongolia", "Kamchatka" ],
       "relativeX" : 0.89,
       "relativeY" : 0.37
