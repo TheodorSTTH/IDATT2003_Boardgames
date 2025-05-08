@@ -8,6 +8,7 @@ import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -71,7 +72,7 @@ public class SnakesAndLadders extends Game implements Subject<SnakesAndLadders> 
    * @param gameName the name of the game
    * @param boardType the type of the board
    */
-  public SnakesAndLadders(int amountOfPlayers, String gameName, String boardType) {
+  public SnakesAndLadders(int amountOfPlayers, String gameName, String boardType) throws UncheckedIOException {
     super(amountOfPlayers, gameName);
     this.board = new BoardSnakesAndLadders(boardType);
     this.allObservers = new ArrayList<>();

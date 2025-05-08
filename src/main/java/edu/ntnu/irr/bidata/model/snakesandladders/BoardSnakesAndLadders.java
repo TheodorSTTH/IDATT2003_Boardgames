@@ -9,8 +9,11 @@ import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
 import java.io.File;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents the board of the Snakes and Ladders game, which contains events and player positions.
@@ -18,6 +21,7 @@ import java.util.HashMap;
  * <p>The board is serialized into a JSON format to be saved and loaded for game persistence.
  */
 public class BoardSnakesAndLadders {
+  private static final Logger log = LoggerFactory.getLogger(BoardSnakesAndLadders.class);
   @JsonProperty
   private HashMap<Integer, Event> events =
       new HashMap<Integer, Event>(); // Map of events associated with tile numbers
@@ -38,7 +42,7 @@ public class BoardSnakesAndLadders {
    *
    * @param boardType the type of board to load (e.g., Classic, Quiz)
    */
-  public BoardSnakesAndLadders(String boardType) {
+  public BoardSnakesAndLadders(String boardType) throws UncheckedIOException {
     events = FileHandler.loadSnakesAndLaddersEvents(boardType); // Load events from file
   }
 
@@ -135,9 +139,11 @@ public class BoardSnakesAndLadders {
     try {
       objectMapper.writeValue(
           new File("src/main/resources/files/" + gameName + ".board.json"), this);
-      System.out.println("Board saved successfully.");
+      log.info("Board saved successfully.");
     } catch (IOException e) {
-      e.printStackTrace(); // Handle any IO exceptions during saving
+      // Handle any IO exceptions during saving
+      log.error("Something went wrong saving snakes and ladders board", e);
+      throw new UncheckedIOException("Something went wrong saving snakes and ladders board", e);
     }
   }
 
@@ -156,8 +162,8 @@ public class BoardSnakesAndLadders {
           new File("src/main/resources/files/" + gameName + ".board.json"),
           BoardSnakesAndLadders.class);
     } catch (IOException e) {
-      e.printStackTrace(); // Handle any IO exceptions during loading
-      return null;
+      log.error("Something went wrong loading board", e);
+      throw new UncheckedIOException("Something went wrong loading board", e);
     }
   }
 }

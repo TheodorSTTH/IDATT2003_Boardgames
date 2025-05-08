@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata.model;
 
 import edu.ntnu.irr.bidata.view.PopUp;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -204,9 +205,8 @@ public abstract class Game {
   public abstract String getGameType();
 
   /** Saves the current game state. */
-  public void saveGame() {
+  public void saveGame() throws UncheckedIOException {
     FileHandler.saveGame(this);
-    PopUp.showInfo("Game saved", "Game saved as\n" + gameName);
   }
 
   /**

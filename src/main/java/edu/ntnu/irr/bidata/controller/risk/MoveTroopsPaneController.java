@@ -8,6 +8,7 @@ import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.MoveTroopsPaneView;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -54,10 +55,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
 
                 Player currentPlayer = risk.getCurrentPlayer();
                 if (risk.getBoard().hasWon(currentPlayer)) {
-                  WinningPageController winningPageController =
-                      new WinningPageController(
-                          currentPlayer.getName(), "snakes-and-ladders-win-page");
-                  NavigationManager.navigate(winningPageController.getView());
+                  win();
                 }
 
                 notifyObservers(this.getNextSidebarPane());
@@ -88,9 +86,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
               Player currentPlayer = risk.getCurrentPlayer();
               risk.endTurn();
               if (risk.getBoard().hasWon(currentPlayer)) {
-                FileHandler.deleteGame(risk.getGameName());
-                NavigationManager.navigate(
-                    new WinningPageController(currentPlayer.getName(), "risk-win-page").getView());
+                win();
               }
               notifyObservers(this.getNextSidebarPane());
             });
@@ -120,6 +116,15 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
             });
 
     update(); // Initial state setup
+  }
+
+  private void win() {
+    try {
+      FileHandler.deleteGame(risk.getGameName());
+    } catch (UncheckedIOException e) {
+      PopUp.showError("Something went wrong deleting game", e.getMessage());
+    }
+    NavigationManager.navigate(new WinningPageController(this.risk.getCurrentPlayer().getName(), "risk-win-page").getView());
   }
 
   /**

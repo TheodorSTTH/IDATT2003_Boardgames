@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata.view.snakesandladders;
 
 import edu.ntnu.irr.bidata.model.Player;
+import edu.ntnu.irr.bidata.view.PopUp;
 import java.util.ArrayList;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
@@ -9,6 +10,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The CanvasTileView class is responsible for rendering and managing individual tiles on the Snakes
@@ -16,7 +19,7 @@ import javafx.scene.text.TextAlignment;
  * the tile.
  */
 public class CanvasTileView {
-
+  private static final Logger log = LoggerFactory.getLogger(CanvasTileView.class);
   private final int xcoordinate; // X-coordinate of the top-left corner of the tile
   private final int ycoordinate; // Y-coordinate of the top-left corner of the tile
   private final int width; // Width of the tile
@@ -130,7 +133,9 @@ public class CanvasTileView {
           playerImage = new Image(getClass().getResourceAsStream("/wizard_white.png"));
           break;
         default:
-          throw new IllegalArgumentException("Invalid player color: " + player.getColor());
+          log.error("Player color not defined.");
+          PopUp.showError("Player image not defined.", "The color " + player.getColor() + " was not found.");
+          System.exit(0);
       }
 
       // Calculate player position in a grid within the player area

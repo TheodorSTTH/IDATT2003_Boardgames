@@ -7,12 +7,15 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Responsible for displaying a die face from 1 to 6. It observes a value (from 1 to 6) and updates
  * the visible dots accordingly.
  */
 public class DieView extends Pane implements Observer<Integer> {
+  private static final Logger log = LoggerFactory.getLogger(DieView.class);
 
   // Circle nodes representing die pips (dots)
   private final Circle center;
@@ -126,7 +129,7 @@ public class DieView extends Pane implements Observer<Integer> {
         break;
       default:
         // Error handling for unexpected input
-        System.err.println("Number of dots is " + numberOfDots + ". Max number is 6");
+        log.warn("Number of dots ({}) is above 6 or below 1. Displaying no dots", numberOfDots);
         break;
     }
   }

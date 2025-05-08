@@ -1,6 +1,8 @@
 package edu.ntnu.irr.bidata.model.snakesandladders.event;
 
 import edu.ntnu.irr.bidata.model.FileHandler;
+import java.io.UncheckedIOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,8 +30,7 @@ public class EventMaker {
    * @param tileNumber the tile number where the quiz event will take place
    * @return a new instance of QuizEvent
    */
-  public static Event newQuizTile(int tileNumber) {
-    // Get a random question-answer pair from file
+  public static Event newQuizTile(int tileNumber) throws UncheckedIOException {
     List<String> questionList = FileHandler.getRandomQuizQuestion();
     String question = questionList.get(0); // Question text
     String answer = questionList.get(1); // Correct answer
