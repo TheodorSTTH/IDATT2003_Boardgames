@@ -9,8 +9,8 @@ import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.StartPageView;
 import edu.ntnu.irr.bidata.view.risk.RiskPage;
-import java.io.UncheckedIOException;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
+import java.io.UncheckedIOException;
 import java.util.HashMap;
 import javafx.beans.value.ChangeListener;
 

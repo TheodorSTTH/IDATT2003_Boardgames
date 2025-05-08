@@ -124,7 +124,9 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
     } catch (UncheckedIOException e) {
       PopUp.showError("Something went wrong deleting game", e.getMessage());
     }
-    NavigationManager.navigate(new WinningPageController(this.risk.getCurrentPlayer().getName(), "risk-win-page").getView());
+    NavigationManager.navigate(
+        new WinningPageController(this.risk.getCurrentPlayer().getName(), "risk-win-page")
+            .getView());
   }
 
   /**

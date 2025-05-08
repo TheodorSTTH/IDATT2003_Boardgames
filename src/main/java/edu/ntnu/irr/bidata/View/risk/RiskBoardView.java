@@ -32,8 +32,10 @@ public class RiskBoardView extends Pane {
   public RiskBoardView(HashMap<String, Country> countries) {
     getChildren().clear(); // Clear any existing children from the pane
     double sizeMultiplier = 10.3; // Factor to scale the image to fit the screen
-    double imagePixelWidth = 75 * sizeMultiplier; // Calculating the image width based on the multiplier
-    double imagePixelHeight = 52 * sizeMultiplier; // Calculating the image height based on the multiplier
+    double imagePixelWidth =
+        75 * sizeMultiplier; // Calculating the image width based on the multiplier
+    double imagePixelHeight =
+        52 * sizeMultiplier; // Calculating the image height based on the multiplier
 
     // https://commons.wikimedia.org/wiki/File:Risk_board.svg
     InputStream riskImageInputStream = getClass().getResourceAsStream("/risk_board.png");

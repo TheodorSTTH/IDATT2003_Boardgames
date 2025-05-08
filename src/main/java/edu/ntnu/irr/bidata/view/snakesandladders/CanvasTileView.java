@@ -134,7 +134,8 @@ public class CanvasTileView {
           break;
         default:
           log.error("Player color not defined.");
-          PopUp.showError("Player image not defined.", "The color " + player.getColor() + " was not found.");
+          PopUp.showError(
+              "Player image not defined.", "The color " + player.getColor() + " was not found.");
           System.exit(0);
       }
 

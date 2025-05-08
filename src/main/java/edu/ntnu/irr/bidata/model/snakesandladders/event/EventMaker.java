@@ -2,7 +2,6 @@ package edu.ntnu.irr.bidata.model.snakesandladders.event;
 
 import edu.ntnu.irr.bidata.model.FileHandler;
 import java.io.UncheckedIOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
