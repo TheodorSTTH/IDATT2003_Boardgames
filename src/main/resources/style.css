@@ -108,6 +108,7 @@ ChatGPT assisted with:
 .spinner .decrement-button:hover,
 .dialog .button:hover {
   background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
+  cursor: hand;
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
@@ -121,6 +122,8 @@ ChatGPT assisted with:
 
 .text-field:hover, .text-field:focus {
   background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
+  cursor: text;
+  font-weight: bold;
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: text;
   -fx-font-weight: bold;
@@ -143,6 +146,8 @@ ChatGPT assisted with:
 /* Spinner arrow buttons */
 .spinner .increment-button, .spinner .decrement-button {
   background-color: #5a381e;
+  font-size: 18px;
+  padding: 5;
   -fx-background-color: #5a381e;
   -fx-font-size: 18px;
   -fx-padding: 5;
@@ -153,11 +158,14 @@ ChatGPT assisted with:
 /* Spinner input text field */
 .spinner .text-field {
   background-color: transparent;
+  border-width: 0;
+  padding: 2;
+  font-size: 20px;
   -fx-background-color: transparent;
-  -fx-text-fill: #2e1d0e;
   -fx-border-width: 0;
   -fx-padding: 2;
   -fx-font-size: 20px;
+  -fx-text-fill: #2e1d0e;
 }
 
 .spinner .text-field:hover {
@@ -200,11 +208,11 @@ ChatGPT assisted with:
   -fx-background-insets: 0;
   -fx-border-insets: 0;
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 1);
-  -fx-clip: rect(0, auto, auto, 0);
 }
 
 .country-view:hover {
   font-size: 8pt;
+  cursor: hand;
   -fx-font-size: 8pt;
   -fx-cursor: hand;
   -fx-text-fill: #000000;
