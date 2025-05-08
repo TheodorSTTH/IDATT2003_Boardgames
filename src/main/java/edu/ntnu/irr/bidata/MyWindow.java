@@ -32,7 +32,7 @@ public class MyWindow extends Application {
     NavigationManager.setStage(primaryStage);
 
     // Sets the application icon (make sure /favicon.png exists in resources)
-    Image iconImage = new Image("/favicon.png");
+    Image iconImage = new Image("/images/favicon.png");
     primaryStage.setTitle("Runeborne");
     primaryStage.getIcons().add(iconImage);
 

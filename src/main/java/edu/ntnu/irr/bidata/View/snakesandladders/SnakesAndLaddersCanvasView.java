@@ -132,7 +132,9 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     GraphicsContext gc = getGraphicsContext2D();
     CanvasTileView tileView = tileViews.get(tileIndex);
 
-    Image quizImage = new Image(getClass().getResourceAsStream("/quiz_tile_transparent.png"));
+    Image quizImage =
+        new Image(
+            getClass().getResourceAsStream("/images/snakesandladders/quiz_tile_transparent.png"));
     gc.drawImage(
         quizImage, tileView.getX(), tileView.getY(), tileView.getWidth(), tileView.getHeight());
   }

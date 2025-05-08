@@ -55,7 +55,7 @@ public class CountryView extends Button {
 
     // Create a sword icon (representing the presence of troops)
     ImageView swordIcon =
-        new ImageView(new Image(getClass().getResource("/sword.png").toExternalForm()));
+        new ImageView(new Image(getClass().getResource("/images/risk/sword.png").toExternalForm()));
     swordIcon.setFitHeight(12); // Set the size of the sword icon
     swordIcon.setPreserveRatio(true); // Maintain aspect ratio
     swordIcon.setSmooth(true); // Enable smooth rendering for the icon

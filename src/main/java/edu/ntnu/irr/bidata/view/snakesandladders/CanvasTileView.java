@@ -56,9 +56,10 @@ public class CanvasTileView {
   public void drawBox() {
     Image tileImage;
     if (tileNumber % 2 == 0) {
-      tileImage = new Image(getClass().getResourceAsStream("/grass.png"));
+      tileImage = new Image(getClass().getResourceAsStream("/images/snakesandladders/grass.png"));
     } else {
-      tileImage = new Image(getClass().getResourceAsStream("/grass_dark.png"));
+      tileImage =
+          new Image(getClass().getResourceAsStream("/images/snakesandladders/grass_dark.png"));
     }
     // Draw the tile image at the specified position and size
     graphicsContext.drawImage(tileImage, xcoordinate, ycoordinate, width, height);
@@ -118,19 +119,34 @@ public class CanvasTileView {
       // Load player image based on player color
       switch (player.getColor().toLowerCase()) {
         case "red":
-          playerImage = new Image(getClass().getResourceAsStream("/wizard_red.png"));
+          playerImage =
+              new Image(
+                  getClass()
+                      .getResourceAsStream("/images/snakesandladders/figures/wizard_red.png"));
           break;
         case "yellow":
-          playerImage = new Image(getClass().getResourceAsStream("/wizard_yellow.png"));
+          playerImage =
+              new Image(
+                  getClass()
+                      .getResourceAsStream("/images/snakesandladders/figures/wizard_yellow.png"));
           break;
         case "blue":
-          playerImage = new Image(getClass().getResourceAsStream("/wizard_blue.png"));
+          playerImage =
+              new Image(
+                  getClass()
+                      .getResourceAsStream("/images/snakesandladders/figures/wizard_blue.png"));
           break;
         case "green":
-          playerImage = new Image(getClass().getResourceAsStream("/wizard_green.png"));
+          playerImage =
+              new Image(
+                  getClass()
+                      .getResourceAsStream("/images/snakesandladders/figures/wizard_green.png"));
           break;
         case "white":
-          playerImage = new Image(getClass().getResourceAsStream("/wizard_white.png"));
+          playerImage =
+              new Image(
+                  getClass()
+                      .getResourceAsStream("/images/snakesandladders/figures/wizard_white.png"));
           break;
         default:
           log.error("Player color not defined.");

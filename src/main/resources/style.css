@@ -1,5 +1,5 @@
 .start-page {
-  -fx-background-image: url("backgroundStartPage.png");
+  -fx-background-image: url("images/backgroundStartPage.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
@@ -14,49 +14,37 @@
 }
 
 .snakes-and-ladders-game-page {
-  -fx-background-image: url("snakes_and_ladders_background.png");
+  -fx-background-image: url("images/snakesandladders/snakes_and_ladders_background.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
 
 .snakes-and-ladders-win-page {
-  -fx-background-image: url("snakes_and_ladders_win.png");
+  -fx-background-image: url("images/snakesandladders/snakes_and_ladders_win.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
 
 .risk-win-page {
-  -fx-background-image: url("snakes_and_ladders_win.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.risk-background {
-  -fx-background-image: url("risk_win.png");
+  -fx-background-image: url("images/risk/risk_win.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
 
 .attack-pane {
-  -fx-background-image: url("riskAttackBackground.png");
+  -fx-background-image: url("images/risk/riskAttackBackground.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
 
 .move-troops-pane {
-  -fx-background-image: url("riskMoveTroopsBackground.png");
-  -fx-background-size: cover;
-  -fx-background-repeat: no-repeat;
-}
-
-.risk-pane {
-  -fx-background-image: url("riskPaneBackground.png");
+  -fx-background-image: url("images/risk/riskMoveTroopsBackground.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
 
 .place-troops-pane {
-  -fx-background-image: url("riskPlaceTroopsBackground.png");
+  -fx-background-image: url("images/risk/riskPlaceTroopsBackground.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }

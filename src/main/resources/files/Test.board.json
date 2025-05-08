@@ -4,7 +4,7 @@
       "name" : "Ural",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 3,
+      "armies" : 2,
       "neighbors" : [ "Ukraine", "Siberia", "China", "Afghanistan" ],
       "relativeX" : 0.67,
       "relativeY" : 0.25
@@ -22,7 +22,7 @@
       "name" : "Western Australia",
       "owner" : "Eine",
       "ownerColor" : "Blue",
-      "armies" : 5,
+      "armies" : 3,
       "neighbors" : [ "Indonesia", "New Guinea", "Eastern Australia" ],
       "relativeX" : 0.83,
       "relativeY" : 0.81
@@ -47,8 +47,8 @@
     },
     "Siam" : {
       "name" : "Siam",
-      "owner" : "Eine",
-      "ownerColor" : "Blue",
+      "owner" : "Imre",
+      "ownerColor" : "Red",
       "armies" : 1,
       "neighbors" : [ "China", "India", "Indonesia" ],
       "relativeX" : 0.79,
@@ -103,16 +103,16 @@
       "name" : "Middle East",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 2,
+      "armies" : 5,
       "neighbors" : [ "Southern Europe", "Ukraine", "Afghanistan", "India", "East Africa", "Egypt" ],
       "relativeX" : 0.59,
       "relativeY" : 0.47
     },
     "Yakutsk" : {
       "name" : "Yakutsk",
-      "owner" : "Eine",
-      "ownerColor" : "Blue",
-      "armies" : 3,
+      "owner" : "Imre",
+      "ownerColor" : "Red",
+      "armies" : 2,
       "neighbors" : [ "Siberia", "Irkutsk", "Kamchatka" ],
       "relativeX" : 0.79,
       "relativeY" : 0.1
@@ -137,8 +137,8 @@
     },
     "China" : {
       "name" : "China",
-      "owner" : "Eine",
-      "ownerColor" : "Blue",
+      "owner" : "Imre",
+      "ownerColor" : "Red",
       "armies" : 1,
       "neighbors" : [ "Ural", "Siberia", "Mongolia", "Afghanistan", "India", "Siam" ],
       "relativeX" : 0.77,
@@ -146,9 +146,9 @@
     },
     "Siberia" : {
       "name" : "Siberia",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+      "owner" : "Imre",
+      "ownerColor" : "Red",
+      "armies" : 1,
       "neighbors" : [ "Ural", "China", "Mongolia", "Irkutsk", "Yakutsk" ],
       "relativeX" : 0.71,
       "relativeY" : 0.12
@@ -175,7 +175,7 @@
       "name" : "Kamchatka",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 12,
+      "armies" : 1,
       "neighbors" : [ "Alaska", "Japan", "Mongolia", "Irkutsk", "Yakutsk" ],
       "relativeX" : 0.88,
       "relativeY" : 0.14
@@ -220,7 +220,7 @@
       "name" : "Eastern United States",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 4,
+      "armies" : 1,
       "neighbors" : [ "Ontario", "Quebec", "Western United States", "Central America" ],
       "relativeX" : 0.23,
       "relativeY" : 0.34
@@ -238,7 +238,7 @@
       "name" : "Quebec",
       "owner" : "Eine",
       "ownerColor" : "Blue",
-      "armies" : 2,
+      "armies" : 6,
       "neighbors" : [ "Greenland", "Ontario", "Eastern United States" ],
       "relativeX" : 0.29,
       "relativeY" : 0.26
@@ -373,7 +373,7 @@
       "name" : "Indonesia",
       "owner" : "Imre",
       "ownerColor" : "Red",
-      "armies" : 8,
+      "armies" : 3,
       "neighbors" : [ "Siam", "New Guinea", "Western Australia" ],
       "relativeX" : 0.8,
       "relativeY" : 0.72

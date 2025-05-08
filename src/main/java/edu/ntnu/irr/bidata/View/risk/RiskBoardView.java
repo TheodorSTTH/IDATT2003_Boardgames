@@ -38,7 +38,8 @@ public class RiskBoardView extends Pane {
         52 * sizeMultiplier; // Calculating the image height based on the multiplier
 
     // https://commons.wikimedia.org/wiki/File:Risk_board.svg
-    InputStream riskImageInputStream = getClass().getResourceAsStream("/risk_board.png");
+    InputStream riskImageInputStream =
+        getClass().getResourceAsStream("/images/risk/risk_board.png");
     if (riskImageInputStream != null) {
       Image riskBoardImage = new Image(riskImageInputStream);
       ImageView imageView = new ImageView(riskBoardImage);
