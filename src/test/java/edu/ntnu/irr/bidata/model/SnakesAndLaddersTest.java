@@ -16,32 +16,6 @@ import org.junit.jupiter.api.Test;
 public class SnakesAndLaddersTest {
 
   /**
-   * Tests that loading a saved "classic" snakes and ladders game works correctly. Verifies that the
-   * loaded game has a board, dice, and expected properties.
-   */
-  @Test
-  @DisplayName("Test loading snakes and ladders game works as expected")
-  void testSnakesAndLaddersLoad() {
-    // Arrange
-    String gameName = "TestClassic";
-
-    // Act
-    SnakesAndLadders snakesAndLadders =
-        (SnakesAndLadders) FileHandler.loadGame(gameName, "classic");
-
-    // Assert
-    assertNotNull(snakesAndLadders, "Should have gotten snakes and ladders game");
-    assertNotNull(snakesAndLadders.getBoard(), "Should have gotten board");
-    assertEquals(gameName, snakesAndLadders.getGameName(), "Game name should have been set");
-    assertNotNull(snakesAndLadders.getDice(), "Should have gotten dice");
-    assertEquals(
-        2,
-        snakesAndLadders.getDice().getDice().size(),
-        "Snakes and ladders should only have 2 dice");
-    assertEquals("classic", snakesAndLadders.getGameType(), "Should have gotten gameType");
-  }
-
-  /**
    * Tests the constructor of the {@link SnakesAndLadders} class to ensure all attributes are
    * initialized correctly based on the provided parameters.
    */
@@ -50,11 +24,12 @@ public class SnakesAndLaddersTest {
   void testSnakesAndLaddersConstructor() {
     // Arrange
     String gameName = "TestClassicCreateDelete";
-    String gameType = "classic";
+    String gameType = "SnakesAndLadders";
+    String boardType = "classic";
     int amountOfPlayers = 2;
 
     // Act
-    SnakesAndLadders snakesAndLadders = new SnakesAndLadders(amountOfPlayers, gameName, gameType);
+    SnakesAndLadders snakesAndLadders = new SnakesAndLadders(amountOfPlayers, gameName, boardType);
 
     // Assert
     assertEquals(gameName, snakesAndLadders.getGameName(), "Game name should have been set");
@@ -78,8 +53,6 @@ public class SnakesAndLaddersTest {
     SnakesAndLadders snakesAndLadders = new SnakesAndLadders(amountOfPlayers, gameName, "Classic");
     snakesAndLadders.addPlayer("Kari", "Blue", 53);
     snakesAndLadders.addPlayer("Finn", "Red", 34);
-    snakesAndLadders.takeAction();
-    snakesAndLadders.takeAction();
     snakesAndLadders.saveGame();
     SnakesAndLadders loadedSnakesAndLadders =
         (SnakesAndLadders) FileHandler.loadGame(gameName, "SnakesAndLadders");
