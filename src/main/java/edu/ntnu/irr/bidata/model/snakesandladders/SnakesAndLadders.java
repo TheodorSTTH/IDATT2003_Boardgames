@@ -152,14 +152,28 @@ public class SnakesAndLadders extends Game implements Subject<SnakesAndLadders> 
     return playerPositions;
   }
 
+  /**
+   * Returns a string containing the rules of the game.
+   *
+   * <p>The rules describe the gameplay mechanics, including:
+   *
+   * <ul>
+   *   <li>Taking turns and rolling dice
+   *   <li>Moving tokens based on dice rolls
+   *   <li>Special actions when landing on snakes, ladders, or quiz tiles
+   *   <li>Winning condition
+   * </ul>
+   *
+   * @return a formatted string that outlines the rules of the game.
+   */
   public String getRules() {
     return "The rules of the game are as follows:\n"
-            + "1. Players take turns rolling two dice.\n"
-            + "2. The player moves their token forward the number of spaces shown on the dice.\n"
-            + "3. If a player lands on a snake, they must slide down to the tail of the snake.\n"
-            + "4. If a player lands on a ladder, they can climb up to the top of the ladder.\n"
-            + "5. If a player lands on a quiz tile, they must answer a if they answer correctly"
-            + " they move 3 forward, if they get wrong they move 3 back.\n"
-            + "6. The first player to reach the end of the board wins.";
+        + "1. Players take turns rolling two dice.\n"
+        + "2. The player moves their token forward the number of spaces shown on the dice.\n"
+        + "3. If a player lands on a snake, they must slide down to the tail of the snake.\n"
+        + "4. If a player lands on a ladder, they can climb up to the top of the ladder.\n"
+        + "5. If a player lands on a quiz tile, they must answer a if they answer correctly"
+        + " they move 3 forward, if they get wrong they move 3 back.\n"
+        + "6. The first player to reach the end of the board wins.";
   }
 }
