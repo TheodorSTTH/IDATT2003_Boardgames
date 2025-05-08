@@ -1,13 +1,17 @@
 package edu.ntnu.irr.bidata.controller.risk;
 
+import edu.ntnu.irr.bidata.NavigationManager;
+import edu.ntnu.irr.bidata.controller.WinningPageController;
 import edu.ntnu.irr.bidata.model.Dice;
 import edu.ntnu.irr.bidata.model.Die;
+import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.view.DieView;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.AttackPaneView;
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -178,6 +182,21 @@ public class AttackPaneController extends AbstractSidebarPaneController
               risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
       attackTargetComboBox.setValue(selectedTo);
     }
+
+    if (risk.getBoard().hasWon(risk.getCurrentPlayer())) {
+      win();
+    }
+  }
+
+  private void win() {
+    try {
+      FileHandler.deleteGame(risk.getGameName());
+    } catch (UncheckedIOException e) {
+      PopUp.showError("Something went wrong deleting game", e.getMessage());
+    }
+    NavigationManager.navigate(
+        new WinningPageController(this.risk.getCurrentPlayer().getName(), "risk-win-page")
+            .getView());
   }
 
   /**

@@ -86,7 +86,7 @@ public class FileHandler {
    *
    * @return A map from game name to game type
    */
-  public static HashMap<String, String> getSavedGames() throws UncheckedIOException{
+  public static HashMap<String, String> getSavedGames() throws UncheckedIOException {
     HashMap<String, String> savedGames = new HashMap<>();
     File file = new File(getFilePath("SavedGames.csv"));
 
@@ -290,7 +290,8 @@ public class FileHandler {
    * @param players The list of all players in the game
    * @return The Player object representing the current player
    */
-  private static Player loadCurrentPlayer(String gameName, ArrayList<Player> players) throws UncheckedIOException {
+  private static Player loadCurrentPlayer(String gameName, ArrayList<Player> players)
+      throws UncheckedIOException {
     if (gameName == null || gameName.isEmpty()) {
       throw new IllegalArgumentException("Invalid File Name");
     }
@@ -356,7 +357,7 @@ public class FileHandler {
    *
    * @param game The Risk game instance
    */
-  private static void saveRiskGame(Game game) throws UncheckedIOException{
+  private static void saveRiskGame(Game game) throws UncheckedIOException {
     savePlayers(game);
     saveGameState(game);
     saveBoardRisk((Risk) game);
@@ -384,12 +385,12 @@ public class FileHandler {
   private static Risk loadRiskGame(String name) throws UncheckedIOException {
     ArrayList<Player> players = loadPlayers(name);
     return new Risk(
-      players.size(),
-      name,
-      players,
-      loadBoardRisk(name),
-      loadCurrentPlayer(name, players),
-      loadAvailableTroops(name));
+        players.size(),
+        name,
+        players,
+        loadBoardRisk(name),
+        loadCurrentPlayer(name, players),
+        loadAvailableTroops(name));
   }
 
   /**
@@ -470,7 +471,8 @@ public class FileHandler {
    * @param boardType The type of board (used to identify the file)
    * @return A map of tile positions to their corresponding event
    */
-  public static HashMap<Integer, Event> loadSnakesAndLaddersEvents(String boardType) throws UncheckedIOException {
+  public static HashMap<Integer, Event> loadSnakesAndLaddersEvents(String boardType)
+      throws UncheckedIOException {
     HashMap<Integer, Event> events = new HashMap<>();
 
     try (Scanner scanner = new Scanner(new File(getFilePath("EventSetup" + boardType + ".csv")))) {
@@ -490,7 +492,8 @@ public class FileHandler {
       }
     } catch (FileNotFoundException e) {
       log.error("Something went wrong trying to load a snakes and ladders event from file", e);
-      throw new UncheckedIOException("Something went wrong trying to load a snakes and ladders event from file", e);
+      throw new UncheckedIOException(
+          "Something went wrong trying to load a snakes and ladders event from file", e);
     }
 
     return events;

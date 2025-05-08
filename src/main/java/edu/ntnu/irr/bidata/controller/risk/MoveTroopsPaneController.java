@@ -1,14 +1,9 @@
 package edu.ntnu.irr.bidata.controller.risk;
 
-import edu.ntnu.irr.bidata.NavigationManager;
-import edu.ntnu.irr.bidata.controller.WinningPageController;
-import edu.ntnu.irr.bidata.model.FileHandler;
-import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.MoveTroopsPaneView;
-import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -53,11 +48,6 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
                 risk.transferTroops(from.getName(), to.getName(), amount);
                 risk.endTurn();
 
-                Player currentPlayer = risk.getCurrentPlayer();
-                if (risk.getBoard().hasWon(currentPlayer)) {
-                  win();
-                }
-
                 notifyObservers(this.getNextSidebarPane());
               } else {
                 PopUp.showError(
@@ -83,11 +73,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
     view.getDontMoveTroops()
         .setOnAction(
             event -> {
-              Player currentPlayer = risk.getCurrentPlayer();
               risk.endTurn();
-              if (risk.getBoard().hasWon(currentPlayer)) {
-                win();
-              }
               notifyObservers(this.getNextSidebarPane());
             });
 
@@ -118,16 +104,6 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
     update(); // Initial state setup
   }
 
-  private void win() {
-    try {
-      FileHandler.deleteGame(risk.getGameName());
-    } catch (UncheckedIOException e) {
-      PopUp.showError("Something went wrong deleting game", e.getMessage());
-    }
-    NavigationManager.navigate(
-        new WinningPageController(this.risk.getCurrentPlayer().getName(), "risk-win-page")
-            .getView());
-  }
 
   /**
    * Updates the move troops view with current valid options. Populates combo boxes, resets
