@@ -38,26 +38,26 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
 
     // Initialize and style the current user label
     currentUserLabel = new Label("Current Player: " + currentPlayerName);
-    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
+    this.currentUserLabel.getStyleClass().addAll("fantasy", "text-black", "text-20");
     VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Create and style the "Move from" label and ComboBox
     Label moveFromLabel = new Label("Move from:");
-    moveFromLabel.getStyleClass().add("fantasy-text-sidbar");
+    moveFromLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
     VBox.setMargin(moveFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.moveFromComboBox = new ComboBox<>();
-    this.moveFromComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    this.moveFromComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
     moveFromComboBox.setPromptText("Select country to move from");
     VBox.setMargin(moveFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Create and style the "Move to" label and ComboBox
     moveToLabel = new Label("Move to:");
-    moveToLabel.getStyleClass().add("fantasy-text-sidbar");
+    moveToLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
     VBox.setMargin(moveToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.moveTargetComboBox = new ComboBox<>();
-    this.moveTargetComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    this.moveTargetComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
     moveTargetComboBox.setPromptText("Select country to move to");
     VBox.setMargin(moveTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
 
@@ -69,18 +69,18 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
             );
     spinnerValueFactory =
         (SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory();
-    this.amountOfTroopsSpinner.getStyleClass().add("fantasy-spinner-sidbar");
+    this.amountOfTroopsSpinner.getStyleClass().addAll("fantasy-spinner-sidbar", "fantasy");
     amountOfTroopsSpinner.setEditable(true); // Allows user to manually type the amount
     VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Initialize and style the "Move & finish round" button
     this.ok = new Button("Move & finish round");
-    this.ok.getStyleClass().add("fantasy-button-sidbar");
+    this.ok.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
     VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Initialize and style the "Don't move troops" button
     this.dontMoveTroops = new Button("Don't move troops");
-    this.dontMoveTroops.getStyleClass().add("fantasy-button-sidbar");
+    this.dontMoveTroops.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
     VBox.setMargin(dontMoveTroops, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Set the title and line spacing for the pane

@@ -36,7 +36,7 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    alert.getDialogPane().getStyleClass().add("fantasy-dialog");
+    alert.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
     alert.showAndWait();
   }
 
@@ -95,7 +95,7 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
+    dialog.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
 
     Optional<Integer> result = dialog.showAndWait();
 
@@ -119,8 +119,8 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
-    dialog.getDialogPane().getStyleClass().add("fantasy-text-field");
+    dialog.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
+    dialog.getDialogPane().getStyleClass().addAll("fantasy-text-field", "fantasy");
     // Add custom style class to text field as this is not included in the fantasy-dialog style
 
     Optional<String> result = dialog.showAndWait();
@@ -166,7 +166,7 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
+    dialog.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
 
     dialog.showAndWait();
   }

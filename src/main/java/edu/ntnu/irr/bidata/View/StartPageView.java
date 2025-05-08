@@ -33,25 +33,25 @@ public class StartPageView extends VBox {
 
     // Title
     Label title = new Label("Welcome to the kingdom of Runeborne");
-    title.getStyleClass().add("fantasy-title");
+    title.getStyleClass().addAll("fantasy", "text-gold", "text-55");
 
     // Subtitle
     Label subtitle = new Label("Choose your next adventure!");
-    subtitle.getStyleClass().add("fantasy-text");
+    subtitle.getStyleClass().addAll("fantasy", "text-gold", "text-40");
 
     // Game name input
     gameNameField.setPromptText("Adventure Name");
     VBox.setMargin(gameNameField, new Insets(0, 100, 10, 100));
-    gameNameField.getStyleClass().add("fantasy-text-field");
+    gameNameField.getStyleClass().addAll("fantasy-text-field", "fantasy");
 
     // Player count selector
-    playerCountBox.getStyleClass().add("fantasy-combo-box");
+    playerCountBox.getStyleClass().addAll("fantasy-combo-box", "fantasy");
     VBox.setMargin(playerCountBox, new Insets(5, 5, 5, 5));
     playerCountBox.getItems().addAll(2, 3, 4, 5);
     playerCountBox.setPromptText("Select Number of Heroes");
 
     // Game type selector
-    gameSelectorBox.getStyleClass().add("fantasy-combo-box");
+    gameSelectorBox.getStyleClass().addAll("fantasy-combo-box", "fantasy");
     VBox.setMargin(gameSelectorBox, new Insets(5, 5, 5, 5));
     gameSelectorBox
         .getItems()
@@ -59,17 +59,17 @@ public class StartPageView extends VBox {
     gameSelectorBox.setPromptText("Select an Adventure");
 
     // Confirm new game button
-    confirmButton.getStyleClass().add("fantasy-button");
+    confirmButton.getStyleClass().addAll("fantasy-button", "fantasy");
     VBox.setMargin(confirmButton, new Insets(5, 5, 5, 5));
     confirmButton.setDisable(true); // Initially disabled
 
     // "OR" separator label
     Label or = new Label("OR");
-    or.getStyleClass().add("fantasy-text");
+    or.getStyleClass().addAll("fantasy-text", "fantasy");
     VBox.setMargin(or, new Insets(0, 0, 10, 0));
 
     // Saved games selector
-    savedGames.getStyleClass().add("fantasy-combo-box");
+    savedGames.getStyleClass().addAll("fantasy-combo-box", "fantasy");
     VBox.setMargin(savedGames, new Insets(5, 5, 5, 5));
     for (String game : savedGamesMap.keySet()) {
       String gameType = savedGamesMap.get(game);
@@ -78,13 +78,13 @@ public class StartPageView extends VBox {
     savedGames.setPromptText("Select a saved adventure");
 
     // Load saved game button
-    loadGameButton.getStyleClass().add("fantasy-button");
+    loadGameButton.getStyleClass().addAll("fantasy-button", "fantasy");
     VBox.setMargin(loadGameButton, new Insets(5, 5, 5, 5));
     loadGameButton.setDisable(true); // Initially disabled
 
     // Exit button
-    exitButton.getStyleClass().add("fantasy-button");
-    exitButton.getStyleClass().add("close-button");
+    exitButton.getStyleClass().addAll("fantasy-button", "fantasy");
+    exitButton.getStyleClass().addAll("close-button", "fantasy");
     VBox.setMargin(exitButton, new Insets(32, 5, 5, 5));
 
     // Layout for new game options

@@ -5,7 +5,6 @@
   -fx-background-repeat: no-repeat;
 }
 
-
 .start-page {
   background-image: url("images/backgroundStartPage.png");
   -fx-background-image: url("images/backgroundStartPage.png");
@@ -44,15 +43,44 @@
 .fantasy {
   font-family: "Papyrus", "Georgia", serif;
   -fx-font-family: "Papyrus", "Georgia", serif;
-  -fx-text-fill: #FFD700;
-}
-.title-3 {
-  -fx-font-size: 20px;
-  -fx-font-weight: bold;
 }
 
-.fantasy-title, .fantasy-text, .fantasy-dialog, .fantasy-text-field, .fantasy-button, .fantasy-combo-box, .fantasy-spinner, .fantasy-spinner .text-field, .fantasy-text-sidbar, .fantasy-button-sidbar, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-title-sidbar, .country-view, .fantasy-dialog .label, .fantasy-dialog .button, .fantasy-dialog .combo-box {
-  -fx-font-family: "Papyrus", "Georgia", serif;
+
+.text-gold{
+  font-weight: bold;
+  -fx-font-weight: bold;
+  -fx-text-fill: #FFD700;
+}
+
+.text-black {
+  font-weight: bold;
+  -fx-font-weight: bold;
+  -fx-text-fill: #000000;
+}
+
+.text-55{
+  font-size: 55px;
+  -fx-font-size: 55px;
+}
+
+.text-40 {
+  font-size: 40px;
+  -fx-font-size: 40px;
+}
+
+.text-30{
+  font-size: 30px;
+  -fx-font-size: 30px;
+}
+
+.text-20{
+  font-size: 20px;
+  -fx-font-size: 20px;
+}
+
+.text-15{
+  font-size: 15px;
+  -fx-font-size: 15px;
 }
 
 
@@ -70,32 +98,6 @@
 .fantasy-spinner .decrement-button:hover,.fantasy-dialog .button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-button-sidbar:hover, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-button-sidbar:focused, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused, .fantasy-dialog .combo-box:hover, .fantasy-dialog .combo-box:focused, .fantasy-dialog .button:focused, .fantasy-dialog .button:hover  {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
-}
-
-.fantasy-title, .fantasy-text{
-  -fx-font-weight: bold;
-  -fx-text-fill: #FFD700;
-}
-
-.fantasy-title{
-  -fx-font-size: 55px;
-  
-}
-
-.fantasy-text {
-  -fx-font-size: 40px;
-}
-
-.fantasy-text-sidbar {
-  -fx-font-size: 30px;
-  -fx-font-weight: bold;
-  -fx-text-fill: #000000;
-}
-
-.fantasy-title-sidbar {
-  -fx-font-size: 15px;
-  -fx-font-weight: bold;
-  -fx-text-fill: #000000;
 }
 
 

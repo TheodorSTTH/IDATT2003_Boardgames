@@ -76,30 +76,30 @@ public class CreatePlayerPageView extends VBox {
     getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER); // Align the VBox content at the top center
 
-    titleLabel.getStyleClass().add("fantasy-title");
+    titleLabel.getStyleClass().addAll("fantasy", "text-gold", "text-55");
     VBox.setMargin(titleLabel, new Insets(20, 5, 10, 5)); // Top margin for title
 
-    usernameField.getStyleClass().add("fantasy-text-field");
+    usernameField.getStyleClass().addAll("fantasy-text-field", "fantasy");
     VBox.setMargin(usernameField, new Insets(5, 100, 10, 100)); // Side padding for text field
     usernameField.setPromptText("Hero Name"); // Placeholder text
 
     VBox.setMargin(colorLabel, new Insets(5, 5, 5, 5));
-    colorLabel.getStyleClass().add("fantasy-text");
+    colorLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
 
     VBox.setMargin(playerColorField, new Insets(5, 5, 5, 5));
-    playerColorField.getStyleClass().add("fantasy-combo-box");
+    playerColorField.getStyleClass().addAll("fantasy-combo-box", "fantasy");
     playerColorField.getItems().addAll(availableColors); // Load available colors into dropdown
     playerColorField.setPromptText("Choose a color"); // Fixed spelling here
 
     VBox.setMargin(ageLabel, new Insets(5, 5, 5, 5));
-    ageLabel.getStyleClass().add("fantasy-text");
+    ageLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
 
-    ageSpinner.getStyleClass().add("fantasy-spinner");
+    ageSpinner.getStyleClass().addAll("fantasy-spinner", "fantasy");
     VBox.setMargin(ageSpinner, new Insets(5, 5, 5, 5));
     ageSpinner.setEditable(true); // Allow user to type age
 
-    createPlayerButton.getStyleClass().add("fantasy-button");
-    createPlayerButton.getStyleClass().add("close-button");
+    createPlayerButton.getStyleClass().addAll("fantasy-button", "fantasy");
+    createPlayerButton.getStyleClass().addAll("close-button", "fantasy");
     VBox.setMargin(createPlayerButton, new Insets(10, 5, 5, 5));
     createPlayerButton.setDisable(true); // Disabled by default until form is valid
 

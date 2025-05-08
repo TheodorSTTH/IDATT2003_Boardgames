@@ -33,16 +33,16 @@ public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
     this.setLineSpacing(10);
 
     // Initialize and style the current user label
-    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
+    this.currentUserLabel.getStyleClass().addAll("fantasy", "taxt-black", "text-20");
     VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Initialize and style the info label
-    infoLabel.getStyleClass().add("fantasy-text-sidbar");
+    infoLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
     VBox.setMargin(infoLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Create and style the ComboBox for selecting a country
     this.countryComboBox = new ComboBox<>();
-    this.countryComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    this.countryComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
     VBox.setMargin(countryComboBox, new javafx.geometry.Insets(0, 5, 10, 10));
 
     // Create and configure the Spinner for selecting the number of troops to place
@@ -51,12 +51,12 @@ public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
             new SpinnerValueFactory.IntegerSpinnerValueFactory(
                 1, 100, 1) // Min: 1, Max: 100, Initial: 1
             );
-    this.amountOfTroopsSpinner.getStyleClass().add("fantasy-spinner-sidbar");
+    this.amountOfTroopsSpinner.getStyleClass().addAll("fantasy-spinner-sidbar", "fantasy");
     this.amountOfTroopsSpinner.setEditable(true); // Allows manual input for troop number
     VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(10, 5, 10, 10));
 
     // Initialize and style the "Place troops" button
-    this.ok.getStyleClass().add("fantasy-button-sidbar");
+    this.ok.getStyleClass().addAll("fantasy-button-sidbar", "fantasy");
     VBox.setMargin(ok, new javafx.geometry.Insets(0, 5, 10, 10));
 
     // Add all components to the container (VBox)
