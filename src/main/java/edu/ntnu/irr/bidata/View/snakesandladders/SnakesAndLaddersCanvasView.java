@@ -219,31 +219,7 @@ public class SnakesAndLaddersCanvasView extends Canvas {
 
   private void drawLadder(int fromIndex, int toIndex) {
     GraphicsContext gc = getGraphicsContext2D();
-    CanvasTileView fromTileView = tileViews.get(fromIndex);
-    CanvasTileView toTileView = tileViews.get(toIndex);
     gc.save();
-
-    // center position of from tile
-    int fromCenterX = fromTileView.getCenterX();
-    int fromCenterY = fromTileView.getCenterY();
-
-    // center position of to tile
-    int toCenterX = toTileView.getCenterX();
-    int toCenterY = toTileView.getCenterY();
-
-    // vector between from-to
-    int dx = toCenterX - fromCenterX;
-    int dy = toCenterY - fromCenterY;
-
-    double angle = Math.atan2(dy, dx); // vector angle
-    double normal = angle - Math.PI / 2;
-
-    // normalized vector between from-to
-    double normalVectorX = Math.cos(normal);
-    double normalVectorY = Math.sin(normal);
-
-    // length of non-normalized vector
-    double length = Math.sqrt(dx * dx + dy * dy);
 
     Light.Distant sun = new Light.Distant();
     sun.setAzimuth(-45);
@@ -261,7 +237,29 @@ public class SnakesAndLaddersCanvasView extends Canvas {
 
     gc.setEffect(lighting);
 
+    CanvasTileView fromTileView = tileViews.get(fromIndex);
+    CanvasTileView toTileView = tileViews.get(toIndex);
+
+    // center position of from tile
+    int fromCenterX = fromTileView.getCenterX();
+    int fromCenterY = fromTileView.getCenterY();
+
+    // center position of to tile
+    int toCenterX = toTileView.getCenterX();
+    int toCenterY = toTileView.getCenterY();
+
+    // vector between from-to
+    int dx = toCenterX - fromCenterX;
+    int dy = toCenterY - fromCenterY;
+
     double offset = 10;
+
+    double angle = Math.atan2(dy, dx); // vector angle
+    double normal = angle - Math.PI / 2;
+
+    // normalized vector between from-to
+    double normalVectorX = Math.cos(normal);
+    double normalVectorY = Math.sin(normal);
 
     // left ladder pole point from
     double fromLeftX = fromCenterX - offset * normalVectorX;
@@ -284,6 +282,9 @@ public class SnakesAndLaddersCanvasView extends Canvas {
     gc.setLineWidth(8);
     gc.setStroke(Color.SADDLEBROWN.brighter().desaturate());
     gc.strokeLine(fromRightX, fromRightY, toRightX, toRightY);
+
+    // length of non-normalized vector
+    double length = Math.sqrt(dx * dx + dy * dy);
 
     double distanceBetweenLadderSteps = 20;
     int amountOfSteps = (int) Math.floor(length / distanceBetweenLadderSteps);

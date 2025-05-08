@@ -33,22 +33,24 @@ public class DieView extends Pane implements Observer<Integer> {
   public DieView(int size, Color dieColor, Color dotColor) {
     // Calculate positions and sizes based on provided size
     int padding = (int) Math.floor(size * 0.225);
-    int topY = padding;
-    int leftX = padding;
+
     int rightX = size - padding;
     int centerX = size / 2;
+    int topY = padding;
+    int bottomY = size - padding;
+    int leftX = padding;
     int centerY = size / 2;
     int radius = size / 10;
-    int bottomY = size - padding;
 
     // Initialize each dot (Circle)
     center = new Circle(centerX, centerY, radius, dotColor);
     topLeft = new Circle(leftX, topY, radius, dotColor);
     topRight = new Circle(rightX, topY, radius, dotColor);
-    centerLeft = new Circle(leftX, centerY, radius, dotColor);
-    centerRight = new Circle(rightX, centerY, radius, dotColor);
     bottomLeft = new Circle(leftX, bottomY, radius, dotColor);
     bottomRight = new Circle(rightX, bottomY, radius, dotColor);
+    centerLeft = new Circle(leftX, centerY, radius, dotColor);
+    centerRight = new Circle(rightX, centerY, radius, dotColor);
+
 
     // Set die background and size
     this.setMaxSize(size, size);

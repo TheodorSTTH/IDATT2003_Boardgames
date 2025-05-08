@@ -58,7 +58,7 @@ public class SnakesAndLaddersSidePanelView extends VBox {
             splitterRegion, // Flexible region to allow resizing
             exitGameButton, // Button to exit the game
             saveButton // Button to save the current game state
-            );
+        );
   }
 
   // Getter methods for the elements in the side panel

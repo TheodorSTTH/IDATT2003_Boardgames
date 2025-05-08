@@ -53,7 +53,9 @@ public class StartPageView extends VBox {
     // Game type selector
     gameSelectorBox.getStyleClass().add("fantasy-combo-box");
     VBox.setMargin(gameSelectorBox, new Insets(5, 5, 5, 5));
-    gameSelectorBox.getItems().addAll("Ladder Game Classic", "Ladder Game Quiz", "Risk");
+    gameSelectorBox
+        .getItems()
+        .addAll("Snakes and Ladders Classic", "Snakes and Ladders Quiz", "Risk");
     gameSelectorBox.setPromptText("Select an Adventure");
 
     // Confirm new game button
