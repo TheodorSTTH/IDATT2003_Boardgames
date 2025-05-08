@@ -91,7 +91,7 @@ public class CreatePlayerPageView extends VBox {
 
     ageLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
 
-    ageSpinner.getStyleClass().addAll("fantasy-spinner", "fantasy");
+    ageSpinner.getStyleClass().addAll("spinner", "spinner-size", "fantasy");
     ageSpinner.setEditable(true); // Allow user to type age
 
     createPlayerButton.getStyleClass().addAll("button", "large-size", "fantasy");

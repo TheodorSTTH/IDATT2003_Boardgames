@@ -69,7 +69,7 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
             );
     spinnerValueFactory =
         (SpinnerValueFactory.IntegerSpinnerValueFactory) amountOfTroopsSpinner.getValueFactory();
-    this.amountOfTroopsSpinner.getStyleClass().addAll("fantasy-spinner-sidbar", "fantasy");
+    this.amountOfTroopsSpinner.getStyleClass().addAll("spinner", "sidebar-size", "fantasy");
     amountOfTroopsSpinner.setEditable(true); // Allows user to manually type the amount
     VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(0, 0, 10, 10));
 

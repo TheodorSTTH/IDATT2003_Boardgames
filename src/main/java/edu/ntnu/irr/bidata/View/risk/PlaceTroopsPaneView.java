@@ -51,7 +51,7 @@ public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
             new SpinnerValueFactory.IntegerSpinnerValueFactory(
                 1, 100, 1) // Min: 1, Max: 100, Initial: 1
             );
-    this.amountOfTroopsSpinner.getStyleClass().addAll("fantasy-spinner-sidbar", "fantasy");
+    this.amountOfTroopsSpinner.getStyleClass().addAll("spinner", "sidebar-size", "fantasy");
     this.amountOfTroopsSpinner.setEditable(true); // Allows manual input for troop number
     VBox.setMargin(amountOfTroopsSpinner, new javafx.geometry.Insets(10, 5, 10, 10));
 
