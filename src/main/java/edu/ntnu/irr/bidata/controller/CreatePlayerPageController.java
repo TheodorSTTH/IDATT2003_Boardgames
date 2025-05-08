@@ -1,8 +1,13 @@
 package edu.ntnu.irr.bidata.controller;
 
+import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.model.Game;
+import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.view.CreatePlayerPageView;
 import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.risk.RiskPageController;
+import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import javafx.scene.control.Button;
 
 /**
@@ -49,11 +54,30 @@ public class CreatePlayerPageController {
                 return;
               }
 
-              if (game.addPlayer(username, playerColor, age)) {
-                view.getUsernameField().clear();
-                view.getPlayerColorField().getItems().remove(playerColor);
-                view.getPlayerColorField().setValue(null);
-                view.getAgeSpinner().getValueFactory().setValue(1);
+              try {
+                if (game.addPlayer(username, playerColor, age)) {
+                  view.getUsernameField().clear();
+                  view.getPlayerColorField().getItems().remove(playerColor);
+                  view.getPlayerColorField().setValue(null);
+                  view.getAgeSpinner().getValueFactory().setValue(1);
+
+                  boolean isFinishedAddingPlayers = game.getPlayers().size() == game.getAmountOfPlayers();
+                  if (isFinishedAddingPlayers) {
+                    if (game instanceof SnakesAndLadders) {
+                      // Route to snakes and ladders page with created game
+                      SnakesAndLaddersPageView snakesAndLaddersPageView = new SnakesAndLaddersPageView((SnakesAndLadders) game);
+                      NavigationManager.navigate(snakesAndLaddersPageView);
+                    } else {
+                      // Route to risk page with created game
+                      RiskPageController riskPageController = new RiskPageController((Risk) game);
+                      NavigationManager.navigate(riskPageController.getView());
+                    }
+                    // Show rules for the given game
+                    PopUp.showScrollablePopup("Rules", game.getRules());
+                  }
+                }
+              } catch (IllegalArgumentException ex) {
+                PopUp.showWarning("Invalid name", ex.getMessage());
               }
             });
 
