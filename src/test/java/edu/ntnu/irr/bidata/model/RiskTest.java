@@ -1,17 +1,25 @@
-package edu.ntnu.irr.bidata.model.snakesandladders;
+package edu.ntnu.irr.bidata.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import java.io.UncheckedIOException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for the {@link Risk} game class. This class verifies the creation, loading, saving,
+ * and deletion of Risk game instances.
+ */
 public class RiskTest {
+
+  /**
+   * Tests loading a saved Risk game from storage. Verifies that all game components (board, dice,
+   * game type, etc.) are loaded properly.
+   */
   @Test
   @DisplayName("Test loading risk game works as expected")
   void testRiskLoad() {
@@ -32,6 +40,10 @@ public class RiskTest {
     assertEquals("Risk", risk.getGameType(), "Should have gotten gameType");
   }
 
+  /**
+   * Tests the constructor of the {@link Risk} class. Ensures that the game is initialized with the
+   * correct number of players and correct metadata.
+   */
   @Test
   @DisplayName("Test constructor works as expected")
   void testRiskConstructor() {
@@ -41,14 +53,18 @@ public class RiskTest {
     int amountOfPlayers = 2;
 
     // Act
-    Risk snakesAndLadders = new Risk(amountOfPlayers, gameName);
+    Risk risk = new Risk(amountOfPlayers, gameName);
 
     // Assert
-    assertEquals(gameName, snakesAndLadders.getGameName(), "Game name should have been set");
-    assertEquals(gameType, snakesAndLadders.getGameType(), "Game type should be set");
-    assertEquals(amountOfPlayers, snakesAndLadders.getAmountOfPlayers(), "Amount of players should be set");
+    assertEquals(gameName, risk.getGameName(), "Game name should have been set");
+    assertEquals(gameType, risk.getGameType(), "Game type should be set");
+    assertEquals(amountOfPlayers, risk.getAmountOfPlayers(), "Amount of players should be set");
   }
 
+  /**
+   * Tests saving and deleting a Risk game. Ensures that saved games can be loaded with accurate
+   * state and deleted games cannot be accessed.
+   */
   @Test
   @DisplayName("Test saving and deleting risk game works.")
   void testSnakesAndLaddersSaveAndDelete() {
@@ -65,40 +81,26 @@ public class RiskTest {
     FileHandler.deleteGame(gameName);
 
     // Assert
-    assertNotNull(
-        loadedRisk.getPlayers(),
-        "Board should have been loaded"
-    );
+    assertNotNull(loadedRisk.getPlayers(), "Board should have been loaded");
     assertTrue(
         loadedRisk.getPlayers().stream().anyMatch(player -> player.getName().equals("Kari")),
-        "Player Kari should have been loaded"
-    );
+        "Player Kari should have been loaded");
     assertTrue(
         loadedRisk.getPlayers().stream().anyMatch(player -> player.getName().equals("Finn")),
-        "Player Finn should have been loaded"
-    );
-    assertNotNull(
-        loadedRisk.getBoard(),
-        "Board should have been loaded"
-    );
-    assertNotNull(
-        loadedRisk.getDefenceDice(),
-        "Defence dice should have been loaded"
-    );
+        "Player Finn should have been loaded");
+    assertNotNull(loadedRisk.getBoard(), "Board should have been loaded");
+    assertNotNull(loadedRisk.getDefenceDice(), "Defence dice should have been loaded");
     assertEquals(
-        loadedRisk.getDefenceDice().getDice().size(),2,
-        "Should have exactly 2 defence dice."
-    );
-    assertNotNull(
-        loadedRisk.getAttackDice(),
-        "Attack dice should have been loaded"
-    );
+        2, loadedRisk.getDefenceDice().getDice().size(), "Should have exactly 2 defence dice.");
+    assertNotNull(loadedRisk.getAttackDice(), "Attack dice should have been loaded");
     assertEquals(
-        loadedRisk.getAttackDice().getDice().size(),3,
-        "Should have exactly 3 attack dice."
-    );
-    assertThrows(UncheckedIOException.class, () -> {
-      FileHandler.loadGame(gameName, "SnakesAndLadders");
-    }, "Should not be able to load deleted game");
+        3, loadedRisk.getAttackDice().getDice().size(), "Should have exactly 3 attack dice.");
+
+    assertThrows(
+        UncheckedIOException.class,
+        () -> {
+          FileHandler.loadGame(gameName, "SnakesAndLadders");
+        },
+        "Should not be able to load deleted game");
   }
 }
