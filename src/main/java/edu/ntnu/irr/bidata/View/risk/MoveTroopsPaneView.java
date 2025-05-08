@@ -47,7 +47,7 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
     VBox.setMargin(moveFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.moveFromComboBox = new ComboBox<>();
-    this.moveFromComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
+    this.moveFromComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     moveFromComboBox.setPromptText("Select country to move from");
     VBox.setMargin(moveFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
 
@@ -57,7 +57,7 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
     VBox.setMargin(moveToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.moveTargetComboBox = new ComboBox<>();
-    this.moveTargetComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
+    this.moveTargetComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     moveTargetComboBox.setPromptText("Select country to move to");
     VBox.setMargin(moveTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
 

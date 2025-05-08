@@ -52,7 +52,7 @@ public class AttackPaneView extends AbstractSidebarPaneView {
     VBox.setMargin(attackFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.attackFromComboBox = new ComboBox<>();
-    this.attackFromComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
+    this.attackFromComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     attackFromComboBox.setPromptText("Select country to attack from");
     VBox.setMargin(attackFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
 
@@ -62,7 +62,7 @@ public class AttackPaneView extends AbstractSidebarPaneView {
     VBox.setMargin(attackToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.attackTargetComboBox = new ComboBox<>();
-    this.attackTargetComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
+    this.attackTargetComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     attackTargetComboBox.setPromptText("Select country to attack to");
     VBox.setMargin(attackTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
 

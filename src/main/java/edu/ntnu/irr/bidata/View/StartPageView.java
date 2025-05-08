@@ -45,13 +45,13 @@ public class StartPageView extends VBox {
     gameNameField.getStyleClass().addAll("fantasy-text", "fantasy");
 
     // Player count selector
-    playerCountBox.getStyleClass().addAll("fantasy-combo-box", "fantasy");
+    playerCountBox.getStyleClass().addAll("combo-box", "text-18", "fantasy");
     VBox.setMargin(playerCountBox, new Insets(5, 5, 5, 5));
     playerCountBox.getItems().addAll(2, 3, 4, 5);
     playerCountBox.setPromptText("Select Number of Heroes");
 
     // Game type selector
-    gameSelectorBox.getStyleClass().addAll("fantasy-combo-box", "fantasy");
+    gameSelectorBox.getStyleClass().addAll("combo-box", "text-18", "fantasy");
     VBox.setMargin(gameSelectorBox, new Insets(5, 5, 5, 5));
     gameSelectorBox
         .getItems()
@@ -59,7 +59,7 @@ public class StartPageView extends VBox {
     gameSelectorBox.setPromptText("Select an Adventure");
 
     // Confirm new game button
-    confirmButton.getStyleClass().addAll("button", "normal-size", "fantasy");
+    confirmButton.getStyleClass().addAll("button", "text-18", "fantasy");
     VBox.setMargin(confirmButton, new Insets(5, 5, 5, 5));
     confirmButton.setDisable(true); // Initially disabled
 
@@ -69,7 +69,7 @@ public class StartPageView extends VBox {
     VBox.setMargin(or, new Insets(0, 0, 10, 0));
 
     // Saved games selector
-    savedGames.getStyleClass().addAll("fantasy-combo-box", "fantasy");
+    savedGames.getStyleClass().addAll("combo-box", "text-18", "fantasy");
     VBox.setMargin(savedGames, new Insets(5, 5, 5, 5));
     for (String game : savedGamesMap.keySet()) {
       String gameType = savedGamesMap.get(game);

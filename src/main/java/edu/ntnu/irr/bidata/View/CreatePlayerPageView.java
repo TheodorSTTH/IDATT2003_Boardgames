@@ -73,11 +73,12 @@ public class CreatePlayerPageView extends VBox {
    * @param availableColors a list of color options to display in the color picker.
    */
   public CreatePlayerPageView(List<String> availableColors) {
+    setSpacing(15);
     getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER); // Align the VBox content at the top center
 
     titleLabel.getStyleClass().addAll("fantasy", "text-gold", "text-55");
-    VBox.setMargin(titleLabel, new Insets(20, 5, 10, 5)); // Top margin for title
+    VBox.setMargin(titleLabel, new Insets(20, 0, 10, 5)); // Top margin for title
 
     usernameField.getStyleClass().addAll("text-field", "fantasy");
     VBox.setMargin(usernameField, new Insets(5, 100, 10, 100)); // Side padding for text field
@@ -87,7 +88,7 @@ public class CreatePlayerPageView extends VBox {
     colorLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
 
     VBox.setMargin(playerColorField, new Insets(5, 5, 5, 5));
-    playerColorField.getStyleClass().addAll("fantasy-combo-box", "fantasy");
+    playerColorField.getStyleClass().addAll("combo-box", "text-18", "fantasy");
     playerColorField.getItems().addAll(availableColors); // Load available colors into dropdown
     playerColorField.setPromptText("Choose a color"); // Fixed spelling here
 

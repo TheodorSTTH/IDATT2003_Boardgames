@@ -99,7 +99,7 @@ Her is what chat gtp helped whit:
   -fx-font-size: 16px;
 }
 
-.button, .text-field{
+.button, .text-field, .combo-box{
   background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   border-color: #5a381e;
   border-width: 3;
@@ -125,13 +125,17 @@ Her is what chat gtp helped whit:
   -fx-prompt-text-fill: #4e301aac;
 }
 
-.button:hover, .button:focused, .text-field:hover, .text-field:focus{
+.button:hover, .button:focused, .text-field:hover, .text-field:focus, .combo-box:hover, .combo-box:focus{
   background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   cursor: hand;
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
 
+.combo-box.arrow{
+  background-color: #5a381e;
+  -fx-background-color: #5a381e;
+}
 
 .sidebar-size {
   font-size: 16px;

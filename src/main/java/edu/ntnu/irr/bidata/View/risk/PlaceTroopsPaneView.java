@@ -42,7 +42,7 @@ public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
 
     // Create and style the ComboBox for selecting a country
     this.countryComboBox = new ComboBox<>();
-    this.countryComboBox.getStyleClass().addAll("fantasy-combo-box-sidbar", "fantasy");
+    this.countryComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     VBox.setMargin(countryComboBox, new javafx.geometry.Insets(0, 5, 10, 10));
 
     // Create and configure the Spinner for selecting the number of troops to place
