@@ -6,12 +6,15 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The entry point for the Runeborne application.
  * This class sets up the main window and loads the initial scene.
  */
 public class MyWindow extends Application {
+  private static final Logger log = LoggerFactory.getLogger(MyWindow.class);
 
   // Reference to the primary JavaFX stage (window)
   private static Stage primaryStage;
@@ -59,7 +62,7 @@ public class MyWindow extends Application {
    * Calls both Platform.exit() and System.exit().
    */
   public static void closeApplication() {
-    System.out.println("Application is closing...");
+    log.info("Application is closing...");
     Platform.exit();    // Requests JavaFX application thread to shut down
     System.exit(0);     // Forces JVM termination
   }

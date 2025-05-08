@@ -1,6 +1,5 @@
 package edu.ntnu.irr.bidata.view;
 
-import edu.ntnu.irr.bidata.controller.MyWindow;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
