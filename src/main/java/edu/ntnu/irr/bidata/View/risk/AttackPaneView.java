@@ -30,7 +30,7 @@ public class AttackPaneView extends AbstractSidebarPaneView {
    */
   public AttackPaneView() {
     // Set style for the container of the pane
-    getContainer().getStyleClass().add("attack-pane");
+    getContainer().getStyleClass().addAll("attack-pane", "background");
 
     // Initialize the dieBox (where dice rolls will be displayed)
     this.dieBox = new FlowPane();
@@ -39,7 +39,7 @@ public class AttackPaneView extends AbstractSidebarPaneView {
     VBox.setMargin(dieBox, new javafx.geometry.Insets(0, 0, 0, 50));
 
     // Initialize currentUserLabel and apply style
-    this.currentUserLabel.getStyleClass().add("fantasy-title-sidbar");
+    this.currentUserLabel.getStyleClass().addAll("fantasy", "text-black", "text-20");
     VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Set title for the AttackPaneView
@@ -48,37 +48,37 @@ public class AttackPaneView extends AbstractSidebarPaneView {
 
     // Create and style the 'Attack from' label and ComboBox
     Label attackFromLabel = new Label("Attack from:");
-    attackFromLabel.getStyleClass().add("fantasy-text-sidbar");
+    attackFromLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
     VBox.setMargin(attackFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.attackFromComboBox = new ComboBox<>();
-    this.attackFromComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    this.attackFromComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     attackFromComboBox.setPromptText("Select country to attack from");
     VBox.setMargin(attackFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Create and style the 'Attack to' label and ComboBox
     Label attackToLabel = new Label("Attack to:");
-    attackToLabel.getStyleClass().add("fantasy-text-sidbar");
+    attackToLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
     VBox.setMargin(attackToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.attackTargetComboBox = new ComboBox<>();
-    this.attackTargetComboBox.getStyleClass().add("fantasy-combo-box-sidbar");
+    this.attackTargetComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     attackTargetComboBox.setPromptText("Select country to attack to");
     VBox.setMargin(attackTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Create the 'Perform Attack Once' button and style it
     this.performAttackOnceButton = new Button("Perform attack once");
-    this.performAttackOnceButton.getStyleClass().add("fantasy-button-sidbar");
+    this.performAttackOnceButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(performAttackOnceButton, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Create the 'Perform Attack Until Result' button and style it
     this.performAttackUntilResultButton = new Button("Perform until result");
-    this.performAttackUntilResultButton.getStyleClass().add("fantasy-button-sidbar");
+    this.performAttackUntilResultButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(performAttackUntilResultButton, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Create the 'OK, I am done' button and style it
     this.ok = new Button("OK, I am done");
-    this.ok.getStyleClass().add("fantasy-button-sidbar");
+    this.ok.getStyleClass().addAll("button", "sidebar-size", "fantasy");
     VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
 
     // Add all components to the container (VBox)

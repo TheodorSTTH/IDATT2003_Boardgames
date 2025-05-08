@@ -25,7 +25,7 @@ public class SnakesAndLaddersSidePanelView extends VBox {
   public SnakesAndLaddersSidePanelView() {
     // Initialize the username label and apply styles
     this.usernameLabel = new Label();
-    this.usernameLabel.getStyleClass().addAll("fantasy", "title-3");
+    this.usernameLabel.getStyleClass().addAll("fantasy", "text-30", "text-gold");
 
     // Set the style of the entire side panel using inline CSS
     this.setStyle(
@@ -37,9 +37,9 @@ public class SnakesAndLaddersSidePanelView extends VBox {
     setSpacing(10);
 
     // Apply styles to the buttons
-    rollButton.getStyleClass().addAll("fantasy-button");
-    saveButton.getStyleClass().addAll("fantasy-button");
-    exitGameButton.getStyleClass().addAll("fantasy-button");
+    rollButton.getStyleClass().addAll("button", "text-18", "fantasy");
+    saveButton.getStyleClass().addAll("button", "text-18", "fantasy");
+    exitGameButton.getStyleClass().addAll("button", "text-18", "fantasy");
 
     // Set the horizontal and vertical gaps for the dice box
     diceBox.setHgap(5);

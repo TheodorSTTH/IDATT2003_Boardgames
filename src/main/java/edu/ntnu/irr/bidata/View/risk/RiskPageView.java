@@ -34,15 +34,15 @@ public class RiskPageView extends HBox {
     Label bonusesLabel =
         new Label(
             "Europe: 5   Asia: 7   North America: 5\nSouth America: 2   Africa: 3   Australia: 2");
-    bonusesLabel.getStyleClass().add("fantasy-text-sidbar");
+    bonusesLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
 
     // Create and style the "Save" button
     saveButton = new Button("SAVE");
-    saveButton.getStyleClass().add("fantasy-button");
+    saveButton.getStyleClass().addAll("button", "text-18", "fantasy");
 
     // Create and style the "Exit game" button, which navigates to the start page
     exitGameButton = new Button("Exit game");
-    exitGameButton.getStyleClass().addAll("fantasy-button");
+    exitGameButton.getStyleClass().addAll("button", "text-18", "fantasy");
 
     // Create an HBox to hold the labels and buttons at the bottom of the page
     HBox underlay = new HBox(bonusesLabel, saveButton, exitGameButton);

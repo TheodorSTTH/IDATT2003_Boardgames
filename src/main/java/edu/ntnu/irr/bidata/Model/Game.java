@@ -4,7 +4,6 @@ import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * This abstract class represents a Game that includes functionality for managing players and game
  * settings like the number of players, their colors, and starting player. It provides methods to
@@ -67,7 +66,7 @@ public abstract class Game {
   public boolean addPlayer(String name, String color, int age) throws IllegalArgumentException {
     // Check if the player already exists in the game by name
     if (getPlayerNames().contains(name)) {
-      throw new IllegalArgumentException("Player name already exists");
+      throw new IllegalArgumentException("Player named " + name + "\nalready exists");
     }
 
     // Check if the name contains a comma, which is not allowed
@@ -76,7 +75,8 @@ public abstract class Game {
     }
 
     if (players.size() >= amountOfPlayers) {
-      throw new IllegalArgumentException("You cannot add more players to the game. Max amount of players: " + amountOfPlayers);
+      throw new IllegalArgumentException(
+          "You cannot add more players to the game. Max amount of players: " + amountOfPlayers);
     }
 
     if (!availableColors.contains(color)) {
@@ -232,7 +232,6 @@ public abstract class Game {
   public List<String> getAvailableColors() {
     return availableColors;
   }
-
 
   public abstract String getRules();
 }

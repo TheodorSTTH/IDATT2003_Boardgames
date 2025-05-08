@@ -36,7 +36,7 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    alert.getDialogPane().getStyleClass().add("fantasy-dialog");
+    alert.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
     alert.showAndWait();
   }
 
@@ -71,11 +71,10 @@ public class PopUp {
   }
 
   /**
-   * Prompts the user to select a number between 1
-   * and the given max number from a dropdown menu.
-   * 
-   *<p>Note: Originally created by ChatGPT based on my previos pop ups, but modified
-   *to fit the needs of the project, whit adding featers like the scrollbar.</p>
+   * Prompts the user to select a number between 1 and the given max number from a dropdown menu.
+   *
+   * <p>Note: Originally created by ChatGPT based on my previos pop ups, but modified to fit the
+   * needs of the project, whit adding featers like the scrollbar.
    *
    * @param max The maximum number the user can select.
    * @return The number selected by the user.
@@ -95,7 +94,7 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
+    dialog.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
 
     Optional<Integer> result = dialog.showAndWait();
 
@@ -119,8 +118,10 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
-    dialog.getDialogPane().getStyleClass().add("fantasy-text-field");
+    dialog
+        .getDialogPane()
+        .getStyleClass()
+        .addAll("fantasy-dialog", "fantasy", "text-field");
     // Add custom style class to text field as this is not included in the fantasy-dialog style
 
     Optional<String> result = dialog.showAndWait();
@@ -137,8 +138,8 @@ public class PopUp {
    * Shows a scrollable popup dialog with a message content. This method is used to display long
    * content that doesn't fit into a standard alert box.
    *
-   * <p>Note: Originally created by ChatGPT based on my previos pop ups, but modified
-   * to fit the needs of the project, whit adding featers like the scrollbar. </p>
+   * <p>Note: Originally created by ChatGPT based on my previos pop ups, but modified to fit the
+   * needs of the project, whit adding featers like the scrollbar.
    *
    * @param title The title of the popup.
    * @param content The content that will be displayed inside the scrollable text area.
@@ -166,7 +167,7 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    dialog.getDialogPane().getStyleClass().add("fantasy-dialog");
+    dialog.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
 
     dialog.showAndWait();
   }

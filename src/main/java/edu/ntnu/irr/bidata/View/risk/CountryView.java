@@ -51,11 +51,11 @@ public class CountryView extends Button {
 
     // Set the number of troops as text in the label
     text.setText(Integer.toString(amountOfTroops));
-    text.getStyleClass().add("country-label");
+    text.getStyleClass().addAll("fantasy", "text-black");
 
     // Create a sword icon (representing the presence of troops)
     ImageView swordIcon =
-        new ImageView(new Image(getClass().getResource("/sword.png").toExternalForm()));
+        new ImageView(new Image(getClass().getResource("/images/risk/sword.png").toExternalForm()));
     swordIcon.setFitHeight(12); // Set the size of the sword icon
     swordIcon.setPreserveRatio(true); // Maintain aspect ratio
     swordIcon.setSmooth(true); // Enable smooth rendering for the icon
@@ -66,7 +66,7 @@ public class CountryView extends Button {
     this.setGraphic(content); // Set the content as the graphic for the button
 
     // Set the style (background color) of the country view based on the owner's color
-    this.getStyleClass().add("country-view");
+    this.getStyleClass().addAll("country-view", "fantasy");
     this.setStyle("-fx-background-color: " + ownerColor + "; ");
 
     // Position the country on the board based on the relative X and Y positions
