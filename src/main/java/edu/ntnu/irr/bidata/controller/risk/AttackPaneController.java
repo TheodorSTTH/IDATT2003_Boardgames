@@ -159,17 +159,21 @@ public class AttackPaneController extends AbstractSidebarPaneController
     attackTargetComboBox.getItems().clear();
 
     // If the old selections are still valid, set them back to the ComboBoxes
-    if (attackFromOptions.contains(selectedFrom)
-        && risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)) {
+    if (!attackFromOptions.contains(selectedFrom)){
+      attackTargetComboBox.setValue(null);
+      attackTargetComboBox.setDisable(true);
+    } else if (!risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom).contains(selectedTo)){
+      attackTargetComboBox.setValue(null);
+      attackTargetComboBox.setItems(
+        FXCollections.observableArrayList(
+            risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
+    } else {
       attackFromComboBox.setValue(selectedFrom);
       attackTargetComboBox.setItems(
           FXCollections.observableArrayList(
               risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
       attackTargetComboBox.setValue(selectedTo);
-    } else {
-      attackFromComboBox.setValue(null);
-      attackTargetComboBox.setValue(null);
-      attackTargetComboBox.setDisable(true);
+
     }
   }
 
