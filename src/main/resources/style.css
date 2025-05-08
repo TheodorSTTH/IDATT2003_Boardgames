@@ -1,14 +1,15 @@
 /*
-This Css file is created whit some help form chat GTP
+This CSS file was created with help from ChatGPT.
 
-Her is what chat gtp helped whit:
- 1. Finding a fitting font type
- 2. Original buton deisgn (editted later)
- 3. Original cobo-box deisgn (editted later)
- 4. Original text field deisgn (editted later)
- 5  Original spinner deisgn (editted later)
+ChatGPT assisted with:
+ 1. Choosing a fitting font
+ 2. Original button design (edited later)
+ 3. Original combo box design (edited later)
+ 4. Original text field design (edited later)
+ 5. Original spinner design (edited later)
 */
 
+/* ========== GLOBAL BACKGROUND SETTINGS ========== */
 .background {
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,6 +17,7 @@ Her is what chat gtp helped whit:
   -fx-background-repeat: no-repeat;
 }
 
+/* ========== PAGE BACKGROUND IMAGES ========== */
 .start-page {
   background-image: url("images/backgroundStartPage.png");
   -fx-background-image: url("images/backgroundStartPage.png");
@@ -51,13 +53,13 @@ Her is what chat gtp helped whit:
   -fx-background-image: url("images/risk/riskPlaceTroopsBackground.png");
 }
 
+/* ========== TYPOGRAPHY STYLES ========== */
 .fantasy {
   font-family: "Papyrus", "Georgia", serif;
   -fx-font-family: "Papyrus", "Georgia", serif;
 }
 
-
-.text-gold{
+.text-gold {
   font-weight: bold;
   -fx-font-weight: bold;
   -fx-text-fill: #FFD700;
@@ -69,92 +71,101 @@ Her is what chat gtp helped whit:
   -fx-text-fill: #000000;
 }
 
-.text-55{
-  font-size: 55px;
-  -fx-font-size: 55px;
-}
+/* Font size utility classes */
+.text-55 { font-size: 55px; -fx-font-size: 55px; }
+.text-40 { font-size: 40px; -fx-font-size: 40px; }
+.text-30 { font-size: 30px; -fx-font-size: 30px; }
+.text-20 { font-size: 20px; -fx-font-size: 20px; }
+.text-18 { font-size: 18px; -fx-font-size: 18px; }
+.text-16 { font-size: 16px; -fx-font-size: 16px; }
 
-.text-40 {
-  font-size: 40px;
-  -fx-font-size: 40px;
-}
-
-.text-30{
-  font-size: 30px;
-  -fx-font-size: 30px;
-}
-
-.text-20{
-  font-size: 20px;
-  -fx-font-size: 20px;
-}
-
-.text-18{
-  font-size: 18px;
-  -fx-font-size: 18px;
-}
-
-.text-16{
-  font-size: 16px;
-  -fx-font-size: 16px;
-}
-
-.button, .text-field, .combo-box, .spinner, dialog{
+/* ========== FORM CONTROLS: BUTTONS, TEXT FIELDS, COMBO BOXES, SPINNERS ========== */
+.button, .text-field, .combo-box, .spinner, dialog {
   background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   border-color: #5a381e;
   border-width: 3;
   border-radius: 8;
   cursor: hand;
-  padding: 10 15 10 15;
+  padding: 10 15;
   font-weight: bold;
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-border-color: #5a381e;
   -fx-border-width: 3;
   -fx-border-radius: 8;
-  -fx-cursor: hand;
   -fx-background-radius: 6;
-  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
-  -fx-padding: 10 15 10 15;
+  -fx-cursor: hand;
+  -fx-padding: 10 15;
   -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
   -fx-prompt-text-fill: #4e301aac;
 }
 
-.button:hover, .button:focused, .combo-box:hover, .combo-box:focus, .spinner:hover, .spinner .increment-button:hover,
-.spinner .decrement-button:hover,.dialog .button:hover, .spinner:focused{
+/* Hover & focus effects for interactive elements */
+.button:hover, .button:focused,
+.combo-box:hover, .combo-box:focus,
+.spinner:hover, .spinner:focused,
+.spinner .increment-button:hover,
+.spinner .decrement-button:hover,
+.dialog .button:hover {
   background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
-  cursor: hand;
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
 
-.text-field:hover, .text-field:focus{
-  background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
-  cursor: text;
-  font-weight: bold;
-
-  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
-  -fx-cursor: text;
-  -fx-font-weight: bold;
-}
-
-
+/* ========== TEXT FIELD ========== */
 .text-field {
   font-size: 20px;
   -fx-font-size: 20px;
   -fx-prompt-text-fill: #4e301aac;
 }
 
-.combo-box.arrow{
+.text-field:hover, .text-field:focus {
+  background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
+  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
+  -fx-cursor: text;
+  -fx-font-weight: bold;
+}
+
+/* ========== COMBO BOX ARROW ========== */
+.combo-box.arrow {
   background-color: #5a381e;
   -fx-background-color: #5a381e;
 }
 
+/* ========== SPINNER STYLING ========== */
+/* Spinner size and font */
 .spinner-size {
   font-size: 18px;
   -fx-font-size: 18px;
   -fx-pref-width: 210px;
 }
 
+/* Spinner arrow buttons */
+.spinner .increment-button, .spinner .decrement-button {
+  background-color: #5a381e;
+  -fx-background-color: #5a381e;
+  -fx-font-size: 18px;
+  -fx-padding: 5;
+  -fx-text-fill: #f0e4c3;
+  -fx-background-radius: 4;
+}
+
+/* Spinner input text field */
+.spinner .text-field {
+  background-color: transparent;
+  -fx-background-color: transparent;
+  -fx-text-fill: #2e1d0e;
+  -fx-border-width: 0;
+  -fx-padding: 2;
+  -fx-font-size: 20px;
+}
+
+.spinner .text-field:hover {
+  background-color: transparent;
+  -fx-background-color: transparent;
+}
+
+/* ========== SIZE CLASSES FOR BUTTONS OR SIDEBAR ITEMS ========== */
 .sidebar-size {
   font-size: 16px;
   -fx-font-size: 16px;
@@ -169,39 +180,7 @@ Her is what chat gtp helped whit:
   -fx-pref-height: 65px;
 }
 
-
-/* Spinner Arrow Button Styling */
-.spinner .increment-button, .spinner .decrement-button{
-  background-color: #5a381e;
-  font-size: 18px;
-  padding: 5;
-  -fx-background-color: #5a381e; /* Dark brown button for the spinner arrows */
-  -fx-font-size: 18px; /* Adjust font size for better arrow visibility */
-  -fx-padding: 5; /* Padding inside the arrow buttons */
-  -fx-text-fill: #f0e4c3; /* Light text color for arrows */
-  -fx-background-radius: 4; /* Slightly rounded corners for the arrows */
-}
-
-/* Spinner Text Field (Editable Area) */
-.spinner .text-field{
-  background-color: transparent;
-  border-width: 0; 
-  padding: 2; 
-  font-size: 20px; 
-
-  -fx-background-color: transparent; /* Transparent background for the text input part */
-  -fx-text-fill: #2e1d0e; /* Dark text color */
-  -fx-border-width: 0; /* No border on the text input area */
-  -fx-padding: 2; /* Same padding as the button and input fields */
-  -fx-font-size: 20px; /* Font size to match the overall theme */
-}
-
-.spinner .text-field:hover {
-  background-color: transparent;
-}
-
-
-
+/* ========== COUNTRY VIEW (MAP BUTTON STYLE) ========== */
 .country-view {
   font-size: 7pt;
   font-weight: bold;
@@ -216,7 +195,7 @@ Her is what chat gtp helped whit:
   -fx-padding: 3 6;
   -fx-border-radius: 10;
   -fx-background-color: red;
-  -fx-text-fill: rgb(0, 0, 0);
+  -fx-text-fill: #000000;
   -fx-background-radius: 10;
   -fx-background-insets: 0;
   -fx-border-insets: 0;
@@ -226,14 +205,12 @@ Her is what chat gtp helped whit:
 
 .country-view:hover {
   font-size: 8pt;
-  cursor: hand;
-
   -fx-font-size: 8pt;
   -fx-cursor: hand;
   -fx-text-fill: #000000;
 }
 
-
+/* ========== CUSTOM FANTASY DIALOG STYLE ========== */
 .fantasy-dialog {
   background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   border-color: #5a381e;
@@ -250,25 +227,24 @@ Her is what chat gtp helped whit:
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.6, 0, 4);
 }
 
+/* Dialog pane transparency */
 .fantasy-dialog .dialog-pane {
   background-color: transparent;
   -fx-background-color: transparent;
 }
 
+/* Dialog title label */
 .fantasy-dialog .label {
   font-size: 30px;
   font-weight: bold;
-
   -fx-font-size: 30px;
   -fx-font-weight: bold;
   -fx-text-fill: #2e1d0e;
 }
 
+/* Dialog combo box dropdown list */
 .fantasy-dialog .combo-box .list-cell {
   background-color: transparent;
-
   -fx-background-color: transparent;
   -fx-text-fill: #2e1d0e;
 }
-
-

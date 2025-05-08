@@ -47,9 +47,9 @@
     },
     "Siam" : {
       "name" : "Siam",
-      "owner" : "",
-      "ownerColor" : "Pink",
-      "armies" : 2,
+      "owner" : "l",
+      "ownerColor" : "Blue",
+      "armies" : 1,
       "neighbors" : [ "China", "India", "Indonesia" ],
       "relativeX" : 0.79,
       "relativeY" : 0.56
@@ -139,7 +139,7 @@
       "name" : "China",
       "owner" : "l",
       "ownerColor" : "Blue",
-      "armies" : 4,
+      "armies" : 1,
       "neighbors" : [ "Ural", "Siberia", "Mongolia", "Afghanistan", "India", "Siam" ],
       "relativeX" : 0.77,
       "relativeY" : 0.41
@@ -274,7 +274,7 @@
       "name" : "India",
       "owner" : "l",
       "ownerColor" : "Blue",
-      "armies" : 1,
+      "armies" : 5,
       "neighbors" : [ "China", "Afghanistan", "Middle East", "Siam" ],
       "relativeX" : 0.71,
       "relativeY" : 0.5
@@ -373,7 +373,7 @@
       "name" : "Indonesia",
       "owner" : "l",
       "ownerColor" : "Blue",
-      "armies" : 3,
+      "armies" : 2,
       "neighbors" : [ "Siam", "New Guinea", "Western Australia" ],
       "relativeX" : 0.8,
       "relativeY" : 0.72
