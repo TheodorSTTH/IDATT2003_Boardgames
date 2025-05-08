@@ -79,7 +79,7 @@ public class CreatePlayerPageView extends VBox {
     titleLabel.getStyleClass().addAll("fantasy", "text-gold", "text-55");
     VBox.setMargin(titleLabel, new Insets(20, 5, 10, 5)); // Top margin for title
 
-    usernameField.getStyleClass().addAll("fantasy-text-field", "fantasy");
+    usernameField.getStyleClass().addAll("text-field", "fantasy");
     VBox.setMargin(usernameField, new Insets(5, 100, 10, 100)); // Side padding for text field
     usernameField.setPromptText("Hero Name"); // Placeholder text
 

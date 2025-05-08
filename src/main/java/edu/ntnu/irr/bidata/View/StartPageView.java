@@ -42,7 +42,7 @@ public class StartPageView extends VBox {
     // Game name input
     gameNameField.setPromptText("Adventure Name");
     VBox.setMargin(gameNameField, new Insets(0, 100, 10, 100));
-    gameNameField.getStyleClass().addAll("fantasy-text-field", "fantasy");
+    gameNameField.getStyleClass().addAll("fantasy-text", "fantasy");
 
     // Player count selector
     playerCountBox.getStyleClass().addAll("fantasy-combo-box", "fantasy");
@@ -78,7 +78,7 @@ public class StartPageView extends VBox {
     savedGames.setPromptText("Select a saved adventure");
 
     // Load saved game button
-    loadGameButton.getStyleClass().addAll("button", "normal-size", "fantasy");
+    loadGameButton.getStyleClass().addAll("button", "text-18", "fantasy");
     VBox.setMargin(loadGameButton, new Insets(5, 5, 5, 5));
     loadGameButton.setDisable(true); // Initially disabled
 

@@ -89,12 +89,17 @@ Her is what chat gtp helped whit:
   -fx-font-size: 20px;
 }
 
-.text-15{
-  font-size: 15px;
-  -fx-font-size: 15px;
+.text-18{
+  font-size: 18px;
+  -fx-font-size: 18px;
 }
 
-.button{
+.text-16{
+  font-size: 16px;
+  -fx-font-size: 16px;
+}
+
+.button, .text-field{
   background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   border-color: #5a381e;
   border-width: 3;
@@ -111,9 +116,16 @@ Her is what chat gtp helped whit:
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
   -fx-padding: 10 15 10 15;
   -fx-font-weight: bold;
+  -fx-prompt-text-fill: #4e301aac;
 }
 
-.button:hover, .button:focused{
+.text-field {
+  font-size: 20px;
+  -fx-font-size: 20px;
+  -fx-prompt-text-fill: #4e301aac;
+}
+
+.button:hover, .button:focused, .text-field:hover, .text-field:focus{
   background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   cursor: hand;
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
@@ -128,22 +140,15 @@ Her is what chat gtp helped whit:
   -fx-pref-height: 40px;
 }
 
-.normal-size {
-  font-size: 18px;
-  -fx-font-size: 18px;
-}
-
 .large-size {
-  font-size: 20px;
-  -fx-font-size: 20px;
+  font-size: 25px;
+  -fx-font-size: 25px;
   -fx-pref-width: 470px;
   -fx-pref-height: 65px;
 }
 
 
-
-
-.fantasy-text-field, .fantasy-combo-box, .fantasy-spinner, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-dialog .combo-box, .fantasy-dialog .button {
+.fantasy-combo-box, .fantasy-spinner, .fantasy-combo-box-sidbar, .fantasy-spinner-sidbar, .fantasy-dialog .combo-box, .fantasy-dialog .button {
   -fx-background-color: linear-gradient(to bottom, #e0cda9, #d2b48c);
   -fx-text-fill: #2e1d0e;
   -fx-border-color: #5a381e;
@@ -153,21 +158,10 @@ Her is what chat gtp helped whit:
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.5, 0, 2);
 }
 
-.fantasy-text-field:hover, .fantasy-text-field:focused, .fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
+.fantasy-combo-box:hover, .fantasy-spinner:hover, .fantasy-spinner .increment-button:hover,
 .fantasy-spinner .decrement-button:hover,.fantasy-dialog .button:hover, .fantasy-spinner:focused, .fantasy-combo-box:focused, .fantasy-combo-box-sidbar:hover, .fantasy-spinner-sidbar:hover, .fantasy-combo-box-sidbar:focused, .fantasy-spinner-sidbar:focused, .fantasy-dialog .combo-box:hover, .fantasy-dialog .combo-box:focused, .fantasy-dialog .button:focused, .fantasy-dialog .button:hover  {
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
-}
-
-
-.fantasy-text-field {
-  -fx-padding: 10;
-  -fx-font-size: 20px;
-
-}
-
-.fantasy-text-field {
-  -fx-prompt-text-fill: #4e301aac;
 }
 
 .fantasy-combo-box, .fantasy-spinner, .fantasy-dialog .combo-box, .fantasy-dialog .button {

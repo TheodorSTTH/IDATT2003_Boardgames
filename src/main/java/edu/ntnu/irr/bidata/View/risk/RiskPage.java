@@ -51,11 +51,11 @@ public class RiskPage extends HBox {
 
     // Create and style the "Save" button
     Button saveButton = new Button("SAVE");
-    saveButton.getStyleClass().addAll("button", "normal-size", "fantasy");
+    saveButton.getStyleClass().addAll("button", "text-18", "fantasy");
 
     // Create and style the "Exit game" button, which navigates to the start page
     Button exitGameButton = new Button("Exit game");
-    exitGameButton.getStyleClass().addAll("button", "normal-size", "fantasy");
+    exitGameButton.getStyleClass().addAll("button", "text-18", "fantasy");
     exitGameButton.setOnAction(
         e -> {
           NavigationManager.navigate(

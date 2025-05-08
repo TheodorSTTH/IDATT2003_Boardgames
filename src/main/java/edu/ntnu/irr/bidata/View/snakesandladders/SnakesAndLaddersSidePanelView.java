@@ -37,9 +37,9 @@ public class SnakesAndLaddersSidePanelView extends VBox {
     setSpacing(10);
 
     // Apply styles to the buttons
-    rollButton.getStyleClass().addAll("button", "normal-size", "fantasy");
-    saveButton.getStyleClass().addAll("button", "normal-size", "fantasy");
-    exitGameButton.getStyleClass().addAll("button", "normal-size", "fantasy");
+    rollButton.getStyleClass().addAll("button", "text-18", "fantasy");
+    saveButton.getStyleClass().addAll("button", "text-18", "fantasy");
+    exitGameButton.getStyleClass().addAll("button", "text-18", "fantasy");
 
     // Set the horizontal and vertical gaps for the dice box
     diceBox.setHgap(5);
