@@ -6,10 +6,10 @@ import edu.ntnu.irr.bidata.controller.risk.RiskSidePanelController;
 import edu.ntnu.irr.bidata.model.risk.Country;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.view.PopUp;
-import javafx.scene.control.Label;
 import java.util.HashMap;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -71,14 +71,15 @@ public class RiskPage extends HBox {
     VBox mainStage = new VBox(10);
     mainStage.getChildren().addAll(board, underlay); // Add the board and underlay to the main stage
 
-    saveButton.setOnAction(e -> {
-      try {
-        risk.saveGame();
-        PopUp.showInfo("Game saved", "Game saved as\n" + risk.getGameName());
-      } catch (RuntimeException ex) {
-        PopUp.showError("Error saving game", ex.getMessage());
-      }
-    });
+    saveButton.setOnAction(
+        e -> {
+          try {
+            risk.saveGame();
+            PopUp.showInfo("Game saved", "Game saved as\n" + risk.getGameName());
+          } catch (RuntimeException ex) {
+            PopUp.showError("Error saving game", ex.getMessage());
+          }
+        });
     getChildren().addAll(sidePanel, mainStage);
   }
 

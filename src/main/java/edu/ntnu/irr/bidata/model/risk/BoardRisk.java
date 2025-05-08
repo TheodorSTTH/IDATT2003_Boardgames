@@ -3,7 +3,6 @@ package edu.ntnu.irr.bidata.model.risk;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.view.snakesandladders.CanvasTileView;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -378,8 +377,7 @@ public class BoardRisk {
     objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     String pathname = "src/main/resources/files/" + gameName + ".board.json";
     try {
-      objectMapper.writeValue(
-          new File(pathname), this);
+      objectMapper.writeValue(new File(pathname), this);
       log.info("Board saved successfully.");
     } catch (IOException e) {
       log.error("Failed to read board file at path={}", pathname, e);
