@@ -119,13 +119,24 @@ Her is what chat gtp helped whit:
   -fx-prompt-text-fill: #4e301aac;
 }
 
-.button:hover, .button:focused, .text-field:hover, .text-field:focus, .combo-box:hover, .combo-box:focus, .spinner:hover, .spinner .increment-button:hover,
+.button:hover, .button:focused, .combo-box:hover, .combo-box:focus, .spinner:hover, .spinner .increment-button:hover,
 .spinner .decrement-button:hover,.dialog .button:hover, .spinner:focused{
   background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   cursor: hand;
   -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994);
   -fx-cursor: hand;
 }
+
+.text-field:hover, .text-field:focus{
+  background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
+  cursor: text;
+  font-weight: bold;
+
+  -fx-background-color: linear-gradient(to bottom, #f0e4c3, #cbb994); /* Light hover effect */
+  -fx-cursor: text;
+  -fx-font-weight: bold;
+}
+
 
 .text-field {
   font-size: 20px;
@@ -192,24 +203,34 @@ Her is what chat gtp helped whit:
 
 
 .country-view {
+  font-size: 7pt;
+  font-weight: bold;
+  cursor: hand;
+  padding: 3 6;
+  border-radius: 10;
+  background-color: red;
+
   -fx-font-size: 7pt;
   -fx-font-weight: bold;
-  -fx-text-fill: rgb(0, 0, 0);
   -fx-cursor: hand;
   -fx-padding: 3 6;
-  -fx-background-radius: 10;
   -fx-border-radius: 10;
+  -fx-background-color: red;
+  -fx-text-fill: rgb(0, 0, 0);
+  -fx-background-radius: 10;
   -fx-background-insets: 0;
   -fx-border-insets: 0;
-  -fx-background-color: red;
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 1);
   -fx-clip: rect(0, auto, auto, 0);
 }
 
 .country-view:hover {
+  font-size: 8pt;
+  cursor: hand;
+
   -fx-font-size: 8pt;
-  -fx-text-fill: #000000;
   -fx-cursor: hand;
+  -fx-text-fill: #000000;
 }
 
 
