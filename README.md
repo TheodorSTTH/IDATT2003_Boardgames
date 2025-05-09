@@ -19,8 +19,7 @@ This project is a portfolio submission for the IDATT2003 course at NTNU. It invo
 
 To run the program, type the following command in the terminal from the project root:
 
-`mvn compile`  
-`mvn exec:java -Dexec.mainClass="edu.ntnu.idatt2003.boardgames.Main"`
+`mvn javafx:run
 
 ## How to run the tests
 
