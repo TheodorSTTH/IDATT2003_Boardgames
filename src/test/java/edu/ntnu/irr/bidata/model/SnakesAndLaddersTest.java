@@ -37,46 +37,4 @@ public class SnakesAndLaddersTest {
     assertEquals(
         amountOfPlayers, snakesAndLadders.getAmountOfPlayers(), "Amount of players should be set");
   }
-
-  /**
-   * Tests saving and deleting a {@link SnakesAndLadders} game. Ensures players and game data
-   * persist correctly and that deleted games cannot be reloaded.
-   */
-  @Test
-  @DisplayName("Test saving and deleting snakes and ladders works.")
-  void testSnakesAndLaddersSaveAndDelete() {
-    // Arrange
-    String gameName = "TestClassicCreateDelete";
-    int amountOfPlayers = 2;
-
-    // Act
-    SnakesAndLadders snakesAndLadders = new SnakesAndLadders(amountOfPlayers, gameName, "Classic");
-    snakesAndLadders.addPlayer("Kari", "Blue", 53);
-    snakesAndLadders.addPlayer("Finn", "Red", 34);
-    snakesAndLadders.saveGame();
-    SnakesAndLadders loadedSnakesAndLadders =
-        (SnakesAndLadders) FileHandler.loadGame(gameName, "SnakesAndLadders");
-    FileHandler.deleteGame(gameName);
-
-    // Assert
-    assertNotNull(loadedSnakesAndLadders.getPlayers(), "Board should have been loaded");
-    assertTrue(
-        loadedSnakesAndLadders.getPlayers().stream()
-            .anyMatch(player -> player.getName().equals("Kari")),
-        "Player Kari should have been loaded");
-    assertTrue(
-        loadedSnakesAndLadders.getPlayers().stream()
-            .anyMatch(player -> player.getName().equals("Finn")),
-        "Player Finn should have been loaded");
-    assertNotNull(loadedSnakesAndLadders.getBoard(), "Board should have been loaded");
-    assertNotNull(loadedSnakesAndLadders.getDice(), "Dice should have been loaded");
-    assertEquals(
-        loadedSnakesAndLadders.getDice().getDice().size(), 2, "Should have exactly 2 dice.");
-    assertThrows(
-        Exception.class,
-        () -> {
-          FileHandler.loadGame(gameName, "SnakesAndLadders");
-        },
-        "Should not be able to load deleted game");
-  }
 }

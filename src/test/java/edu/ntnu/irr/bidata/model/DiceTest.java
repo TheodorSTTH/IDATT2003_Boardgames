@@ -51,4 +51,12 @@ public class DiceTest {
     double average = (double) result / (double) amountOfSteps;
     assertTrue(average < 4 && average > 3, "Average should most likely be around 3.5");
   }
+
+
+  @Test
+  @DisplayName("Test rolling rollSetOfDice works as expected")
+  void yestrollSetOfDice() {
+    Dice myDice = new Dice(4, 6);
+    assertEquals(myDice.rollSetOfDice(3).size(), 3);
+  }
 }

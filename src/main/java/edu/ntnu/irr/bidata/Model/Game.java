@@ -10,21 +10,11 @@ import java.util.List;
  * add players, sort them by age, and switch to the next player.
  */
 public abstract class Game {
-
-  /** A list of players participating in the game. */
   protected ArrayList<Player> players = new ArrayList<Player>();
-
-  /** The player who is currently taking their turn. */
   protected Player currentPlayer;
-
-  /** The total number of players allowed in the game. */
   private int amountOfPlayers = 0;
-
-  /** A list of available colors that players can choose from. */
   private final List<String> availableColors =
       new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "White"));
-
-  /** The name of the game. */
   private final String gameName;
 
   /**
