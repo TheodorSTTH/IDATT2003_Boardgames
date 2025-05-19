@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
 
 /**
  * Unit tests for adding players to a {@link SnakesAndLadders} game. This class covers both valid
@@ -115,30 +115,24 @@ public class GameTest {
         "Player should be added with name");
   }
 
-
-    /**
+  /**
    * Tests that players are successfully added under valid conditions. Verifies that the player list
    * is properly initialized and populated.
    */
   @Test
   @DisplayName("Test get next player")
   void testCurrentPlayerLogic() {
-    Player Johan = new Player("Johan", "White", 10);
-    Player Birgitte = new Player("Birgitte", "Green", 20);
+    Player johan = new Player("Johan", "White", 10);
+    Player birgitte = new Player("Birgitte", "Green", 20);
     ArrayList<Player> players = new ArrayList<>();
-    players.add(Birgitte);
-    players.add(Johan);
+    players.add(birgitte);
+    players.add(johan);
     snakesAndLadders.setPlayers(players);
-    snakesAndLadders.setCurrentPlayer(Johan);
+    snakesAndLadders.setCurrentPlayer(johan);
     snakesAndLadders.sortPlayersByAge();
 
-    assertEquals(Johan, snakesAndLadders.getCurrentPlayer());
-    assertEquals(Birgitte, snakesAndLadders.getNextPlayer());
-    assertEquals(Johan, snakesAndLadders.getPlayers().get(0));
-
-
-
+    assertEquals(johan, snakesAndLadders.getCurrentPlayer());
+    assertEquals(birgitte, snakesAndLadders.getNextPlayer());
+    assertEquals(johan, snakesAndLadders.getPlayers().get(0));
   }
-
-
 }
