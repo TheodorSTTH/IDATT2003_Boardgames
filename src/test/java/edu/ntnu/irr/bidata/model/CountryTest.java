@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for the {@link Country} class.
  *
- * <p>Note: this class is made by ChatGPT
+ * <p>Note: this class is partly made by ChatGPT
  */
 public class CountryTest {
 
@@ -30,6 +30,7 @@ public class CountryTest {
     country = new Country("TestLand", "Player1", "Orange", 10, neighbors, 0.5, 0.5);
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Constructor sets fields correctly")
   void testConstructorSetsFields() {
@@ -43,6 +44,16 @@ public class CountryTest {
   }
 
   @Test
+  @DisplayName("Constructor throws exception for invalid input")
+  void testConstructorWhithInvalidInput() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> new Country("TestLand", "Player1", "Orange", -5, neighbors, 0.5, 0.5),
+        "Should throw if armies are negative");
+  }
+
+  // Made by ChatGPT
+  @Test
   @DisplayName("Relative coordinates are clamped within bounds")
   void testClampCoordinates() {
     Country clampedCountry = new Country("ClampLand", neighbors, -1.0, 2.0);
@@ -50,6 +61,7 @@ public class CountryTest {
     assertEquals(1.0, clampedCountry.getRelativeY());
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("placeTroops increases army count and notifies observer")
   void testPlaceTroops() {
@@ -62,6 +74,16 @@ public class CountryTest {
   }
 
   @Test
+  @DisplayName("placeTroops throws exception for negative input")
+  void testPlaceTroopsWhitNegativInput() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> country.placeTroops(-5),
+        "Should throw if trying to place negative troops");
+  }
+
+  // Made by ChatGPT
+  @Test
   @DisplayName("loseTroops decreases army count and notifies observer")
   void testLoseTroops() {
     AtomicBoolean notified = new AtomicBoolean(false);
@@ -73,14 +95,20 @@ public class CountryTest {
   }
 
   @Test
-  @DisplayName("loseTroops throws exception if removing more than available")
-  void testLoseTooManyTroopsThrows() {
+  @DisplayName(
+      "loseTroops throws exception for negative input, and if trying to remove more than available")
+  void testLoseTroopsWhitInvalidInput() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> country.loseTroops(-3),
+        "Should throw if trying to remove negative troops");
     assertThrows(
         IllegalArgumentException.class,
         () -> country.loseTroops(20),
         "Should throw if trying to remove more troops than available");
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("setArmies updates the army count and notifies observer")
   void testSetArmies() {
@@ -92,6 +120,16 @@ public class CountryTest {
     assertTrue(notified.get(), "Observer should be notified on setArmies");
   }
 
+  @Test
+  @DisplayName("setArmies throws exception for negative input")
+  void testSetArmiesWhitInvalidInput() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> country.setArmies(-10),
+        "Should throw if trying to set negative armies");
+  }
+
+  // Made by ChatGPT
   @Test
   @DisplayName("setOwner updates owner name and color and notifies observer")
   void testSetOwner() {
@@ -105,6 +143,7 @@ public class CountryTest {
     assertTrue(notified.get(), "Observer should be notified on ownership change");
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Observer can be removed and won't be notified")
   void testRemoveObserver() {
@@ -118,6 +157,7 @@ public class CountryTest {
     assertFalse(notified.get(), "Observer should not be notified after being removed");
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("toString returns the country's name")
   void testToString() {
