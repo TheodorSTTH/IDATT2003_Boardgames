@@ -19,13 +19,14 @@ import org.junit.jupiter.api.Test;
  * Unit tests for the {@link BoardRisk} class. Validates key game logic such as troop allocation,
  * continent bonuses, country ownership, troop transfers, victory conditions, and attack options.
  *
- * <p>Note: this class is made by ChatGPT
+ * <p>Note: this class is mostly by ChatGPT
  */
 class BoardRiskTest {
   BoardRisk board;
   Player player1;
   Player player2;
 
+  // Made by ChatGPT
   @BeforeEach
   void setUp() {
     board = new BoardRisk();
@@ -43,23 +44,13 @@ class BoardRiskTest {
             });
   }
 
+  // Some of this methode is made by ChatGPT
   @Test
-  @DisplayName("Calculate new troops with less than 12 countries")
+  @DisplayName("Calculate troops")
   void testNewTroops_basic() {
-    int count = 0;
-    for (Country country : board.getCountries().values()) {
-      if (count < 9) {
-        country.setOwner(player1);
-        count++;
-      }
-    }
     int troops = board.newTroops(player1);
     assertEquals(3, troops, "With less than 12 countries, troop bonus should be 3");
-  }
 
-  @Test
-  @DisplayName("Calculate new troops including continent bonus")
-  void testNewTroops_withContinentBonus() {
     List<String> australiaCountries =
         List.of("Indonesia", "New Guinea", "Western Australia", "Eastern Australia");
     for (String countryName : australiaCountries) {
@@ -67,10 +58,21 @@ class BoardRiskTest {
       c.setOwner(player1);
       c.setArmies(1);
     }
-    int baseBonus = board.newTroops(player1);
-    assertTrue(baseBonus >= 5, "Troops should include continent bonus of Australia");
+
+    troops = board.newTroops(player1);
+    assertTrue(troops == 5, "Troops should include continent bonus of Australia");
+
+    // Test with 12 countries
+    for (int i = 0; i < 12; i++) {
+      Country c =
+          new Country("Country" + i, player2.getName(), player2.getColor(), 1, null, 0.0, 0.0);
+      board.getCountries().put(c.getName(), c);
+    }
+    troops = board.newTroops(player2);
+    assertEquals(4, troops, "With 12 countries, troop bonus should be 4");
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Place troops on valid and invalid countries")
   void testPlaceTroops_validAndInvalidCountry() {
@@ -88,6 +90,7 @@ class BoardRiskTest {
     assertTrue(thrown.getMessage().contains("Country not found"));
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Board setup fails with invalid player count")
   void testSetUpBoard_invalidPlayerCount() {
@@ -100,6 +103,7 @@ class BoardRiskTest {
     assertThrows(IllegalArgumentException.class, () -> board.setUpBoard(sevenPlayers));
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Board setup assigns countries to players correctly")
   void testSetUpBoard_valid() {
@@ -115,6 +119,7 @@ class BoardRiskTest {
     assertEquals(board.getCountries().size(), totalOwned);
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Check hasWon and hasLost conditions for players")
   void testHasWonAndHasLost() {
@@ -127,6 +132,7 @@ class BoardRiskTest {
     assertTrue(board.hasLost(player2));
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Take control of a country with valid and invalid inputs")
   void testTakeControlOfCountry() {
@@ -141,6 +147,7 @@ class BoardRiskTest {
     assertTrue(thrown.getMessage().contains("Country not found"));
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Remove and add troops with valid and invalid countries")
   void testRemoveTroopsAndAddTroops() {
@@ -160,6 +167,19 @@ class BoardRiskTest {
   }
 
   @Test
+  @DisplayName("Remove and place troops from a country, whit negative input")
+  void testRemoveTroopsWhitNegativInput() {
+    String countryName = "Alaska";
+    Country alaska = board.getCountries().get(countryName);
+    alaska.setOwner(player1);
+    alaska.setArmies(10);
+
+    assertThrows(IllegalArgumentException.class, () -> board.removeTroops(countryName, -4));
+    assertThrows(IllegalArgumentException.class, () -> board.addTroops(countryName, -3));
+  }
+
+  // Made by ChatGPT
+  @Test
   @DisplayName("Get number of units in a country")
   void testGetUnits() {
     String countryName = "Alaska";
@@ -171,6 +191,7 @@ class BoardRiskTest {
     assertThrows(IllegalArgumentException.class, () -> board.getUnits("NoCountry"));
   }
 
+  // Partly made ChatGPT
   @Test
   @DisplayName("Transfer troops between countries successfully and fail cases")
   void testTransferTroops_successAndFail() {
@@ -194,8 +215,14 @@ class BoardRiskTest {
 
     assertThrows(IllegalArgumentException.class, () -> board.transferTroops("NoCountry", to, 1));
     assertThrows(IllegalArgumentException.class, () -> board.transferTroops(from, "NoCountry", 1));
+
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> board.transferTroops(from, to, -1),
+        "Should throw if trying to transfer negative troops");
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Check if two countries are controlled by the same player")
   void testControlledBySamePlayer_trueAndFalse() {
@@ -218,6 +245,7 @@ class BoardRiskTest {
         IllegalArgumentException.class, () -> board.controlledBySamePlayer(c1, "NoCountry"));
   }
 
+  // Made by ChatGPT
   @Test
   @DisplayName("Get valid attack options for player")
   void testGetAttackOptions() {
