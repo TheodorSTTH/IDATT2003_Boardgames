@@ -25,4 +25,5 @@ To run the tests, type the following command in the terminal from the project ro
 
 `mvn test`
 
-## References
+## Brukermanual
+[Brukermanual.pdf](https://github.com/user-attachments/files/20389981/Brukermanual.pdf)
