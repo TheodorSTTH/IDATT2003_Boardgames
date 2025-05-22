@@ -27,7 +27,7 @@ public class CountryTest {
   @BeforeEach
   void setUp() {
     neighbors = Arrays.asList("NeighborA", "NeighborB");
-    country = new Country("TestLand", "Player1", "Blue", 10, neighbors, 0.5, 0.5);
+    country = new Country("TestLand", "Player1", "Orange", 10, neighbors, 0.5, 0.5);
   }
 
   @Test
@@ -35,7 +35,7 @@ public class CountryTest {
   void testConstructorSetsFields() {
     assertEquals("TestLand", country.getName());
     assertEquals("Player1", country.getOwner());
-    assertEquals("Blue", country.getOwnerColor());
+    assertEquals("Orange", country.getOwnerColor());
     assertEquals(10, country.getArmies());
     assertEquals(neighbors, country.getNeighbors());
     assertEquals(0.5, country.getRelativeX());

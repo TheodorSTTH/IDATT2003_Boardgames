@@ -30,7 +30,7 @@ class BoardRiskTest {
   void setUp() {
     board = new BoardRisk();
     player1 = new Player("Alice", "Red", 1);
-    player2 = new Player("Bob", "Blue", 2);
+    player2 = new Player("Bob", "Orange", 2);
 
     // Clear ownerships for controlled setup
     board

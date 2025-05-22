@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
 
   // UI Components for troop placement
-  private final Label infoLabel = new Label();
+  private final Label infoLabel;
   private final ComboBox<Country> countryComboBox;
   private final Spinner<Integer> amountOfTroopsSpinner;
   private final Button ok = new Button("Place troops");
@@ -31,13 +31,14 @@ public class PlaceTroopsPaneView extends AbstractSidebarPaneView {
     getContainer().getStyleClass().addAll("place-troops-pane", "background");
     this.setText("Place Troops");
     this.setLineSpacing(10);
+    this.infoLabel = new Label();
 
     // Initialize and style the current user label
-    this.currentUserLabel.getStyleClass().addAll("fantasy", "taxt-black", "text-20");
+    this.currentUserLabel.getStyleClass().addAll("fantasy", "text-gold", "text-20");
     VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Initialize and style the info label
-    infoLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
+    infoLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
     VBox.setMargin(infoLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Create and style the ComboBox for selecting a country
