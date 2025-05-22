@@ -38,6 +38,7 @@ public class Country implements SimpleSubject {
    * @param neighbors list of neighboring country names
    * @param relativeX horizontal position (0.0–1.0) on the game map
    * @param relativeY vertical position (0.0–1.0) on the game map
+   * @throws IllegalArgumentException if the number of armies is negative
    */
   @JsonCreator
   public Country(
@@ -48,6 +49,9 @@ public class Country implements SimpleSubject {
       @JsonProperty("neighbors") List<String> neighbors,
       @JsonProperty("relativeX") double relativeX,
       @JsonProperty("relativeY") double relativeY) {
+    if (armies < 0) {
+      throw new IllegalArgumentException("Country " + name + " cannot have negative armies.");
+    }
     this.name = name;
     this.owner = owner;
     this.ownerColor = ownerColor;
@@ -88,8 +92,12 @@ public class Country implements SimpleSubject {
    * Adds troops to the country.
    *
    * @param troops the number of troops to add
+   * @throws IllegalArgumentException if trying to add negative troops
    */
   public void placeTroops(int troops) {
+    if (troops < 0) {
+      throw new IllegalArgumentException("Country " + name + " cannot have negative troops.");
+    }
     this.armies += troops;
     notifyObservers();
   }
@@ -98,9 +106,13 @@ public class Country implements SimpleSubject {
    * Removes troops from the country.
    *
    * @param troops the number of troops to remove
-   * @throws IllegalArgumentException if trying to remove more than available
+   * @throws IllegalArgumentException if trying to remove more than available or troops are negative
+   *     troops
    */
   public void loseTroops(int troops) {
+    if (troops < 0) {
+      throw new IllegalArgumentException("Country " + name + " cannot have negative troops.");
+    }
     if (troops > this.armies) {
       throw new IllegalArgumentException("Country " + name + " does not have enough troops.");
     }
@@ -130,7 +142,16 @@ public class Country implements SimpleSubject {
     return armies;
   }
 
+  /**
+   * Sets the number of armies in the country.
+   *
+   * @param armies the number of armies to set
+   * @throws IllegalArgumentException if the number of armies is negative
+   */
   public void setArmies(int armies) {
+    if (armies < 0) {
+      throw new IllegalArgumentException("Country " + name + " cannot have negative armies.");
+    }
     this.armies = armies;
     notifyObservers();
   }

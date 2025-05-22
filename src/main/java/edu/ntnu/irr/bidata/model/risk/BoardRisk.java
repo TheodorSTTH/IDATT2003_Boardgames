@@ -305,8 +305,13 @@ public class BoardRisk {
    *
    * @param countryName the country name
    * @param troops the number of troops to remove
+   * @throws IllegalArgumentException if the number of troops is negative
+   * @throws IllegalArgumentException if the country does not exist
    */
   public void removeTroops(String countryName, int troops) {
+    if (troops < 0) {
+      throw new IllegalArgumentException("Cannot remove negative troops.");
+    }
     Country country = countries.get(countryName);
     if (country != null) {
       country.loseTroops(troops);
@@ -320,8 +325,13 @@ public class BoardRisk {
    *
    * @param countryName the country name
    * @param troops the number of troops to add
+   * @throws IllegalArgumentException if the number of troops is negative
+   * @throws IllegalArgumentException if the country does not exist
    */
   public void addTroops(String countryName, int troops) {
+    if (troops < 0) {
+      throw new IllegalArgumentException("Cannot add negative troops.");
+    }
     Country country = countries.get(countryName);
     if (country != null) {
       country.setArmies(country.getArmies() + troops);
@@ -351,8 +361,12 @@ public class BoardRisk {
    * @param fromCountry the source country
    * @param toCountry the destination country
    * @param troops the number of troops to transfer
+   * @throws IllegalArgumentException if the transfer is invalid
    */
   public void transferTroops(String fromCountry, String toCountry, int troops) {
+    if (troops < 0) {
+      throw new IllegalArgumentException("Cannot transfer negative troops.");
+    }
     Country from = countries.get(fromCountry);
     Country to = countries.get(toCountry);
     if (from != null && to != null) {
