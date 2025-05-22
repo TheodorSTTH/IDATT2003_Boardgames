@@ -130,11 +130,11 @@ public class CanvasTileView {
                   getClass()
                       .getResourceAsStream("/images/snakesandladders/figures/wizard_yellow.png"));
           break;
-        case "blue":
+        case "orange":
           playerImage =
               new Image(
                   getClass()
-                      .getResourceAsStream("/images/snakesandladders/figures/wizard_blue.png"));
+                      .getResourceAsStream("/images/snakesandladders/figures/wizard_orange.png"));
           break;
         case "green":
           playerImage =

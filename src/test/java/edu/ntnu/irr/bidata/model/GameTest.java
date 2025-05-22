@@ -66,7 +66,7 @@ public class GameTest {
   @DisplayName("Negative test of adding more players than allowed")
   void testAddPlayersAboveLimit() {
     snakesAndLadders.addPlayer("Jane", "Green", 20);
-    snakesAndLadders.addPlayer("Kari", "Blue", 34);
+    snakesAndLadders.addPlayer("Kari", "Orange", 34);
     IllegalArgumentException ex =
         assertThrows(
             IllegalArgumentException.class,
@@ -87,7 +87,7 @@ public class GameTest {
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              snakesAndLadders.addPlayer("Elinor", "Blue", 34);
+              snakesAndLadders.addPlayer("Elinor", "Orange", 34);
             },
             "Shouldn't be able to add players with the same name");
     assertTrue(

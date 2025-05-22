@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata.view.risk;
 
 import edu.ntnu.irr.bidata.model.risk.Country;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -36,11 +37,11 @@ public class AttackPaneView extends AbstractSidebarPaneView {
     this.dieBox = new FlowPane();
     dieBox.setHgap(12); // Horizontal gap between dice
     dieBox.setVgap(12); // Vertical gap between dice
-    VBox.setMargin(dieBox, new javafx.geometry.Insets(0, 0, 0, 50));
+    VBox.setMargin(dieBox, new Insets(0, 0, 0, 50));
 
     // Initialize currentUserLabel and apply style
-    this.currentUserLabel.getStyleClass().addAll("fantasy", "text-black", "text-20");
-    VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+    this.currentUserLabel.getStyleClass().addAll("fantasy", "text-gold", "text-20");
+    VBox.setMargin(currentUserLabel, new Insets(0, 0, 0, 10));
 
     // Set title for the AttackPaneView
     this.setText("Attack");
@@ -48,38 +49,38 @@ public class AttackPaneView extends AbstractSidebarPaneView {
 
     // Create and style the 'Attack from' label and ComboBox
     Label attackFromLabel = new Label("Attack from:");
-    attackFromLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
-    VBox.setMargin(attackFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+    attackFromLabel.getStyleClass().addAll("fantasy", "text-gold", "text-20");
+    VBox.setMargin(attackFromLabel, new Insets(20, 0, 0, 10));
 
     this.attackFromComboBox = new ComboBox<>();
     this.attackFromComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     attackFromComboBox.setPromptText("Select country to attack from");
-    VBox.setMargin(attackFromComboBox, new javafx.geometry.Insets(0, 0, 0, 10));
+    VBox.setMargin(attackFromComboBox, new Insets(0, 0, 0, 10));
 
     // Create and style the 'Attack to' label and ComboBox
     Label attackToLabel = new Label("Attack to:");
-    attackToLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
-    VBox.setMargin(attackToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
+    attackToLabel.getStyleClass().addAll("fantasy", "text-gold", "text-20");
+    VBox.setMargin(attackToLabel, new Insets(0, 0, 0, 10));
 
     this.attackTargetComboBox = new ComboBox<>();
     this.attackTargetComboBox.getStyleClass().addAll("combo-box", "sidebar-size", "fantasy");
     attackTargetComboBox.setPromptText("Select country to attack to");
-    VBox.setMargin(attackTargetComboBox, new javafx.geometry.Insets(0, 0, 10, 10));
+    VBox.setMargin(attackTargetComboBox, new Insets(0, 0, 10, 10));
 
     // Create the 'Perform Attack Once' button and style it
     this.performAttackOnceButton = new Button("Perform attack once");
     this.performAttackOnceButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
-    VBox.setMargin(performAttackOnceButton, new javafx.geometry.Insets(0, 0, 10, 10));
+    VBox.setMargin(performAttackOnceButton, new Insets(0, 0, 10, 10));
 
     // Create the 'Perform Attack Until Result' button and style it
     this.performAttackUntilResultButton = new Button("Perform until result");
     this.performAttackUntilResultButton.getStyleClass().addAll("button", "sidebar-size", "fantasy");
-    VBox.setMargin(performAttackUntilResultButton, new javafx.geometry.Insets(0, 0, 10, 10));
+    VBox.setMargin(performAttackUntilResultButton, new Insets(0, 0, 10, 10));
 
     // Create the 'OK, I am done' button and style it
     this.ok = new Button("OK, I am done");
     this.ok.getStyleClass().addAll("button", "sidebar-size", "fantasy");
-    VBox.setMargin(ok, new javafx.geometry.Insets(0, 0, 10, 10));
+    VBox.setMargin(ok, new Insets(0, 0, 10, 10));
 
     // Add all components to the container (VBox)
     getContainer()

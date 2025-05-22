@@ -25,9 +25,9 @@ public class PlayerTest {
   @Test
   @DisplayName("getSaveFormat returns correct CSV format")
   void testGetSaveFormat() {
-    Player player = new Player("Bob", "Blue", 30);
+    Player player = new Player("Bob", "Orange", 30);
 
-    String expected = "Bob,Blue,30";
+    String expected = "Bob,Orange,30";
     assertEquals(expected, player.getSaveFormat(), "Save format should match CSV structure");
   }
 }

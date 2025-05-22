@@ -14,7 +14,7 @@ public abstract class Game {
   protected Player currentPlayer;
   private int amountOfPlayers = 0;
   private final List<String> availableColors =
-      new ArrayList<>(List.of("Red", "Blue", "Green", "Yellow", "White"));
+      new ArrayList<>(List.of("Red", "Orange", "Green", "Yellow", "White"));
   private final String gameName;
 
   /**

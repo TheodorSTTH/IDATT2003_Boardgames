@@ -12,7 +12,7 @@
     "Central America" : {
       "name" : "Central America",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 5,
       "neighbors" : [ "Western United States", "Eastern United States", "Venezuela" ],
       "relativeX" : 0.14,
@@ -39,7 +39,7 @@
     "Alberta" : {
       "name" : "Alberta",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 4,
       "neighbors" : [ "Alaska", "Northwest Territory", "Ontario", "Western United States" ],
       "relativeX" : 0.13,
@@ -48,7 +48,7 @@
     "Siam" : {
       "name" : "Siam",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 1,
       "neighbors" : [ "China", "India", "Indonesia" ],
       "relativeX" : 0.79,
@@ -84,7 +84,7 @@
     "Scandinavia" : {
       "name" : "Scandinavia",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 3,
       "neighbors" : [ "Iceland", "Great Britain", "Northern Europe", "Ukraine" ],
       "relativeX" : 0.47,
@@ -111,7 +111,7 @@
     "Yakutsk" : {
       "name" : "Yakutsk",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 2,
       "neighbors" : [ "Siberia", "Irkutsk", "Kamchatka" ],
       "relativeX" : 0.79,
@@ -138,7 +138,7 @@
     "China" : {
       "name" : "China",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 1,
       "neighbors" : [ "Ural", "Siberia", "Mongolia", "Afghanistan", "India", "Siam" ],
       "relativeX" : 0.77,
@@ -156,7 +156,7 @@
     "Brazil" : {
       "name" : "Brazil",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 1,
       "neighbors" : [ "Venezuela", "Peru", "Argentina", "North Africa" ],
       "relativeX" : 0.31,
@@ -174,7 +174,7 @@
     "Kamchatka" : {
       "name" : "Kamchatka",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 1,
       "neighbors" : [ "Alaska", "Japan", "Mongolia", "Irkutsk", "Yakutsk" ],
       "relativeX" : 0.88,
@@ -237,7 +237,7 @@
     "Quebec" : {
       "name" : "Quebec",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 2,
       "neighbors" : [ "Greenland", "Ontario", "Eastern United States" ],
       "relativeX" : 0.29,
@@ -255,7 +255,7 @@
     "Congo" : {
       "name" : "Congo",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 1,
       "neighbors" : [ "North Africa", "East Africa", "South Africa" ],
       "relativeX" : 0.53,
@@ -273,7 +273,7 @@
     "India" : {
       "name" : "India",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 5,
       "neighbors" : [ "China", "Afghanistan", "Middle East", "Siam" ],
       "relativeX" : 0.71,
@@ -300,7 +300,7 @@
     "Irkutsk" : {
       "name" : "Irkutsk",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 1,
       "neighbors" : [ "Siberia", "Yakutsk", "Kamchatka", "Mongolia" ],
       "relativeX" : 0.79,
@@ -327,7 +327,7 @@
     "Western United States" : {
       "name" : "Western United States",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 5,
       "neighbors" : [ "Alberta", "Ontario", "Eastern United States", "Central America" ],
       "relativeX" : 0.14,
@@ -354,7 +354,7 @@
     "Greenland" : {
       "name" : "Greenland",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 5,
       "neighbors" : [ "Northwest Territory", "Ontario", "Quebec", "Iceland" ],
       "relativeX" : 0.32,
@@ -372,7 +372,7 @@
     "Indonesia" : {
       "name" : "Indonesia",
       "owner" : "l",
-      "ownerColor" : "Blue",
+      "ownerColor" : "Orange",
       "armies" : 2,
       "neighbors" : [ "Siam", "New Guinea", "Western Australia" ],
       "relativeX" : 0.8,

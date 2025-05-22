@@ -38,12 +38,12 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
 
     // Initialize and style the current user label
     currentUserLabel = new Label("Current Player: " + currentPlayerName);
-    this.currentUserLabel.getStyleClass().addAll("fantasy", "text-black", "text-20");
+    this.currentUserLabel.getStyleClass().addAll("fantasy", "text-gold", "text-20");
     VBox.setMargin(currentUserLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     // Create and style the "Move from" label and ComboBox
     Label moveFromLabel = new Label("Move from:");
-    moveFromLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
+    moveFromLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
     VBox.setMargin(moveFromLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.moveFromComboBox = new ComboBox<>();
@@ -53,7 +53,7 @@ public class MoveTroopsPaneView extends AbstractSidebarPaneView {
 
     // Create and style the "Move to" label and ComboBox
     moveToLabel = new Label("Move to:");
-    moveToLabel.getStyleClass().addAll("fantasy", "text-black", "text-30");
+    moveToLabel.getStyleClass().addAll("fantasy", "text-gold", "text-30");
     VBox.setMargin(moveToLabel, new javafx.geometry.Insets(0, 0, 0, 10));
 
     this.moveTargetComboBox = new ComboBox<>();
