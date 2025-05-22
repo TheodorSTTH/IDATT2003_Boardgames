@@ -1,0 +1,117 @@
+{
+  "events" : {
+    "64" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 26
+    },
+    "65" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 82
+    },
+    "2" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 35
+    },
+    "34" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 3
+    },
+    "36" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 52
+    },
+    "68" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 85
+    },
+    "5" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 25
+    },
+    "70" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "What does DNA stand for?",
+      "answer" : "Deoxyribonucleic Acid",
+      "tileNumber" : 70
+    },
+    "40" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "Which planet is known as the Red Planet?",
+      "answer" : "Mars",
+      "tileNumber" : 40
+    },
+    "10" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "What is the national flower of Japan?",
+      "answer" : "Cherry Blossom",
+      "tileNumber" : 10
+    },
+    "42" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 31
+    },
+    "74" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 12
+    },
+    "80" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "What is the main ingredient of guacamole?",
+      "answer" : "Avocado",
+      "tileNumber" : 80
+    },
+    "49" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 79
+    },
+    "50" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "What is the name for molten rock before it erupts?",
+      "answer" : "Magma",
+      "tileNumber" : 50
+    },
+    "20" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "What vitamin do you get from sunlight?",
+      "answer" : "Vitamin D",
+      "tileNumber" : 20
+    },
+    "24" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 6
+    },
+    "56" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 37
+    },
+    "89" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent",
+      "destination" : 71
+    },
+    "90" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "How many sides does a hexagon have?",
+      "answer" : "6",
+      "tileNumber" : 90
+    },
+    "60" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "Which famous ship sank after hitting an iceberg?",
+      "answer" : "Titanic",
+      "tileNumber" : 60
+    },
+    "30" : {
+      "@class" : "edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent",
+      "question" : "What is the capital of India?",
+      "answer" : "New Delhi",
+      "tileNumber" : 30
+    }
+  },
+  "endTile" : 90,
+  "playerPositions" : {
+    "Gandalf" : 9,
+    "Dumbledore" : 7,
+    "Shaman Durek" : 32,
+    "Merlin" : 12
+  }
+}
