@@ -166,4 +166,16 @@ public class BoardSnakesAndLadders {
       throw new UncheckedIOException("Something went wrong loading board", e);
     }
   }
+
+
+  /**
+  * Returns the current position of the specified player on the board.
+  * This is only used in tests
+  *
+  * @param player the player whose position is to be retrieved
+  * @return the board position of the given player
+  */
+  public int getPlayerPosition(Player player) {
+    return (playerPositions.get(player.getName()));
+  }
 }

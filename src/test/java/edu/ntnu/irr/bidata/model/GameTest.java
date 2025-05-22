@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * and invalid player addition scenarios such as name validation, color constraints, player limit
  * enforcement, and duplication checks.
  */
-public class GameAddPlayersTest {
+public class GameTest {
   SnakesAndLadders snakesAndLadders;
 
   /** Sets up a new SnakesAndLadders game before each test. */
@@ -112,5 +113,26 @@ public class GameAddPlayersTest {
         "Johan",
         snakesAndLadders.getPlayers().getFirst().getName(),
         "Player should be added with name");
+  }
+
+  /**
+   * Tests that players are successfully added under valid conditions. Verifies that the player list
+   * is properly initialized and populated.
+   */
+  @Test
+  @DisplayName("Test get next player")
+  void testCurrentPlayerLogic() {
+    Player johan = new Player("Johan", "White", 10);
+    Player birgitte = new Player("Birgitte", "Green", 20);
+    ArrayList<Player> players = new ArrayList<>();
+    players.add(birgitte);
+    players.add(johan);
+    snakesAndLadders.setPlayers(players);
+    snakesAndLadders.setCurrentPlayer(johan);
+    snakesAndLadders.sortPlayersByAge();
+
+    assertEquals(johan, snakesAndLadders.getCurrentPlayer());
+    assertEquals(birgitte, snakesAndLadders.getNextPlayer());
+    assertEquals(johan, snakesAndLadders.getPlayers().get(0));
   }
 }

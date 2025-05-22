@@ -44,3 +44,4 @@ public class DieTest {
         "Previous die roll should match previous returned roll");
   }
 }
+

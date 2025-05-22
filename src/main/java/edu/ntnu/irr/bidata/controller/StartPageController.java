@@ -2,13 +2,13 @@ package edu.ntnu.irr.bidata.controller;
 
 import edu.ntnu.irr.bidata.MyWindow;
 import edu.ntnu.irr.bidata.NavigationManager;
+import edu.ntnu.irr.bidata.controller.risk.RiskPageController;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.Game;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.StartPageView;
-import edu.ntnu.irr.bidata.view.risk.RiskPageController;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersPageView;
 import java.io.UncheckedIOException;
 import java.util.HashMap;

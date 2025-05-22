@@ -1,9 +1,10 @@
-package edu.ntnu.irr.bidata.view.risk;
+package edu.ntnu.irr.bidata.controller.risk;
 
 import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.controller.StartPageController;
 import edu.ntnu.irr.bidata.model.risk.Risk;
 import edu.ntnu.irr.bidata.view.PopUp;
+import edu.ntnu.irr.bidata.view.risk.RiskPageView;
 
 /**
  * Controller for RiskPageView is responsible for attaching and handling exit
