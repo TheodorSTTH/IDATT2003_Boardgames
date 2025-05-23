@@ -1,6 +1,7 @@
 package edu.ntnu.irr.bidata;
 
 import edu.ntnu.irr.bidata.controller.StartPageController;
+import edu.ntnu.irr.bidata.view.PopUp;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -46,6 +47,13 @@ public class MyWindow extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
     primaryStage.setMaximized(true); // Launch in fullscreen
+
+    PopUp.showScrollablePopup("Experimental version!", "This version shows a possible new model structure. Currently most features are broken!\n"
+        + "The Purpose of this is to show a possible direction for the project and to highlight we "
+        + "are capable of seeing some problems with the current structure. When using this version, "
+        + "expect almost nothing to work. What should work is starting the application and starting "
+        + "a game of snakes and ladders (you can't finish it yet). You should also be able to open Risk "
+        + "but most of the risk features aren't working.\n The focus here is the structure of the code behind");
   }
 
   /**

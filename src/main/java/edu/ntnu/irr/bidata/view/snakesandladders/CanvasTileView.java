@@ -1,6 +1,6 @@
 package edu.ntnu.irr.bidata.view.snakesandladders;
 
-import edu.ntnu.irr.bidata.model.Player;
+import edu.ntnu.irr.bidata.model.newlogic.Player;
 import edu.ntnu.irr.bidata.view.PopUp;
 import java.util.ArrayList;
 import javafx.geometry.VPos;
@@ -117,7 +117,7 @@ public class CanvasTileView {
       Image playerImage = null;
 
       // Load player image based on player color
-      switch (player.getColor().toLowerCase()) {
+      switch (player.getColor()) {
         case "red":
           playerImage =
               new Image(

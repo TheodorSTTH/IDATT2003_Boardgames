@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import edu.ntnu.irr.bidata.model.risk.BoardRisk;
-import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskBoard;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

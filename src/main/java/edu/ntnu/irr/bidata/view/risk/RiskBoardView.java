@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.view.risk;
 
 import edu.ntnu.irr.bidata.controller.risk.CountryController;
-import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
 import edu.ntnu.irr.bidata.view.PopUp;
 import java.io.InputStream;
 import java.util.HashMap;

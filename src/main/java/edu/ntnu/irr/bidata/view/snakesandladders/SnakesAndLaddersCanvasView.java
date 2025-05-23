@@ -1,9 +1,10 @@
 package edu.ntnu.irr.bidata.view.snakesandladders;
 
-import edu.ntnu.irr.bidata.model.Player;
-import edu.ntnu.irr.bidata.model.snakesandladders.event.Event;
-import edu.ntnu.irr.bidata.model.snakesandladders.event.LadderEvent;
-import edu.ntnu.irr.bidata.model.snakesandladders.event.QuizEvent;
+import edu.ntnu.irr.bidata.model.newlogic.Player;
+import edu.ntnu.irr.bidata.model.newlogic.Action;
+import edu.ntnu.irr.bidata.model.newlogic.snakesandladders.Creature;
+import edu.ntnu.irr.bidata.model.newlogic.snakesandladders.MoveActionSnakesAndLadders;
+import edu.ntnu.irr.bidata.model.newlogic.snakesandladders.Tile;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.canvas.Canvas;
@@ -68,64 +69,48 @@ public class SnakesAndLaddersCanvasView extends Canvas {
   }
 
   /** Places players on all tile views without rendering them. */
-  public void placePlayers(HashMap<Player, Integer> playerPositions) {
-    for (Player player : playerPositions.keySet()) {
-      int playerTileIndex = playerPositions.get(player);
-      if (playerTileIndex == 0 || playerTileIndex > 90) { // player is not on board
-        continue;
+  public void placePlayers(ArrayList<Tile> tilesWithFigures) {
+    for (Tile tile : tilesWithFigures) {
+      if (getTile(tile.getName() - 1) != null) {
+        CanvasTileView playerTileView = getTile(tile.getName() - 1);
+        for (Creature creature : tile.getCreaturesOnSpace()) {
+          playerTileView.addPlayer(creature.getOwner());
+        }
       }
-      CanvasTileView playerTileView = getTile(playerTileIndex);
-      playerTileView.addPlayer(player);
     }
   }
 
   /** Draws all players on board. */
-  public void drawPlayers(HashMap<Player, Integer> playerPositions) {
-    for (Player player : playerPositions.keySet()) {
-      int playerTileIndex = playerPositions.get(player);
-      if (playerTileIndex == 0 || playerTileIndex > 90) { // Player is not on board
-        continue;
+  public void drawPlayers(ArrayList<Tile> tilesWithFigures) {
+    System.out.println("tilesWithFigures.size(): " + tilesWithFigures.size());
+    for (Tile tile : tilesWithFigures) {
+      if (getTile(tile.getName() - 1) != null) {
+        CanvasTileView playerTileView = getTile(tile.getName() - 1);
+        playerTileView.drawPlayers();
       }
-      CanvasTileView playerTileView = getTile(playerTileIndex);
-      playerTileView.drawPlayers();
     }
   }
 
   /** Draws all snakes and ladders on board. */
-  public void drawSnakesAndLadders(HashMap<Integer, Event> events) {
-    events
-        .keySet()
-        .forEach(
-            tileIndex -> {
-              if (events.get(tileIndex) instanceof LadderEvent event) {
-                if (tileIndex >= event.getDestination()) {
-                  drawSnake(tileIndex, event.getDestination());
-                }
-              }
-            });
-
-    events
-        .keySet()
-        .forEach(
-            tileIndex -> {
-              if (events.get(tileIndex) instanceof LadderEvent event) {
-                if (tileIndex < event.getDestination()) {
-                  drawLadder(tileIndex, event.getDestination());
-                }
-              }
-            });
+  public void drawSnakesAndLadders(ArrayList<Action> actions) {
+    actions.forEach(currentAction -> {
+      if (currentAction instanceof MoveActionSnakesAndLadders action) {
+        if (action.getFrom().getName() > action.getTo().getName()) {
+          drawSnake(action.getFrom().getName() - 1, action.getTo().getName() - 1);
+        } else {
+          drawLadder(action.getFrom().getName() - 1, action.getTo().getName() - 1);
+        }
+      }
+    });
   }
 
   /** Draws all quiz boxes on board. */
-  public void drawQuizEvents(HashMap<Integer, Event> events) {
-    events
-        .keySet()
-        .forEach(
-            tileIndex -> {
-              if (events.get(tileIndex) instanceof QuizEvent event) {
-                drawQuizEvent(event.getTileNumber());
-              }
-            });
+  public void drawQuizEvents(ArrayList<Action> actions) {
+    //actions.forEach(action -> { TODO: Implement
+    //  if (action instanceof QuizEvent event) {
+    //    drawQuizEvent(event.getTileNumber());
+    //  }
+    //});
   }
 
   private void drawQuizEvent(int tileIndex) {

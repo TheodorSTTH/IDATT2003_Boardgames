@@ -17,4 +17,11 @@ public class MoveActionSnakesAndLadders extends Action {
     from.removeCreature((Creature) creature);
     to.addCreature((Creature) creature);
   }
+
+  public Tile getFrom() {
+    return from;
+  }
+  public Tile getTo() {
+    return to;
+  }
 }

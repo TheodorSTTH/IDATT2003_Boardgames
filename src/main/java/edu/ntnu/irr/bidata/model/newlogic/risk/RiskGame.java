@@ -1,12 +1,10 @@
 package edu.ntnu.irr.bidata.model.newlogic.risk;
 
-import edu.ntnu.irr.bidata.model.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
 import edu.ntnu.irr.bidata.model.newlogic.Dice;
 import edu.ntnu.irr.bidata.model.newlogic.Game;
 import edu.ntnu.irr.bidata.model.newlogic.PlayerManager;
-import edu.ntnu.irr.bidata.model.risk.BoardRisk;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
@@ -26,6 +24,12 @@ public class RiskGame extends Game implements Subject<Pair<Dice, Dice>> {
 
   public void transferTroops(Country from, Country to, int amount) {
     riskBoard.transferTroops(from, to, amount);
+  }
+
+  public void placeTroops(Country target, int amount) {
+    if (target.getArmy().getOwner().equals(playerManager.getCurrentPlayer())) {
+      target.getArmy().addAmountOfTroops(amount);
+    }
   }
 
   public void attack(Country attacker, Country defender) throws IllegalArgumentException{
@@ -63,9 +67,9 @@ public class RiskGame extends Game implements Subject<Pair<Dice, Dice>> {
 
     for (int i = 0; i < comparisons; i++) {
       if (attackRolls.get(i) > defendRolls.get(i)) {
-        defender.getArmy().removeAmountOfTroops(1);
+        defender.getArmy().removeTroops(1);
       } else {
-        attacker.getArmy().removeAmountOfTroops(1);
+        attacker.getArmy().removeTroops(1);
       }
     }
 
@@ -132,7 +136,7 @@ public class RiskGame extends Game implements Subject<Pair<Dice, Dice>> {
    * @return a list of countries the current player can attack from
    */
   public ArrayList<Country> getCountriesCurrentPlayerCanAttackFrom() {
-    return riskBoard.getAttackOptions(playerManager.getCurrentPlayer());
+    return riskBoard.getCountriesPlayerCanAttackFrom(playerManager.getCurrentPlayer());
   }
 
   /**
@@ -159,6 +163,10 @@ public class RiskGame extends Game implements Subject<Pair<Dice, Dice>> {
     return this.riskBoard;
   }
 
+  public ArrayList<Country> getCountriesCurrentPlayerCanMoveFrom() {
+    return riskBoard.getCountriesPlayerCanMoveFrom(playerManager.getCurrentPlayer());
+  }
+
   /**
    * Removes an observer from this Risk game.
    *
@@ -179,5 +187,27 @@ public class RiskGame extends Game implements Subject<Pair<Dice, Dice>> {
     for (Observer<Pair<Dice, Dice>> observer : allObservers) {
       observer.update(dice);
     }
+  }
+
+  /**
+   * Is responsible for holding and return the rules of the game of Risk.
+   *
+   * @return Rules for the game of risk.
+   * */
+  public String getRules() {
+    return "The rules of the game are as follows:\n"
+        + "1. Players take turns in clockwise order.\n"
+        + "2. You gain reinforcements each turn based on the number of territories you own, "
+        + "continent control, and other bonuses like controlling a continent.\n"
+        + "3. On your turn, you can reinforce your own countries.\n"
+        + "4. You can attack other players' territories.\n"
+        + "5. You must have at least one troop in each country.\n"
+        + "6. Battles are resolved by rolling dice; the attacker can roll up to 3 dice, and the"
+        + " defender up to 2. You roll one die for each troop you control.\n"
+        + "7. The highest two dice are compared; ties go to the defender. Losers remove troops."
+        + " They can lose one each.\n"
+        + "8. At the end of your turn, you may fortify by moving troops between two "
+        + "territories.\n"
+        + "9. The goal is to conquer the entire world by eliminating all other players.";
   }
 }

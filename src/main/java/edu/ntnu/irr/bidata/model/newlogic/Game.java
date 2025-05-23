@@ -1,6 +1,9 @@
 package edu.ntnu.irr.bidata.model.newlogic;
 
-public class Game {
+import java.util.ArrayList;
+import javafx.scene.paint.Color;
+
+public abstract class Game {
   protected String name;
   protected final PlayerManager playerManager;
 
@@ -8,4 +11,14 @@ public class Game {
     this.name = name;
     this.playerManager = playerManager;
   }
+
+  public ArrayList<String> getAvailableColors() {
+    return playerManager.getAvailableColors();
+  }
+
+  public PlayerManager getPlayerManager() {
+    return playerManager;
+  }
+
+  public abstract String getRules();
 }

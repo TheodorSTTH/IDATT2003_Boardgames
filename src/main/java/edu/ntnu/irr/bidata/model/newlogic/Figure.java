@@ -1,11 +1,9 @@
 package edu.ntnu.irr.bidata.model.newlogic;
 
-import javafx.scene.paint.Color;
-
 public abstract class Figure {
   private Player owner;
 
-  public Figure(Player player, Color color) {
+  public Figure(Player player) {
     this.owner = player;
   }
 

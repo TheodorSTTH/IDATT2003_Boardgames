@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.view.risk;
 
 import edu.ntnu.irr.bidata.controller.risk.RiskSidePanelController;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,7 +24,7 @@ public class RiskPageView extends HBox {
    * @param risk The current state of the Risk game, containing the game board and other
    *     game-related data.
    */
-  public RiskPageView(Risk risk) { // Use whole Risk object - KISS
+  public RiskPageView(RiskGame risk) { // Use whole Risk object - KISS
     super(new HBox()); // Creates a new horizontal box (HBox) layout for the page
 
     // Set background color for the page

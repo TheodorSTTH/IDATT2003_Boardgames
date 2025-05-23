@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.controller.risk;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
-import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.CountryView;
 
@@ -37,9 +37,9 @@ public class CountryController implements SimpleObserver {
               country.getName(),
               country.getName()
                   + "\nOwner: "
-                  + country.getOwner()
+                  + country.getArmy().getOwner()
                   + "\nArmies: "
-                  + country.getArmies());
+                  + country.getArmy().getTroopCount());
         });
 
     // Initial update of the country's view
@@ -54,10 +54,10 @@ public class CountryController implements SimpleObserver {
   public void update() {
     // Update the view with the current state of the country.
     view.render(
-        country.getArmies(), // The number of armies in the country.
-        country.getOwnerColor(), // The color of the owner (representing the player).
-        country.getRelativeX(), // The relative X coordinate of the country on the board.
-        country.getRelativeY()); // The relative Y coordinate of the country on the board.
+        country.getArmy().getTroopCount(), // The number of armies in the country.
+        country.getArmy().getOwner().getColor(), // The color of the owner (representing the player).
+        country.getX(), // The relative X coordinate of the country on the board.
+        country.getY()); // The relative Y coordinate of the country on the board.
   }
 
   /**

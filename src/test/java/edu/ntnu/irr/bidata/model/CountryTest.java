@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.SimpleObserver;
-import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;

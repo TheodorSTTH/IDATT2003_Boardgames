@@ -1,6 +1,6 @@
 package edu.ntnu.irr.bidata.view.risk;
 
-import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;

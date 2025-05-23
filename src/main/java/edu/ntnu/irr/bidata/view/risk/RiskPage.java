@@ -3,8 +3,8 @@ package edu.ntnu.irr.bidata.view.risk;
 import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.controller.StartPageController;
 import edu.ntnu.irr.bidata.controller.risk.RiskSidePanelController;
-import edu.ntnu.irr.bidata.model.risk.Country;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import edu.ntnu.irr.bidata.view.PopUp;
 import java.util.HashMap;
 import javafx.geometry.Pos;
@@ -30,7 +30,7 @@ public class RiskPage extends HBox {
    * @param risk The current state of the Risk game, containing the game board and other
    *     game-related data.
    */
-  public RiskPage(Risk risk) {
+  public RiskPage(RiskGame risk) {
     super(new HBox()); // Creates a new horizontal box (HBox) layout for the page
 
     // Initialize the Risk game board and side panel
@@ -71,15 +71,15 @@ public class RiskPage extends HBox {
     VBox mainStage = new VBox(10);
     mainStage.getChildren().addAll(board, underlay); // Add the board and underlay to the main stage
 
-    saveButton.setOnAction(
-        e -> {
-          try {
-            risk.saveGame();
-            PopUp.showInfo("Game saved", "Game saved as\n" + risk.getGameName());
-          } catch (RuntimeException ex) {
-            PopUp.showError("Error saving game", ex.getMessage());
-          }
-        });
+    //saveButton.setOnAction(
+    //    e -> {
+    //      try {
+    //        risk.saveGame();
+    //        PopUp.showInfo("Game saved", "Game saved as\n" + risk.getGameName());
+    //      } catch (RuntimeException ex) {
+    //        PopUp.showError("Error saving game", ex.getMessage());
+    //      }
+    //    });
     getChildren().addAll(sidePanel, mainStage);
   }
 

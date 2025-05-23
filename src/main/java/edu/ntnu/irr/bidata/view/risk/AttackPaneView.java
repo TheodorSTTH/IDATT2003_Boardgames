@@ -1,6 +1,6 @@
 package edu.ntnu.irr.bidata.view.risk;
 
-import edu.ntnu.irr.bidata.model.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -16,8 +16,8 @@ import javafx.scene.layout.VBox;
 public class AttackPaneView extends AbstractSidebarPaneView {
 
   // UI Components for the attack phase
-  private final ComboBox<Country> attackFromComboBox;
-  private final ComboBox<Country> attackTargetComboBox;
+  private final ComboBox<String> attackFromComboBox;
+  private final ComboBox<String> attackTargetComboBox;
   private final Button performAttackOnceButton;
   private final Button performAttackUntilResultButton;
   private final Button ok;
@@ -104,7 +104,7 @@ public class AttackPaneView extends AbstractSidebarPaneView {
    *
    * @return the ComboBox for selecting the attacking country
    */
-  public final ComboBox<Country> getAttackFromComboBox() {
+  public final ComboBox<String> getAttackFromComboBox() {
     return attackFromComboBox;
   }
 
@@ -113,7 +113,7 @@ public class AttackPaneView extends AbstractSidebarPaneView {
    *
    * @return the ComboBox for selecting the target country
    */
-  public final ComboBox<Country> getAttackTargetComboBox() {
+  public final ComboBox<String> getAttackTargetComboBox() {
     return attackTargetComboBox;
   }
 

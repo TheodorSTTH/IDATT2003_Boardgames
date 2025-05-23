@@ -2,12 +2,12 @@ package edu.ntnu.irr.bidata.controller.risk;
 
 import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.controller.WinningPageController;
-import edu.ntnu.irr.bidata.model.Dice;
-import edu.ntnu.irr.bidata.model.Die;
+import edu.ntnu.irr.bidata.model.newlogic.Dice;
+import edu.ntnu.irr.bidata.model.newlogic.Die;
 import edu.ntnu.irr.bidata.model.FileHandler;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.model.risk.Country;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import edu.ntnu.irr.bidata.view.DieView;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.AttackPaneView;
@@ -38,26 +38,26 @@ public class AttackPaneController extends AbstractSidebarPaneController
    *
    * @param risk The Risk game instance.
    */
-  public AttackPaneController(Risk risk) {
+  public AttackPaneController(RiskGame risk) {
     super(risk);
     this.view = new AttackPaneView();
     risk.registerObserver(this);
 
     // Set current player in the view
-    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
+    view.getCurrentUserLabel().setText("Current Player: " + risk.getPlayerManager().getCurrentPlayer().getName());
 
     // Get the ComboBox elements for selecting attack countries
-    ComboBox<Country> attackFromComboBox = view.getAttackFromComboBox();
-    ComboBox<Country> attackTargetComboBox = view.getAttackTargetComboBox();
+    ComboBox<String> attackFromComboBox = view.getAttackFromComboBox();
+    ComboBox<String> attackTargetComboBox = view.getAttackTargetComboBox();
 
     // Action for the "Perform Attack Once" button
     view.getPerformAttackOnceButton()
         .setOnAction(
             event -> {
-              Country from = attackFromComboBox.getValue();
-              Country to = attackTargetComboBox.getValue();
+              String from = attackFromComboBox.getValue();
+              String to = attackTargetComboBox.getValue();
               if (from != null && to != null) {
-                risk.attackOnce(from.getName(), to.getName());
+                risk.attack(risk.getBoard().getCountry(from), risk.getBoard().getCountry(to));
                 updateView();
               } else {
                 PopUp.showError(
@@ -70,10 +70,10 @@ public class AttackPaneController extends AbstractSidebarPaneController
     view.getPerformAttackUntilResultButton()
         .setOnAction(
             event -> {
-              Country from = attackFromComboBox.getValue();
-              Country to = attackTargetComboBox.getValue();
+              String from = attackFromComboBox.getValue();
+              String to = attackTargetComboBox.getValue();
               if (from != null && to != null) {
-                risk.attackUntilResult(from.getName(), to.getName());
+                risk.attackUntilResult(risk.getBoard().getCountry(from), risk.getBoard().getCountry(to));
                 updateView();
               } else {
                 PopUp.showError(
@@ -91,11 +91,11 @@ public class AttackPaneController extends AbstractSidebarPaneController
               view.getAttackTargetComboBox().setDisable(newFrom == null);
               if (isFromDefined) {
                 List<Country> attackTargetOptions =
-                    risk.getCountriesCurrentPlayerCanAttackFromCountry(newFrom);
+                    risk.getCountriesCurrentPlayerCanAttackFromCountry(risk.getBoard().getCountry(newFrom));
                 Collections.sort(
                     attackTargetOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
                 attackTargetComboBox.setItems(
-                    FXCollections.observableArrayList(attackTargetOptions));
+                    FXCollections.observableArrayList(attackTargetOptions.stream().map(Country::getName).toList()));
               } else {
                 attackTargetComboBox.getItems().clear();
               }
@@ -145,21 +145,21 @@ public class AttackPaneController extends AbstractSidebarPaneController
     // Disable the attack buttons until both countries are selected
     view.getPerformAttackUntilResultButton().setDisable(true);
     view.getPerformAttackOnceButton().setDisable(true);
-    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
+    view.getCurrentUserLabel().setText("Current Player: " + risk.getPlayerManager().getCurrentPlayer().getName());
 
     // Get the available countries for the current player to attack from
     List<Country> attackFromOptions =
         new ArrayList<>(risk.getCountriesCurrentPlayerCanAttackFrom());
     Collections.sort(attackFromOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
 
-    ComboBox<Country> attackFromComboBox = view.getAttackFromComboBox();
-    ComboBox<Country> attackTargetComboBox = view.getAttackTargetComboBox();
+    ComboBox<String> attackFromComboBox = view.getAttackFromComboBox();
+    ComboBox<String> attackTargetComboBox = view.getAttackTargetComboBox();
 
-    Country selectedFrom = attackFromComboBox.getValue();
-    Country selectedTo = attackTargetComboBox.getValue();
+    String selectedFrom = attackFromComboBox.getValue();
+    String selectedTo = attackTargetComboBox.getValue();
 
     // Set the ComboBox options for "Attack From"
-    attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions));
+    attackFromComboBox.setItems(FXCollections.observableArrayList(attackFromOptions.stream().map(Country::getName).toList()));
     attackTargetComboBox.getItems().clear();
 
     if (!attackFromOptions.contains(selectedFrom)) {
@@ -167,35 +167,39 @@ public class AttackPaneController extends AbstractSidebarPaneController
       attackFromComboBox.setValue(null);
       attackTargetComboBox.setValue(null);
       attackTargetComboBox.setDisable(true);
-    } else if (!risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)
+    } else if (!risk.getCountriesCurrentPlayerCanAttackFromCountry(risk.getBoard().getCountry(selectedFrom))
         .contains(selectedTo)) {
       // If the selected "Attack To" country is not valid, reset the selection
       attackTargetComboBox.setValue(null);
       attackTargetComboBox.setItems(
-          FXCollections.observableArrayList(
-              risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
+        FXCollections.observableArrayList(
+          FXCollections.observableList(risk.getCountriesCurrentPlayerCanAttackFromCountry(risk.getBoard().getCountry(selectedFrom))).stream().map(country -> country.getName()).toList()
+        )
+      );
     } else {
       // If both selections are valid, set the ComboBox values
       attackFromComboBox.setValue(selectedFrom);
       attackTargetComboBox.setItems(
           FXCollections.observableArrayList(
-              risk.getCountriesCurrentPlayerCanAttackFromCountry(selectedFrom)));
+              FXCollections.observableList(risk.getCountriesCurrentPlayerCanAttackFromCountry(risk.getBoard().getCountry(selectedFrom))).stream().map(country -> country.getName()).toList()
+          )
+      );
       attackTargetComboBox.setValue(selectedTo);
     }
 
-    if (risk.getBoard().hasWon(risk.getCurrentPlayer())) {
+    if (risk.getBoard().hasWon(risk.getPlayerManager().getCurrentPlayer())) {
       win();
     }
   }
 
   private void win() {
     try {
-      FileHandler.deleteGame(risk.getGameName());
+      // FileHandler.deleteGame(risk.getGameName()); // TODO: Fix
     } catch (UncheckedIOException e) {
       PopUp.showError("Something went wrong deleting game", e.getMessage());
     }
     NavigationManager.navigate(
-        new WinningPageController(this.risk.getCurrentPlayer().getName(), "risk-win-page")
+        new WinningPageController(this.risk.getPlayerManager().getCurrentPlayer().getName(), "risk-win-page")
             .getView());
   }
 

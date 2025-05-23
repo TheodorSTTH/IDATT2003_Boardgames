@@ -14,8 +14,8 @@ public class SnakesAndLaddersBoard {
     this.length = 0;
   }
 
-  public void placeCreatureOnStartingTile(ArrayList<Creature> creatures) {
-    firstTile.addCreatures(creatures);
+  public void placeCreatureOnStartingTile(Creature creature) {
+    firstTile.addCreature(creature);
   }
 
   private Tile getTilePlayerIsOn(Player player) {
@@ -27,12 +27,23 @@ public class SnakesAndLaddersBoard {
   }
 
   public void movePlayer(Player player, int amountOfSteps) {
+    Tile startTile = getTilePlayerIsOn(player);
     Tile currentTile = getTilePlayerIsOn(player);
 
     // Move
     for (int i = 0; i < amountOfSteps; i++) {
-      currentTile = currentTile.getNext();
+      if (currentTile.getNext() == null) {
+        break;
+      } else if (currentTile == null) {
+        currentTile = firstTile;
+      } else {
+        currentTile = currentTile.getNext();
+      }
     }
+
+    Creature playerCreature = startTile.getCreaturesOnSpace().stream().filter(creature -> creature.getOwner().equals(player)).findFirst().orElseThrow();
+    currentTile.addCreature(playerCreature);
+    startTile.removeCreature(playerCreature);
 
     // Perform actions
     Creature creatureOwnedByPlayer = currentTile.getCreatureOwnedByPlayer(player);
@@ -59,20 +70,46 @@ public class SnakesAndLaddersBoard {
     return lastTile;
   }
 
+  public ArrayList<Action> getActions() {
+    ArrayList<Action> actions = new ArrayList<>();
+    Tile currentTile = firstTile;
+    while (currentTile.getNext() != null) {
+      actions.addAll(currentTile.getActionsOnSpace());
+      currentTile = currentTile.getNext();
+    }
+    return actions;
+  }
+
   /**
    * Returns the positions of the players on the board.
    *
    * @return a map of players and their positions on the board
    */
-  public HashMap<Player, Integer> getPlayerPositions() {
-    HashMap<Player, Integer> playerPositions = new HashMap<>();
+  public ArrayList<Tile> getTilesWithPlayers() {
+    ArrayList<Tile> tilesWithPlayers = new ArrayList<>();
     Tile currentTile = firstTile;
     while (currentTile.getNext() != null) {
-      for (Creature creature : currentTile.getCreaturesOnSpace()) {
-        playerPositions.put(creature.getOwner(), currentTile.getName());
+      if (!currentTile.getCreaturesOnSpace().isEmpty()) {
+        tilesWithPlayers.add(currentTile);
+        System.out.println("BALLE: " + currentTile.getName());
       }
       currentTile = currentTile.getNext();
     }
-    return playerPositions;
+    return tilesWithPlayers;
+  }
+
+  public Tile getPlayerTile(Player player) {
+    Tile playerTile = null;
+    Tile currentTile = firstTile;
+    while (currentTile.getNext() != null && playerTile == null) {
+      for (Creature creature : currentTile.getCreaturesOnSpace()) {
+        if (creature.getOwner().equals(player)) {
+          playerTile = currentTile;
+          break;
+        }
+      }
+      currentTile = currentTile.getNext();
+    }
+    return playerTile;
   }
 }

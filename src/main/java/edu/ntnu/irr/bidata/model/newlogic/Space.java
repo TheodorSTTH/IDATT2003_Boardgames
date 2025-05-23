@@ -13,6 +13,7 @@ public abstract class Space<T> implements SimpleSubject {
   public Space(T name) {
     this.name = name;
     this.allObservers = new ArrayList<>();
+    this.actionsOnSpace = new ArrayList<>();
   }
 
   public void addAction(Action action) {

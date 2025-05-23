@@ -3,7 +3,7 @@ package edu.ntnu.irr.bidata.view.snakesandladders;
 import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.controller.snakesandladders.SnakesAndLaddersCanvasController;
 import edu.ntnu.irr.bidata.controller.snakesandladders.SnakesAndLaddersSidePanelController;
-import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.newlogic.snakesandladders.SnakesAndLaddersGame;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
@@ -22,7 +22,7 @@ public class SnakesAndLaddersPageView extends HBox {
    *
    * @param snakesAndLadders The game model containing game logic and state.
    */
-  public SnakesAndLaddersPageView(SnakesAndLadders snakesAndLadders) {
+  public SnakesAndLaddersPageView(SnakesAndLaddersGame snakesAndLadders) {
     // Set up the style and alignment of the HBox container
     getStyleClass().addAll("snakes-and-ladders-game-page", "background");
     setAlignment(Pos.CENTER);

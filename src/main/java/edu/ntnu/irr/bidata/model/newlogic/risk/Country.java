@@ -41,6 +41,6 @@ public class Country extends Space<String> {
   }
 
   public void setNeighbours(List<Country> neighbours) {
-    this.neighbours = (ArrayList) neighbours;
+    this.neighbours = new ArrayList<>(neighbours);
   }
 }

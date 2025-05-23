@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.controller.risk;
 
-import edu.ntnu.irr.bidata.model.risk.Country;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.PlaceTroopsPaneView;
 import java.util.Collections;
@@ -24,7 +24,7 @@ public class PlaceTroopsPaneController extends AbstractSidebarPaneController {
    *
    * @param risk the Risk game model instance
    */
-  public PlaceTroopsPaneController(Risk risk) {
+  public PlaceTroopsPaneController(RiskGame risk) {
     super(risk);
     this.view = new PlaceTroopsPaneView();
 
@@ -37,7 +37,7 @@ public class PlaceTroopsPaneController extends AbstractSidebarPaneController {
                     "Must select a country", "Please select a country to place troops on.");
               } else {
                 risk.placeTroops(
-                    view.getCountryComboBox().getValue().getName(),
+                    risk.getBoard().getCountry(view.getCountryComboBox().getValue().getName()),
                     view.getAmountOfTroopsSpinner().getValue());
                 update(); // Refresh view after troop placement
               }
@@ -82,7 +82,7 @@ public class PlaceTroopsPaneController extends AbstractSidebarPaneController {
     Collections.sort(placeOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
 
     // Update view labels and combo box contents
-    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
+    view.getCurrentUserLabel().setText("Current Player: " + risk.getPlayerManager().getCurrentPlayer().getName());
     view.getInfoLabel()
         .setText(
             "Place troops on country\nYou have " + risk.getTroopsAvailable() + " troops available");

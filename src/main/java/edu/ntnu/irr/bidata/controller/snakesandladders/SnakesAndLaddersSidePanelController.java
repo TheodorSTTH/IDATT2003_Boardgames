@@ -3,13 +3,11 @@ package edu.ntnu.irr.bidata.controller.snakesandladders;
 import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.controller.StartPageController;
 import edu.ntnu.irr.bidata.controller.WinningPageController;
-import edu.ntnu.irr.bidata.model.Die;
-import edu.ntnu.irr.bidata.model.FileHandler;
-import edu.ntnu.irr.bidata.model.Player;
+import edu.ntnu.irr.bidata.model.newlogic.Die;
+import edu.ntnu.irr.bidata.model.newlogic.Player;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.newlogic.snakesandladders.SnakesAndLaddersGame;
 import edu.ntnu.irr.bidata.view.DieView;
-import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersSidePanelView;
 import javafx.scene.paint.Color;
 
@@ -17,7 +15,7 @@ import javafx.scene.paint.Color;
  * Controller for the Snakes and Ladders side panel, managing interactions with the roll, save, and
  * exit buttons. It also observes the game model and updates the UI accordingly.
  */
-public class SnakesAndLaddersSidePanelController implements Observer<SnakesAndLadders> {
+public class SnakesAndLaddersSidePanelController implements Observer<SnakesAndLaddersGame> {
   private final SnakesAndLaddersSidePanelView view;
 
   /**
@@ -26,16 +24,16 @@ public class SnakesAndLaddersSidePanelController implements Observer<SnakesAndLa
    *
    * @param snakesAndLadders the Snakes and Ladders game model to control and observe
    */
-  public SnakesAndLaddersSidePanelController(SnakesAndLadders snakesAndLadders) {
+  public SnakesAndLaddersSidePanelController(SnakesAndLaddersGame snakesAndLadders) {
     this.view = new SnakesAndLaddersSidePanelView();
 
     view.getRollButton()
         .setOnAction(
             e -> {
-              Player currentPlayer = snakesAndLadders.getCurrentPlayer();
-              snakesAndLadders.takeAction();
-              if (snakesAndLadders.getBoard().hasWon(currentPlayer)) {
-                FileHandler.deleteGame(snakesAndLadders.getGameName());
+              Player currentPlayer = snakesAndLadders.getPlayerManager().getCurrentPlayer();
+              snakesAndLadders.takeTurn();
+              if (snakesAndLadders.hasWon(currentPlayer)) {
+                // FileHandler.deleteGame(snakesAndLadders.getGameName()); TODO: Fix
                 NavigationManager.navigate(
                     new WinningPageController(
                             currentPlayer.getName(), "snakes-and-ladders-win-page")
@@ -43,16 +41,16 @@ public class SnakesAndLaddersSidePanelController implements Observer<SnakesAndLa
               }
             });
 
-    view.getSaveButton()
-        .setOnAction(
-            e -> {
-              try {
-                snakesAndLadders.saveGame();
-                PopUp.showInfo("Game saved", "Game saved as\n" + snakesAndLadders.getGameName());
-              } catch (RuntimeException ex) {
-                PopUp.showError("An error occurred while saving.", ex.getMessage());
-              }
-            });
+    //view.getSaveButton()
+    //    .setOnAction(
+    //        e -> {
+    //          try {
+    //            // snakesAndLadders.saveGame(); // TODO: Fix
+    //            PopUp.showInfo("Game saved", "Game saved as\n" + snakesAndLadders.getGameName());
+    //          } catch (RuntimeException ex) {
+    //            PopUp.showError("An error occurred while saving.", ex.getMessage());
+    //          }
+    //        });
 
     view.getExitGameButton()
         .setOnAction(
@@ -78,8 +76,8 @@ public class SnakesAndLaddersSidePanelController implements Observer<SnakesAndLa
    * @param snakesAndLadders the game model to extract current player information from
    */
   @Override
-  public void update(SnakesAndLadders snakesAndLadders) {
-    view.getUsernameLabel().setText(snakesAndLadders.getCurrentPlayer().getName());
+  public void update(SnakesAndLaddersGame snakesAndLadders) {
+    view.getUsernameLabel().setText(snakesAndLadders.getPlayerManager().getCurrentPlayer().getName());
   }
 
   /**

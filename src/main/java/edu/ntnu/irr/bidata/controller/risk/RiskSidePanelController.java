@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.controller.risk;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import edu.ntnu.irr.bidata.view.risk.RiskSidePanelView;
 
 /**
@@ -24,7 +24,7 @@ public class RiskSidePanelController implements Observer<AbstractSidebarPaneCont
    *
    * @param risk the main Risk game model
    */
-  public RiskSidePanelController(Risk risk) {
+  public RiskSidePanelController(RiskGame risk) {
     this.placeTroopsPaneController = new PlaceTroopsPaneController(risk);
     this.attackPaneController = new AttackPaneController(risk);
     this.moveTroopsPaneController = new MoveTroopsPaneController(risk);

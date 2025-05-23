@@ -2,7 +2,7 @@ package edu.ntnu.irr.bidata.controller.risk;
 
 import edu.ntnu.irr.bidata.NavigationManager;
 import edu.ntnu.irr.bidata.controller.StartPageController;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.RiskPageView;
 
@@ -18,22 +18,22 @@ public class RiskPageController {
    *
    * @param risk Current state of Risk game, containing the game board and other game-related data.
    * */
-  public RiskPageController(Risk risk) {
+  public RiskPageController(RiskGame risk) {
     this.view = new RiskPageView(risk);
     view.getExitGameButton().setOnAction(
         e -> {
           NavigationManager.navigate(
               new StartPageController().getView()); // Navigate to the start page
         });
-    view.getSaveButton().setOnAction(
-        e -> {
-          try {
-            risk.saveGame();
-            PopUp.showInfo("Game saved", "Game saved as\n" + risk.getGameName());
-          } catch (RuntimeException ex) {
-            PopUp.showError("Error saving game", ex.getMessage());
-          }
-        });
+    //view.getSaveButton().setOnAction( TODO: Add back in
+    //    e -> {
+    //      try {
+    //        risk.saveGame();
+    //        PopUp.showInfo("Game saved", "Game saved as\n" + risk.getGameName());
+    //      } catch (RuntimeException ex) {
+    //        PopUp.showError("Error saving game", ex.getMessage());
+    //      }
+    //    });
   }
 
   /**

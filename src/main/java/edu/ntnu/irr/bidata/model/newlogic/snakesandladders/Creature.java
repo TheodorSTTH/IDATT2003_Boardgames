@@ -7,7 +7,7 @@ import java.util.Optional;
 import javafx.scene.paint.Color;
 
 public class Creature extends Figure {
-  public Creature(Player player, Color color) {
-    super(player, color);
+  public Creature(Player player) {
+    super(player);
   }
 }

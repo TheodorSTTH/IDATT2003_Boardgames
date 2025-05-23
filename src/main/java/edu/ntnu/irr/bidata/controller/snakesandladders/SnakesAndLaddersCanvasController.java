@@ -1,14 +1,14 @@
 package edu.ntnu.irr.bidata.controller.snakesandladders;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
-import edu.ntnu.irr.bidata.model.snakesandladders.SnakesAndLadders;
+import edu.ntnu.irr.bidata.model.newlogic.snakesandladders.SnakesAndLaddersGame;
 import edu.ntnu.irr.bidata.view.snakesandladders.SnakesAndLaddersCanvasView;
 
 /**
  * Controller responsible for managing the canvas view of the Snakes and Ladders game. It observes
  * the game model and updates the view whenever the game state changes.
  */
-public class SnakesAndLaddersCanvasController implements Observer<SnakesAndLadders> {
+public class SnakesAndLaddersCanvasController implements Observer<SnakesAndLaddersGame> {
   private SnakesAndLaddersCanvasView view;
 
   /**
@@ -17,7 +17,7 @@ public class SnakesAndLaddersCanvasController implements Observer<SnakesAndLadde
    *
    * @param snakesAndLadders the SnakesAndLadders game model to observe and visualize
    */
-  public SnakesAndLaddersCanvasController(SnakesAndLadders snakesAndLadders) {
+  public SnakesAndLaddersCanvasController(SnakesAndLaddersGame snakesAndLadders) {
     this.view = new SnakesAndLaddersCanvasView();
     snakesAndLadders.registerObserver(this);
     update(snakesAndLadders);
@@ -45,11 +45,12 @@ public class SnakesAndLaddersCanvasController implements Observer<SnakesAndLadde
    * @param snakesAndLadders the current game model state to be rendered
    */
   @Override
-  public void update(SnakesAndLadders snakesAndLadders) {
+  public void update(SnakesAndLaddersGame snakesAndLadders) {
+    System.out.println("wassup dawg");
     view.renderBoard();
-    view.drawQuizEvents(snakesAndLadders.getBoard().getEvents());
-    view.drawSnakesAndLadders(snakesAndLadders.getBoard().getEvents());
-    view.placePlayers(snakesAndLadders.getPlayerPositions());
-    view.drawPlayers(snakesAndLadders.getPlayerPositions());
+    view.drawQuizEvents(snakesAndLadders.getBoard().getActions());
+    view.drawSnakesAndLadders(snakesAndLadders.getBoard().getActions());
+    view.placePlayers(snakesAndLadders.getTilesWithPlayers());
+    view.drawPlayers(snakesAndLadders.getTilesWithPlayers());
   }
 }

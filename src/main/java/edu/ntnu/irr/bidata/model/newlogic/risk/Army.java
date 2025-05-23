@@ -2,27 +2,27 @@ package edu.ntnu.irr.bidata.model.newlogic.risk;
 
 import edu.ntnu.irr.bidata.model.newlogic.Figure;
 import edu.ntnu.irr.bidata.model.newlogic.Player;
-import javafx.scene.paint.Color;
 
 public class Army extends Figure {
-  private int amountOfTroops;
+  private int troopCount;
 
-  public Army(Player player, Color color) {
-    super(player, color);
+  public Army(Player player) {
+    super(player);
   }
   
   public int getTroopCount() {
-    return amountOfTroops;
-  }
-  public void setAmountOfTroops(int amountOfTroops) {
-    this.amountOfTroops = amountOfTroops;
+    return troopCount;
   }
 
-  public void removeAmountOfTroops(int amountOfTroopsToRemove) {
-    this.amountOfTroops -= amountOfTroopsToRemove;
+  public void setTroopCount(int troopCount) {
+    this.troopCount = troopCount;
+  }
+
+  public void removeTroops(int amountOfTroopsToRemove) {
+    this.troopCount -= amountOfTroopsToRemove;
   }
 
   public void addAmountOfTroops(int amountOfTroopsToAdd) {
-    this.amountOfTroops += amountOfTroopsToAdd;
+    this.troopCount += amountOfTroopsToAdd;
   }
 }

@@ -11,7 +11,7 @@ public class RiskFactory {
   private static RiskBoard createDefaultBoard() {
     RiskBoard board = new RiskBoard();
 
-    List<Country> countries = List.of(
+    ArrayList<Country> countries = new ArrayList<>(List.of(
         new Country("Alaska", 0.07, 0.16),
         new Country("Northwest Territory", 0.16, 0.14),
         new Country("Alberta", 0.13, 0.23),
@@ -54,7 +54,7 @@ public class RiskFactory {
         new Country("New Guinea", 0.88, 0.65),
         new Country("Western Australia", 0.83, 0.81),
         new Country("Eastern Australia", 0.93, 0.85)
-    );
+    ));
 
     Map<String, Country> c = new HashMap<>();
     for (Country country : countries) {
@@ -198,11 +198,11 @@ public class RiskFactory {
 
     board.setCountries((HashMap<String, Country>) c);
 
-    Continent oceania = new Continent((ArrayList<Country>) List.of(
+    Continent oceania = new Continent(new ArrayList<>(List.of(
       c.get("Indonesia"),
       c.get("New Guinea"),
       c.get("Western Australia"),
-      c.get("Eastern Australia")),
+      c.get("Eastern Australia"))),
       2
     );
 

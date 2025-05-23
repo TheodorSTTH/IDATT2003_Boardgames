@@ -1,7 +1,7 @@
 package edu.ntnu.irr.bidata.controller.risk;
 
-import edu.ntnu.irr.bidata.model.risk.Country;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.Country;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import edu.ntnu.irr.bidata.view.PopUp;
 import edu.ntnu.irr.bidata.view.risk.MoveTroopsPaneView;
 import java.util.ArrayList;
@@ -27,9 +27,9 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
    *
    * @param risk the Risk game model instance
    */
-  public MoveTroopsPaneController(Risk risk) {
+  public MoveTroopsPaneController(RiskGame risk) {
     super(risk);
-    this.view = new MoveTroopsPaneView(risk.getCurrentPlayer().getName());
+    this.view = new MoveTroopsPaneView(risk.getPlayerManager().getCurrentPlayer().getName());
 
     Spinner<Integer> amountOfTroopsSpinner = view.getAmountOfTroopsSpinner();
     ComboBox<Country> moveFromComboBox = view.getMoveFromComboBox();
@@ -45,7 +45,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
               int amount = amountOfTroopsSpinner.getValue();
 
               if (from != null && to != null) {
-                risk.transferTroops(from.getName(), to.getName(), amount);
+                risk.transferTroops(from, to, amount);
                 risk.endTurn();
 
                 notifyObservers(this.getNextSidebarPane());
@@ -63,7 +63,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
             (obs, oldFrom, newFrom) -> {
               if (newFrom != null) {
                 amountOfTroopsSpinner.setDisable(false);
-                view.getSpinnerValueFactory().setMax(newFrom.getArmies() - 1);
+                view.getSpinnerValueFactory().setMax(newFrom.getArmy().getTroopCount() - 1);
               } else {
                 amountOfTroopsSpinner.setDisable(true);
               }
@@ -119,7 +119,7 @@ public class MoveTroopsPaneController extends AbstractSidebarPaneController {
     Collections.sort(moveToOptions, (c1, c2) -> c1.getName().compareTo(c2.getName()));
     view.getMoveTargetComboBox().setItems(FXCollections.observableArrayList(moveToOptions));
     view.getMoveTargetComboBox().setValue(null);
-    view.getCurrentUserLabel().setText("Current Player: " + risk.getCurrentPlayer().getName());
+    view.getCurrentUserLabel().setText("Current Player: " + risk.getPlayerManager().getCurrentPlayer().getName());
     view.getAmountOfTroopsSpinner().setDisable(true);
   }
 

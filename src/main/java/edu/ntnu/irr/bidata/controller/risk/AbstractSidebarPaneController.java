@@ -2,7 +2,7 @@ package edu.ntnu.irr.bidata.controller.risk;
 
 import edu.ntnu.irr.bidata.model.interfaces.observer.Observer;
 import edu.ntnu.irr.bidata.model.interfaces.observer.Subject;
-import edu.ntnu.irr.bidata.model.risk.Risk;
+import edu.ntnu.irr.bidata.model.newlogic.risk.RiskGame;
 import edu.ntnu.irr.bidata.view.risk.AbstractSidebarPaneView;
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public abstract class AbstractSidebarPaneController
 
   private final ArrayList<Observer<AbstractSidebarPaneController>>
       allObservers; // List of observers
-  protected final Risk risk; // The Risk game instance
+  protected final RiskGame risk; // The Risk game instance
   private AbstractSidebarPaneController nextSidebarPane; // The next sidebar pane to be shown
 
   /**
@@ -24,7 +24,7 @@ public abstract class AbstractSidebarPaneController
    *
    * @param risk The Risk game instance.
    */
-  public AbstractSidebarPaneController(Risk risk) {
+  public AbstractSidebarPaneController(RiskGame risk) {
     this.risk = risk;
     this.allObservers = new ArrayList<>();
   }
